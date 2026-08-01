@@ -1,0 +1,1670 @@
+\chapter{Memoria de cálculos}
+\label{ch:mc}
+\section{Introducción}
+\label{sec:mc-introduccion}
+En este capítulo se recogen los cálculos necesarios para justificar el diseño de la \ac{LAAT} descrita en la memoria descriptiva. El objetivo es comprobar que los conductores, apoyos, cadenas de aisladores, cimentaciones y sistemas de puesta a tierra cumplen con las exigencias reglamentarias, así como con los criterios habituales de las empresas distribuidoras.
+
+En primer lugar, se desarrollan los cálculos eléctricos (intensidades admisibles, caídas de tensión y corrientes de cortocircuito). A continuación, se presentan los cálculos mecánicos de los conductores y apoyos (tensiones, flechas y esfuerzos), el dimensionamiento de aisladores y distancias de seguridad. Por último, se realiza el cálculo de las cimentaciones y de los sistemas de puesta a tierra de los apoyos, teniendo en cuenta las características del terreno y las corrientes de defecto.
+
+Los resultados se han obtenido a partir del software IMEDEXSA y, con el fin de comprobar la veracidad de dichos resultados, se han calculado los distintos apartados indicados en la reglamentación aplicable mediante un programa de elaboración propia en MATHCAD, de manera que se puedan contrastar ambos procedimientos y verificar el correcto dimensionamiento de la línea proyectada.
+\section{Cálculos eléctricos}
+\label{sec:mc-electricos}
+La tensión nominal de la línea es de \SI{20}{\kilo\volt}, por lo que pertenece a la 3ª categoría ($1\,\text{kV} < U_\text{n} \leq 30\,\text{kV}$). La línea es Simple Circuito y configuración Simplex. La potencia transportada por la línea es de \SI{6.5}{\mega\watt} a evacuar de la planta \acs{FV} . Se considera un \ac{fdp} unitario, que es habitual en líneas cuya finalidad es la evacuación de energía de plantas \acs{FV}.
+
+Como la línea se ubica en España, la frecuencia considerada será \SI{50}{\hertz}. En cuanto a las consideraciones medioambientales, se considera una temperatura máxima del conductor de \SI{50}{\celsius} y una velocidad de viento de \SI{120}{\kilo\meter\per\hour}.
+
+La cota máxima de la línea sobre el nivel del mar es inferior a \SI{500}{\meter}, por ende, la línea se encuentra ubicada en Zona A.
+
+El conductor de fase es LA-56, cuyas características técnicas se recogen en la sección \ref{sec:md-conductor} (\nameref{sec:md-conductor}).
+
+\subsection{Intensidad prevista}
+\label{subsec:ce-intensidadPrevista}
+En el cálculo de la intensidad prevista para cada fase en régimen de funcionamiento se debe considerar el tipo de circuito (simple) y la configuración (simplex). En consecuencia, la intensidad prevista se calculará de la siguiente manera:
+\begin{equation}
+I_b = \frac{S_n}{\sqrt{3}\ \cdot U_n} = \frac{P_n}{\sqrt{3}\ \cdot U_n \cdot \cos\varphi}
+\label{eq:intensidad-prevista}
+\end{equation}
+
+Donde:
+\begin{description}
+  \item[$I_b$] es la intensidad prevista de la línea (\si{\ampere}).
+  \item[$S_n$] es la potencia aparente nominal a tranportar por la línea (\si{MVA}).
+  \item[$S_n$] es la potencia activa nominal a tranportar por la línea (\si{\mega\watt}).
+  \item[$U_n$] es la tensión nominal entre fases de la línea (\si{\kilo\volt}).
+  \item[$\cos\varphi$] es el factor de potencia.
+\end{description}
+
+\subsection{Intensidad máxima admisible}
+\label{subsec:ce-intensidadAdmisible}
+El cálculo de la intensidad máxima admisible precisa conocer la densidad admisible del conductor, cuyo valor viene tabulado en la \textit{Tabla 11: Densidad de corriente máxima de los conductores en régimen permanente} del apartado 4.2.1 de la ITC-LAT-07. Si en dicha tabla, la sección nominal del conductor seleccionado no tuviera una densidad de corriente asociada, como sucede en este proyecto (véase sección \ref{sec:md-conductor}), se debe interpolar con el el valor más cercano a la sección del conductor.
+
+Por facilitar y agilizar la lectura, se muestra dicha tabla a continuación.
+
+\begin{table}[htbp]
+\caption{Densidad de corriente máxima de los conductores en régimen permanente}
+\centering
+\label{tab:densidad-corriente}
+\begin{tabular}{|c|ccc|}
+\hline
+\rowcolor[HTML]{EFEFEF} 
+\cellcolor[HTML]{EFEFEF}                                                 & \multicolumn{3}{c|}{\cellcolor[HTML]{EFEFEF}\textbf{Densidad de corriente (A/mm²)}}                                               \\ \cline{2-4} 
+\rowcolor[HTML]{EFEFEF} 
+\multirow{-2}{*}{\cellcolor[HTML]{EFEFEF}\textbf{Sección nominal (mm²)}} & \multicolumn{1}{c|}{\cellcolor[HTML]{EFEFEF}Cobre} & \multicolumn{1}{c|}{\cellcolor[HTML]{EFEFEF}Aluminio} & Aleación de aluminio \\ \hline
+10                                                                       & \multicolumn{1}{c|}{8,75}                          & \multicolumn{1}{c|}{0}                                & 0                    \\
+15                                                                       & \multicolumn{1}{c|}{7,6}                           & \multicolumn{1}{c|}{6}                                & 5,6                  \\
+25                                                                       & \multicolumn{1}{c|}{6,35}                          & \multicolumn{1}{c|}{5}                                & 4,65                 \\
+35                                                                       & \multicolumn{1}{c|}{5,75}                          & \multicolumn{1}{c|}{4,55}                             & 4,25                 \\
+50                                                                       & \multicolumn{1}{c|}{5,1}                           & \multicolumn{1}{c|}{4}                                & 3,7                  \\
+70                                                                       & \multicolumn{1}{c|}{4,5}                           & \multicolumn{1}{c|}{3,55}                             & 3,3                  \\
+95                                                                       & \multicolumn{1}{c|}{4,05}                          & \multicolumn{1}{c|}{3,2}                              & 3                    \\
+125                                                                      & \multicolumn{1}{c|}{3,7}                           & \multicolumn{1}{c|}{2,9}                              & 2,7                  \\
+160                                                                      & \multicolumn{1}{c|}{3,4}                           & \multicolumn{1}{c|}{2,7}                              & 2,5                  \\
+200                                                                      & \multicolumn{1}{c|}{3,2}                           & \multicolumn{1}{c|}{2,5}                              & 2,3                  \\
+250                                                                      & \multicolumn{1}{c|}{2,9}                           & \multicolumn{1}{c|}{2,3}                              & 2,15                 \\
+300                                                                      & \multicolumn{1}{c|}{2,75}                          & \multicolumn{1}{c|}{2,15}                             & 2                    \\
+400                                                                      & \multicolumn{1}{c|}{2,5}                           & \multicolumn{1}{c|}{1,95}                             & 1,8                  \\
+500                                                                      & \multicolumn{1}{c|}{2,3}                           & \multicolumn{1}{c|}{1,8}                              & 1,7                  \\
+600                                                                      & \multicolumn{1}{c|}{2,1}                           & \multicolumn{1}{c|}{1,65}                             & 1,55                 \\ \hline
+\end{tabular}
+\end{table}
+
+La ITC-LAT-07 indica que para cables de aluminio-acero, se toma de la tabla mencionada con anterioridad, el valor de densidad correspondiente a la sección total del conductor en cuestión (como si este estuviera compuesto únicamente por aluminio) y su valor se multiplica por un factor de reducción que dependerá de la composición del conductor.
+
+La intensidad máxima admisible se calcula mediante la siguiente expresión:
+\begin{equation}
+I_{adm} = \rho_{al} \cdot k_{comp} \cdot S_{T}
+\label{eq:intensidad-admisible}
+\end{equation}
+
+Donde:
+\begin{description}
+  \item[$I_{adm}$] es la intensidad máxima admisible del conductor (\si{\ampere}).
+  \item[$\rho_{al}$] es la densidad de corriente del aluminio (\si{\ampere\per\milli\meter\squared}).
+  \item[$k_{comp}$] es el factor de reducción. Para el conductor LA-56 es 0,937.
+  \item[$S_T$] es la sección total del conductor de fase (\si{\milli\meter\squared}).
+\end{description}
+Es necesario comprobar el criterio de intensidad admisible por el conductor de fase, este criterio establece que la intensidad prevista debe ser menor o igual que la intensidad máxima admisible:
+
+\begin{equation}
+\label{eq:criterio-Iadm}
+I_b \leq I_{adm}
+\end{equation}
+
+Por otro lado, la potencia máxima a transportar por la línea debe ser superior a la potencia nominal de la línea (en este caso, \SI{6.5}{\mega\watt}).
+
+\begin{equation}
+\label{eq:potencia-maxima}
+P_{max} = \sqrt{3} \cdot U_n \cdot I_{adm} \cdot \cos\varphi
+\end{equation}
+
+\subsection{Máxima caída de tensión}
+\label{subsec:ce-cdt}
+La \ac{cdt} de la línea depende de los parámetros eléctricos de la línea y su longitud. El criterio de máxima caída de tensión establece que la \ac{cdt} en ningún punto de la línea debe superar el \SI{6}{\percent} admisible.
+
+La longitud de la línea objeto de este proyecto es de \SI{4.038}{\kilo\meter}, al ser inferior a \SI{80}{\kilo\meter} se considera el circuito equivalente de línea corta (véase Fig ) para la aplicación de este criterio.
+
+Para el cálculo de la máxima \ac{cdt} admisible, previamente es necesario calcular los parámetros eléctricos de la línea: resistencia óhmica por fase y por kilómetro ($R_k$), reactancia inductiva por fase y por kilómetro ($X_k$), susceptancia capactiva por fase y por kilómetro ($B_k$) y conductancia ($G_k$).
+
+\subsubsection{Resistencia óhmica por fase y por kilómetro}
+\label{subsubsec:cdt-resistencia}
+El valor de la resistencia viene determinado por el tipo de conductor empleado. Dado que la resistencia óhmica depende de la temperatura, este parámetro se determinará para la temperatura máxima de funcionamiento en régimen permanente (\SI{50}{\celsius}).
+
+\begin{equation}
+\label{eq:cdt-resistencia}
+R_k(\theta_{max}) =
+R_{20\,^{\circ}\mathrm{C}}
+\left[ 1 + \alpha_{al} \cdot
+\bigl(\theta_{max} - 20^{\circ}\mathrm{C}\bigr) \right]
+\end{equation}
+
+Donde:
+\begin{description}
+  \item[$R_k(\theta_{max})$] es la resistencia por fase y por kilómetro a la temperatura máxima (\si{\ohm\per\kilo\meter}).
+  \item[$R_{\text{20ºC}}$] es la resistencia del conductor a la temperatura de \SI{20}{\celsius} (\si{\ohm\per\kilo\meter}).
+  \item[$\alpha_{Al}$] es el coeficiente de temperatura del aluminio.
+  \item[$\theta_{max}$] es la temperatura máxima del conductor en régimen permanente (\SI{50}{\celsius}).
+\end{description}
+El valor del coeficiente de temperatura del aluminio viene dado por la siguiente expresión:
+
+\begin{equation}
+\label{eq:cdt-alfaAl}
+\alpha_{AL}
+= \frac{1}{228 + 20}\,^{\circ}\mathrm{C}^{-1}
+= 4.032 \times 10^{-3}\,^{\circ}\mathrm{C}^{-1}
+\end{equation}
+
+
+\subsubsection{Reactancia inductiva por fase y por kilómetro}
+\label{subsubsec:cdt-reactancia}
+Para el cálculo de la reactancia inductiva es necesario determinar el valor de la inductancia por fase y por kilómetro mediante la siguiente expresión:
+
+\begin{equation}
+\label{eq:cdt-inductancia}
+L_k = 2 \times 10^{-4} \cdot \ln{(\frac{DMG}{RMG})}
+\end{equation}
+
+Donde:
+\begin{description}
+  \item[$L_k$] es la inductancia por fase y por kilómetro (\si{\henry\per\kilo\meter}).
+  \item[$DMG$] es la distancia media geométrica (\si{\meter}).
+  \item[$RMG$] es el radio medio geométrico (\si{\milli\meter}).
+\end{description}
+
+La \ac{DMG} y el \ac{RMG} dependen del tipo de circuito y de la configuración del mismo respectivamente.
+
+En caso de configuración simplex, \ac{RMG} se calcula mediante las siguientes expresiones:
+\begin{align}
+RMG &= r'
+\label{eq:cdt-RMG} \\[0.5em]
+r' &= r \cdot e^{-1/4}
+\label{eq:cdt-RMG-r'} \\[0.5em]
+r &= \frac{\phi}{2}
+\label{eq:cdt-RMG-r}
+\end{align}
+
+Donde:
+\begin{description}
+  \item[$r'$] es la radio eléctrico modificado para configuración simplex (\si{\milli\meter}).
+  \item[$r$] es el radio del conductor (\si{\milli\meter}).
+\end{description}
+
+En caso de circuito simple, \ac{DMG} se calcula mediante la siguientes expresiones:
+
+\begin{align}
+DMG &= \sqrt[3]{d_{12} \cdot d_{13} \cdot d_{23}} 
+\label{eq:cdt-RMG} \\[0.5em]
+d_{12} &= \sqrt{(a_a \cdot b_a)^2 \cdot e_a}
+\label{eq:cdt-DMG-d12} \\[0.5em]
+d_{13} &= e_a + d_a
+\label{eq:cdt-DMG-d13} \\[0.5em]
+d_{23} &= \sqrt{(b_a \cdot c_a)^2 \cdot d_a}
+\label{eq:cdt-DMG-d23}
+\end{align}
+
+Donde:
+\begin{description}
+  \item[$d_{12}$] es la distancia entre la fase 1 y la fase 2 (\si{\meter}).
+  \item[$d_{13}$] es la distancia entre la fase 1 y la fase 3 (\si{\meter}).
+  \item[$d_{23}$] es la distancia entre la fase 2 y la fase 3 (\si{\meter}).
+\end{description}
+Para una mayor aclaración de las distancias entre fases véase Figura \ref{fig:Distancia entre fases}.
+
+\figura{Fig/disposicion}{0.3}{Distancia entre fases}
+
+Con los resultados de las expresiones anteriores ya se puede calcular el valor de la reactancia inductiva por fase y por kilómetro mediante la siguiente expresión:
+
+\begin{equation}
+\label{eq:cdt-reactancia}
+X_k = 2\pi f \cdot L_k \cdot l
+\end{equation}
+
+Donde:
+\begin{description}
+  \item[$X_k$] es la reactancia inductiva por fase y por kilómetro (\si{\ohm\per\kilo\meter}).
+  \item[$L_k$] es la inductancia por fase y por kilómetro (\si{\henry\per\kilo\meter}).
+  \item[$2\pi f$] es la pulsación de la red (\si{\radian\per\second}).
+  \item[$l$] es longitud de la línea (\si{\kilo\meter}).
+\end{description}
+
+\subsubsection{Susceptancia capacitiva por fase y por kilómetro}
+\label{subsubsec:cdt-susceptancia}
+Análogamente al cálculo de la reactancia inductiva, el cálculo de la susceptancia capacitiva requiere calcular previamente la capacidad por kilómetro y fase mediante la siguiente expresión:
+
+\begin{equation}
+\label{eq:cdt-capacidad}
+C_k = \frac{0.0556 \cdot 10^{-6}}{\ln{(\frac{DMG}{RMG})}}
+\end{equation}
+
+Donde:
+\begin{description}
+  \item[$C_k$] es la capacidad por fase y por kilómetro (\si{\micro\farad\per\kilo\meter}).
+  \item[$DMG$] es la distancia media geométrica (\si{\meter}).
+  \item[$RMG$] es el radio medio geométrico (\si{\milli\meter}).
+\end{description}
+
+ Conocido el valor de la capacidad por fase y por kilómetro, se puede determinar el valor de la susceptancia capacitiva por fase y por kilómetro empleando la siguiente expresión:
+
+\begin{equation}
+\label{eq:cdt-susceptancia}
+B_k = 2\pi f \cdot C_k \cdot l
+\end{equation}
+
+Donde:
+\begin{description}
+  \item[$B_k$] es la susceptancia capacitiva por fase y por kilómetro (\si{\siemens\per\kilo\meter}).
+  \item[$C_k$] es la capacidad por fase y por kilómetro (\si{\micro\farad\per\kilo\meter}).
+  \item[$2\pi f$] es la pulsación de la red (\si{\radian\per\second}).
+  \item[$l$] es longitud de la línea (\si{\kilo\meter}).
+\end{description}
+
+\subsubsection{Conductancia}
+\label{subsubsec:cdt-conductancia}
+La conductancia se define como la inversa de la resistencia del aislamiento de la cadena de aisladores. En líneas de tensión nominal $U_n \leq \SI{132}{\kilo\volt}$ se supone que la resistencia de aislamiento es infinita, por tanto, la conductancia tiene valor nulo.
+
+\begin{equation}
+\label{eq:cdt-conductancia}
+G_k = \frac{1}{R_{cad}} = \frac{1}{\infty} = 0
+\end{equation}
+
+Donde:
+\begin{description}
+  \item[$G_k$] es la conductancia por fase y por kilómetro (\si{\siemens\per\kilo\meter}).
+  \item[$R_{cad}$] es la resistencia de la cadena de aisladores (\si{\ohm\per\kilo\meter}).
+\end{description}
+
+\subsubsection{Circuito equivalente (línea corta)}
+\label{subsubsec:circuito-equivalente}
+
+\figura{Fig/lineacorta}{0.5}{Circuito equivalente de línea corta}
+
+A partir del circuito equivalente de una línea corta (véase Figura \ref{fig:Circuito equivalente de línea corta}) se deduce la caída de tensión de la línea:
+
+\begin{gather}
+e = \frac{P_2 \cdot (R_k + X_k \cdot \tan(-\varphi))}{U_n^2}
+\label{eq:cdt-e} \\[0.5em]
+P_2 = S_n \cdot \cos\varphi
+\label{cdt-P2} 
+\end{gather}
+
+Donde:
+\begin{description}
+  \item[$S_n$] es la potencia aparente transportada por la línea (\si{MVA}).
+  \item[$e$] es la caída de tensión de la línea (\si{\percent}).
+  \item[$P_2$] es la potencia activa suministrada a la carga (\si{\mega\watt}).
+  \item[$\varphi$] es el ángulo de retraso de la corriente respecto a la tensión con un\ac{fdp} unitario.
+\end{description}
+
+Tal y como se ha mencionado en el apartado \ref{subsec:cdt-maxcdt} (\nameref{subsec:cdt-maxcdt}), se debe cumplir el criterio de máxima caída de tensión admisible:
+
+\begin{equation}
+\label{eq:cdt-criterio-maxcdt}
+e \leq \SI{6}{\percent}
+\end{equation}
+
+\subsection{Pérdidas de potencia}
+\label{subsec:ce-perdidaPotencia}
+Las pérdidas de potencia de una \ac{LAAT} habitualmente se deben a las pérdidas por efecto Joule o por efecto corona. Dado que la tensión nominal de la línea objeto de este proyecto es inferior a \SI{66}{\kilo\volt} las pérdidas por efecto corona se suponen despreciables.
+
+La potencia perdida por efecto Joule viene dada según la siguiente expresión:
+
+\begin{align}
+P_p &= \Delta P \cdot P_2
+\label{eq:cdt-deltaP} \\[0.5em]
+\Delta P &= \frac{P_2 \cdot R_k}{U_n^2 \cdot \cos^2{\varphi}}
+\label{eq:cdt-Pp}
+\end{align}
+
+Donde:
+\begin{description}
+  \item[$\Delta P$] es el porcentaje de pérdidas por efecto Joule (\si{\percent}).
+  \item[$P_2$] es la potencia activa suministrada a la carga (\si{\mega\watt}).
+  \item[$\varphi$] es el ángulo de retraso de la corriente respecto a la tensión con un \ac{fdp} unitario.
+  \item[$P_p$] es la potencia perdida por efecto Joule (\si{\mega\watt}).
+\end{description}
+
+\subsection{Rendimiento de la línea}
+\label{subsec:ce-rendimiento}
+Para finalizar esta sección, se calcula el rendimiento de la línea descontando el porcentaje de pérdidas por efecto Joule según la siguiente expresión:
+
+\begin{equation}
+\eta = \SI{100}{\percent} - \Delta P
+\label{eq:cdt-rendimiento}
+\end{equation}
+
+Donde:
+\begin{description}
+  \item[$\eta$] es el rendimiento de la línea (\si{\percent}).
+  \item[$\Delta P$] es el porcentaje de pérdidas por efecto Joule (\si{\percent}).
+\end{description}
+
+\section{Cálculos mecánicos}
+\label{sec:mc-mecanicos}
+En esta sección se detallan y desarrollan los cálculos mecánicos de la línea.
+
+De forma rigurosa, sería necesario calcular cada cantón que conforma la línea; no obstante, el procedimiento de cálculo es idéntico de un cantón a otro y, por tanto, llevar a cabo esta labor obstaculizaría la lectura de este proyecto. Por ende, con el objetivo de agilizar la lectura y evitar cálculos redundantes y repetitivos, se explican únicamente los cálculos realizados para un solo cantón de la línea; en concreto, el cantón número 1. El resto de cantones serán comprobados con el software IMEDEXSA (véase Anexo B pág. \pageref{anexo:imedexsa}).
+
+Los cálculos mecánicos del conductor tienen como objetivo predecir las posibles tensiones mecánicas y flechas que aparecen bajo determinadas condiciones ambientales (temperatura, viento o hielo). Los cálculos mecánicos afectan directamente a la función del apoyo seleccionado y a la altura del mismo.
+
+\figura{Fig/hipotesis-conductor-mecanicos}{1.1}{Resumen hipótesis cálculos mecánicos del conductor}
+
+\subsection{Vano ideal de regulación}
+\label{subsec:cm-vanoReg}
+El vano de ideal de regulación permite simplificar el cantón real en un sólo vano a nivel para facilitar los cálculos mecánicos. Para ello, tiene en consideración las distancias y desniveles entre los diferentes vanos que conforman el cantón.
+
+\begin{equation}
+a_r = \sqrt{\frac{\sum{a_i^3}}{\sum{a_i}}}
+\label{eq:vanoReg}
+\end{equation}
+
+Donde:
+\begin{description}
+  \item[$b_i$] es distancia entre los dos puntos de fijación del conductor en el vano i (\si{\meter}).
+  \item[$d_i$] es desnivel del vano i (\si{\meter}).
+  \item[$a_r$] es el vano ideal de regulación  (\si{\meter}).
+  \item[$a_i$] es la proyección horizontal de $b_i$ (\si{\meter}).
+\end{description}
+
+
+Se supone despreciable la desviación de la cadena de aisladores y se considera que la tracción horizontal es la misma en todos los vanos del cantón e igual a la que tendría el vano ideal de regulación.
+
+\subsection{Hipótesis de tracción máxima admisible}
+\label{subsec:cm-hipotesisTmax}
+Según la ITC-LAT-07, la tracción máxima de los conductores de fase y cables de tierra no resultará superior a su carga de rotura mínima dividida por 2,5 en conductores cableados o entre 3 en conductores de un alambre, considerándoles sometidos a las hipótesis de sobrecarga de la tabla \ref{tab:hipotesisTmax-ITC} en función de la zona (en este caso zona A).
+
+No obstante, en líneas de distribución de media tensión (15 kV, 20 kV), con objeto de no tener que exigir la hipótesis de rotura de conductores en el cálculo mecánico de los apoyos de alineación y ángulo, según el Aptdo. 3.5.3 de la ITC-LAT-07, es habitual utilizar un coeficiente 3 en vez del 2,5 mencionado anteriormente.
+
+Se recuerda que en este proyecto la línea no dispone de conductor de protección, por tanto, los posteriores cálculos son únicamente aplicables a los conductores de fase.
+
+A continuación, en la Tabla \ref{tab:hipotesisTmax-ITC}, se muestra la \textit{Tabla 4 Condiciones de las hipótesis que limitan la tracción máxima admisible} extraída del apartado \textit{3.2.1 Tracción máxima admisible} de la ITC-LAT-07.
+
+\begin{table}[H]
+\caption{Condiciones de las hipótesis que limitan la tracción máxima admisible}
+\centering
+\label{tab:hipotesisTmax-ITC}
+\begin{tabular}{|cccc|}
+\hline
+\rowcolor[HTML]{C0C0C0} 
+\multicolumn{4}{|c|}{\cellcolor[HTML]{C0C0C0}\textbf{ZONA A}}                                                                                                                                                                                                                                                                                                                                                                    \\ \hline
+\rowcolor[HTML]{EFEFEF} 
+\multicolumn{1}{|c|}{\cellcolor[HTML]{EFEFEF}Hipótesis}                                            & \multicolumn{1}{c|}{\cellcolor[HTML]{EFEFEF}\begin{tabular}[c]{@{}c@{}}Temperatura \\ (ºC)\end{tabular}} & \multicolumn{1}{c|}{\cellcolor[HTML]{EFEFEF}Sobrecarga Viento}                                                                              & \begin{tabular}[c]{@{}c@{}}Sobrecarga \\ hielo\end{tabular}        \\ \hline
+\multicolumn{1}{|c|}{Tracción máxima viento}                                                       & \multicolumn{1}{c|}{-5}                                                                                  & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}}Según el apartado 3.1.2 \\ Mínimo 120 ó 140 km/h \\ según la tensión de línea\end{tabular}}  & No se aplica                                                       \\ \hline
+\rowcolor[HTML]{C0C0C0} 
+\multicolumn{4}{|c|}{\cellcolor[HTML]{C0C0C0}\textbf{ZONA B}}                                                                                                                                                                                                                                                                                                                                                                    \\ \hline
+\rowcolor[HTML]{EFEFEF} 
+\multicolumn{1}{|c|}{\cellcolor[HTML]{EFEFEF}Hipótesis}                                            & \multicolumn{1}{c|}{\cellcolor[HTML]{EFEFEF}\begin{tabular}[c]{@{}c@{}}Temperatura \\ (ºC)\end{tabular}} & \multicolumn{1}{c|}{\cellcolor[HTML]{EFEFEF}Sobrecarga Viento}                                                                              & \begin{tabular}[c]{@{}c@{}}Sobrecarga \\ hielo\end{tabular}        \\ \hline
+\multicolumn{1}{|c|}{Tracción máxima viento}                                                       & \multicolumn{1}{c|}{-10}                                                                                 & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}}Según el apartado 3.1.2\\ Mínimo 120 ó 140 km/h\\ según la tensión \\ de línea\end{tabular}} & No se aplica                                                       \\ \hline
+\multicolumn{1}{|c|}{Tracción máxima de hielo}                                                     & \multicolumn{1}{c|}{-15}                                                                                 & \multicolumn{1}{c|}{No se aplica}                                                                                                           & \begin{tabular}[c]{@{}c@{}}Según el \\ apartado 3.1.3\end{tabular} \\ \hline
+\multicolumn{1}{|c|}{\begin{tabular}[c]{@{}c@{}}Tracción máxima de hielo + \\ viento\end{tabular}} & \multicolumn{1}{c|}{-15}                                                                                 & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}}Según el apartado 3.1.2\\ Mínimo 60 km/h\end{tabular}}                                       & \begin{tabular}[c]{@{}c@{}}Según el \\ apartado 3.1.3\end{tabular} \\ \hline
+\rowcolor[HTML]{C0C0C0} 
+\multicolumn{4}{|c|}{\cellcolor[HTML]{C0C0C0}\textbf{ZONA C}}                                                                                                                                                                                                                                                                                                                                                                    \\ \hline
+\rowcolor[HTML]{EFEFEF} 
+\multicolumn{1}{|c|}{\cellcolor[HTML]{EFEFEF}Hipótesis}                                            & \multicolumn{1}{c|}{\cellcolor[HTML]{EFEFEF}\begin{tabular}[c]{@{}c@{}}Temperatura \\ (ºC)\end{tabular}} & \multicolumn{1}{c|}{\cellcolor[HTML]{EFEFEF}Sobrecarga Viento}                                                                              & \begin{tabular}[c]{@{}c@{}}Sobrecarga \\ hielo\end{tabular}        \\ \hline
+\multicolumn{1}{|c|}{Tracción máxima viento}                                                       & \multicolumn{1}{c|}{-15}                                                                                 & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}}Según el apartado 3.1.2\\ Mínimo 120 ó 140 km/h\\ según la tensión \\ de línea\end{tabular}} & No se aplica                                                       \\ \hline
+\multicolumn{1}{|c|}{Tracción máxima de hielo}                                                     & \multicolumn{1}{c|}{-20}                                                                                 & \multicolumn{1}{c|}{No se aplica}                                                                                                           & \begin{tabular}[c]{@{}c@{}}Según el \\ apartado 3.1.3\end{tabular} \\ \hline
+\multicolumn{1}{|c|}{\begin{tabular}[c]{@{}c@{}}Tracción máxima de hielo + \\ viento\end{tabular}} & \multicolumn{1}{c|}{-20}                                                                                 & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}}Según el apartado 3.1.2\\ Mínimo 60 km/h\end{tabular}}                                       & \begin{tabular}[c]{@{}c@{}}Según el \\ apartado 3.1.3\end{tabular} \\ \hline
+\end{tabular}
+\end{table}
+
+La hipótesis de tracción máxima de hielo + viento se aplica a las líneas de categoría especial y a todas aquellas líneas que la norma particular de la empresa eléctrica así lo establezca o cuando el proyectista considere que la línea pueda encontrarse sometida a la citada carga combinada. 
+
+El coeficiente de sobrecarga depende del peso aparente del conductor y este a su vez depende de las condiciones en las que se encuentre el conductor (condiciones normales, viento, hielo o viento más hielo). El valor del coeficiente de sobrecarga se calcula de la siguiente manera:
+
+\begin{equation}
+    m = \frac{p_{ap}}{p_p}
+    \label{eq:coeficiente-sobrecarga}
+\end{equation}
+
+Donde:
+\begin{description}
+  \item[$m$] es el coeficiente de sobrecarga para las condiciones dadas.
+  \item[$p_{ap}$] es peso aparente del conductor debido a las condiciones climatológicas dadas (\si{\deca\newton\per\meter}).
+  \item[$p_p$] es el peso propio del conductor de fase LA-56 (\si{\deca\newton\per\meter}).
+\end{description}
+
+El peso aparente del conductor se calcula de la siguiente manera:
+
+\begin{equation}
+    p_{ap} = \sqrt{(p_p + p_h)^2 + p_v^2}
+    \label{eq:peso-aparente}
+\end{equation}
+
+Donde:
+\begin{description}
+  \item[$p_{ap}$] es el peso aparente del conductor por la acción del viento (\si{\deca\newton\per\meter}).
+  \item[$p_v$] es la sobrecarga debida a la acción del viento (\si{\deca\newton\per\meter}).
+  \item[$p_h$] es la sobrecarga debida al manguito de hielo (\si{\deca\newton\per\meter}).
+\end{description}
+
+De las ecuaciones \eqref{eq:coeficiente-sobrecarga} y \eqref{eq:peso-aparente} se deduce que en condiciones normales (sin viento ni hielo ni ambas) el peso aparente es igual al peso propio y por tanto el coeficiente de sobrecarga es igual a la unidad, es decir, no existe sobrecarga.
+
+El valor de la sobrecarga debida a la acción del viento se calcula según la siguiente expresión:
+
+\begin{equation}
+    p_v = q_v \cdot \phi
+\end{equation}
+
+Donde:
+\begin{description}
+  \item[$q_v$] es la presión del viento sobre el conductor (\si{\deca\newton\per\meter}).
+  \item[$\phi$] es el diámetro del conductor (\si{\milli\meter}).
+\end{description}
+
+El valor de la sobrecarga debida a la acción del viento depende de la presión del viento ($q_v$) que a su vez depende del diámetro del conductor y de la velocidad del viento ($v_v$) en el emplazamiento:
+
+\begin{align}
+    \text{$\phi \leq \SI{16}{\milli\meter}$:}\quad q_v &= 60 \cdot (\frac{v_v}{120})^2
+    \label{eq:presion-viento-<16} \\[0.5em]
+    \text{$\phi > \SI{16}{\milli\meter}$:}\quad q_v &= 50 \cdot (\frac{v_v}{120})^2
+    \label{eq:presion-viento->16}
+\end{align}
+
+El valor de la sobrecarga debida al manguito de hielo que se genera en torno al conductor depende de la zona en la que se encuentre la línea y del diámetro del conductor expresado en milímetros:
+
+\begin{align}
+    \text{Zona A:}\quad p_h &= 0
+    \label{eq:sobrecarga-hielo-A} \\[0.5em]
+    \text{Zona B:}\quad p_h &= 0.18 \sqrt{\phi(mm)}
+    \label{eq:sobrecarga-hielo-B} \\[0.5em]
+    \text{Zona C:}\quad p_h &= 0.36 \sqrt{\phi(mm)}
+    \label{eq:sobrecarga-hielo-C}
+\end{align}
+
+\subsubsection{Peso aparente del conductor por la acción del viento reglamentario}
+\label{subsubsec:hipotesisTmax-papV}
+La línea se encuentra ubicada en zona A, en consecuencia, según la Tabla \ref{tab:hipotesisTmax-ITC}, se considera hipótesis de tracción máxima a una temperatura de \SI{5}{\celsius}, una sobrecarga de viento con velocidad de \SI{120}{\kilo\meter\per\hour} y la sobrecarga de hielo no aplica. Luego el peso aparente del conductor es el debido a la acción del viento:
+
+\begin{align}
+    p_{apV} &= \sqrt{(p_p + p_h)^2 + p_v^2} = \sqrt{p_p^2 + p_v^2}
+    \label{eq:peso-aparenteV} \\[0.5em]
+    p_v &= q_v \cdot \phi
+    \label{eq:sobrecarga-viento} \\[0.5em]
+    q_v &= 60 \cdot (\frac{v_v}{120})^2
+    \label{eq:presion-viento}
+\end{align}
+
+Donde:
+\begin{description}
+  \item[$p_{ap}$] es el peso aparente del conductor por la acción del viento (\si{\deca\newton\per\meter}).
+  \item[$p_p$] es el peso propio del conductor de fase LA-56 (\si{\deca\newton\per\meter}).
+  \item[$p_v$] es la sobrecarga debida a la acción del viento (\si{\deca\newton\per\meter}).
+  \item[$p_h$] es la sobrecarga debida al manguito de hielo (\si{\deca\newton\per\meter}).
+  \item[$q_v$] es la presión del viento (\si{\deca\newton\per\meter\squared}).
+  \item[$\phi$] es el diámetro del conductor (\si{\milli\meter}).
+  \item[$v_v$] es la velocidad del viento en el emplazamiento (\si{\kilo\meter\per\hour}).
+\end{description}
+
+El valor de $q_v$ depende del diámetro del conductor, según la ITC-LAT-07 para conductores de diámetro inferior a \SI{16}{\milli\meter}, como es el caso del conductor LA-56 cuyo diámetro es \SI{9.5}{\milli\meter} (véase sección \ref{sec:md-conductor} \nameref{sec:md-conductor}).
+
+Por otro lado, como el emplazamiento se encuentra ubicado en zona A, se considera sobrecarga de hielo nula ($p_h=\SI{0}{\deca\newton\per\meter}$).
+
+\subsubsection{Tracción límite en el punto más alto de los vanos}
+\label{subsubsec:hipotesisTmax-Tlim}
+Como se ha mencionado en el apartado \ref{subsec:cm-hipotesisTmax}, la tracción en el punto más alto de un vano no puede ser superior a la tracción límite:
+
+\begin{align}
+T_{alto} \leq T_{max}
+\label{eq:Talto} \\[0.5em]
+T_{max} = \frac{\sigma_r}{Coef}
+\label{eq:Tmax}
+\end{align}
+
+Donde:
+\begin{description}
+  \item[$T_{alto}$] es la tracción en el punto más alto del vano en cuestión (\si{\deca\newton}).
+  \item[$T_{max}$] es la tracción máxima admisible (\si{\deca\newton}).
+  \item[$\sigma_r$] es la carga de rotura del conductor de fase (\si{\deca\newton}).
+  \item[$Coef$] es el coeficiente de seguridad (según lo explicado en el apartado \ref{subsec:cm-hipotesisTmax}, su valor es 3).
+\end{description}
+
+\subsubsection{Tracción en el punto medio de cada vano}
+\label{subsubsec:hipotesisTmax-Tmed}
+La tracción en el punto medio de cada vano se calcula mediante la siguiente expresión:
+
+\begin{gather}
+    T_{m_i} = \frac{1}{4} \cdot (2 \cdot T_{max_i} - p_{ap} \cdot d_i + \sqrt{(p_{ap} \cdot d_i - 2 \cdot T_{max_i}) - 2 \cdot p_{ap}^2 \cdot b_i^2}
+    \label{eq:Tm} \\[0.5em]
+    b_i = \sqrt{a_i^2 + d_i^2}
+    \label{eq:bi-desnivel}
+\end{gather}
+
+Donde:
+\begin{description}
+  \item[$T_{m_i}$] es la tracción en el punto medio del vano i (\si{\deca\newton}).
+  \item[$T_{max_i}$] es la tracción máxima admisible en el vano i (\si{\deca\newton}).
+  \item[$b_i$] es distancia entre los dos puntos de fijación del conductor en el vano i (\si{\meter}).
+  \item[$d_i$] es desnivel del vano i (\si{\meter}).
+\end{description}
+
+A partir de la tracción en el punto medio se determina la tracción horizontal y la tracción horizontal para el vano i mediante las siguientes expresiones:
+
+\begin{align}
+    T_{o_i} &= \frac{a_i}{b_i} \cdot T_{m_i}
+    \label{eq:To} \\[0.5em]
+    t &= \frac{T_{o_i}}{Secc}
+\end{align}
+
+Donde:
+\begin{description}
+  \item[$T_{o_i}$] es la tracción en el horizontal del vano i (\si{\deca\newton}).
+  \item[$t$] es la tracción horizontal por unidad de superficie admisible en el vano i (\si{\deca\newton\per\milli\meter\squared}).
+  \item[$Secc$] es la sección del conductor LA-56 (\si{\milli\meter\squared}).
+\end{description}
+
+\subsection{Ecuación de cambio de condiciones}
+\label{subsec:cm-ECDC}
+La \ac{ECDC} se emplea para calcular el valor de la componente horizontal de la tracción de un cantón para unas condiciones deseadas, partiendo de unas condiciones conocidas:
+
+\begin{gather}
+    t_2^2 \cdot (t_2 + A) = B
+    \label{eq:ECDC} \\[0.5em]
+    A = \alpha \cdot E \cdot (\theta_2 - \theta_1) + K
+    \label{eq:ECDC-A} \\[0.5em]
+    K = \frac{t_2^2 \cdot E \cdot w_p^2 \cdot m_1^2}{24 \cdot t_1^2}
+    \label{eq:ECDC-K} \\[0.5em]
+    B = \frac{a_r^2 \cdot E \cdot w_p^2 \cdot m_2^2}{24 \cdot t_1^2}
+    \label{eq:ECDC-B}
+\end{gather}
+
+Donde:
+\begin{description}
+  \item[$t_1$] es la tracción horizontal por unidad de superficie en el estado inicial del conductor en las condiciones de temperatura, sobrecarga y tensión dadas (\si{\deca\newton\per\milli\meter\squared}).
+  \item[$t_2$] es la tracción horizontal por unidad de superficie en el estado final del conductor en las condiciones de temperatura, sobrecarga y tensión dadas (\si{\deca\newton\per\milli\meter\squared}).
+  \item[$\alpha$] es el coeficiente de dilatación lineal del conductor (\si{\meter}).
+  \item[$E$] es el el módulo de elasticidad del conductor (\si{\meter}).
+  \item[$\theta_1$] es la temperatura del conductor en el estado inicial (\si{\celsius}).
+  \item[$\theta_2$] es la temperatura del conductor en el estado final (\si{\celsius}).
+  \item[$w_p$] es el peso propio por unidad de área del conductor (\si{\kilo\gram\per\milli\meter\squared}).
+  \item[$m_1$] es el coeficiente de sobrecarga del conductor en el estado inicial.
+  \item[$m_2$] es el coeficiente de sobrecarga del conductor en el estado final.
+  \item[$a_r$] es la longitud del vano ideal de regulación (\si{\meter}).
+\end{description}
+
+\subsection{Flecha del vano}
+\label{subsec:cm-flecha}
+Conocidos los valores de las tracciones horizontales en el punto medio de un vano para unas determinadas condiciones, se puede obtener mediante la siguiente expresión, el valor de la flecha producida en dicho vano bajo esas condiciones:
+
+\begin{equation}
+    F = \frac{b_i^2 \cdot p_{ap}}{8 \cdot T_{mo}} = \frac{b_i^2 \cdot w_p}{8 \cdot t_{mo}} \cdot m
+    \label{eq:flecha}
+\end{equation}
+
+Donde:
+\begin{description}
+  \item[$F$] es la flecha del conductor para las condiciones dadas (\si{\meter}).
+  \item[$T_{mo}$] es la tracción horizontal del conductor en el estado final con las condiciones dadas (\si{\deca\newton\per\milli\meter\squared}).
+  \item[$t_{mo}$] es la tracción horizontal por unidad de superficie del conductor con las condiciones dadas (\si{\deca\newton\per\milli\meter\squared}).
+  \item[$m$] es el coeficiente de sobrecarga para las condiciones dadas.
+\end{description}
+
+Conocido el valor de la flecha para esas condiciones se puede obtener la curva característica de la catenaria según las siguientes expresiones:
+
+\begin{align}
+    f(x) &= h\cdot \cosh{(\frac{x}{h})}
+    \label{eq:curva-catenaria}\\[0.5em]
+    h &= \frac{T}{p_p}
+    \label{eq:parametroh-cruva-catenaria}
+\end{align}
+
+Donde:
+\begin{description}
+    \item[$f(x)$] es la curva característica de la catenaria para unas condiciones dadas (\si{\meter}).
+    \item[$h$] es el parámetro de la catenaria (\si{\meter}).
+    \item[$x$] es la posición de la catenaria en el eje de abscisas respecto del origen, que es uno de los apoyos (\si{\meter}).
+    \item[$T$] es la tracción horizontal en el punto medio para unas condiciones dadas (\si{\deca\newton}).
+\end{description}
+
+\subsection{Comprobación de fenómenos vibratorios}
+\label{subsec:cm-fenomenosVibratorios}
+El apartado \textit{3.2.2 Comprobación de fenómenos vibratorios} de la ITC-LAT-07 sugiere que la tracción a la \SI{15}{\celsius} no supere en más de un \SI{22}{\percent} la carga de rotura mecánica del conductor, siempre y cuando se realice un estudio de amortiguamiento y se instalen los dispositivos correspondientes. En caso de que no se realice el anterior estudio, no se deberá superar el \SI{15}{\percent} de la carga de rotura. En este proyecto no se realizan estudios de amortiguamiento, por tanto, se considera la segunda condición ($Coef_{EDS} \leq \SI{15}{\percent}, \theta = \SI{15}{\celsius}, m = 1$).
+
+En la jerga de \ac{LAAT} a las condiciones anteriores se les conoce como \ac{EDS}, que en español significa Tensión de Cada Día. Aunque en el \ac{RLAT} no se incluye, existe otro criterio de diseño llamado \ac{CHS}, que en español significa Tensión en Horas Frías. Este criterio es empleado principalmente por las empresas suministradoras y lo suelen utilizar en base a la experiencia de explotación de sus líneas. En general, para líneas de distribución de M.T, la tracción en el conductor a -5ºC para todas las zonas, sin sobrecarga, no debe ser superior al \SI{20}{\percent} de la carga de rotura del conductor ($Coef_{CHS} \leq \SI{20}{\percent}, \theta = \SI{-5}{\celsius}, m = 1$).
+
+\subsection{Hipótesis de flecha máxima}
+\label{subsec:cm-hipotesisFmax}
+En este apartado se explica el procedimiento de cálculo realizados para la obtención de las flechas máximas. En primer lugar, es necesario calcular para cada vano del cantón los valores de las tracciones mecánicas  empleando la \ac{ECDC} del apartado \ref{subsec:cm-ECDC} en condiciones de flecha máxima. 
+
+Según el apartado \textit{3.2.3 Flechas máximas de los conductores y cables de tierra} de la ITC-LAT-07 se deberá determinar para cada vano la flecha máxima bajo las hipótesis de viento, temperatura y hielo. Según el apartado 3.2.3 de la ITC-LAT-07 las condiciones de las hipótesis son las siguientes:
+
+\begin{enumerate}
+    \item Hipótesis de viento: conductores sometidos a la acción de su peso propio y a una sobrecarga de viento, para una velocidad de viento de \SI{120}{\kilo\meter\per\hour} a una temperatura de \SI{15}{\celsius}.
+    \item Hipótesis de temperatura: conductores sometidos a la acción de su peso propio, a la temperatura máxima previsible, tendiendo en cuenta las consideraciones climatológicas y de servicio de la línea. Para líneas de categoría especial, esta temperatura no será en ningún caso inferior a \SI{85}{\celsius} para los conductores de fase ni inferior a \SI{50}{\celsius} para los cables de tierra. Para el resto de líneas, tanto para conductores de fase como para los cables de tierra, esta temperatura no será en ningún caso inferior a \SI{50}{\celsius}.
+    \item Hipótesis de hielo: conductores sometidos a la acción de su peso propio y a la sobrecarga de hielo correspondiente a la zona, según el apartado \textit{3.1.3 Sobrecargas motivadas por el hielo} de la ITC-LAT-07, a la temperatura de \SI{0}{\celsius}.
+\end{enumerate}
+
+En la siguiente tabla se muestra un resumen de las condiciones de las anteriores hipótesis:
+
+\begin{table}[H]
+\caption{Resumen hipótesis de flecha máxima}
+\centering
+\label{tab:hipotesis-fmax}
+\begin{tabular}{|c|c|c|c|}
+\hline
+\rowcolor[HTML]{EFEFEF} 
+\textbf{Hipótesis}       & \textbf{Viento}                                     & \textbf{Temperatura}                                & \textbf{Hielo}                                     \\ \hline
+Temperatura ($\theta_2$) & \SI{15}{\celsius} & \SI{50}{\celsius} & \SI{0}{\celsius} \\ \hline
+Sobrecarga ($m_2$)       & viento                                              & 1                                                   & hielo                                              \\ \hline
+\end{tabular}
+\end{table}
+
+Se recuerda que el valor del coeficiente de sobrecarga se obtiene a partir de la ecuacion \eqref{eq:coeficiente-sobrecarga} considerando las ecuaciones \eqref{eq:sobrecarga-viento} y \eqref{eq:sobrecarga-hielo-A} para las condiciones de viento y hielo respectivamente.
+
+Tras los cálculos de tracciones correspondientes a cada hipótesis de flecha máxima mediante la \ac{ECDC} \eqref{eq:ECDC}, se obtiene la expresión de la curva de la catenaria correspondiente a la flecha máxima mediante la ecuación \eqref{eq:flecha}.
+
+El valor de flecha máxima considerado será el máximo valor resultante de cada hipótesis:
+
+\begin{equation}
+    F_{max}= max(F_{max_{v}},F_{max_{\theta}},F_{max_{h}})
+    \label{eq:flecha-maxima}
+\end{equation}
+
+Donde:
+\begin{description}
+    \item[$F_{max}$] es la flecha máxima de la línea (\si{\meter}).
+    \item[$F_{max_{v}}$] es la flecha máxima de todos los vanos que puede darse bajo hipótesis de viento (\si{\meter}).
+    \item[$F_{max_{\theta}}$] es la flecha máxima de todos los vanos que puede darse bajo hipótesis de temperatura (\si{\meter}).
+    \item[$F_{max_{h}}$] es la flecha máxima de todos los vanos que puede darse bajo hipótesis de hielo (\si{\meter}).
+\end{description}
+
+Con el valor de la flecha máxima se puede determinar la curva característica de la catenaria mediante la expresión \eqref{eq:curva-catenaria} con el fin de visualizar la afección de esta flecha.
+
+Finalmente, con los valores obtenidos se comprobarán en apartados posteriores las distancias de seguridad entre los conductores de la línea y el terreno. 
+
+\subsection{Hipótesis de flecha mínima}
+\label{subsec:cm-hipotesisFmin}
+El procedimiento de cálculo para la flecha mínima es análogo al procedimiento de cálculo de flecha máxima, considerando las condiciones de flecha mínima que dependen de la zona en la que se encuentre ubicada la línea. En zona A las hipótesis a considerar son temperatura  $\theta_2=\SI{-5}{\celsius}$ y sin sobrecarga ($m_2=1$).
+
+Para dichas condiciones se determina mediante la \ac{ECDC} \eqref{eq:ECDC} las tracciones horizontales y se calcula el valor de la flecha mínima mediante la ecuación \eqref{eq:flecha}.
+
+Con el valor de la flecha mínima se puede determinar la curva característica de la catenaria mediante la expresión \eqref{eq:curva-catenaria} con el fin de visualizar la afección de esta flecha.
+
+Conociendo el valor de las flechas mínimas en apartados posteriores se comprabarán el cumplimiento de las distancias de seguridad entre conductores, entre conductores y el terreno o el tiro ascendente sobre los apoyos en suspensión que pudiera dar lugar al ahorcamiento de los mismos.
+
+\subsection{Hipótesis para desviación de la cadena de aisladores}
+\label{subsec:cm-hipotesisAisl}
+Es necesario considerar la distancia entre las partes activas (conductores) y partes puestas a tierra, por ello, es necesario determinar la desviación de la cadena de aisladores que pudiera comprometer estas distancias de seguridad.
+
+Para calcular la desviación de la cadena de aisladores, primero es necesario determinar la tracción en el cantón de línea mediante la \ac{ECDC} para las hipótesis planteadas en el \textit{Aptdo 5.4.2 Distancia de conductores a partes puestas a tierra} de la ITC-LAT-07. Estas hipótesis en zona A son temperatura $\theta_2=\SI{-5}{\celsius}$ y sobrecarga de viento mitad, cuyo valor se obtiene a partir de las siguientes ecuaciones:
+
+\begin{align}
+    m_2 &= \frac{p_{apVmitad}}{p_p}
+    \label{eq:coeficiente-sobrecarga-viento/2}\\[0.5em]
+    p_{apVmitad} &= \sqrt{p_p^2 + (\frac{q_v}{2}\cdot\phi)^2}
+    \label{eq:peso-aparente-viento/2}
+\end{align}
+
+La ecuación \eqref{eq:peso-aparente-viento/2} se obtiene a partir de sustituir la ecuación \eqref{eq:peso-aparente} por la mitad de la presión del viento reglamentaria.
+
+\subsection{Tabla de tendido}
+\label{subsec:cm-tendido}
+La tabla de tendido se obtiene en Mathcad (véase \nameref{anexo:mathcad}) seleccionando un rango de temperaturas y un coeficiente de sobrecarga igual a la unidad.
+
+Con la tabla de tendido se obtienen las diferentes tracciones horizontales junto con sus respectivas flechas que podrían darse durante el día de tendido de la línea.
+
+\section{Cálculos de aisladores}
+\label{sec:mc-aisladores}
+Los aisladores que se usarán en este proyecto son aisladores de vidrio templado en concreto el modelo E-70P-127 del fabricante La Granja Insulators (véanse las características técnicas en la sección \ref{sec:md-aisladores} \nameref{sec:md-aisladores}).
+
+La composición de los aisladores de este fabricante es la siguiente:
+\begin{itemize}
+    \item Un dieléctrico de vidrio templado.
+    \item Una caperuza de fundición maleable o dúctil galvanizada en caliente.
+    \item Un perno o vástago de acero forjado en acero galvanizado en caliente.
+    \item Cemento aluminoso para el ensamblar la caperuza y el vástago con el dieléctrico de vidrio.
+    \item Un pasador de acero inoxidable o bronce fosforoso para el enclavamiento de elementos y la consecuente formación de cadenas de aisladores.
+\end{itemize}
+
+La línea se encuentra ubicada en una región de la provincia de Alicante muy próxima a la costa con largos períodos sin lluvias y vientos con alta concentración de arena y sal. Dadas las anteriores características y de acuerdo a la \textit{Tabla 14: Líneas de fuga recomendadas} de la ITC-LAT-07; se considera un nivel de contaminación muy fuerte al que corresponde una línea de fuga de \SI{31}{\milli\meter\per\kilo\volt}.
+
+Para entornos muy contaminantes, como es el caso de este proyecto, los vástagos pueden solicitarse con un manguito de zinc anticorrosión (ánodo de sacrificio) y/o con un recubrimiento siliconado del tipo \ac{RTV} para asegurar la vida útil del aislador. Por el mismo motivo, el perfil seleccionado del aislador es del tipo anticontaminación o antiniebla.
+
+El cálculo de la línea de fuga total de la cadena de aisladores se realiza mediante la siguiente expresión:
+
+\begin{equation}
+    l_t=l_e \cdot U_s
+    \label{eq:linea-fuga-cadena}
+\end{equation}
+
+Donde:
+\begin{enumerate}
+    \item [$l_t$] es la línea de fuga total (\si{\milli\meter\per\kilo\volt}).
+    \item [$l_e$] es la línea de fuga específica nomina mínima según la ITC-LAT-07 (\si{\milli\meter\per\kilo\volt}).
+    \item[$U_s$] es la tensión más elevada de la red (\si{\kilo\volt}) 
+\end{enumerate}
+
+El valor de la tensión más elevada de la red se obtiene de la \textit{Tabla 1: Tensiones nominales y tensiones más elevadas de la red} de la ITC-LAT-07. Dado que la tensión nominal de la línea es de \SI{20}{\kilo\volt} según la tabla mencionada anteriormente, la tensión más elevada de la red es de \SI{24}{\kilo\volt}. 
+
+\subsection{Coeficiente de seguridad}
+\label{subsec:aisl-coefSeguridad}
+Según el apartado \textit{3.4 Aisladores} de ITC-LAT-07 el coeficiente de seguridad mecánica de los aisladores no será inferior a 3. Si la carga de ruptura electromecánica mínima garantizada se obtiene mediante control estadístico en la recepción, el coeficiente puede reducirse hasta 2,5. Dado que en este proyecto no se considerarán dichos ensayos, el valor del coeficiente considerado será 3.
+
+\begin{equation}
+    C_{s_{aisl}} = \frac{\sigma_{r_{aisl}}}{T_{max}} \geq 3
+    \label{eq:coeficiente-seguridad-aislador}
+\end{equation}
+
+Donde:
+\begin{description}
+    \item[$C_{s_{aisl}}$] es el coeficiente de seguridad mecánica del aislador.
+    \item[$\sigma_{r_{aisl}}$] es la carga de rotura del aislador (\si{\deca\newton}).
+    \item[$T_{max}$] es la tracción mecánica máxima del vano (\si{\deca\newton}).
+\end{description}
+
+\subsection{Comprobación de tensiones}
+\label{subsec:aisl-comprobacionTension}
+Según el apartado \textit{4.4 Coordinación de aislamiento} de la ITC-LAT-07, se debe comprobar la capacidad del aislador seleccionado para soportar las tensiones soportadas normalizadas. En este apartado también se definen dos gamas según la tensión más elevada del material de aislamiento ($U_m$): la gama I ($\SI{1}{\kilo\volt} < U_m \leq \SI{245}{\kilo\volt}$) y la gama II ($U_m > \SI{245}{\kilo\volt}$).
+
+La tensión más elevada del material ($U_m$) guarda una estrecha relación con la tensión más elevada de la red ($U_s$) definida en la sección \ref{sec:mc-aisladores} \nameref{sec:mc-aisladores}. En este proyecto ambas tensiones coinciden en valor ($U_m=U_s=\SI{24}{\kilo\volt}$), luego el material de aislamiento pertenece a la gama I.
+
+Según el apartado de la ITC-LAT-07 mencionado anteriormente, para la gama I se debe comprobar el cumplimiento de las tensiones soportadas normalizadas a frecuencia industrial y a impulsos tipo rayo. Para ello, se deben buscar estas características del aislador seleccionado en su ficha técnica (véase Anexo documentos adicionales) y compararlas con los valores tabulados en la \textit{Tabla 12. Niveles de aislamiento normalizados para la gama I} de la ITC-LAT-07. Según esta tabla, para la tensión más elevada del material de \SI{24}{\kilo\volt} las tensiones soportadas normalizadas a frecuencia industrial e impulso tipo rayo son \SI{50}{\kilo\volt} y \SI{145}{\kilo\volt} respectivamente.
+
+\begin{table}[H]
+\caption{Niveles de aislamiento normalizados para la gama I}
+\centering
+\label{tab:niveles-aislamiento}
+\begin{tabular}{|c|c|c|}
+\hline
+\rowcolor[HTML]{EFEFEF} 
+\textbf{\begin{tabular}[c]{@{}c@{}}Tensión más elevada\\ para el material \\ $U_m$ \\ \si{\kilo\volt} \\ (valor eficaz)\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}Tensión soportada\\ normalizada de corta duración\\ a\\ frecuencia industrial\\ \si{\kilo\volt}\\ (valor eficaz)\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}Tensión soportada normalizada\\ a los impulsos tipo rayo\\ \si{\kilo\volt}\\ (valor de cresta)\end{tabular}} \\ \hline
+                                                                                                                      &                                                                                                                                                      & 20                                                                                                                                 \\
+\multirow{-2}{*}{3,6}                                                                                                 & \multirow{-2}{*}{10}                                                                                                                                 & 40                                                                                                                                 \\ \hline
+                                                                                                                      &                                                                                                                                                      & 40                                                                                                                                 \\
+\multirow{-2}{*}{7,2}                                                                                                 & \multirow{-2}{*}{20}                                                                                                                                 & 60                                                                                                                                 \\ \hline
+                                                                                                                      &                                                                                                                                                      & 60                                                                                                                                 \\
+                                                                                                                      &                                                                                                                                                      & 75                                                                                                                                 \\
+\multirow{-3}{*}{12}                                                                                                  & \multirow{-3}{*}{28}                                                                                                                                 & 95                                                                                                                                 \\ \hline
+                                                                                                                      &                                                                                                                                                      & 75                                                                                                                                 \\
+\multirow{-2}{*}{17.5}                                                                                                & \multirow{-2}{*}{38}                                                                                                                                 & 95                                                                                                                                 \\ \hline
+                                                                                                                      &                                                                                                                                                      & 95                                                                                                                                 \\
+                                                                                                                      &                                                                                                                                                      & 125                                                                                                                                \\
+\multirow{-3}{*}{24}                                                                                                  & \multirow{-3}{*}{50}                                                                                                                                 & 145                                                                                                                                \\ \hline
+                                                                                                                      &                                                                                                                                                      & 145                                                                                                                                \\
+\multirow{-2}{*}{36}                                                                                                  & \multirow{-2}{*}{70}                                                                                                                                 & 170                                                                                                                                \\ \hline
+52                                                                                                                    & 95                                                                                                                                                   & 250                                                                                                                                \\ \hline
+72.5                                                                                                                  & 140                                                                                                                                                  & 325                                                                                                                                \\ \hline
+123                                                                                                                   & (185)                                                                                                                                                 & 450                                                                                                                                \\ \hline
+\end{tabular}
+\end{table}
+
+Para el aislador seleccionado (véase apartado \ref{subsec:md-aisladores} \nameref{subsec:md-aisladores}) las tensiones soportadas normalizadas a frecuencia industrial e impulsos tipo rayo son \SI{45}{\kilo\volt} y \SI{110}{\kilo\volt} respectivamente. A priori, este aislador no cumple, sin embargo, estos valores son para una cadena de aisladores formadas por un único elemento. En la ficha técnica del fabricante aparecen tabulados los valores de tensiones soportadas normalizadas para cadenas con más de un elemento, para una cadena con dos elementos del aislador seleccionado las tensiones soportadas normalizadas serían \SI{65}{\kilo\volt} y \SI{200}{\kilo\volt} y por tanto desde el punto de vista de las tensiones soportadas esta cadena ya cumpliría, ya que, ambas son mayores a \SI{50}{\kilo\volt} y \SI{145}{\kilo\volt}. No obstante, es habitual incluir un elemento de más en la cadena para que en caso de rotura de un elemento, el aislamiento no se vea comprometido, por ende, se emplearán tres elementos en la cadena con tensiones soportadas normalizadas a frecuencia industrial e impulsos tipo rayo son \SI{90}{\kilo\volt} y \SI{275}{\kilo\volt} respectivamente.
+
+\subsection{Longitud de la cadena de aisladores}
+\label{subsec:aisl-longitudCadena}
+El número de elementos de la cadena de aisladores se puede calcular teniendo en cuenta la línea de fuga total de la cadena y la línea de fuga mínima nominal del aislador seleccionado:
+
+\begin{equation}
+    n_{elementos}=trunc(\frac{l_t}{l_{aisl}})+1
+    \label{eq:numero-elementos-cadena}
+\end{equation}
+
+Donde:
+\begin{description}
+    \item[$l_t$] es la línea de fuga total de la cadena de aisladores obtenida según la ecuación \ref{eq:linea-fuga-cadena} (\si{\milli\meter}).
+    \item [$l_{aisl}$] es la línea de fuga mínima nominal del aislador (\si{\milli\meter}).
+    \item[$trunc()$] es una función para truncar el resultado obtenido de la fracción, es decir, si el resultado contiene decimales los elimina y se queda con la unidad. De esta forma, el número de elementos obtenidos será siempre un número entero.
+\end{description}
+
+Al realizar esta operación se obtienen dos elementos necesarios para cumplir con la línea de fuga. Como se ha mencionado en el apartado anterior, con dos elementos se cumpliría también las tensiones soportadas normalizadas, sin embargo, por dotar a la línea de una mayor seguridad se considerarán tres elementos en el diseño.
+
+La longitud total de la cadena de aisladores se obtiene realizando el producto del número de elementos de la cadena por el paso del aislador (véase apartado \ref{sec:md-aisladores} \nameref{sec:md-aisladores}):
+
+\begin{equation}
+    L_{cad}=n_{elementos}\cdot paso
+    \label{eq:longitud-cadena}
+\end{equation}
+
+Donde:
+\begin{description}
+    \item[$L_{cad}$] es la longitud total de la cadena de aisladores (\si{\meter}).
+    \item[$n_{elementos}$] es el número de elementos de la cadena de aisladores.
+    \item[$paso$] es el paso del aislador (\si{\milli\meter}).
+\end{description}
+\subsection{Herrajes} 
+\label{subsec:aisl-herrajes}
+Según el apartado \textit{3.3 Herrajes} de la ITC-LAT-07 y, de forma análoga al apartado \textit{3.4 Aisladores} explicado en el apartado anterior de este proyecto; los herrajes sometidos a tensión mecánica por los conductores y cables de tierra o por aisladores, deberán tener un coeficiente de seguridad mecánica no inferior a 3 respecto a su carga mínima de rotura. En el caso de que la carga mínima de rotura se compruebe sistemáticamente con ensayos, el coeficiente podrá reducirse a 2,5. La carga mínima de rotura puede estimarse como el valor medio de la distribución de cargas de rotura menos 2,06 la desviación típica. Las grapas de amarre del conductor deben soportar una tensión mecánica en el amarre igual o superior al \SI{95}{\percent} de la carga de rotura de este, sin que se deslice. 
+
+\section{Distancias de seguridad}
+\label{sec:mc-distancias}
+El capítulo \textit{5 Distancias mínimas de seguridad. Cruzamientos y paralelismos} de la ITC-LAT-07 distingue dos tipos de distancias de seguridad en un proyecto de diseño de una \ac{LAAT}:
+
+\begin{itemize}
+    \item \textbf{Distancias internas}: tienen como objetivo asegurar la protección de la línea frente a sobretensiones que pudieran aparecer en esta.
+    \item \textbf{Distancias externas}: tienen como objetivo asegurar la protección frente a descargas eléctricas entre la línea y otros agentes externos.
+\end{itemize}
+
+\subsection{Distancias de aislamiento eléctrico para evitar descargas}
+\label{subsec:dist-aislElectrico}
+Dentro de esta categoría, la ITC-LAT-07 distingue tres tipos de distancias:
+
+\begin{itemize}
+    \item \textbf{Distancia de aislamiento en el aire mínima especificada entre fase y tierra ($D_{el}$):} previene descargas eléctricas entre partes activas y partes a potencial de tierra, en condiciones normales de explotación (se incluyen maniobras de enganche, sobretensiones tipo rayo o debidas a faltas en la red). Puede ser una distancia interna o externa.
+    \item \textbf{Distancia de aislamiento en el aire mínima especificada entre fases ($D_{pp}$):} previene descargas eléctricas entre fases en presencia de sobretensiones de maniobra o tipo rayo. Es siempre una distancia externa.
+    \begin{itemize}
+        \item \textbf{Distancia de aislamiento en el aire mínima especificada entre fase y tierra adicional ($D_{add}$):} asegura que ningún elemento externo pueda estar a una distancia de la línea inferior a $D_{el}$ con el objetivo de proteger a personas, bienes u otros elementos.
+    \end{itemize}  
+    \item \textbf{Distancia mínima de descarga de la cadena de aisladores ($a_{som}$):} es la distancia rectilínea más corta entre partes activas y partes puestas a tierra. Es siempre una distancia interna.
+\end{itemize}
+
+Las distancias $D_{el}$ y $D_{pp}$ dependen de la tensión más elevada de la red $U_s$ y sus valores vienen tabulados en la \textit{Tabla 15. Distancias de aislamiento eléctrico para evitar descargas} de la ITC-LAT-07. Se muestra a continuación dicha tabla:
+
+\begin{table}[H]
+\caption{Distancias de aislamiento eléctrico para evitar descargas}
+\centering
+\label{tab:distancias-aislamiento}
+\begin{tabular}{|c|c|c|}
+\hline
+\rowcolor[HTML]{EFEFEF} 
+\textbf{\begin{tabular}[c]{@{}c@{}}Tensión más \\ elevada de la red \\ $U_s$ (\si{\kilo\volt})\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}$D_{el}$ \\ (\si{\meter})\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}$D_{pp}$ \\ (\si{\meter})\end{tabular}} \\ \hline
+3,6                                                                                          & 0,08                                                        & 0,10                                                        \\ \hline
+7,2                                                                                          & 0,09                                                        & 0,10                                                        \\ \hline
+12                                                                                           & 0,12                                                        & 0,15                                                        \\ \hline
+17,5                                                                                         & 0,16                                                        & 0,20                                                        \\ \hline
+24                                                                                           & 0,22                                                        & 0,25                                                        \\ \hline
+30                                                                                           & 0,27                                                        & 0,33                                                        \\ \hline
+36                                                                                           & 0,35                                                        & 0,40                                                        \\ \hline
+52                                                                                           & 0,60                                                        & 0,70                                                        \\ \hline
+72,5                                                                                         & 0,70                                                        & 0,80                                                        \\ \hline
+123                                                                                          & 1,00                                                        & 1,15                                                        \\ \hline
+145                                                                                          & 1,20                                                        & 1,40                                                        \\ \hline
+170                                                                                          & 1,30                                                        & 1,50                                                        \\ \hline
+245                                                                                          & 1,70                                                        & 2,00                                                        \\ \hline
+420                                                                                          & 2,80                                                        & 3,20                                                        \\ \hline
+\end{tabular}
+\end{table}
+
+Para una tensión $U_s = \SI{24}{\kilo\volt}$ las distancias valen $D_{el}=\SI{0.22}{\meter}$ y $D_{pp}=\SI{0.25}{\meter}$.
+
+Por otro lado, el valor de $a_{som}$ se calcula según la siguiente expresión:
+
+\begin{equation}
+    a_{som}=L_{cad}+\phi_{aisl}
+    \label{eq:distancia-descarga-cadena}
+\end{equation}
+
+Donde:
+\begin{description}
+    \item[$a_{som}$] es Distancia mínima de descarga de la cadena de aisladores (\si{\meter}).
+    \item[$L_{cad}$] es la longitud total de la cadena de aisladores, obtenida a partir de la ecuación \ref{eq:longitud-cadena} (\si{\meter}).
+    \item[$\phi_{aisl}$] es el diámetro del elemento aislador (\si{\milli\meter}).
+\end{description}
+\subsection{Distancias entre conductores}
+\label{subsec:dist-conductores}
+La distancia entre conductores no es $D_{pp}$, se debe considerar también la flecha producida en el vano, la oscilación de conductores debido al viento, etc. Según las hipótesis consideradas, se distinguen distancias verticales y distancias horizontales, ambas distancias se calculan según la siguiente ecuación:
+
+\begin{equation}
+    D=K_v\cdot \sqrt{F+L_{cad}}+K'\cdot D_{pp}
+    \label{eq:distancia-fasefase}
+\end{equation}
+
+Donde:
+\begin{description}
+    \item[$D$] es la distancia vertical u horizontal entre conductores de fase (\si{\meter}).
+    \item[$K_v$] es el coeficiente que caracteriza el grado de oscilación de los conductores con el viento.
+    \item[$F$] es el valor de la flecha máxima para las hipótesis consideradas (\si{\meter}).
+    \item[$L_{cad}$] es longitud total de la cadena de aisladores, obtenida en la ecuación \ref{eq:longitud-cadena} (\si{\meter}).
+    \item[$K'$] es el coeficiente que depende de la tensión nominal de la línea. Para líneas de categoría especial $K'=0.85$ y para el resto de líneas (como en este caso) $K=0.75$.
+    \item[$D_{pp}$] es la distancia de aislamiento en el aire mínima especificada entre fases, obtenida en el apartado \ref{subsec:dist-aislElectrico} (\si{\meter}).
+\end{description}
+
+El valor del coeficiente $K_v$ viene tabulado en la \textit{Tabla 16. Coeficiente K en función del ángulo de oscilación} de la ITC-LAT-07 (véase Tabla \ref{tab:angulo-oscilacion}). En este proyecto, dado que el ángulo de oscilación de los conductores es inferior a 40º y la tensión nominal de la línea es inferior a \SI{30}{\kilo\volt} el valor del coeficiente $K_v$ es 0.55.
+
+\begin{table}[H]
+\caption{Coeficiente K en función del ángulo de oscilación}
+\centering
+\label{tab:angulo-oscilacion}
+\begin{tabular}{|c|cc|}
+\hline
+\rowcolor[HTML]{EFEFEF} 
+\cellcolor[HTML]{EFEFEF}                                                & \multicolumn{2}{c|}{\cellcolor[HTML]{EFEFEF}\textbf{Valores de K}}                                                                                                                                                                 \\ \cline{2-3} 
+\rowcolor[HTML]{EFEFEF} 
+\multirow{-2}{*}{\cellcolor[HTML]{EFEFEF}\textbf{Ángulo de oscilación}} & \multicolumn{1}{c|}{\cellcolor[HTML]{EFEFEF}\begin{tabular}[c]{@{}c@{}}Líneas de tensión\\ nominal superior a \SI{30}{\kilo\volt}\end{tabular}} & \begin{tabular}[c]{@{}c@{}}Líneas de tensión\\ nominal igual o\\ inferior a \SI{30}{\kilo\volt}\end{tabular} \\ \hline
+Superior a 65º                                                          & \multicolumn{1}{c|}{0,70}                                                                                                         & 0,65                                                                                           \\
+Comprendido entre 40º y 65º                                             & \multicolumn{1}{c|}{0,65}                                                                                                         & 0,60                                                                                           \\
+Inferior a 40º                                                          & \multicolumn{1}{c|}{0,60}                                                                                                         & 0,55                                                                                           \\ \hline
+\end{tabular}
+\end{table}
+
+Para el cálculo de distancias verticales ($D_V$) se considera la flecha máxima bajo hipótesis de temperatura o de hielo con un ángulo de desviación de los conductores ($\alpha_{cond}$), debido al viento, igual a cero:
+
+\begin{equation}
+    F_V=max(F_{max_{\theta}},F_{max_{h}})
+    \label{eq:flecha-dist-vertical}
+\end{equation}
+
+Donde:
+\begin{description}
+    \item[$F_V$] es la flecha a considerar en el cálculo de distancias verticales (\si{\meter}).
+    \item[$F_{max_{\theta}}$] es la flecha máxima de todos los vanos que puede darse bajo hipótesis de temperatura (\si{\meter}).
+    \item[$F_{max_{h}}$] es la flecha máxima de todos los vanos que puede darse bajo hipótesis de hielo (\si{\meter}).
+\end{description}
+
+Para el cálculo de distancias horizontales ($D_H$) se considera el máximo de las flechas máximas bajo hipótesis de temperatura de todos los vanos y las flechas máximas bajo hipótesis de hielo de todos los vanos:
+
+\begin{equation}
+    F_H=max(F_{max_{v}})
+    \label{eq:flecha-dist-horizontal}
+\end{equation}
+
+Donde:
+\begin{description}
+    \item[$F_H$] es la flecha a considerar en el cálculo de distancias horizontales (\si{\meter}).
+    \item[$F_{max_{v}}$] es la flecha máxima de todos los vanos que puede darse bajo hipótesis de viento (\si{\meter}).
+\end{description}
+
+\subsection{Otras distancias de seguridad}
+\label{subsec:dist-otras}
+Además de las anteriores distancias, por normativa también se debe comprobar en cruzamientos o paralelismos con elementos del entorno (ríos, carreteras, etc.), el cumplimiento de otras distancias adicionales de seguridad para evitar posibles riesgos.
+\subsubsection{Distancias al terreno, caminos, sendas y cursos de agua no navegables}
+\label{subsubsec:otras-terreno}
+La altura de los apoyos ha de ser tal que los conductores, con su flecha máxima vertical según la hipótesis de hielo y temperatura, quede por encima de cualquier punto el terreno, senda, vereda o superficies de agua no navegables, a una altura mínima: 
+
+\begin{equation}
+    D_{terreno} = 5.3+D_{el}
+    \label{eq:dist-otras-terreno}
+\end{equation}
+
+Con una altura mínima de \SI{6}{\meter}, en el caso de que la línea atraviesa un terreno de explotación agrícola o ganadera el mínimo pasará a ser \SI{7}{\meter}. 
+
+\subsubsection{Distancias a otras líneas eléctricas aéreas o de telecomunicaciones}
+\label{subsubsec:otras-lineas}
+En cruces con otras líneas aéreas se situará a mayor altura la de tensión más elevada y, en caso de igual tensión; la que se instale con posterioridad. En todo caso, siempre que fuera preciso sobre elevar la línea preexistente, será de cargo del propietario de la nueva línea la modificación de la línea ya instalada. 
+
+Las líneas de telecomunicaciones se consideran como líneas de baja tensión, por lo que el tendido de la línea diseñada en este proyecto ha de realizarse por encima de cualquier línea de telecomunicaciones que se cruce en el camino. 
+
+La distancia entre los conductores de la línea inferior y las partes más próximas de los apoyos de la línea superior no deberá ser inferior a: 
+
+\begin{equation}
+    D_{cruzamientoLAAT} = 1.5 + D_{el}
+    \label{eq:dist-otras-cruzLAAT}
+\end{equation}
+
+Con una distancia mínima de \SI{3}{\meter} para este proyecto. 
+\subsubsection{Distancias a carreteras}
+\label{subsubsec:otras-carreteras}
+La instalación de apoyos cercanos a la red de carreteras del estado se debe de hacer, preferiblemente, detrás de la línea de límite de edificación situada a \SI{50}{\meter} en autopistas y autovías, y a \SI{25}{\meter} en el resto de las carreteras. 
+
+En lo referente al cruce con carreteras locales y vecinales, se admite la existencia de un empalme por conductor en el vano de cruce para las líneas de tensión nominal superior a \SI{25}{\kilo\volt}. 
+
+La distancia mínima sobre la rasante de la carretera depende de su categoría, en este caso: 
+
+\begin{equation}
+    D_{cruzamientoCarretera}=6.3+D_{el}
+    \label{eq:dist-otras-cruzCarretera}
+\end{equation}
+\subsubsection{Distancias a ferrocarriles sin electrificar}
+\label{subsubsec:otras-ferrocarriles}
+La instalación de apoyos ya sea en paralelo o en cruzamiento debe realizarse a \SI{50}{\meter} de la arista exterior de la explanación medido en horizontal y perpendicularmente al carril exterior de la vía férrea. 
+
+\subsubsection{Distancias a ferrocarriles electrificados, tranvías y trolebuses}
+\label{subsubsec:otras-ferrocarrilesElec}
+La instalación de apoyos se realizará de la misma forma que se ha explicado previamente. 
+
+En el caso de que exista un cruzamiento la distancia mínima vertical de los conductores, con su máxima flecha vertical, se calculará de la siguiente forma:
+
+\begin{equation}
+    D_{cruzFerrocarril}=3.9+D_{el}
+    \label{eq:dist-otras-cruzFerrocarril}
+\end{equation}
+
+Con un mínimo de \SI{4}{\meter}
+\subsubsection{Distancias teleféricos y cables transportadores}
+\label{subsubsec:otras-telefericos}
+El cruzamiento se debe realizar superiormente, salvo casos razonadamente justificados que sean autorizados. 
+
+La distancia mínima vertical entre los conductores, con su máxima flecha vertical según las hipótesis expresadas en la ITC-LAT-07 y la parte superior del teleférico tendrá como mínimo 5 metros y se calculará mediante la siguiente fórmula: 
+
+\begin{equation}
+    D_{teleferico} = 4.5+D_{el}
+    \label{eq:dist-otras-teleferico}
+\end{equation}
+\subsubsection{Distancias a ríos y canales}
+\label{subsubsec:otras-rios}
+La instalación de apoyos en las cercanías de ríos o canales navegables se realizará a una distancia nunca menor de 1,5 veces la altura del apoyo, medida desde el cauce del río correspondiente con su caudal máximo, respetando en todo caso una distancia mínima de 35 metros. Podrá admitirse una colocación a distancias inferiores siempre y cuando exista autorización previa de la administración competente.
+
+En los cruzamientos con ríos y canales, navegables o flotantes, la distancia mínima vertical de los conductores, con su máxima flecha vertical, sobre la superficie del agua para el máximo nivel que pueda alcanzar ésta será de: 
+\begin{equation}
+    D_{rios}=2.3+D_{el}+Galibo
+    \label{eq:dist-otras-rios}
+\end{equation}
+Si no existe un gálibo definido esté será considerado \SI{4.7}{\meter}.
+\section{Apoyos}
+\label{sec:mc-apoyos}
+Los apoyos empleados en la línea son de celosía con cruceta en tresbolillo (IMEDEXSA los nombra armados tipo S). Los apoyos se han elegido a partir de los catálogos facilitados por el software IMEDEXSA.
+
+Los apoyos de la línea se pueden clasificar según su función:
+\begin{itemize}
+    \item \textbf{Apoyo de suspensión (SU):} Aquellos con cadenas de aislamiento en suspensión.
+    \item \textbf{Apoyo de amarre (AM):} Aquellos con cadenas de aislamiento en amarre.
+    \begin{itemize}
+        \item \textbf{Apoyo de anclaje (ANC):} Apoyos de amarre cuyo principal objetivo es proporcionar un punto firme en la línea, limitando en este punto la propagación de esfuerzos longitudinales con carácter excepcional. Todos los apoyos de anclaje deberán identificarse en el plano de detalle del proyecto de la línea.
+        \item \textbf{Apoyos de principio o fin de línea (FL):} Es el primer y último apoyo de la línea. Son apoyos de amarre cuyo principal objetivo es soportar las solicitaciones longitudinales del haz completo de conductores.
+    \end{itemize}
+\end{itemize}
+
+Por otro lado, según la posición relativa del apoyo respecto al trazado de la línea se distingue:
+\begin{itemize}
+    \item \textbf{Apoyo de alineación (AL):} Aquellos empleados en tramos rectilíneos.
+    \item \textbf{Apoyo de ángulo (AN):} Aquellos empleados en tramos curvilíneos.
+\end{itemize}
+\subsection{Hipótesis de cálculo}
+\label{subsec:apoyos-hipotesis}
+De forma similar al apartado \ref{sec:mc-mecanicos} \nameref{sec:mc-mecanicos}, para el cálculo de los apoyos es necesario partir de unas hipótesis o condiciones iniciales. Posteriormente se debe comprobar si los apoyos elegidos son capaces de soportar los esfuerzos verticales, longitudinales y transversales calculados, así como, el momento torsor.
+
+Las hipótesis a considerar son las siguientes:
+\begin{enumerate}
+\item\textbf{Hipótesis de Viento:} Los apoyos se someten a una sobrecarga de viento con una velocidad de \SI{120}{\kilo\meter\per\hour} y a una temperatura de \SI{-5}{\celsius}.
+\item\textbf{Hipótesis de Hielo:} Los apoyos se someten a una sobrecarga de hielo mínima a una determinada temperatura. En zona A no aplica.
+\item\textbf{Hipótesis de Desequilibrio de Tracciones:} Los apoyos se someten a un desequilibrio de tracción de sobrecarga de viento a  una temperatura de \SI{-5}{\celsius}.
+\item\textbf{Hipótesis de Rotura de Conductores:} Los apoyos se someten a la rotura de un conductor de fase o la rotura del conductor de tierra. En este caso al no disponer de conductor de tierra, se considerará sólo la rotura del conductor de fase.
+\end{enumerate}
+
+A partir del software IMEDEXSA obtenemos las distancias y desniveles de los vanos, las tracciones de los cantones y las dimensiones de los apoyos (cuya comprobación el programa la realiza a partir de su propio catálogo \cite{IMEDEXSA_Catalogo_2019}). Partiendo de estos datos se determinan las longitudes del eolovano y el gravivano de los apoyos de los que se desea determinar los esfuerzos. 
+
+El eolovano es la longitud horizontal del vano empleada para calcular la carga transversal que los conductores de fase y tierra transmiten a un apoyo debido a la acción del viento sobre ellos. Su valor se determina a partir de la siguiente expresión:
+
+\begin{equation}
+    a_e=\frac{a_1+a_2}{2}
+    \label{eq:eolovano}
+\end{equation}
+
+Donde:
+\begin{description}
+    \item[$a_e$] es la longitud del eolovano (\si{\meter}).
+    \item[$a_1$] es la longitud del vano anterior al que pertenece el apoyo (\si{\meter}).
+    \item[$a_2$] es la longitud del vano posterior al que pertenece el apoyo (\si{\meter}).
+\end{description}
+
+El gravivano es la longitud horizontal empleada para determinar el esfuerzo vertical que sufre un apoyo concreto debido al peso del conductor. El valor del gravivano, bajo hipótesis de viento, se determina según la siguiente expresión:
+
+\begin{equation}
+    a_g=a_e+(\frac{T_{v1}}{p_{apv}}\cdot\frac{d_1}{a_1}-\frac{T_{v2}}{p_{apv}}\cdot\frac{d_2}{a_2})
+    \label{eq:gravivano}
+\end{equation}
+
+Donde:
+\begin{description}
+    \item[$a_gv$] es la longitud del gravivano (\si{\meter}).
+    \item[$d_1$] es el desnivel del vano anterior al que pertenece el apoyo (\si{\meter}).
+    \item[$d_2$] es el desnivel del vano anterior al que pertenece el apoyo (\si{\meter}).
+    \item[$T_{v1}$] es la tracción horizontal del vano anterior al que pertenece el apoyo (\si{\deca\newton}).
+    \item[$T_{v1}$] es la tracción horizontal del vano posterior al que pertenece el apoyo (\si{\deca\newton}).
+    \item[$p_{apv}$] es el peso aparente del conductor bajo la hipótesis de viento (\si{\deca\newton}).
+\end{description}
+
+ A partir del eolovano y gravivano se calculan las cargas verticales, transversales y longitudinales (así como el momento torsor cuando corresponda) para cada una de las hipótesis mencionadas al comienzo de este apartado.
+ 
+\subsubsection{Cargas verticales}
+\label{subsubsec:apoyos-cargasV}
+El peso de los conductores y la cadena de aisladores provoca un esfuerzo vertical sobre el apoyo con la misma dirección y sentido que la aceleración de la gravedad.
+\begin{align}
+    F_V &=F_{Vcond}+F_{Vcad}
+    \label{eq:esfuerzo-vertical}\\[0.5em]
+    F_{Vcond} &= n_{cond}\cdot p_p\cdot a_{gv}
+    \label{eq:esfuerzo-vertical-conductor}\\[0.5em]
+    F_{Vcad} &= n_{elementos}\cdot p_{cad}
+    \label{eq:esfuerzo-vertical-cadena}
+\end{align}
+
+Donde:
+\begin{description}
+    \item[$F_V$] es el esfuerzo vertical en el apoyo (\si{\deca\newton}).
+    \item[$F_{Vcond}$] es el esfuerzo vertical en el apoyo debido al peso del haz de conductores (\si{\deca\newton}).
+    \item[$F_{Vcad}$] es el esfuerzo vertical en el apoyo debido al peso de la cadena de aisladores (\si{\deca\newton}).
+    \item[$n_{cond}, n_{elementos}$] es número del haz de conductores (en circuito simple simplex, es 3) y de elementos de la cadena de aisladores (en este caso, también es 3).
+    \item[$p_p$] es el peso propio del conductor (\si{\deca\newton\per\meter}).
+    \item[$p_{aisl}$] es el peso del aislador (\si{\deca\newton}).
+\end{description}
+\subsubsection{Cargas transversales}
+\label{subsubsec:apoyos-cargasT}
+La acción del viento sobre el haz de conductores y la cadena de aisladores provoca un esfuerzo transversal en el apoyo. El esfuerzo transversal se calcula según la siguiente expresión:
+\begin{align}
+    F_T &= F_{Tcond} + F_{Tcad}
+    \label{eq:esfuerzo-transversal}\\[0.5em]
+    F_{Tcond} &= n_{cond}\cdot q_v\cdot\phi\cdot a_e
+    \label{eq:esfuerzo-transversal-conductor}\\[0.5em]
+    F_{Tcad} &= n_{elementos}\cdot 70\cdot (\frac{v_v}{120})^2 \cdot A_{aisl}
+    \label{eq:esfuerzo-transversal-cadena}\\[0.5em]
+    A_{aisl} &= \phi_{aisl} \cdot L_{cad}
+    \label{eq:superficie-cadena}
+\end{align}
+
+Donde:
+\begin{description}
+    \item[$F_T$] es el esfuerzo transversal soportado por el apoyo (\si{\deca\newton}).
+    \item[$F_{Tcond}$] es el esfuerzo transversal soportado por el apoyo debido a la acción del viento sobre los conductores (\si{\deca\newton}).
+    \item[$F_{Tcad}$] es el esfuerzo transversal soportado por el apoyo debido a la acción del viento sobre la cadena de aisladores (\si{\deca\newton}).
+    \item[$A_{aisl}$] es la superficie de la cadena de aisladores (\si{\meter\squared}).
+    \item[$n_{cond}, n_{elementos}$] es el número de conductores y de elementos de la cadena de aisladores.
+    \item[$q_v$] es la presión del viento sobre el conductor (\si{\deca\newton\per\meter}).
+    \item[$\phi, \phi_{aisl}$] es el diámetro del conductor de fase y del aislador (\si{\milli\meter}).
+    \item[$v_v$] es la velocidad del viento en el lugar del emplazamiento (\si{\kilo\meter\per\hour}).
+    \item[$L_{cad}$] es la longitud total de la cadena de aisladores (\si{\meter}).
+\end{description}
+\subsubsection{Cargas longitudinales}
+\label{subsubsec:apoyos-cargasL}
+El desequilibrio de tracciones presente en un apoyo se debe a la diferencia de tracciones entre el vano anterior y posterior al que pertenece el apoyo, que da lugar en el apoyo un esfuerzo longitudinal.
+
+El valor del esfuerzo longitudinal se obtiene como un porcentaje ($coef_{des}$) de la tracción horizontal bajo hipótesis de viento más representativa:
+
+\begin{equation}
+    F_V=coef_{des}\cdot T_v
+    \label{eq:esfuerzo-vertical}
+\end{equation}
+
+Donde:
+\begin{description}
+    \item[$F_V$] es el esfuerzo longitudinal sobre el apoyo (\si{\deca\newton}).
+    \item[$coef_{des}$] es el coeficiente de desequilibrio de tracciones.
+    \item[$T_v$] es la tracción horizontal más representativa (según el caso corresponderá al vano anterior o posterior) bajo hipótesis de viento (\si{\deca\newton}).
+\end{description}
+
+Según el \textit{3.4.1 Desequilibrio de tacciones} de la ITC-LAT-07 el coeficiente de desequilibrio de tracciones depende de la tipología del apoyo según y su valor viene recogido en sus subapartados. A continuación se muestra una tabla resumen con el valor de este coeficiente para cada caso:
+
+\begin{table}[H]
+\caption{Resumen de coeficiente de desequilibrio de tracciones}
+\centering
+\begin{tabular}{|
+>{\columncolor[HTML]{EFEFEF}}c cc|}
+\hline
+\multicolumn{3}{|c|}{\cellcolor[HTML]{EFEFEF}\textbf{Coeficiente de desequilibrio de tracciones (\%)}}                                                                                                   \\ \hline
+\multicolumn{1}{|c|}{\cellcolor[HTML]{EFEFEF}Tipo de apoyo} & \multicolumn{1}{c|}{\cellcolor[HTML]{EFEFEF}$U_n\leq\SI{66}{\kilo\volt}$} & \cellcolor[HTML]{EFEFEF}$U_n>\SI{66}{\kilo\volt}$ \\ \hline
+\multicolumn{1}{|c|}{\cellcolor[HTML]{EFEFEF}AL-SU}         & \multicolumn{1}{c|}{}                                                       &                                                     \\ \cline{1-1}
+\multicolumn{1}{|c|}{\cellcolor[HTML]{EFEFEF}AN-SU}         & \multicolumn{1}{c|}{\multirow{-2}{*}{8}}                                   & \multirow{-2}{*}{15}                                 \\ \hline
+\multicolumn{1}{|c|}{\cellcolor[HTML]{EFEFEF}AL-AM}         & \multicolumn{1}{c|}{}                                                       &                                                     \\ \cline{1-1}
+\multicolumn{1}{|c|}{\cellcolor[HTML]{EFEFEF}AN-AM}         & \multicolumn{1}{c|}{\multirow{-2}{*}{15}}                                   & \multirow{-2}{*}{25}                                \\ \hline
+\multicolumn{1}{|c|}{\cellcolor[HTML]{EFEFEF}ANC}           & \multicolumn{2}{c|}{50}                                                                                                           \\ \hline
+\multicolumn{1}{|c|}{\cellcolor[HTML]{EFEFEF}FL}            & \multicolumn{2}{c|}{100}                                                                                                          \\ \hline
+\end{tabular}
+\label{tab:coeficiente-desequilibrio-tracciones}
+\end{table}
+
+\section{Cálculos de cimentaciones}
+\label{sec:mc-cimentaciones}
+Como en este proyecto todas las cimentaciones de los apoyos son de tipo monobloque, con el objetivo de evitar la repetitividad de operaciones, solamente se calculará la cimentación de uno de los apoyos de la línea, ya que, para el resto de apoyos el procedimiento de cálculo es idéntico. En el \nameref{anexo:imedexsa} se incluyen los detalles de las cimentaciones de cada apoyo.
+
+El cálculo del las cimentaciones monobloques de hormigón se fundamenta en el método Sulzberger desarrollado por la Comisión Federal Suiza. Según este método, se consideran las siguientes hipótesis de cálculo:
+\begin{itemize}
+    \item El macizo de hormigón puede girar, como máximo, un ángulo $\alpha$ definido por la $\tan\alpha=0.01$, independientemente de las características del terreno. Esta condición ya se exige en el apartado \textit{3.6.1 Características generales} de la ITC-LAT-07, donde se indica que \textit{"en las cimentaciones de apoyos cuya estabilidad esté fundamentalmente confiada a las reacciones horizontales del terreno, no se admitirá un ángulo de giro de la cimentación cuya tangente sea superior a 0,01 para alcanzar el equilibrio de las acciones volcadoras máximas con las reacciones del terreno"}.
+    \item La resistencia del terreno es nula en la superficie y crece proporcionalmente con la profundidad.
+    \item El terreno se comporta como un cuerpo plástico y elástico, y por ello los desplazamientos del macizo dan origen a reacciones del terreno proporcionadas a estos desplazamientos.
+    \item Se desprecia la influencia de las fuerzas de rozamiento.
+\end{itemize}
+
+Además, según el apartado mencionado anteriormente de la ITC-LAT-07 "\textit{en las cimentaciones de apoyos cuya estabilidad esté confiada a las reacciones verticales del terreno, se comprobará el coeficiente de seguridad al vuelco, que es la relación entre el momento estabilizador mínimo (debido a los pesos propios, así como las reacciones y empujes pasivos del terreno), respecto a la arista más cargada de la cimentación y el momento volcador máximo motivado por las acciones externas}". Es decir, se debe calcular el siguiente coeficiente:
+
+\begin{equation}
+    K_M=\frac{M_e}{M_v}
+    \label{eq:coeficiente-seguridad-momento}
+\end{equation}
+
+Donde:
+\begin{description}
+    \item[$K_M$] es el coeficiente de seguridad al vuelco.
+    \item[$M_e$] es el momento estabilizador (\si{\deca\newton\cdot\meter}).
+    \item[$M_v$] es el momento solicitante al vuelco (\si{\deca\newton\cdot\meter}).
+\end{description}
+
+Este coeficiente no debe ser inferior a 1,5 en hipótesis normales o 1,2 en hipótesis excepcionales.
+
+\subsection{Dimensiones del apoyo y de la cimentación}
+\label{subsubsec:dimensiones}
+Previo al cálculo de momentos se realizan los cálculos necesarios para la definición de las dimensiones del apoyo y de la cimentación, ya que, para el cálculo de momentos son necesarios algunos parámetros dimensionales.
+\subsubsection{Dimensiones del apoyo}
+\label{subsubsec:dimensiones-apoyo}
+La base del apoyo es cuadrada de ancho ($a_{base}$) y largo ($l_{base}$), haciendo el producto de ambas se obtiene la superfice de la base del apoyo $S_{base}$. En la ecuación \eqref{eq:ancho-baseApoyo} se restan \SI{10}{\centi\meter} porque se considera que hay una diferencia de \SI{5}{\centi\meter} a cada lado entre el ancho y la base del apoyo al ancho y la base de la cimentación:
+
+\begin{align}
+    a_{base} &= a_{cim}-\SI{10}{\centi\meter}
+    \label{eq:ancho-baseApoyo}\\[0.5em]
+    l_{base} &= a_{base}
+    \label{eq:largo-baseApoyo}\\[0.5em]
+    S_{base} &= a_{base}\cdot l_{base}
+    \label{eq:superficie-baseApoyo}
+\end{align}
+
+La cogolla es la parte más alta del apoyo donde se fijan las crucetas, su base es cuadrada de ancho ($a_{cogolla}$) y largo ($l_{cogolla}$), haciendo el producto de ambas se obtiene la superfice de la base del apoyo $S_{cogolla}$. Los valores de estas dimensiones se obtienen a partir del software de IMEDEXSA.
+
+La base del apoyo a la altura de la peana no tiene las mismas dimensiones que la base del apoyo sobre la cimentación, debido a la conicidad del apoyo, esta base será menor a la anteriormente calculada.
+
+\begin{align}
+    a_{peana} &= a_{base}-Con_{CE}\cdot (h_{cim}+P_e)
+    \label{eq:ancho-basePeana}\\[0.5em]
+    l_{peana} &= l_{base}-Con_{CA}\cdot (h_{cim}+P_e)
+    \label{eq:largo-basePeana}\\[0.5em]
+    S_{peana} &= a_{peana}\cdot l_{peana}
+    \label{eq:superficie-basePeana}
+\end{align}
+
+Donde:
+\begin{description}
+    \item[$h_{cim}$] es la profundidad de la cimentación (\si{\meter}). Su valor se recoge en los planos de detalle de los apoyos (véase \nameref{anexo:imedexsa}).
+    \item[$P_e$] es la altura de la peana del apoyo. En apoyos de celosía mide \SI{0.2}{\meter}.
+\end{description}
+
+La conicidad del apoyo en la cara estrecha ($Con_{CE}$) y en la cara ancha ($Con_{CA}$) se calculan según las siguientes expresiones:
+
+\begin{align}
+    Con_{CE} &= \frac{a_{base}-a_{cogolla}}{2}
+    \label{eq:conicidad-caraEstrecha}\\[0.5em]
+    Con_{CA} &= \frac{l_{base}-l_{cogolla}}{2}
+    \label{eq:conicidad-caraAncha}
+\end{align}
+
+\subsubsection{Dimensiones de la cimentación}
+\label{subsubsec:dimensiones-cimentacion}
+En la cimentación es importante conocer por un lado el volumen del tronco del apoyo inmerso en la cimentación:
+\begin{equation}
+    V_{tronco} = \frac{1}{3}\cdot(P_e+h_{cim})\cdot(S_{base}+S_{peana}+\sqrt{S_{base}\cdot S_{peana}})
+    \label{eq:volumen-tronco-cimentacion}
+\end{equation}
+
+Y por otro lado, el volumen total de la cimentación y su peso:
+\begin{align}
+    V_{cim} &= a_{cim}^2\cdot(h_{cim}+P_e)
+    \label{eq:volumen-cimentacion}\\[0.5em]
+    P_{cim} &= \gamma_{hormigon}\cdot V_{cim}
+    \label{eq:peso-cimentacion}
+\end{align}
+Donde $\gamma_{hormigon}$ es el peso específico del hormigón cuyo valor es \SI{2157}{\deca\newton\per\cubic\meter}.
+\subsection{Cálculo del momento estabilizador}
+\label{subsubsec:cimentaciones-momento-estabilizador}
+El momento estabilizador es provocado por las reacciones horizontales ($M_{e1}$) y verticales ($M_{e2}$) del terreno sobre el apoyo:
+
+\begin{equation}
+    M_e = M_{e1}+M_{e2}
+    \label{eq:momento-estabilizador}
+\end{equation}
+
+\subsubsection{Reacciones horizontales del terreno}
+\label{subsubsec:momento-estabilizador1}
+El momento estabilizador debido a las reacciones horizontales del terreno se calcula según la siguiente expresión:
+
+\begin{equation}
+    M_{e1} = \frac{1}{36}\cdot a_{cim}\cdot h_{cim}\cdot C_h\cdot\tan\alpha
+    \label{eq:momento-estabilizador1}
+\end{equation}
+
+Donde:
+\begin{description}
+    \item[$a_{cim}$] es el ancho de la cimentación (\si{\meter}).
+    \item[$h_{cim}$] es la profundidad de la cimentación (\si{\meter}).
+    \item[$C_h$] es el coeficiente de compresibilidad del terreno (\si{\deca\newton\per\cubic\centi\meter}).
+    \item[$\tan\alpha$] es la tangente de giro de la cimentación. Se considera 0,01 con el objetivo de cumplir la normativa mencionada en el apartado anterior.
+
+El coeficiente de compresibilidad del terreno a una profundidad h ($C_h$) se calcula a partir del producto de la profundidad de la cimentación ($h_{cim}$) por la fracción del coeficiente de compresibilidad del terreno a dos metros ($C_{2m}$) entre dos metros:
+
+\begin{equation}
+    C_h=h_{cim}\cdot\frac{C_{2m}}{\SI{2}{\meter}}
+    \label{eq:coeficiente-compresibilidad}
+\end{equation}
+
+El coeficiente $C_{2m}$ depende del tipo de terreno. En este proyecto, el emplazamiento de la línea se encuentra sobre un terreno plástico, por lo que le corresponde un coeficiente $C_{2m}=\SI{12}{\deca\newton\per\cubic\centi\meter}$.
+\subsubsection{Reacciones verticales del terreno}
+\end{description}
+\label{subsubsec:momento-estabilizador2}
+El momento estabilizador debido a las reacciones verticales del terreno se calcula según la siguiente expresión:
+
+\begin{equation}
+    M_{e2} = (P_{cim}+P_a)\cdot a_{cim}\cdot (\frac{1}{2}-\frac{2}{3}\cdot\sqrt{\frac{P_{cim}+P_a}{2\cdot a_{cim}^3\cdot C_h\cdot\tan\alpha}})
+    \label{eq:momento-estabilizador2}
+\end{equation}
+
+Donde:
+\begin{description}
+    \item[$P_{cim}$] es el peso de la cimentación (\si{\kilo\gram}).
+    \item[$P_a$] es el peso del apoyo (\si{\kilo\gram}). Véase Tabla de Resultados \nameref{anexo:imedexsa}.
+    \end{description}
+    
+\subsection{Cálculo del momento solicitante de vuelco}
+\label{subsubsec:cimentaciones-momento-vuelco}
+El momento solicitante de vuelco es provocado por el esfuerzo útil ($M_{v1}$) y por el esfuerzo debido al viento aplicado en el apoyo ($M_{v2}$):
+
+\begin{equation}
+    M_v = M_{v1}+M_{v2}
+    \label{eq:momento-vuelco}
+\end{equation}
+\subsubsection{Esfuerzo útil}
+\label{subsubsec:momento-vuelco1}
+El momento solicitante de vuelco debido al esfuerzo útil aplicado en el apoyo se calcula según la siguiente ecuación:
+
+\begin{equation}
+    M_{v1} = F_u\cdot(H_T+c-h_0-\frac{1}{3}\cdot h_{cim})
+    \label{eq:momento-vuelco1}
+\end{equation}
+
+Donde:
+\begin{description}
+    \item[$M_{v1}$] es el momento solicitante al vuelco debido al esfuerzo útil aplicado en el apoyo (\si{\deca\newton\cdot\meter}).
+    \item[$F_u$] es el esfuerzo útil aplicado en el apoyo (\si{\deca\newton}). Coincide con el primer número de la denominación del apoyo (véase \nameref{anexo:imedexsa}).
+    \item[$H_T$] es la altura total del apoyo desde la línea de tierra, es decir, considera la profundidad de la cimentación (\si{\meter}).
+    \item[$c$] es la distancia de la base del apoyo al fondo de la cimentación. En apoyos de celosía mide \SI{0.1}{\meter}.
+    \item[$h_{cim}$] es la profundidad de la cimentación (\si{\meter}).
+    \item[$h_0$] es la distancia del punto de aplicación del esfuerzo útil respecto de la cogolla (\si{\meter}). En apoyos de celosía el punto de aplicación de $F_u$ se encuentra en la cogolla por lo que esta distancia es nula.
+\end{description}
+
+\subsubsection{Esfuerzo debido al viento}
+\label{subsubsec:momento-vuelco2}
+Para calcular el momento solicitante al vuelco debido al esfuerzo provocado por el viento sobre el apoyo previamente es necesario conocer el valor de este esfuerzo sobre las diferentes superficies del apoyo:
+
+\begin{equation}
+    M_{v2} = M_{v20}+M_{v21}+M_{v22}+M_{v23}
+    \label{eq:momento-vuelco2}
+\end{equation}
+
+El momento solicitante al vuelco para cada superficie del apoyo considerada, se calcula como el producto del esfuerzo debido al viento por la distancia al punto de aplicación de este esfuerzo:
+
+\begin{align}
+    M_{v_{i}} &= F_{v_{i}}\cdot h_{v_{i}}
+    \label{eq:momento-vuelco2i}\\[0.5em]
+    F_{v_{i}} &= P_v \cdot S_{v_{i}}
+    \label{eq:esfuerzo-viento}
+\end{align}
+
+Donde:
+\begin{description}
+    \item[$M_{vi}$] es el momento solicitante al vuelco para la superficie i del apoyo (\si{\deca\newton\cdot\meter}).
+    \item[$F_{vi}$] es el esfuerzo debido al viento aplicado sobre la superficie i del apoyo (\si{\deca\newton}).
+    \item[$h_{vi}$] es la distancia al punto de aplicación del esfuerzo (\si{\meter}).
+    \item[$S_{vi}$] es el área de la superficie i (\si{\meter\squared}).
+    \item[$P_v$] es la presión reglamentaria del viento sobre el apoyo. En apoyos de celosía se considera \SI{170}{\deca\newton\per\meter\squared}.
+\end{description}
+
+De las anteriores ecuaciones se puede apreciar que las variables del momento solicitante al vuelco realmente son $h_{vi}$ y $S_{vi}$. A continuación se muestran las expresiones de $h_{vi}$ y $S_{vi}$ para cada superficie considerada.
+
+\begin{align}
+    h_{v0} &= H_T+c-\frac{h_{cabeza}}{2}-\frac{1}{3}\cdot h_{cim}
+    \label{eq:altura-vuelco0}\\[0.5em]
+    S_{v0} &= a_{cogolla}\cdot h_{cabeza}
+    \label{eq:superficie-vuelco0}\\[0.5em]
+    h_{v1} &= \frac{H_T-h_{cabeza}+c-h_{cim}-P_e}{2}
+    \label{eq:altura-vuelco1}\\[0.5em]
+    S_{v1} &= a_{cogolla}\cdot (H_T-h_{cabeza}+c-h_{cim}-P_e)
+    \label{eq:superficie-vuelco1}\\[0.5em]
+    h_{v2} &= \frac{H_T-h_{cabeza}+c-h_{cim}-P_e}{3} + (P_e+\frac{2}{3}\cdot h_{cim})
+    \label{eq:altura-vuelco2}\\[0.5em]
+    S_{v2} &= Con_{CE}\cdot\frac{(H_T-h_{cabeza}+c-h_{cim}-P_e)^2}{2}
+    \label{eq:superficie-vuelco2}\\[0.5em]
+    h_{v3} &= \frac{P_e}{2} +\frac{2}{3}\cdot h_{cim}
+    \label{eq:altura-vuelco3}\\[0.5em]
+    S_{v3} &= P_e\cdot a_{cim}
+    \label{eq:superficie-vuelco3}\\[0.5em]
+\end{align}
+
+Donde:
+\begin{description}
+    \item[$h_{cabeza}$] es la longitud de la cabeza del apoyo. En apoyos de celosía, según la norma UNE20717, esta altura debe ser \SI{4.2}{\meter}.
+    \item[$P_e$] es la altura de la peana. En apoyos de celosía mide \SI{0.2}{\meter}.
+    \item[$a_{cogolla}, a_{cim}$] es el ancho de la cogolla y de la cimentación respectivamente (\si{\meter}).
+    \item[$Con_{CE}$] es la conicidad de la cara estrecha del apoyo (\si{\meter}).
+\end{description}
+\section{Cálculo de los sistemas de PAT de los apoyos}
+\label{sec:mc-pat}
+Según el apartado de la ITC-LAT-07 mencionado anteriormente, para el diseño de \ac{PAT} se debe seguir el diagrama de flujo representado en la Figura \ref{fig:Esquema del diseño de puesta a tierra respecto a las tensiones de contacto admisibles}.
+
+En este proyecto únicamente se consideran apoyos frecuentados con calzado y apoyos no frecuentados, siendo estos últimos los más habituales a lo largo del recorrido de la línea.
+
+\figura{Fig/pat-procedimiento}{1}{Esquema del diseño de puesta a tierra respecto a las tensiones de contacto admisibles}
+
+\subsection{Apoyos no frecuentados}
+\label{subsec:pat-apoyosNF}
+Tal y como expresa la norma anteriormente mencionada, las puestas a tierra para estos apoyos deben asegurar unas corrientes de defecto a tierra, en caso de producirse una falta, lo suficientemente altas como para hacer disparar las protecciones situadas en las subestaciones de los extremos de la línea en un tiempo inferior a \SI{1}{\second}. Con cumplirse el requisito previo no hay que garantizar valores de tensión de contacto inferiores a los indicados en el \ac{RLAT} a \SI{1}{\meter} de distancia del apoyo. 
+
+Es decir, se debe comprobar el tiempo de duración de la falta y para ello previamente es necesario calcular la resistencia de puesta a tierra y la intensidad de falta.
+
+El proyecto tipo de \ac{i-DE} propone diferentes configuraciones del electrodo puesta a tierra para apoyos no frecuentados (véase Fig \ref{fig:Configuración del electrodo de puesta a tierra para apoyos no frecuentados}). En este proyecto se empleará la variante de dos picas con el objetivo de no superar el valor máximo de la resistencia de puesta a tierra (véase \nameref{anexo:mathcad}).
+
+\figura{Fig/electrodo-apoyosNF}{1}{Configuración del electrodo de puesta a tierra para apoyos no frecuentados}
+
+\subsubsection{Comprobación del tiempo de duración de falta}
+\label{subsubsec:apoyosNF-tiempo-pat}
+Según el apartado \textit{7.3.4.3 Verificación del diseño del sistema de puesta a tierra} de la ITC-LAT-07:
+
+"\textit{En aquellos casos en que la línea esté provista con desconexión automática inmediata (en un tiempo inferior a 1 segundo) para su protección, en el diseño del sistema de puesta a tierra de los apoyos no frecuentados no será obligatorio garantizar, a un metro de distancia del apoyo, valores de tensión de contacto inferiores a los valores admisibles indicados en el apartado 7.3.4.1, ya que se puede considerar despreciable la probabilidad de acceso y la coincidencia de un fallo simultáneo. En definitiva, el diseño del sistema de puesta a tierra se considerará satisfactorio desde el punto de vista de la seguridad de las personas, sin embargo, el valor de la resistencia de puesta a tierra será lo suficientemente bajo para garantizar la actuación de las protecciones en caso de defecto a tierra.}
+
+\textit{El tiempo inferior a 1 segundo puede conseguirse únicamente para valores muy pequeños o nulos de la resistencia de puesta a tierra de los  apoyos. En la práctica, cuando se trata de apoyos no frecuentados, es suficiente con que el tiempo de actuación de las protecciones no sea superior a 10 segundos.}" 
+
+Por tanto, si no se cumple la desconexión automática inmediata (protecciones actúan en un tiempo inferior a \SI{1}{\second}) según el diagrama de flujo de la Figura \ref{fig:Esquema del diseño de puesta a tierra respecto a las tensiones de contacto admisibles} para apoyos no frecuentados, pero las protecciones actúan en un tiempo inferior a \SI{10}{\second} el diseño del sistema de \ac{PAT} se considera satisfactorio.
+
+El tiempo de duración de la falta se calcula a partir de las siguientes expresiones:
+
+\begin{align}
+    t_F &= \frac{I_{Ft}}{I_F}
+    \label{eq:tiempo-pat}\\[0.5em]
+    I_F &= \frac{c_t\cdot U_n}{\sqrt{3}\cdot\sqrt{X_{LTH}^2+R_p^2}}
+    \label{eq:intensidad-pat}\\[0.5em]
+    R_p &= K_r\cdot\rho_{terr}
+    \label{eq:resistencia-pat}
+\end{align}
+
+Donde:
+\begin{description}
+    \item[$t_F$] es el tiempo de duración de la falta a tierra (\si{\second}).
+    \item[$I_{Ft}$] es la característica de actuación de las protecciones eléctricas de la línea. Según el proyecto tipo de \ac{i-DE} es \SI{400}{\ampere\cdot\second}.
+    \item[$I_F$] es la intensidad de falta (\si{\ampere}).
+    \item[$c_t$] es el factor de tensión de valor 1,1 que según la norma UNE-EN 60909-1 considera la variación de la tensión en el espacio y tiempo, tolerancia de puesta a tierra, cambios eventuales en las conexiones de transformadores y el comportamiento subtransitorio de alternadores y motores.
+    \item[$U_n$] es la tensión nominal de la línea (\si{\kilo\volt}).
+    \item[$X_{LTH}$] es la reactancia equivalente en la subestación (\si{\ohm}).
+    \item[$R_p$] es la resistencia de puesta a tierra del electrodo (\si{\ohm}).
+    \item[$K_r$] es el coeficiente de resistencia de puesta a tierra del electrodo (\si{\ohm\per\ohm\cdot\meter}). Su valor depende del electrodo seleccionado y viene tabulado en la Tabla \ref{tab:coeficiente-patNF}.
+    \item[$\rho_{terr}$] es la resistividad óhmica del terreno. Se considera un valor de \SI{400}{\ohm\cdot\meter}.
+\end{description}
+
+Además de las condiciones citadas anteriormente, según el proyecto tipo de \ac{i-DE} el valor de la resistencia de puesta a tierra en apoyos no frecuentados de líneas de \SI{20}{\kilo\volt} debe ser inferior a \SI{230}{\ohm}.
+
+\begin{table}[H]
+\caption{Valores máximos de la resistencia a tierra en apoyos no frecuentados}
+\centering
+\label{tab:RpMax-pat}
+\begin{tabular}{|c|c|}
+\hline
+\rowcolor[HTML]{EFEFEF} 
+\textbf{\begin{tabular}[c]{@{}c@{}}Tensión nominal\\ de la red\\ Un (kV)\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}Máximo valor de la\\ resistencia de puesta a tierra \\ (ohm)\end{tabular}} \\ \hline
+13,2                                                                                   & 150                                                                                                           \\ \hline
+15                                                                                     & 175                                                                                                           \\ \hline
+20                                                                                     & 230                                                                                                           \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\caption{Coeficiente de resistencia de puesta a tierra para electrodos utilizados en líneas aéreas con apoyos no frecuentados}
+\centering
+\label{tab:coeficiente-patNF}
+\begin{tabular}{|c|c|}
+\hline
+\rowcolor[HTML]{EFEFEF} 
+\textbf{Electrodo}            & \textbf{$K_r$ (\si{\ohm\per\ohm\cdot\meter})} \\ \hline
+Configuración básica (1 pica) & 0,604                           \\ \hline
+Variante con dos picas        & 0,244                           \\ \hline
+Variante con tres picas       & 0,167                           \\ \hline
+\end{tabular}
+\end{table}
+
+Según el proyecto tipo para líneas de tensión nominal igual o inferior a \SI{20}{\kilo\volt} de \ac{i-DE} el valor de la reactancia equivalente se obtiene a partir de la siguiente tabla:
+
+\begin{table}[H]
+\caption{Impedancias equivalentes para cada nivel de tensión y tipo de puesta a tierra de la subestación}
+\centering
+\label{tab:reactanciaEquivalente-pat}
+\begin{tabular}{|c|c|c|}
+\hline
+\rowcolor[HTML]{EFEFEF} 
+\textbf{\begin{tabular}[c]{@{}c@{}}Tensión nominal\\ de la red Un (kV)\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}Tipo de \\ puesta a tierra\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}Reactancia\\ equivalente Xlth (ohm)\end{tabular}} \\ \hline
+13,2                                                                                 & Rígido                                                                      & 1,853                                                                                \\ \hline
+13,2                                                                                 & Reactancia 4 ohm                                                            & 4,5                                                                                  \\ \hline
+15                                                                                   & Rígido                                                                      & 2,117                                                                                \\ \hline
+15                                                                                   & Reactancia 4 ohm                                                            & 4,5                                                                                  \\ \hline
+20                                                                                   & Reactancia 5,2 ohm                                                          & 5,7                                                                                  \\ \hline
+20                                                                                   & Zig-zag 500 A                                                               & 25,4                                                                                 \\ \hline
+20                                                                                   & Zig-zag 1000 A                                                              & 12,7                                                                                 \\ \hline
+\end{tabular}
+\end{table}
+
+\subsection{Apoyos frecuentados}
+\label{subsec:pat-apoyosF}
+Como se ha mencionado en la sección \ref{sec:mc-pat} \nameref{sec:mc-pat} dentro de los apoyos frecuentados únicamente se consideran los apoyos frecuentados con calzado.
+
+De forma análoga a los apoyos no frecuentados en los apoyos frecuentados con calzado debe elegirse un electrodo de puesta a tierra, nuevamente el proyecto tipo de \ac{i-DE} propone diferentes configuraciones de los electrodos para apoyos frecuentados con calzado (véase Figura \ref{fig:Esquema del diseño de puesta a tierra respecto a las tensiones de contacto admisibles}).
+
+\figura{Fig/electrodo-apoyosFC}{1}{Configuración del electrodo de puesta a tierra para apoyos frecuentados con calzado}
+
+A diferencia de los apoyos no frecuentados donde el electrodo contaba con unas dimensiones normalizadas, los electrodos para los apoyos frecuentados pueden tener diferentes dimensiones y por ello tienen una nomenclatura propia (véase Figura \ref{fig:Nomenclatura de los electrodos de puesta a tierra para apoyos frecuentados}).
+
+\figura{Fig/nomenclatura-electrodosFC}{0.5}{Nomenclatura de los electrodos de puesta a tierra para apoyos frecuentados}
+
+Como se puede observar en el diagrama de flujo de la Figura \ref{fig:Esquema del diseño de puesta a tierra respecto a las tensiones de contacto admisibles}, en apoyos frecuentados, a excepción del primer paso, el procedimiento de cálculo es diferente al procedimiento de los apoyos no frecuentados. Por ende, aparecen nuevos parámetros de cálculo que se recogen en la Tabla \ref{tab:parametros-electrodoF} y que se explicarán con mayor profundidad a continuación.
+
+\begin{table}[H]
+\caption{Parámetros característicos para electrodos utilizados en líneas aéreas con con apoyos frecuentados con calzado}
+\centering
+\label{tab:parametros-electrodoF}
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline
+\rowcolor[HTML]{EFEFEF} 
+\textbf{\begin{tabular}[c]{@{}c@{}}Designación \\ del \\ electrodo\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}Dimensiones \\ de la \\ cimentación \\ a (m) x b (m)\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}Dimensiones \\ del \\ electrodo \\ (m)\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}$K_r$ \\ ($\frac{\si{\ohm}}{\si{\ohm\cdot\meter}}$)\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}$K_c$ \\ ($\frac{\si{\volt}}{\si{\ohm\cdot\meter\cdot\ampere}}$)\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}$K_{ptt}$ \\ ($\frac{\si{\volt}}{\si{\ohm\cdot\meter\cdot\ampere}}$)\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}$K_{pat}$ \\ ($\frac{\si{\volt}}{\si{\ohm\cdot\meter\cdot\ampere}}$)\end{tabular}} \\ \hline
+CPT-LA-26/0,5                                                                 & 0,6 x 0,6                                                                                          & 2,6 x 2,6                                                                            & 0,128                                                                      & 0,037                                                                           & 0,028                                                                             & 0,076                                                                             \\ \hline
+CPT-LA-28/0,5                                                                 & 0,8 x 0,8                                                                                          & 2,8 x 2,8                                                                            & 0,123                                                                      & 0,036                                                                           & 0,026                                                                             & 0,072                                                                             \\ \hline
+CPT-LA-30/0,5                                                                 & 1 x 1                                                                                              & 3 x 3                                                                                & 0,118                                                                      & 0,036                                                                           & 0,024                                                                             & 0,068                                                                             \\ \hline
+CPT-LA-32/0,5                                                                 & 1,2 x 1,2                                                                                          & 3,2 x 3,2                                                                            & 0,113                                                                      & 0,035                                                                           & 0,023                                                                             & 0,065                                                                             \\ \hline
+CPT-LA-34/0,5                                                                 & 1,4 x 1,4                                                                                          & 3,4 x 3,4                                                                            & 0,109                                                                      & 0,034                                                                           & 0,022                                                                             & 0,062                                                                             \\ \hline
+CPT-LA-36/0,5                                                                 & 1,6 x 1,6                                                                                          & 3,6 x 3,6                                                                            & 0,105                                                                      & 0,034                                                                           & 0,021                                                                             & 0,06                                                                              \\ \hline
+CPT-LA-38/0,5                                                                 & 1,8 x 1,8                                                                                          & 3,8 x 3,8                                                                            & 0,102                                                                      & 0,033                                                                           & 0,02                                                                              & 0,057                                                                             \\ \hline
+CPT-LA-40/0,5                                                                 & 2 x 2                                                                                              & 4 x 4                                                                                & 0,098                                                                      & 0,032                                                                           & 0,02                                                                              & 0,055                                                                             \\ \hline
+CPT-LA-42/0,5                                                                 & 2,2 x 2,2                                                                                          & 4,2 x 4,2                                                                            & 0,095                                                                      & 0,031                                                                           & 0,019                                                                             & 0,053                                                                             \\ \hline
+CPT-LA-44/0,5                                                                 & 2,4 x 2,4                                                                                          & 4,4 x 4,4                                                                            & 0,092                                                                      & 0,031                                                                           & 0,018                                                                             & 0,051                                                                             \\ \hline
+CPT-LA-46/0,5                                                                 & 2,6 x 2,6                                                                                          & 4,6 x 4,6                                                                            & 0,089                                                                      & 0,03                                                                            & 0,018                                                                             & 0,049                                                                             \\ \hline
+CPT-LA-48/0,5                                                                 & 2,8 x 2,8                                                                                          & 4,8 x 4,8                                                                            & 0,087                                                                      & 0,029                                                                           & 0,017                                                                             & 0,048                                                                             \\ \hline
+CPT-LA-50/0,5                                                                 & 3 x 3                                                                                              & 5 x 5                                                                                & 0,084                                                                      & 0,029                                                                           & 0,016                                                                             & 0,046                                                                             \\ \hline
+\end{tabular}
+\end{table}
+
+\subsubsection{Comprobación del tiempo de duración de falta}
+\label{subsubsec:apoyosF-tiempo-pat}
+El tiempo de duración de la falta se calcula empleando las mismas ecuaciones que en el apartado \ref{subsec:pat-apoyosNF} \nameref{subsec:pat-apoyosNF}, pero considerando el coeficiente $K_r$ correspondiente a la Tabla \ref{tab:parametros-electrodoF}.
+
+\subsubsection{Determinación de la tensión de contacto y paso máxima admisible para las personas}
+\label{subsubsec:apoyosF-tensionesMaximasAdm-pat}
+La tensión de contacto y paso máxima admisible para las personas se calculan a partir de las siguientes expresiones:
+
+\begin{align}
+    U_c &= U_{ca}\cdot (1+\frac{R_{a1}+R_{a2}}{2\cdot Z_B})
+    \label{eq:pat-Uc}\\[0.5em]
+    U_p &= U_{pa}\cdot(1+\frac{2\cdot R_{a1}+2\cdot R_{a2}}{Z_B})
+    \label{eq:pat-Up}\\[0.5em]
+    U_{pacceso} &= U_{pa} \cdot (1+\frac{2\cdot R_{a1}+2\cdot R_{a2}+3\cdot\frac{\rho_{horm}}{\si{\meter}}}{Z_B})
+    \label{eq:pat-Upacceso}
+\end{align}
+
+Donde:
+\begin{description}
+    \item[$U_c,U_p$] son las tensiones de contacto y de paso máximas admisibles para las personas respectivamente (\si{\volt}).
+    \item[$U_{pacceso}$] es la tensión de paso presente al acceder al apoyo, es decir, en el instante que un pie está sobre la acera de hormigón mientras el otro pie sigue sobre el terreno (\si{\volt}).
+    \item[$U_{ca},U_{pa}$] son las tensiones de contacto y de paso aplicadas respectivamente (\si{\volt}).
+    \item[$R_{a1}$] es la resistencia del calzado de la persona. Se considera un valor de \SI{2000}{\ohm}.
+    \item[$R_{a2}$] es la resistencia a tierra del punto de contacto de un pie con el terreno \si{\ohm}. Su valor se obtiene a partir de la siguiente expresión $R_{a1}=3\cdot\frac{\rho_{terr}}{\si{\meter}}$.
+    \item[$Z_B$] es la impedancia del cuerpo humano. Se considera un valor de \SI{1000}{\ohm}.
+    \item[$\rho_{horm}$] es la resistividad del hormigón. Se considera un valor de \SI{3000}{\ohm\cdot\meter}.
+\end{description}
+
+La tensión de contacto aplicada admisible depende de la duración de la corriente de falta y su valor se obtiene a partir de la \textit{Tabla 18. Valores admisibles de la tensión de contacto aplicada $U_{ca}$ en función de la duración de la corriente de falta $t_F$} de la ITC-LAT-07:
+
+\begin{table}[H]
+\caption{Valores admisibles de la tensión de contacto aplicada en función de la duración de la corriente de falta}
+\centering
+\label{tab:Uca-pat}
+\begin{tabular}{|c|c|}
+\hline
+\rowcolor[HTML]{EFEFEF} 
+\textbf{\begin{tabular}[c]{@{}c@{}}Duración de la corriente\\ de falta tF (s)\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}Tensión de contacto aplicada \\ admisible Uca (V)\end{tabular}} \\ \hline
+0,05                                                                                        & 735                                                                                                \\ \hline
+0,1                                                                                         & 633                                                                                                \\ \hline
+0,2                                                                                         & 528                                                                                                \\ \hline
+0,3                                                                                         & 420                                                                                                \\ \hline
+0,4                                                                                         & 310                                                                                                \\ \hline
+0,5                                                                                         & 204                                                                                                \\ \hline
+1                                                                                           & 107                                                                                                \\ \hline
+2                                                                                           & 90                                                                                                 \\ \hline
+5                                                                                           & 81                                                                                                 \\ \hline
+10                                                                                          & 80                                                                                                 \\ \hline
+\textgreater 10                                                                             & 50                                                                                                 \\ \hline
+\end{tabular}
+\end{table}
+
+La tensión de paso aplicada admisible se considera que es 10 veces la tensión de contacto aplicada admisible:
+
+\begin{equation}
+    U_{pa} = 10\cdot U_{ca}
+    \label{eq:pat-Upa}
+\end{equation}
+
+\subsubsection{Determinación del aumento del potencial de tierra}
+\label{subsubsec:apoyosF-potencialTierra-pat}
+El aumento del potencial de tierra se obtiene a partir del producto de la intensidad de puesta a tierra (no confundir con la intensidad de falta) por la resistencia de puesta a tierra:
+\begin{equation}
+    U_e = I_E\cdot R_p
+    \label{eq:pat-Ue}
+\end{equation}
+
+Donde:
+\begin{description}
+    \item[$U_e$] es el aumento del potencial de tierra (\si{\kilo\volt}).
+    \item[$I_E$] es la intensidad de puesta a tierra (\si{\ampere}). Al tratarse de una línea sin cable de tierra y producirse la falta en un apoyo lejano a la subestación con neutro puesto a tierra a través de una impedancia, se cumple que la intensidad de puesta a tierra es igual a la intensidad de falta, es decir, en este caso $I_E=I_F$.
+    \item[$R_p$] es la resistencia de puesta a tierra (\si{\ohm}).
+\end{description}
+
+\subsubsection{Determinación de la máxima tensión de contacto y paso presente en el apoyo}
+\label{subsubsec:apoyosF-tensionesMaximas-pat}
+Según el diagrama de flujo de la Figura \ref{fig:Esquema del diseño de puesta a tierra respecto a las tensiones de contacto admisibles} en el siguiente paso es necesario comprobar si el aumento del potencial de tierra ($U_e$) es inferior al doble de la tensión de contacto ($U_c$). Si la condición se cumple, el diseño del sistema de \ac{PAT} es satisfactorio, en caso contrario, es necesario determinar las máximas tensiones de contacto y de paso presentes en el apoyo.
+
+Se debe comprobar si se cumplen las condiciones $U'_c<U_c$, $U'_{ptt}<U_p$ y $U'_{pat}<U_{pacceso}$, si todas se cumplen, el diseño de puesta a tierra será satisfactorio, en caso de que alguna o ambas condiciones no se cumplan, se deberán tomar medidas adicionales que garanticen la seguridad de las personas.
+
+Estas tensiones se obtienen a partir de las siguientes expresiones:
+\begin{align}
+    U'_c &= K_r\cdot\rho_{terr}\cdot I_F
+    \label{eq:pat-U'c}\\[0.5em]
+    U'_{ptt} &= K_{ptt}\cdot\rho_{terr}\cdot I_F
+    \label{eq:pat-U'ptt}\\[0.5em]
+    U'_{pat} &= K_{pat}\cdot\rho_{terr}\cdot I_F
+    \label{eq:pat-U'pat}\
+\end{align}
+
+Donde:
+\begin{description}
+    \item[$U'_c$] es la máxima tensión de contacto presente en el apoyo (\si{\volt}).
+    \item[$U'_{ptt},U'_{pat}$] son las máximas tensiones de paso presente en el apoyo con ambos pies en el terreno o con un pie en la acera de hormigón y otro en el terreno (\si{\volt}).
+    \item[$K_r$] es el coeficiente de puesta a tierra del electrodo (\si{\ohm\per\ohm\cdot\meter}). Su valor se obtiene a partir de la Tabla \ref{tab:parametros-electrodoF}.
+    \item[$K_{ptt},K_{pat}$] son los coeficientes de tensiones de paso para el caso con ambos pies sobre el terreno y con un pie sobre la acera de hormigón y otro sobre el terreno respectivamente (\si{\volt\per\ampere\cdot\ohm\cdot\meter}). Sus respectivos valores se obtienen a partir de la Tabla \ref{tab:parametros-electrodoF}.
+    \item[$I_F$] es la corriente de falta obtenida a partir de la ecuación \ref{eq:intensidad-pat} (\si{\ampere}).
+\end{description}
+
+\subsubsection{Medidas correctoras adoptadas y comprobación}
+\label{subsubsec:apoyosF-medidasAdoptadas-pat}
+El siguiente paso según el diagrama de flujo de la Figura \ref{fig:Esquema del diseño de puesta a tierra respecto a las tensiones de contacto admisibles} es comprobar si se cumple la condición $U'_{ca}<U_{ca}$ (es la condición más restrictiva, ya que por lo general las tensiones de paso se cumplen), si se cumple el diseño de \ac{PAT} es satisfactorio, en caso contrario según el apartado 7.3.4.3 Verificación del diseño del sistema de puesta a tierra. de la ITC-LAT-07:
+
+\textit{"Si la condición dada en la observación (7) no es satisfecha, entonces deberán tomarse medidas para reducir la tensión de contacto aplicada, hasta que los  requisitos sean cumplidos. Estas medidas pueden ser recogidas en las especificaciones de proyecto.} 
+
+\textit{Estas medidas pueden ser por ejemplo: anillos enterrados de repartición de potencial, aislamiento de la torre, incremento de la resistividad de la capa superior del suelo, etc.} 
+
+\textit{Cuando se recurra al empleo de medidas adicionales de seguridad que impidan el contacto con partes metálicas puestas a tierra (por ejemplo sistemas antiescalo de fábrica de ladrillo), no será necesario calcular la tensión de contacto aplicada. pero será preciso cumplir los valores máximos admisibles de las tensiones de paso aplicadas. Para ello deberá tomarse como referencia lo establecido en el Reglamento sobre condiciones técnicas y garantías de seguridad en centrales eléctricas, subestaciones y centros de transformación."}
+
+En este proyecto como la condición mencionada anteriormente no se cumple (véase \nameref{anexo:mathcad}) se adopta la siguiente medida adicional propuesta por el proyecto tipo de \ac{i-DE}:
+
+"\textit{Emplazamiento de una acera perimetral de hormigón a 1.2 m de la cimentación del apoyo. Embebido en el interior de dicho hormigón se instalará un mallado electrosoldado con redondos de diámetro no inferior a 4 mm formando una retícula no superior a 0.3 x 0.3 m, a una profundidad de al menos 0.1 m. Este mallado se conectará a un punto a la puesta a tierra del apoyo.}"
+
+Cuyo esquema se representa en la siguiente figura:
+
+\figura{Fig/medida-adicional-pat}{0.8}{Medida adicional propuesta por i-DE para anular la tensión de contacto aplicada}
+
+
+%Cualquier apoyo frecuentado debe garantizar que, en caso de producirse una falta, la máxima tensión de paso producida en la instalación no supere tensiones admisibles, es decir, deben cumplirse las siguientes ecuaciones:
+%\begin{align}
+%    U'_{ptt} &< U_{ptt}
+%    \label{eq:pat-condicionTension-piepie}\\[0.5em]
+%    U'_{pta} &< U_{pta}
+%    \label{eq:pat-condicionTension-pieacera}
+%\end{align}
+
+%Siendo las tensiones de paso máximas presentes en los apoyos:
+%\begin{align}
+%    U'_{ptt} &= K_{ptt} \cdot\rho_s\cdot I_t
+%    \label{eq:pat-tensionMax-piepie}\\[0.5em]
+%    U'_{pta} &= K_{pta} \cdot\rho_s\cdot I_t
+%    \label{eq:pat-tensionMax-pieacera}
+%\end{align}
+
+%Y las tensiones de paso máximas admisibles:
+%\begin{align}
+%    U_{ptt} &= U_{pa}\cdot(1+\frac{2\cdot R_{a1}+6\cdot\rho_s}{1000})
+%    \label{eq:pat-tensionMaxAdm-piepie}\\[0.5em]
+%    U_{pta} &= U_{pa}\cdot(1+\frac{2\cdot R_{a1}+3\cdot\rho_s+3\cdot\rho'_s}{1000})
+%    \label{eq:pat-tensionMaxAdm-pieacera}
+%\end{align}
+
+%Donde:
+%\begin{description}
+%    \item[$U'_{ptt}, U'_{pta}$] son las tensiones de paso máximas con los dos pies en el terreno y con un pie en el terreno y otro en la acera, respectivamente (\si{\volt}).
+%    \item[$U_{ptt}, U_{pta}$] son las tensiones de paso máximas admisibles con los dos pies en el terreno y con un pie en el terreno y otro en la acera, respectivamente (\si{\volt}).
+%    \item[$K_{ptt}, K_{pta}$] son los coeficientes de tensión unitarios de paso con los dos pies en el terreno y con un pie en el terreno y otro en la acera, respectivamente (\si{\volt}).
+%    \item[$\rho_s$] es la resistividad del terreno. En este caso por la naturaleza del terreno se considera una resistividad de \SI{400}{\ohm\per\meter}.
+%    \item[$\rho'_s$] es la resistividad aparente del terreno (\si{\ohm\per\meter}).
+%    \item[$R_{a1}$] es la resistencia eléctrica del calzado de cada pie. Se toma como valor de referencia \SI{2000}{\ohm}.
+%    \item[$I_t$] es la intensidad de puesta a tierra del apoyo considerado (\si{\ampere}).
+%\end{description}

@@ -1,0 +1,45 @@
+\documentclass{MUXLaTeX} % Versión 1.0.1 - Pruebas Beta - Pascal 2024
+
+\begin{document}
+%%%%%%%%%%%%%%%% Elegir si / no (Minúsculas)
+\bajavision{no} % no disponible en versión 1.0.1
+\digital{no}
+\abstract{si}
+\indicetablas{si}
+\indicefiguras{si}
+
+%%%%%%%%%%%% PORTADA, ÍNDICE, RESUMEN
+\maquetacion
+{Cálculo y Diseño de Línea Aérea de 20 kV Simple Circuito Simplex para Evacuación de Planta Fotovoltaica de 6,5 MW}          % #1
+{Mario Carrión Sirvent}     % #2 → Autor/a
+{Dr. Jorge Moreno Mohíno\\Departamento de Ingeniería Eléctrica, Electrónica y Física Aplicada} % #3 → Tutor/a
+
+\pagenumbering{arabic}
+
+%%%%%%%%%%%% CAPÍTULOS
+\input{Capitulos/capitulo01.tex}
+\input{Capitulos/capitulo02.tex}
+\input{Capitulos/capitulo03.tex}
+\input{Capitulos/capitulo04.tex}
+\input{Capitulos/capitulo05.tex}
+\input{Capitulos/capitulo06.tex}
+\input{Capitulos/capitulo07.tex}
+%%%%%%%%%%%% BIBLIOGRAFÍA AUTOMÁTICA 
+
+\bibliografia
+
+%%%%%%%%%%%% ANEXOS
+\clearpage
+\chapter*{Anexo A. Cálculos con MATHCAD}
+\addcontentsline{toc}{chapter}{\textsf{\textbf{Anexo A. Cálculos con MATHCAD}}}
+\label{anexo:mathcad}
+\input{Anexos/mathcad}  
+
+\clearpage
+\chapter*{Anexo B. Cálculos con IMEDEXSA}
+\addcontentsline{toc}{chapter}{\textsf{\textbf{Anexo B. Cálculos con IMEDEXSA}}}
+\label{anexo:imedexsa}
+\input{Anexos/imedexsa} 
+
+
+\end{document}

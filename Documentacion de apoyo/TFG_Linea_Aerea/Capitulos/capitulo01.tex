@@ -1,0 +1,287 @@
+\chapter{Memoria descriptiva}
+\label{ch:md}
+\section{Objetivo}
+\label{sec:md-objetivo}
+El objetivo de este TFG (de ahora en adelante, proyecto) es calcular y dimensionar todos los elementos necesarios para el diseño de una línea aérea de \SI{20}{\kilo\volt} de configuración simple circuito simplex; para la evacuación de energía de una planta fotovoltaica de \SI{6.5}{\mega\watt} ubicada en la provincia de Alicante. 
+\section{Estado del arte}
+\label{sec:md-estadoArte}
+Debido a la rápida penetración de \ac{EERR} (en especial la generación fotovoltaica) en la \ac{REE} surge la necesidad de instalar nuevas infraestructuras que permitan la evacuación de la energía generada. En este aspecto, la \ac{LAAT} es la solución más extendida frente a otras posibilidades como podría ser una \ac{LSAT}.
+
+En la práctica el diseño de una \ac{LAAT} implica encontrar un balance entre criterios técnicos y económicos cumpliendo con la normativa vigente correspondiente. Los criterios técnicos se basan en el dimensionamiento eléctrico del conductor (garantizar la evacuación de potencia, mantener pérdidas dentro de márgenes admisibles, asegurar que las condiciones de funcionamiento normal no comprometen la vida útil del conductor y que las condiciones anormales hasta el disparo de las protecciones tampoco, etc.) y en el dimensionamiento mecánico de los apoyos (verificación de tensiones y flechas bajo distintas hipótesis de carga, asegurar el cumplimiento de las distancias reglamentarias al terreno, etc.). Los criterios económicos se basan en las condiciones contractuales del proyecto.
+
+Otro aspecto vital en este tipo de proyectos es la \ac{PAT}, ya que debe garantizar niveles seguros de tensión de paso y contacto para asegurar la seguridad de las personas.
+
+Este proyecto se enmarca en ese contexto: desarrolla el cálculo y diseño completo de una línea aérea de \SI{20}{\kilo\volt}, integrando el dimensionamiento eléctrico y mecánico, el diseño de apoyos y cimentaciones, la puesta a tierra y la documentación técnica habitual (planos, pliego de condiciones, presupuesto y estudio de seguridad y salud).
+\section{Normativa aplicable}
+\label{sec:md-normativa}
+Los cálculos y las soluciones adoptadas se basarán en la aplicación del \ac{RLAT}, \ac{UNE}, \ac{ITC} y demás disposiciones en vigor con el fin de garantizar la seguridad, calidad y el correcto funcionamiento del proyecto. El conjunto de normativas aplicables a este proyecto es el siguiente:
+\begin{itemize}
+  \item Real Decreto 1955/2000 \cite{RD1955_2000}, de 1 de diciembre, por el que se regulan las actividades de transporte, distribución, comercialización, suministro y procedimiento de autorización de instalaciones de energía eléctrica.
+  \item Real Decreto 337/2014 \cite{RD337_2014}, de 9 de mayo, por el que se aprueba el Reglamento sobre condiciones técnicas y garantías de seguridad en instalaciones eléctricas de alta tensión y sus Instrucciones Técnicas Complementarias ITC-RAT 01 a 23.
+  \item Real Decreto 223/2008 \cite{RD223_2008}, de 15 de febrero, por el que se aprueba el Reglamento sobre condiciones técnicas y garantías de seguridad en líneas eléctricas de alta tensión y sus Instrucciones Técnicas Complementarias ITC-LAT 01 a 09.
+  \item Recomendaciones UNESA.
+  \item Orden de 10 de marzo de 2000 \cite{OM_2000_03_10_MIERAT} por la que se modifican las Instrucciones Técnicas Complementarias MIE-RAT 01, MIE-RAT 02, MIE-RAT 06, MIE-RAT 14, MIE-RAT 15, MIE-RAT 16, MIE-RAT 17, MIE-RAT 18, MIE-RAT 19 del Reglamento sobre condiciones técnicas y garantías de seguridad en centrales eléctricas, subestaciones y centros de transformación.
+  \item Normalización Nacional. Normas \ac{UNE} y especificaciones técnicas de obligado cumplimiento según la \ac{ITC} ITC-LAT 02.
+  \item Ley 10/1996, de 18 de marzo, de expropiación forzosa y sanciones en materia de instalaciones eléctricas.
+  \item Real Decreto 1627/1997 \cite{RD1627_1997}, de 24 de octubre, por el que se establecen
+ disposiciones mínimas de seguridad y salud en las obras de
+ construcción.
+ \item Real Decreto 485/1997 \cite{RD485_1997}, de 14 de abril, sobre disposiciones mínimas en
+ materia de señalización de seguridad y salud en el trabajo.
+ \item Real Decreto 1215/1997 \cite{RD1215_1997}, de 18 de julio, por el que se establecen las
+ disposiciones mínimas de seguridad y salud para la utilización por
+ los trabajadores de los equipos de trabajo.
+ \item Real Decreto 773/1997 \cite{RD773_1997}, de 30 de mayo, sobre disposiciones
+ mínimas de seguridad y salud relativas a la utilización por los
+ trabajadores de equipos de protección individual.
+ \item Real Decreto 1432/2008 \cite{RD1432_2008}, de 29 de agosto, por el que se establecen
+ medidas para la protección de la avifauna con la colisión y la
+ electrocución en líneas eléctricas de alta tensión.
+ \item Ley 31/1995 \cite{Ley31_1995_PRL}, de 8 de noviembre, de Prevención de Riesgos
+ Laborales.
+ \item Condiciones impuestas por los Organismos Públicos afectados y
+ Ordenanzas Municipales.
+\end{itemize}
+\section{Descripción}
+\label{sec:md-descripcion}
+Este Trabajo Fin de Grado se ha estructurado siguiendo los apartados propios de un Proyecto Tipo de \ac{LAAT} con tensión nominal inferior a 36 kV, de manera que tanto el índice como la elaboración y el contenido de los distintos apartados se han basado en dicha estructura de referencia.
+
+El diseño de la línea se realiza con el programa IMEDEXSA (véase Anexo A pág. \pageref{anexo:imedexsa}), siguiendo las directrices y procedimientos establecidos en la propia aplicación \cite{IMEDEXSA16_ManualUsuario}. Paralelamente, en el programa MATHCAD (véase Anexo B pág. \pageref{anexo:mathcad}) se programan y ejecutan \cite{PTC_MathcadR8_Help} de forma independiente todos los cálculos necesarios para el diseño (empleando como apoyo las guías de aplicación de la normativa vigente correspondiente a un proyecto de \ac{LAAT} \cite{aplicacion_RLAT} \cite{RLAT_2025}), con el objetivo de comprobar que los resultados obtenidos con IMEDEXSA, tomados como referencia, coinciden con los resultados calculados en MATHCAD.
+
+La documentación del proyecto está compuesta por la presente memoria descriptiva, la memoria de cálculos, los planos de los distintos elementos que integran la instalación, el pliego de condiciones técnicas y el estudio de seguridad y salud.
+\section{Emplazamiento}
+\label{sec:md-emplazamiento}
+La línea se encuentra en la provincia de Alicante de la Comunidad Valenciana y discurre entre las localidades de Benidorm y L'Albir. En esta zona, la operadora de la red de distribución es \ac{i-DE}.
+La línea tiene una longitud total de \SI{4.038}{km} y cuenta con 23 apoyos.
+\subsection{Datos topográficos}
+\label{subsec:md-topografia}
+La tabla \ref{tab:datos-topograficos} recoge los datos relativos a la topografía del terreno por el que discurre la línea. Como se puede apreciar el terreno es de tipo normal, lo que significa que el terreno no es de roca ni muy resistente, pero tampoco es un terreno blando de fangos; en Alicante, la composición del terreno es principalmente arenas y gravas lo cual concuerda con la definición de terreno de tipo normal. La longitud de los vanos suele estar en torno a \SI{200}{\meter} salvo casos puntuales en los que por cuestión de espacio, distancias, flechas u esfuerzos mecánicos no era viable optar por esta distancia entre vanos.
+
+Por simplificar, en la tabla no se representa el tipo de terreno ni los cruzamientos, ya que toda la línea discurre por terreno de tipo normal y no existen cruzamientos.
+
+\begin{table}[H]
+\caption{Datos topográficos}
+\centering
+\label{tab:datos-topograficos}
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+\rowcolor[HTML]{EFEFEF} 
+\textbf{Nº} & \textbf{FUNCIÓN} & \textbf{\begin{tabular}[c]{@{}c@{}}COTA \\ ABSOLUTA \\ (\si{\meter})\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}VANO \\ ANTERIOR \\ (\si{\meter})\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}VANO \\ POSTERIOR \\ (\si{\meter})\end{tabular}} & \textbf{\begin{tabular}[c]{@{}c@{}}ÁNGULO \\ INTERIOR \\ (Cent.)\end{tabular}} \\ \hline
+1           & FL               & -4,7                                                                     & 0                                                                        & 240                                                                       & 0                                                                              \\ \hline
+2           & AL-SU            & -0,55                                                                    & 240                                                                      & 166,95                                                                    & 0                                                                              \\ \hline
+3           & AN-AM            & 3,14                                                                     & 166,95                                                                   & 241,05                                                                    & 176                                                                            \\ \hline
+4           & AL-SU            & 4,23                                                                     & 241,05                                                                   & 218                                                                       & 0                                                                              \\ \hline
+5           & AL-SU            & 3,6                                                                      & 218                                                                      & 240                                                                       & 0                                                                              \\ \hline
+6           & AL-AM            & 4,02                                                                     & 240                                                                      & 124                                                                       & 0                                                                              \\ \hline
+7           & AL-SU            & 4,19                                                                     & 124                                                                      & 235                                                                       & 0                                                                              \\ \hline
+8           & AL-SU            & -0,44                                                                    & 235                                                                      & 124                                                                       & 0                                                                              \\ \hline
+9           & AL-AM            & -1,34                                                                    & 124                                                                      & 127                                                                       & 0                                                                              \\ \hline
+10          & AL-SU            & -2,3                                                                     & 127                                                                      & 166                                                                       & 0                                                                              \\ \hline
+11          & AL-SU            & -3,71                                                                    & 166                                                                      & 169                                                                       & 0                                                                              \\ \hline
+12          & AL-SU            & -6,33                                                                    & 169                                                                      & 159                                                                       & 0                                                                              \\ \hline
+13          & AL-SU            & -7,72                                                                    & 159                                                                      & 159                                                                       & 0                                                                              \\ \hline
+14          & AL-SU            & -11                                                                      & 159                                                                      & 240                                                                       & 0                                                                              \\ \hline
+15          & AL-SU            & -15,79                                                                   & 240                                                                      & 144                                                                       & 0                                                                              \\ \hline
+16          & AL-AM            & -12,32                                                                   & 144                                                                      & 166                                                                       & 0                                                                              \\ \hline
+17          & AL-ANC           & -16,08                                                                   & 166                                                                      & 237                                                                       & 0                                                                              \\ \hline
+18          & AL-SU            & -12,07                                                                   & 237                                                                      & 213                                                                       & 0                                                                              \\ \hline
+19          & AL-SU            & -9,51                                                                    & 213                                                                      & 225                                                                       & 0                                                                              \\ \hline
+20          & AL-SU            & -8,2                                                                     & 225                                                                      & 151                                                                       & 0                                                                              \\ \hline
+21          & AL-SU            & -1,11                                                                    & 151                                                                      & 111,83                                                                    & 0                                                                              \\ \hline
+22          & AL-SU            & -1,55                                                                    & 111,83                                                                   & 100                                                                       & 0                                                                              \\ \hline
+23          & FL               & 0                                                                        & 100                                                                      & 0                                                                         & 0                                                                              \\ \hline
+\end{tabular}
+\end{table}
+
+\section{Datos de la línea}
+\label{sec:md-linea}
+La configuración de la línea es simple circuito simplex (un conductor por cada fase), el tendido se sustenta sobre apoyos metálicos de celosía y crucetas al tresbolillo .
+La tensión nominal de la línea es de 20 kV y, por tanto, pertenece a la 3ª categoría \(( \SI{1}{kV} < U_\text{n} \le \SI{30}{kV} ).\)
+
+La línea se encuentra en Zona A, dado que la mayor cota presente en la línea (\SI{363}{m}) es inferior a \SI{500}{m}. Como se verá más adelante, esto afectará a las sobrecargas e hipótesis consideradas en los cálculos mecánicos del conductor y de los apoyos.
+
+Dado que la línea se encuentra en Europa, la frecuencia considerada será de \SI{50}{Hz}. Como la finalidad de la línea es la evacuación de energía de una planta fotovoltaica de \SI{6.5}{MW} se considera un \ac{fdp} igual a la unidad. Por último, para la realización de los cálculos mecánicos se considerará una velocidad del viento de \SI{120}{km/h}.
+\clearpage
+    \subsection{Resumen}
+    \label{subsec:md-características}
+    \begin{itemize}
+  \item Tensión: \SI{20}{kV}.
+  \item Potencia: \SI{6.5}{MW}.
+  \item Frecuencia: \SI{50}{Hz}.
+  \item Longitud: \SI{4.038}{km}.
+  \item Categoría: 3ª.
+  \item Zona: A.
+  \item Velocidad del viento: \SI{120}{\kilo\meter\per\hour}.
+  \item Configuración: Simple Circuito-Simplex.
+  \item Número de fases: 3.
+  \item Conductores por fase: 1.
+  \item Número de apoyos: 23.
+  \item Número de vanos: 22.
+  \item Número de cantones: 6.
+\end{itemize}
+
+\clearpage
+\section{Características del conductor}
+\label{sec:md-conductor}
+Según la ITC-LAT-07 del RD 223/2008 los conductores de protección son obligatorios a partir de tensiones superiores a \SI{66}{kV}, dado que la tensión nominal de la línea (\SI{20}{kV}) es inferior a este valor, no es necesario instalar conductores de protección o cables de tierra. 
+
+Por tanto, la línea sólo contará con conductores de fase. El conductor seleccionado para el diseño es de tipo Aluminio-Acero, según la norma UNE-50182 presenta las siguientes características:
+\begin{itemize}
+  \item Denominación: LA-56 (47-ALI/8-ST1A).
+  \item Sección total: \SI{54.6}{\milli\meter\squared}.
+  \item Diámetro total: \SI{9.45}{mm}.
+  \item Número de hilos de aluminio: 6.
+  \item Número de hilos de acero: 1.
+  \item Carga de rotura: \SI{1672}{kgf}.
+  \item Resistencia eléctrica en C.C a \SI{20}{\celsius}: \SI{0.6129}{\ohm\per\kilo\metre}.
+  \item Peso: \SI{188.8}{kgf\per\kilo\metre}.
+  \item Coeficiente de dilatación térmica: \SI{1.91e-5}{\celsius}.
+  \item Módulo de elasticidad: \SI{8056}{kgf\per\milli\meter\squared}.
+  \item Densidad de corriente: \SI{3.897}{\ampere\per\milli\meter\squared}.
+  \item Tense máximo: \SI{560}{kgf}.
+  \item EDS: \SI{15}{\percent}.
+\end{itemize}
+\section{Apoyos}
+\label{sec:md-apoyos}
+La tipología de los 23 apoyos que componen la línea es la siguiente:
+\begin{itemize}
+  \item Apoyo \ac{FL}: 1 y 23.
+  \item Apoyo \ac{AL-AM}: 6, 9 y 16.
+  \item Apoyo \ac{AL-ANC}: 17.
+  \item Apoyo \ac{AL-SU}: el resto de apoyos.
+\end{itemize}
+\clearpage
+Todos los apoyos de la línea son apoyos metálicos de celosía con cruceta al tresbolillo. Con el fin de simplificar la valoración económica y dado que el programa IMEDEXSA ya dispone de una base de datos con sus propios apoyos, los apoyos empleados serán los proporcionados por el fabricante IMEDEXSA.
+
+\begin{table}[htbp]
+\caption{Características de los apoyos} %Título de la tabla
+\centering
+\label{tab:apoyos}
+\begin{tabular}{|c|c|c|c|c|cccc|}
+\hline
+\rowcolor[HTML]{EFEFEF} 
+\cellcolor[HTML]{EFEFEF}                              & \cellcolor[HTML]{EFEFEF}                                   & \cellcolor[HTML]{EFEFEF}                                        & \cellcolor[HTML]{EFEFEF}                                                                                         & \cellcolor[HTML]{EFEFEF}                                  & \multicolumn{4}{c|}{\cellcolor[HTML]{EFEFEF}\textbf{\begin{tabular}[c]{@{}c@{}}DIMENSIONES \\ (\si{\meter})\end{tabular}}}                                                                                                                              \\ \cline{6-9} 
+\rowcolor[HTML]{EFEFEF} 
+\multirow{-2}{*}{\cellcolor[HTML]{EFEFEF}\textbf{Nº}} & \multirow{-2}{*}{\cellcolor[HTML]{EFEFEF}\textbf{FUNCIÓN}} & \multirow{-2}{*}{\cellcolor[HTML]{EFEFEF}\textbf{DENOMINACIÓN}} & \multirow{-2}{*}{\cellcolor[HTML]{EFEFEF}\textbf{\begin{tabular}[c]{@{}c@{}}PESO \\ TOTAL (\si{\kilogram})\end{tabular}}} & \multirow{-2}{*}{\cellcolor[HTML]{EFEFEF}\textbf{ARMADO}} & \multicolumn{1}{c|}{\cellcolor[HTML]{EFEFEF}\textbf{b}} & \multicolumn{1}{c|}{\cellcolor[HTML]{EFEFEF}\textbf{a}} & \multicolumn{1}{c|}{\cellcolor[HTML]{EFEFEF}\textbf{c}} & \textbf{\begin{tabular}[c]{@{}c@{}}Altura \\ útil\end{tabular}} \\ \hline
+1                                                     & FL                                                         & C-2000                                                          & 1069                                                                                                             & S                                                         & \multicolumn{1}{c|}{1,2}                                & \multicolumn{1}{c|}{1,25}                               & \multicolumn{1}{c|}{1,25}                               & 17,07                                                           \\ \hline
+2                                                     & AL-SU                                                      & C-500                                                           & 684                                                                                                              & S                                                         & \multicolumn{1}{c|}{1,2}                                & \multicolumn{1}{c|}{1,25}                               & \multicolumn{1}{c|}{1,25}                               & 17,6                                                            \\ \hline
+3                                                     & AN-AM                                                      & C-1000                                                          & 762                                                                                                              & S                                                         & \multicolumn{1}{c|}{1,2}                                & \multicolumn{1}{c|}{1,25}                               & \multicolumn{1}{c|}{1,25}                               & 17,16                                                           \\ \hline
+4                                                     & AL-SU                                                      & C-500                                                           & 684                                                                                                              & S                                                         & \multicolumn{1}{c|}{1,2}                                & \multicolumn{1}{c|}{1,25}                               & \multicolumn{1}{c|}{1,25}                               & 17,6                                                            \\ \hline
+5                                                     & AL-SU                                                      & C-500                                                           & 684                                                                                                              & S                                                         & \multicolumn{1}{c|}{1,2}                                & \multicolumn{1}{c|}{1,25}                               & \multicolumn{1}{c|}{1,25}                               & 17,6                                                            \\ \hline
+6                                                     & AL-AM                                                      & C-500                                                           & 684                                                                                                              & S                                                         & \multicolumn{1}{c|}{1,2}                                & \multicolumn{1}{c|}{1,25}                               & \multicolumn{1}{c|}{1,25}                               & 17,6                                                            \\ \hline
+7                                                     & AL-SU                                                      & C-500                                                           & 769                                                                                                              & S                                                         & \multicolumn{1}{c|}{1,2}                                & \multicolumn{1}{c|}{1,25}                               & \multicolumn{1}{c|}{1,25}                               & 19,58                                                           \\ \hline
+8                                                     & AL-SU                                                      & C-500                                                           & 769                                                                                                              & S                                                         & \multicolumn{1}{c|}{1,2}                                & \multicolumn{1}{c|}{1,25}                               & \multicolumn{1}{c|}{1,25}                               & 19,58                                                           \\ \hline
+9                                                     & AL-AM                                                      & C-500                                                           & 410                                                                                                              & S                                                         & \multicolumn{1}{c|}{1,2}                                & \multicolumn{1}{c|}{1,25}                               & \multicolumn{1}{c|}{1,25}                               & 9,71                                                            \\ \hline
+10                                                    & AL-SU                                                      & C-500                                                           & 467                                                                                                              & S                                                         & \multicolumn{1}{c|}{1,2}                                & \multicolumn{1}{c|}{1,25}                               & \multicolumn{1}{c|}{1,25}                               & 11,67                                                           \\ \hline
+11                                                    & AL-SU                                                      & C-500                                                           & 526                                                                                                              & S                                                         & \multicolumn{1}{c|}{1,2}                                & \multicolumn{1}{c|}{1,25}                               & \multicolumn{1}{c|}{1,25}                               & 13,65                                                           \\ \hline
+12                                                    & AL-SU                                                      & C-500                                                           & 595                                                                                                              & S                                                         & \multicolumn{1}{c|}{1,2}                                & \multicolumn{1}{c|}{1,25}                               & \multicolumn{1}{c|}{1,25}                               & 15,44                                                           \\ \hline
+13                                                    & AL-SU                                                      & C-500                                                           & 684                                                                                                              & S                                                         & \multicolumn{1}{c|}{1,2}                                & \multicolumn{1}{c|}{1,25}                               & \multicolumn{1}{c|}{1,25}                               & 17,6                                                            \\ \hline
+14                                                    & AL-SU                                                      & C-500                                                           & 684                                                                                                              & S                                                         & \multicolumn{1}{c|}{1,2}                                & \multicolumn{1}{c|}{1,25}                               & \multicolumn{1}{c|}{1,25}                               & 17,6                                                            \\ \hline
+15                                                    & AL-SU                                                      & C-500                                                           & 684                                                                                                              & S                                                         & \multicolumn{1}{c|}{1,2}                                & \multicolumn{1}{c|}{1,25}                               & \multicolumn{1}{c|}{1,25}                               & 17,6                                                            \\ \hline
+16                                                    & AL-AM                                                      & C-500                                                           & 410                                                                                                              & S                                                         & \multicolumn{1}{c|}{1,2}                                & \multicolumn{1}{c|}{1,25}                               & \multicolumn{1}{c|}{1,25}                               & 9,71                                                            \\ \hline
+17                                                    & AL-ANC                                                     & C-500                                                           & 684                                                                                                              & S                                                         & \multicolumn{1}{c|}{1,2}                                & \multicolumn{1}{c|}{1,25}                               & \multicolumn{1}{c|}{1,25}                               & 17,6                                                            \\ \hline
+18                                                    & AL-SU                                                      & C-500                                                           & 769                                                                                                              & S                                                         & \multicolumn{1}{c|}{1,2}                                & \multicolumn{1}{c|}{1,25}                               & \multicolumn{1}{c|}{1,25}                               & 19,58                                                           \\ \hline
+19                                                    & AL-SU                                                      & C-500                                                           & 595                                                                                                              & S                                                         & \multicolumn{1}{c|}{1,2}                                & \multicolumn{1}{c|}{1,25}                               & \multicolumn{1}{c|}{1,25}                               & 15,44                                                           \\ \hline
+20                                                    & AL-SU                                                      & C-500                                                           & 595                                                                                                              & S                                                         & \multicolumn{1}{c|}{1,2}                                & \multicolumn{1}{c|}{1,25}                               & \multicolumn{1}{c|}{1,25}                               & 15,44                                                           \\ \hline
+21                                                    & AL-SU                                                      & C-500                                                           & 467                                                                                                              & S                                                         & \multicolumn{1}{c|}{1,2}                                & \multicolumn{1}{c|}{1,25}                               & \multicolumn{1}{c|}{1,25}                               & 11,67                                                           \\ \hline
+22                                                    & AL-SU                                                      & C-500                                                           & 526                                                                                                              & S                                                         & \multicolumn{1}{c|}{1,2}                                & \multicolumn{1}{c|}{1,25}                               & \multicolumn{1}{c|}{1,25}                               & 13,65                                                           \\ \hline
+23                                                    & FL                                                         & C-2000                                                          & 844                                                                                                              & S                                                         & \multicolumn{1}{c|}{1,2}                                & \multicolumn{1}{c|}{1,25}                               & \multicolumn{1}{c|}{1,25}                               & 13,12                                                           \\ \hline
+\end{tabular}
+\end{table}
+\figura{Fig/armado_s}{0.3}{Apoyo con armado tipo S}
+
+\section{Cimentaciones}
+\label{sec:md-cimentaciones}
+La principal función de las cimentaciones es proporcionar estabilidad a los apoyos. En este proyecto se usan cimentanciones de hormigón armado en la base de los apoyos de tipo "monobloque", es decir, un solo bloque macizo de hormigón enterrado en el suelo es el que se encarga de sustentar el apoyo.
+
+\begin{table}[htbp]
+\caption{Características de los cimentaciones de los apoyos} 
+\centering
+\label{tab:cimentaciones}
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline
+\rowcolor[HTML]{EFEFEF} 
+\textbf{Nº} & \textbf{TORRE} & \textbf{TIPO} & \textbf{a (\si{\meter})} & \textbf{h (\si{\meter})} & \textbf{Vexc (\si{\cubic\meter})} & \textbf{Vhorm (\si{\cubic\meter})} \\ \hline
+1           & FL             & C-2000        & 1,38           & 2,13           & 4,06               & 4,44                \\ \hline
+2           & AL-SU          & C-500         & 1,31           & 1,6            & 2,75               & 3,09                \\ \hline
+3           & AN-AM          & C-1000        & 1,31           & 1,84           & 3,16               & 3,5                 \\ \hline
+4           & AL-SU          & C-500         & 1,31           & 1,6            & 2,75               & 3,09                \\ \hline
+5           & AL-SU          & C-500         & 1,31           & 1,6            & 2,75               & 3,09                \\ \hline
+6           & AL-AM          & C-500         & 1,31           & 1,6            & 2,75               & 3,09                \\ \hline
+7           & AL-SU          & C-500         & 1,39           & 1,62           & 3,13               & 3,52                \\ \hline
+8           & AL-SU          & C-500         & 1,39           & 1,62           & 3,13               & 3,52                \\ \hline
+9           & AL-AM          & C-500         & 1,01           & 1,49           & 1,52               & 1,72                \\ \hline
+10          & AL-SU          & C-500         & 1,08           & 1,53           & 1,78               & 2,02                \\ \hline
+11          & AL-SU          & C-500         & 1,16           & 1,55           & 2,09               & 2,35                \\ \hline
+12          & AL-SU          & C-500         & 1,22           & 1,58           & 2,35               & 2,65                \\ \hline
+13          & AL-SU          & C-500         & 1,31           & 1,6            & 2,75               & 3,09                \\ \hline
+14          & AL-SU          & C-500         & 1,31           & 1,6            & 2,75               & 3,09                \\ \hline
+15          & AL-SU          & C-500         & 1,31           & 1,6            & 2,75               & 3,09                \\ \hline
+16          & AL-AM          & C-500         & 1,01           & 1,49           & 1,52               & 1,72                \\ \hline
+17          & AL-ANC         & C-500         & 1,31           & 1,6            & 2,75               & 3,09                \\ \hline
+18          & AL-SU          & C-500         & 1,39           & 1,62           & 3,13               & 3,52                \\ \hline
+19          & AL-SU          & C-500         & 1,22           & 1,58           & 2,35               & 2,65                \\ \hline
+20          & AL-SU          & C-500         & 1,22           & 1,58           & 2,35               & 2,65                \\ \hline
+21          & AL-SU          & C-500         & 1,08           & 1,53           & 1,78               & 2,02                \\ \hline
+22          & AL-SU          & C-500         & 1,16           & 1,55           & 2,09               & 2,35                \\ \hline
+23          & FL             & C-2000        & 1,22           & 2,08           & 3,1                & 3,39                \\ \hline
+\end{tabular}
+\end{table}
+\figura{Fig/monobloque}{0.4}{Cimentación monobloque}
+
+\section{Puestas a tierra}
+\label{sec:md-pat}
+La \ac{PAT} de los apoyos se realiza mediante una conexión independiente y específica para cada apoyo, en este proyecto se considerará que el neutro de la subestación está puesto a tierra a través de una impedancia. El conductor de conexión a tierra (no confundir con el conductor de protección o  cable de tierra que sería el supuesto conductor se encargaría de apantallar la línea si fuera requisito obligatorio) ha de cumplir las características especificadas en en el apartado 7.2.2 de la ITC-LAT-07.
+
+En el Apartado 7.3.2.1 Electrodos de Tierra de la ITC-LAT-07 se especifica que los electrodos que estén directamente en contacto con el suelo deben ser capaces de resistir la corrosión y esfuerzos mecánicos durante su instalación y así como, su servicio normal.
+
+El diseño de puestas a tierra de los apoyos se realiza conforme al apartado \textit{7.3.4.2 Clasificación de los apoyos según su ubicación} de la ITC-LAT-07, donde se diferencia entre apoyos no frecuentados y apoyos frecuentados. En los apoyos frecuentados el diseño del sistema de puesta a tierra es más restrictivo que en los apoyos no frecuentados, con el objetivo de garantizar la seguridad de las personas.
+
+Los apoyos no frecuentados serán aquellos apoyos situados en un lugar que no es de acceso público o donde el acceso de personas es poco frecuente. 
+
+Los apoyos frecuentados, son aquellos apoyos situados en un lugar de acceso público y donde la presencia de personas ajenas a la instalación eléctrica es frecuente, lugares donde se espera que las personas estén un tiempo relativamente largo, algunas horas al día durante varias semanas, o por un tiempo corto pero muchas veces al día, por ejemplo, zonas residenciales o campos de juego. Lugares como campo abierto, bosques, campos de labranza, etc., no están incluidos.
+
+Los apoyos frecuentados a su vez se clasifican en:
+\begin{itemize}
+    \item \textbf{Apoyos frecuentados con calzado:} Se considera con la resistencia adicional del calzado, y la resistencia a tierra en el punto de contacto, normalmente se estima el valor de la resistencia del calzado alrededor de los \SI{1000}{\ohm}. Estos apoyos serán los que razonadamente la gente se encuentre calzada; pavimentos de carreteras públicas, parkings, etc. 
+    \item \textbf{Apoyos frecuentados sin calzado:} Solo se considera como resistencia adicional la resistencia a tierra en el punto de contacto. Estos apoyos serán lugares como jardines, piscinas, camping, etc.
+\end{itemize}
+
+Finalmente, para la realización del diseño de la \ac{PAT} se ha tomado como referencia el proyecto tipo para líneas de tensión nominal igual o inferior a \SI{20}{\kilo\volt} de \ac{i-DE} \cite{IDE_MT22335_2014}, ya que es la operadora de la red de distribución en Alicante.
+
+\section{Cadenas de aisladores}
+\label{sec:md-aisladores}
+Las cadenas de aisladores se conforman principalmente por aisladores (elemento de protección) y herrajes (piezas que permitan conformar la cadena). El tipo de cadena (amarre o suspensión) dependerá de la tipología de cada apoyo.
+\subsection{Aisladores}
+\label{subsec:md-aisladores}
+Los aisladores deben cumplir las restricciones de tensión especificadas en la ITC-LAT-07 tanto para el impulso tipo rayo como para frecuencia industrial.
+
+El aislador seleccionado para este proyecto es el siguiente:
+\figura{Fig/aislador}{0.5}{Aislador E-70P-127}
+\begin{itemize}
+  \item Fabricante: \ac{LGI} \cite{LaGranja_Catalogo_2019}.
+  \item Modelo: E-70P-127.
+  \item Material: Vidrio con revestimiento \ac{RTV}.
+  \item Paso: \SI{127}{\milli\meter}.
+  \item Diámetro: \SI{255}{\milli\meter}.
+  \item Líneas de fuga: \SI{390}{\milli\meter}.
+  \item Peso: \SI{4.6}{\kilogram}.
+  \item Carga de rotura: \SI{70}{kgf}.
+  \item Número de elementos por cadena: 3.
+  \item Tensión soportada a frecuencia industrial en seco: \SI{80}{\kilo\volt}.
+  \item Tensión soportada a frecuencia industrial en bajo lluvia: \SI{45}{\kilo\volt}.
+  \item Tensión soportada a impulsos tipo rayo: \SI{110}{\kilo\volt}.
+  \item Longitud de la cadena: \SI{0.51}{\meter}.
+\end{itemize}
+\subsection{Herrajes}
+\label{subsec:aisladores}
+Los herrajes son necesarios para la protección eléctrica de los aisladores, la fijación de estos a los apoyos y conductores.
+
+Los herrajes deben tener un coeficiente de seguridad mecánica no inferior a 3 respecto su carga mínima de rotura, reducible a 2,5 siempre y cuando se compruebe sistemáticamente mediante ensayos la carga mínima de rotura.
+\section{Numeración y avisos de peligro}
+\label{sec:md-numeracion}
+Los apoyos deben señalizarse adecuadamente y se ha de indicar la denominación, el año de fabricación, el fabricante, la función y el número de orden correspondiente.
+
+Además, se ha de señalizar el riesgo de electrocución mediante la señal correspondiente según la normativa (véase Figura \ref{fig:Señalización de riesgo eléctrico}). Esta debe estar colocada a una altura visible y legible desde el suelo a una distancia mínima de \SI{2}{\meter}.
+
+\figura{Fig/riesgo_electrico}{0.2}{Señalización de riesgo eléctrico}

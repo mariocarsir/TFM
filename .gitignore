@@ -1,0 +1,40 @@
+# Artefactos de compilación LaTeX
+*.aux
+*.log
+*.out
+*.toc
+*.lof
+*.lot
+*.bbl
+*.bcf
+*.blg
+*.run.xml
+*.synctex.gz
+*.fdb_latexmk
+*.fls
+*.nav
+*.snm
+*.vrb
+*.acn
+*.acr
+*.alg
+*.glg
+*.glo
+*.gls
+*.ist
+*.idx
+*.ilg
+*.ind
+
+# Sistema operativo
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# Editor
+.vscode/
+*.swp
+
+# Rutas demasiado largas para Git en Windows (material de apoyo de otra
+# asignatura, no es contenido del TFM; los archivos siguen en disco)
+Documentacion de apoyo/Presentaciones y apuntes/M6 Autoconsumo/Ejercicios y Ejemplos/Configuraciones/
