@@ -93,11 +93,32 @@ descripción, cálculos, conclusiones, referencias) → anexos. Límite: 150 pá
 9.1. Huella de carbono y emisiones evitadas
 9.2. Fin de vida y reciclaje de módulos y baterías **[+]**
 
-## 10. Planificación temporal **[+ capítulo nuevo]**
+## 10. Pliego de condiciones técnicas **[+ A confirmar con tutor]**
+
+*(Normativa ERMA: "No suele ser parte de un TFM, pero en instalaciones y proyectos es
+imprescindible indicar especificaciones técnicas, calidades y garantías de elementos
+principales". Puede eliminarse si el tutor considera que no aplica.)*
+
+10.1. Especificaciones de los materiales y componentes del proyecto
+10.2. Calidades mínimas según normas aplicables
+10.3. Pruebas y ensayos requeridos
+10.4. Reglamentación y normativa específica
+10.5. Aspectos del contrato: garantías de suministros y funcionamiento
+
+## 11. Estudio de seguridad y salud **[+ A confirmar con tutor]**
+
+*(Normativa ERMA: "Apartado típico de TFM de proyecto/instalación". Puede eliminarse si el tutor
+considera que el TFM se queda en diseño y dimensionado sin entrar en detalle de montaje/obra.)*
+
+11.1. Identificación de riesgos en fase de diseño y montaje
+11.2. Medidas preventivas y de protección
+11.3. Plan de seguridad básico
+
+## 12. Planificación temporal **[+ capítulo nuevo]**
 
 *(Puede degradarse a sección de otro capítulo si el volumen no lo justifica.)*
 
-## 11. Conclusiones y líneas futuras
+## 13. Conclusiones y líneas futuras
 
 11.1. Conclusiones
 11.2. Líneas futuras **[+]**
@@ -125,14 +146,14 @@ genérica debe quedar cubierta en algún punto del documento:
 
 | Categoría genérica ERMA | Dónde se cubre en este índice |
 |---|---|
-| Introducción (objetivo, alcance, justificación, emplazamiento, antecedentes, normas) | Cap. 1, con las subsecciones 1.1-1.6 añadidas arriba |
+| Introducción (objetivo, alcance, justificación, emplazamiento, antecedentes, normas) | Cap. 1, con las subsecciones 1.1-1.6 (emplazamiento/ODS/metodología) |
 | Requisitos y datos de partida | Cap. 2 (marco normativo) + Cap. 3 (emplazamiento, consumo, recurso solar, restricciones) |
-| Metodología y cálculos (hipótesis, procedimientos, herramientas) | Cap. 5-8, con PVsyst y Excel como herramientas de cálculo documentadas en el CLAUDE.md |
+| Metodología y cálculos (hipótesis, procedimientos, herramientas) | Cap. 5-9, con PVsyst y Excel como herramientas de cálculo documentadas en el CLAUDE.md |
 | Presentación y análisis de resultados | Secciones de resultados de los caps. 6, 7, 8 y 9 |
-| Planificación (si aplica) | Cap. 10 (puede degradarse a sección si el volumen no lo justifica) |
-| Pliego de condiciones técnicas | **No cubierto explícitamente.** La guía dice que "no suele ser parte de un TFM como tal, pero en proyectos e instalaciones es imprescindible indicar especificaciones técnicas, calidades y garantías de elementos principales". El Anexo B (fichas técnicas) cubre parte de esto, pero no como pliego formal — **pendiente de confirmar con el tutor si se requiere un apartado propio.** |
-| Estudio de seguridad y salud | **No cubierto.** La guía lo lista como "otro apartado" típico de TFM de proyecto/instalación — **pendiente de confirmar con el tutor si aplica** (relevante si el TFM entra en detalle de montaje/obra del campo FV, no tanto si se queda en diseño y dimensionado). |
-| Conclusiones | Cap. 11 — debe seguir las reglas de la guía: correspondencia 1:1 con alcances/resultados relevantes, sin elementos nuevos ni gráficas/tablas, no es un resumen, redacción clara y rigurosa |
+| Pliego de condiciones técnicas | Cap. 10 — **añadido como recordatorio**; **pendiente de confirmar si aplica** |
+| Estudio de seguridad y salud | Cap. 11 — **añadido como recordatorio**; **pendiente de confirmar si aplica** |
+| Planificación (si aplica) | Cap. 12 (puede degradarse a sección si el volumen no lo justifica) |
+| Conclusiones | Cap. 13 — debe seguir las reglas de la guía: correspondencia 1:1 con alcances/resultados relevantes, sin elementos nuevos ni gráficas/tablas, no es un resumen, redacción clara y rigurosa |
 | Referencias | Capítulo "Referencias" (IEEEtran, compatible con el formato "número entre corchetes" que acepta la guía) |
 | Anexos | Anexos A-E |
 
@@ -145,5 +166,7 @@ genérica debe quedar cubierta en algún punto del documento:
 | Cap. 6 desdoblado y ampliado | El preliminar cerraba dimensionado y producción en 3 secciones; se añade el rigor de simulación (pérdidas, PR, P50/P90) que ambos ejemplos documentan. |
 | Cap. 3 ampliado | Se incorporan restricciones estructurales (viento, cubierta), elección de BBDD meteorológica y datos económicos de partida, todo tomado de Arcas. |
 | Cap. 8 ampliado | Se añaden mediciones, incentivos fiscales, escenarios de precio, LCOE y sensibilidad (Barrios + Arcas). |
-| Nuevos caps. 10 y 11.2 | Planificación temporal y líneas futuras, ambas en Barrios. |
+| Nuevos caps. 1.2, 1.5 (emplazamiento/ODS) | Exigencia normativa ERMA: localización formal con referencia catastral/UTM y justificación con Objetivos de Desarrollo Sostenible. |
+| Nuevos caps. 10-11 (condiciones técnicas y seguridad) | Añadidos como recordatorio según la guía ERMA; **pendientes de confirmar con el tutor si aplican.** |
+| Caps. 12 y 13 (antes 10 y 11) | Planificación temporal y conclusiones, desplazadas en numeración por la adición de los dos anteriores. |
 | Sección 3.2 (criticidad del CPD) | Aportación propia: ningún ejemplo trata una carga crítica 24/7; es lo que diferencia este TFM y condiciona el dimensionado de baterías. |
