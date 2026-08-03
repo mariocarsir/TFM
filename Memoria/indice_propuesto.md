@@ -17,6 +17,7 @@ descripción, cálculos, conclusiones, referencias) → anexos. Límite: 150 pá
 - Portada de firmas
 - Agradecimientos
 - Resumen + palabras clave
+- Códigos UNESCO **[+]**
 - Abstract + keywords
 - Índice general
 - Índice de figuras
@@ -27,9 +28,11 @@ descripción, cálculos, conclusiones, referencias) → anexos. Límite: 150 pá
 ## 1. Introducción
 
 1.1. Contexto y motivación
-1.2. Objetivos del proyecto
-1.3. Alcance del trabajo
-1.4. Metodología **[+]**
+1.2. Justificación: actualidad del tema y Objetivo de Desarrollo Sostenible (ODS) al que contribuye **[+]**
+1.3. Objetivos del proyecto
+1.4. Alcance del trabajo
+1.5. Emplazamiento: ubicación del CPD (dirección/referencia catastral, coordenadas UTM) **[+]**
+1.6. Metodología **[+]**
 
 ## 2. Estado del arte y marco normativo
 
@@ -110,6 +113,28 @@ descripción, cálculos, conclusiones, referencias) → anexos. Límite: 150 pá
 - Anexo E. Modelo de gestión del almacenamiento **[+]**
 
 ---
+
+## Correspondencia con la estructura genérica ERMA **[+]**
+
+La normativa ERMA (`Documentacion de apoyo/GUIA Elaboracion TFM ERMA20.pdf`, pp. 5-19) propone
+un índice genérico de ejemplo (Introducción → Requisitos y datos de partida → Metodología y
+cálculos → Presentación y análisis de resultados → Otros apartados → Conclusiones →
+Referencias → Anexos). Este TFM no repite esos títulos literales — organiza el contenido en
+capítulos temáticos propios, como hacen los dos TFM de referencia — pero cada categoría
+genérica debe quedar cubierta en algún punto del documento:
+
+| Categoría genérica ERMA | Dónde se cubre en este índice |
+|---|---|
+| Introducción (objetivo, alcance, justificación, emplazamiento, antecedentes, normas) | Cap. 1, con las subsecciones 1.1-1.6 añadidas arriba |
+| Requisitos y datos de partida | Cap. 2 (marco normativo) + Cap. 3 (emplazamiento, consumo, recurso solar, restricciones) |
+| Metodología y cálculos (hipótesis, procedimientos, herramientas) | Cap. 5-8, con PVsyst y Excel como herramientas de cálculo documentadas en el CLAUDE.md |
+| Presentación y análisis de resultados | Secciones de resultados de los caps. 6, 7, 8 y 9 |
+| Planificación (si aplica) | Cap. 10 (puede degradarse a sección si el volumen no lo justifica) |
+| Pliego de condiciones técnicas | **No cubierto explícitamente.** La guía dice que "no suele ser parte de un TFM como tal, pero en proyectos e instalaciones es imprescindible indicar especificaciones técnicas, calidades y garantías de elementos principales". El Anexo B (fichas técnicas) cubre parte de esto, pero no como pliego formal — **pendiente de confirmar con el tutor si se requiere un apartado propio.** |
+| Estudio de seguridad y salud | **No cubierto.** La guía lo lista como "otro apartado" típico de TFM de proyecto/instalación — **pendiente de confirmar con el tutor si aplica** (relevante si el TFM entra en detalle de montaje/obra del campo FV, no tanto si se queda en diseño y dimensionado). |
+| Conclusiones | Cap. 11 — debe seguir las reglas de la guía: correspondencia 1:1 con alcances/resultados relevantes, sin elementos nuevos ni gráficas/tablas, no es un resumen, redacción clara y rigurosa |
+| Referencias | Capítulo "Referencias" (IEEEtran, compatible con el formato "número entre corchetes" que acepta la guía) |
+| Anexos | Anexos A-E |
 
 ## Cambios respecto al índice preliminar
 
