@@ -5,7 +5,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%% <- COMIENZO C. GENERALES
 
-\LoadClass[a4paper, 12pt, oneside]{book}
+\LoadClass[a4paper, 11pt, oneside]{book}
 \usepackage{acronym}
 \usepackage{multirow}
 \usepackage[table,xcdraw]{xcolor}

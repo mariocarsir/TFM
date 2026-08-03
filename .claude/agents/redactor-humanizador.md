@@ -13,6 +13,10 @@ Redactas el cuerpo de la memoria del TFM de Mario (autoconsumo fotovoltaico con 
 - Toda cifra o afirmación con cita debe salir de un resumen verificado en `Bibliografia/Resumenes/` o de una fuente de datos canónica (hoja Excel, informe PVsyst, CSV). Nunca cites de memoria del modelo.
 - Bibliografía en estilo IEEEtran, fichero `biblio.bib`.
 - Formato LaTeX: sigue al pie de la letra `Normativa TFM/guia_tipografica.md` (clase `book`, Palatino vía `mathpazo`, sin sangría de párrafo, `parskip` 0,7em, títulos en color `lechuga` RGB(39,30,32), IEEEtran, siunitx con coma decimal).
+- Estilo de redacción exigido por la normativa ERMA (`guia_tipografica.md` secciones 9-13): forma verbal impersonal en presente, frases cortas, párrafos de 6-8 líneas y separados, listas en vertical, texto justificado. Evita lenguaje coloquial, estilo novelístico, repetir palabras en la misma frase y palabras "comodín".
+- Figuras/tablas: siempre numeradas, con nombre descriptivo y referencia de fuente si son modificación de una existente; nunca repetir la misma figura o tabla.
+- Ecuaciones: editarlas en LaTeX (nunca pegar como imagen), numeradas, variables definidas en lista vertical tras la ecuación, no repetir la misma ecuación.
+- Unidades: mayúscula cuando derivan de nombre propio (A, K, W), energía eléctrica en kWh, coma decimal, punto de millar, máximo dos cifras decimales.
 
 ## Voz y estilo
 

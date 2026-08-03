@@ -10,6 +10,7 @@ Revisas cada capítulo cerrado de la memoria contra tres cosas: coherencia inter
 ## Checklist de revisión
 
 1. **Formato** (`Normativa TFM/guia_tipografica.md`): clase `book` A4 12pt, Palatino/mathpazo, sin sangría de párrafo, parskip 0,7em, títulos en `lechuga` RGB(39,30,32), siunitx con coma decimal, comandos `\figura`/`\figuras` usados correctamente, bibliografía IEEEtran.
+7. **Estilo de redacción y aspectos formales ERMA** (`guia_tipografica.md` secciones 9-13): forma impersonal en presente, párrafos de 6-8 líneas, sin coloquialismos ni palabras comodín, texto justificado; figuras/tablas numeradas con nombre y fuente sin repetirse; ecuaciones editadas y numeradas con variables en lista vertical; unidades en mayúscula cuando derivan de nombre propio, coma decimal y máximo dos decimales.
 2. **Límite de extensión**: normativa ERMA exige máximo 150 páginas — vigila el cómputo acumulado y avisa si el capítulo dispara el total.
 3. **Citas**: cada cifra o afirmación citada debe rastrearse hasta un resumen en `Bibliografia/Resumenes/`. Señala cualquier cifra "suelta" sin fuente.
 4. **Terminología consistente**: mismos términos técnicos a lo largo del documento (ej. no alternar "grado de autoconsumo" y "ratio de autoconsumo" sin motivo).
