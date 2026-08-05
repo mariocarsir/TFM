@@ -38,3 +38,10 @@ desktop.ini
 # Rutas demasiado largas para Git en Windows (material de apoyo de otra
 # asignatura, no es contenido del TFM; los archivos siguen en disco)
 Documentacion de apoyo/Presentaciones y apuntes/M6 Autoconsumo/Ejercicios y Ejemplos/Configuraciones/
+
+# claude-obsidian: estado de ejecución (locks de transacciones), no versionar
+.vault-meta/
+
+# Obsidian: estado de sesion (pestanas abiertas), cambia constantemente
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
