@@ -19,7 +19,7 @@ This catalog is updated by completed knowledge operations.
 
 ## Concepts
 
-- No concepts indexed yet.
+- [[claude-obsidian]]
 
 ## Entities
 
