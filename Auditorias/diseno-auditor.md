@@ -63,6 +63,20 @@ el aislamiento de contexto aporta y no cuesta nada.
 Efecto secundario buscado: crear la skill en `.claude/skills/` deja sentado el directorio
 correcto para skills de proyecto, que hoy no se está usando.
 
+### 4.1 No se crea un agente especialista en Claude Code
+
+Se evaluó crear un agente que enseñara al auditor "la manera de pensar en Claude Code". Se
+descarta: el agente `claude-code-guide` ya existe y cubre exactamente esa capacidad
+(funcionamiento de Claude Code, SDK, API, con `WebFetch` y `WebSearch` sobre la
+documentación oficial). Crearlo sería incumplir la regla que la Fase 0 impone al resto del
+proceso.
+
+Lo que sí se establece: **el auditor consulta a `claude-code-guide` antes de proponer
+cualquier mecanismo de Claude Code cuya existencia o sintaxis no pueda verificar.** El
+conocimiento entrenado del modelo envejece; la documentación oficial no. Esta consulta es
+obligatoria cuando la propuesta implique un hook, un flag de CLI, una clave de
+`settings.json` o una opción de frontmatter.
+
 ## 5. Invocación
 
 - `/auditor` — barrido completo de los cuatro ejes.
@@ -113,18 +127,49 @@ Devuelve hallazgos, no volcados de ficheros.
 
 Todo hallazgo debe nacer de uno de estos cuatro ejes, y de ninguno más:
 
-1. **Doctrina vs. realidad.** Para cada regla de `CLAUDE.md` y cada agente: ¿se usa?,
-   ¿apunta a algo que existe?
+1. **Doctrina vs. realidad.** Para cada regla de `CLAUDE.md` y cada agente: ¿se usa?, ¿apunta
+   a algo que existe? Incluye dos comprobaciones adicionales tomadas de las buenas prácticas
+   oficiales:
+   - **Prueba de supresión.** Para cada línea de `CLAUDE.md`: *¿provocaría errores si la
+     elimino?* Si no, sobra. Un `CLAUDE.md` inflado hace que se ignoren las reglas que sí
+     importan, de modo que **añadir contenido a `CLAUDE.md` es un coste, no una mejora
+     gratuita.**
+   - **Ubicación correcta.** `CLAUDE.md` se carga en cada sesión: solo debe contener lo que
+     aplica siempre. El conocimiento de dominio y los flujos ocasionales pertenecen a skills,
+     que se cargan bajo demanda. Un hallazgo válido es "esto está en el sitio equivocado".
 2. **Orden del repositorio.** Duplicados, anidamientos, nomenclatura, qué se versiona y qué
    no, ficheros sueltos en la raíz.
-3. **Repetición → automatización.** Patrones que se repiten entre sesiones y el mecanismo
-   que los elimina: hook, skill o script.
+3. **Repetición → automatización.** Patrones que se repiten entre sesiones y el mecanismo que
+   los elimina. El catálogo de mecanismos admisibles es el de Claude Code, y elegir el
+   correcto forma parte del hallazgo:
+
+   | Mecanismo | Cuándo es la respuesta correcta |
+   | --- | --- |
+   | **Hook** | La acción debe ocurrir **siempre, sin excepción**. Es determinista. |
+   | **Skill** | Flujo de trabajo o conocimiento reutilizable que solo aplica a veces. |
+   | **Subagente** | Tarea que consume mucho contexto o requiere criterio aislado. |
+   | **Script / `claude -p`** | Proceso por lotes o no interactivo. |
+   | **Regla en `CLAUDE.md`** | Último recurso: es **consultiva**, no garantiza nada. |
+
+   De ahí se deriva la regla operativa más importante de este eje: **si una regla de
+   `CLAUDE.md` se incumple de forma recurrente, la solución no es redactarla con más énfasis,
+   sino convertirla en hook.** Reescribir la regla trata el síntoma; el hook trata la causa.
 4. **Solape y huecos.** Agentes redundantes entre sí, agentes nunca invocados, y capacidades
    que ningún recurso cubre.
 
 Evidencia admisible para **generar** hallazgos, en orden de prioridad: la conversación en
 curso, el estado del disco y el historial de git. No se admiten impresiones sin respaldo
 verificable.
+
+Dentro de la conversación en curso, el auditor tiene además tres señales observables que el
+disco no muestra, y que son antipatrones documentados de Claude Code:
+
+- **Sesión de todo incluido:** tareas no relacionadas mezcladas en un mismo contexto.
+- **Corrección repetida:** el mismo punto corregido más de dos veces, señal de que el
+  contexto está contaminado y de que faltaba una instrucción inicial mejor.
+- **Exploración infinita:** investigaciones sin acotar que llenan el contexto.
+
+Son legítimos como hallazgos del eje 3, porque cada uno tiene un remedio estructural.
 
 El registro de auditorías previas queda expresamente fuera de esta lista: no genera
 hallazgos, solo filtra los rechazados y anota la antigüedad de los reincidentes (ver
@@ -214,16 +259,55 @@ es información, y no guardarla garantiza repetir la conversación.
 - El auditor puede crear hooks, skills y scripts, y puede reescribir agentes y `CLAUDE.md`,
   siempre bajo las condiciones anteriores.
 
+### 9.1 Evidencia, no afirmación
+
+Aplicar un cambio no es haberlo verificado. Por cada hallazgo aplicado, el auditor debe
+mostrar **evidencia legible**: el comando ejecutado y su salida, o el fichero resultante.
+Nunca basta con declarar que quedó hecho.
+
+Cada tipo de cambio tiene su verificación:
+
+| Cambio aplicado | Evidencia exigida |
+| --- | --- |
+| Crear o mover una skill | La skill aparece disponible en sesión |
+| Crear un hook | El hook figura en `/hooks` y se dispara una vez |
+| Reorganizar ficheros | `git status` limpio y listado del destino |
+| Editar `CLAUDE.md` o un agente | Diff aplicado, mostrado antes y después |
+
+Esto es la regla 2 de `CLAUDE.md` ("ninguna edición se cierra sin verificar") aplicada al
+propio auditor. Un auditor que exige rigor y no se lo aplica pierde toda autoridad.
+
 ## 10. Ficheros que crea esta implementación
 
 | Ruta | Contenido |
 | --- | --- |
-| `.claude/skills/auditor/SKILL.md` | La skill: frontmatter con `name` y `description`, y las cinco fases como instrucciones ejecutables |
+| `.claude/skills/auditor/SKILL.md` | La skill: frontmatter y las cinco fases como instrucciones ejecutables |
 | `Auditorias/registro.md` | Tabla vacía con cabecera y leyenda de estados |
 | `Auditorias/diseno-auditor.md` | Este documento |
 
 `Auditorias/` se añade al mapa de carpetas de `CLAUDE.md`, y el auditor se añade a la tabla
-de recursos con su criterio de invocación.
+de recursos con su criterio de invocación. Ambas adiciones deben pasar la prueba de supresión
+del eje 1: se escriben en una línea cada una, no en un apartado.
+
+### 10.1 Frontmatter de la skill
+
+```yaml
+---
+name: auditor
+description: Audita el meta-flujo del TFM (herramientas, organización, automatización) y
+  aplica las mejoras aprobadas. Triggers: /auditor, "audita el flujo", "no me convence
+  cómo estamos trabajando".
+disable-model-invocation: true
+---
+```
+
+`disable-model-invocation: true` es obligatorio. La skill tiene efectos secundarios —escribe
+ficheros y commitea— y Mario la quiere manual. Sin esa clave, el modelo podría lanzarla por
+su cuenta al detectar una conversación sobre organización, que es justo lo contrario del
+disparador diseñado.
+
+El foco opcional se recibe con `$ARGUMENTS`, que resuelve el `/auditor <tema>` de la
+sección 5.
 
 ## 11. Criterios de aceptación
 
@@ -239,6 +323,9 @@ La implementación se considera correcta cuando:
 6. Ninguna escritura sobre `CLAUDE.md`, `.claude/agents/**` o `Datos/**` ocurre sin diff previo
    mostrado.
 7. Cada cambio aplicado corresponde a exactamente un commit con el prefijo `auditoría(AUD-`.
+8. Cada hallazgo aplicado va acompañado de la evidencia que exige la sección 9.1.
+9. Un informe **sin hallazgos** es un resultado válido: se escribe, se commitea y se dice
+   claramente que el flujo está sano.
 
 ## 12. Riesgos conocidos
 
@@ -247,6 +334,13 @@ La implementación se considera correcta cuando:
   siguiente es usar `/auditor <tema>` como modo habitual y reservar el completo para hitos.
 - **Autoridad amplia.** El auditor puede reescribir `CLAUDE.md` y los agentes. La mitigación
   es procedimental: aprobación caso por caso, diff previo obligatorio y un commit por cambio.
+- **Sesgo del que busca fallos.** Es un riesgo documentado: un revisor al que se le pide
+  encontrar carencias reporta algunas aunque el trabajo sea sólido, porque es lo que se le ha
+  pedido. Perseguir cada hallazgo lleva a sobreingeniería —más reglas, más agentes, más
+  automatismos que mantener— que es exactamente el desorden que esta skill combate.
+  Mitigación triple: cada hallazgo exige evidencia verificable; cada hallazgo lleva escrita la
+  consecuencia concreta de no arreglarlo, lo que hace evidente cuándo esa consecuencia es
+  nula; y el informe vacío es un resultado legítimo y explícito (criterio 9).
 - **Sesgo de confirmación entre pasadas.** Al leer el registro antes de analizar, el auditor
   podría anclarse en hallazgos previos y dejar de mirar con ojos nuevos. Mitigación: la Fase 2
   recoge evidencia antes de contrastar con el registro; el registro solo se usa para filtrar
