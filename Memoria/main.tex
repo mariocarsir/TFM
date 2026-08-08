@@ -1,0 +1,144 @@
+\documentclass{MUXLaTeX} % MUXLaTeX v1.0.1, heredada de Documentacion de apoyo/TFG_Linea_Aerea
+
+%%%%%%%%%%%% PORTADA TFM — sustituye la portada del TFG (no se hereda, ver
+%%%%%%%%%%%% Normativa TFM/guia_tipografica.md sección 14 y Plantillas/Portada TFM.docx)
+\definecolor{azulTFM}{HTML}{003366}
+\definecolor{naranjaTFM}{HTML}{993300}
+
+\renewcommand*{\portada}[3]{%
+    % #1 = Título del TFM
+    % #2 = Autor/a
+    % #3 = Datos del tutor/a
+
+    \hypersetup{
+        colorlinks=true,
+        linkcolor=black,
+        filecolor=magenta,
+        urlcolor=cyan,
+        pdftitle={#1},
+        pdfpagemode=FullScreen,
+    }%
+    \pagenumbering{roman}%
+    \thispagestyle{empty}%
+    \newgeometry{left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm}%
+    \afterpage{\restoregeometry}%
+    \estilopagina
+
+    \begin{center}
+        \begin{minipage}[c]{0.48\textwidth}
+            \raggedright
+            \includegraphics[width=0.55\textwidth]{LOGOS/logo_upm.jpeg}
+        \end{minipage}%
+        \begin{minipage}[c]{0.48\textwidth}
+            \raggedleft
+            \includegraphics[width=0.45\textwidth]{LOGOS/logo_erma.jpeg}
+        \end{minipage}
+
+        \vspace{2cm}
+
+        {\large\bfseries\color{azulTFM} Máster en Energías Renovables y Medio Ambiente\par}
+        \vspace{0.5cm}
+        % TODO Mario: confirmar el curso académico exacto
+        {\large\bfseries\color{azulTFM} Curso 2025/2026\par}
+
+        \vspace{2cm}
+        {\Large\bfseries\color{azulTFM} TRABAJO FIN DE MÁSTER\par}
+
+        \vspace{1.5cm}
+        {\large\bfseries #1\par} % Título del TFM
+    \end{center}
+
+    \vspace{2cm}
+
+    \noindent
+    \begin{minipage}[t]{0.48\textwidth}
+        \raggedright
+        {\normalsize\bfseries\color{naranjaTFM} Tutor:\ }{\normalsize #3\par}
+    \end{minipage}%
+    \begin{minipage}[t]{0.48\textwidth}
+        \raggedleft
+        {\normalsize\bfseries\color{naranjaTFM} Autor:\ }{\normalsize #2\par}
+    \end{minipage}
+
+    \vspace{1.0cm}
+
+    \noindent
+    % TODO Mario: actualizar el mes/año con la fecha real de entrega
+    \hfill {\bfseries\color{naranjaTFM} Fecha:\ } Septiembre, 2026
+
+    \clearpage
+    \cambio
+    \pagestyle{fancy}
+    \estilopagina
+}
+
+\renewcommand*{\portadaFirmas}[3]{%
+    % #1 = Título del TFM
+    % #2 = Autor/a (no se usa aquí, se deja por compatibilidad con \maquetacion)
+    % #3 = Datos del tutor/a
+
+    \clearpage
+    \thispagestyle{empty}
+
+    \begin{center}
+        \begin{minipage}[c]{0.48\textwidth}
+            \raggedright
+            \includegraphics[width=0.55\textwidth]{LOGOS/logo_upm.jpeg}
+        \end{minipage}%
+        \begin{minipage}[c]{0.48\textwidth}
+            \raggedleft
+            \includegraphics[width=0.45\textwidth]{LOGOS/logo_erma.jpeg}
+        \end{minipage}
+
+        \vspace{2cm}
+
+        {\large\bfseries\color{azulTFM} Máster en Energías Renovables y Medio Ambiente\par}
+        \vspace{2cm}
+        {\Large\bfseries\color{azulTFM} TRABAJO FIN DE MÁSTER\par}
+
+        \vspace{1.5cm}
+        {\large\bfseries #1\par} % Título del TFM
+    \end{center}
+
+    \vspace{3cm}
+
+    \noindent
+    \begin{minipage}[t]{0.48\textwidth}
+        \raggedright
+        {\normalsize\bfseries Firma autor:\par}
+        \vspace{2cm}
+        \rule{5cm}{0.4pt}
+    \end{minipage}
+    \begin{minipage}[t]{0.48\textwidth}
+        \raggedleft
+        {\normalsize\bfseries Firma tutor:\par}
+        \vspace{2cm}
+        \rule{5cm}{0.4pt}
+    \end{minipage}
+
+    \clearpage
+}
+
+\begin{document}
+%%%%%%%%%%%%%%%% Elegir si / no (Minúsculas)
+\bajavision{no}
+\digital{no}
+\abstract{no} % TODO: activar y añadir Anexos/resumen.tex cuando exista el resumen definitivo
+\indicetablas{si}
+\indicefiguras{si}
+
+%%%%%%%%%%%% PORTADA, ÍNDICE, RESUMEN
+\maquetacion
+{Autoconsumo fotovoltaico con almacenamiento en un centro de proceso de datos, Madrid}          % #1 Título
+{Mario Carrión Sirvent}     % #2 → Autor/a
+{Julio Amador Guerra} % #3 → Tutor/a
+
+\pagenumbering{arabic}
+
+%%%%%%%%%%%% CAPÍTULOS
+\input{Capitulos/capitulo01.tex}
+
+%%%%%%%%%%%% BIBLIOGRAFÍA AUTOMÁTICA
+\bibliografia
+
+\end{document}
