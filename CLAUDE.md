@@ -39,6 +39,7 @@ La estructura es la que Mario ya tenía montada, sin renombrar a convención num
 | `Documentacion de apoyo/` | TFM de referencia, apuntes de las asignaturas, TFG propio de Mario. |
 | `Presentaciones/` | Material de seguimiento con el tutor y defensa final. |
 | `Skills/` | Skills de Claude Code del proyecto (`humanizer`, `optimizador-prompts`). |
+| `Auditorias/` | Informes de auditoría del meta-flujo y `registro.md` con el estado de cada hallazgo. |
 | `.claude/agents/` | Agentes especializados (tabla abajo). |
 
 **Memoria persistente:** este proyecto usa el sistema de memoria automática de Claude Code (fuera de esta carpeta, vinculado al directorio de trabajo). No crear una carpeta `memory/` local: sería redundante.
@@ -54,6 +55,7 @@ La estructura es la que Mario ya tenía montada, sin renombrar a convención num
 | `investigador-cientifico` | Verificar una cifra, norma o dato de mercado antes de que entre en el documento. |
 | `revisor-calidad` | Cerrar una sección o capítulo grande: formato, citas, terminología, compilación, riesgo Turnitin residual. |
 | `conservador-memoria` | Tras un hito importante o corrección de rumbo: auditar memorias obsoletas o contradictorias. |
+| `/auditor` (skill) | Mario duda del flujo de trabajo y quiere diagnóstico de herramientas, orden y automatización. |
 
 ## Reglas operativas
 
