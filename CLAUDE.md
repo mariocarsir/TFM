@@ -37,8 +37,6 @@ La estructura es la que Mario ya tenía montada, sin renombrar a convención num
 | `Plantillas/` | Portada oficial, plantilla de presentación/defensa, resumen TFM. |
 | `Imagenes/` | Logos y figuras del documento. |
 | `Documentacion de apoyo/` | TFM de referencia, apuntes de las asignaturas, TFG propio de Mario. |
-| `Presentaciones/` | Material de seguimiento con el tutor y defensa final. |
-| `Skills/` | Skills de Claude Code del proyecto (`humanizer`, `optimizador-prompts`). |
 | `Auditorias/` | Informes de auditoría del meta-flujo y `registro.md` con el estado de cada hallazgo. |
 | `.claude/agents/` | Agentes especializados (tabla abajo). |
 
