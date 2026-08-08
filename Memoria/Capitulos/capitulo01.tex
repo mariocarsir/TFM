@@ -1,0 +1,89 @@
+\chapter{Introducción}
+\label{ch:introduccion}
+
+\section{Contexto y motivación}
+\label{sec:intro-contexto}
+
+El sector de las tecnologías de la información experimenta un crecimiento sostenido en la demanda de capacidad de cómputo y almacenamiento de datos, lo que se traduce en un aumento paralelo del consumo eléctrico de los \acp{CPD}.
+% TODO Mario: cita necesaria — dato de consumo eléctrico de los CPD a nivel mundial o nacional (fuente de mercado o informe sectorial, procesar vía bibliotecario-pdf).
+Este incremento se produce en un contexto de transición energética en el que la generación distribuida mediante energía \ac{FV} se consolida como una de las alternativas más extendidas para reducir la dependencia de la red eléctrica convencional.
+
+Los \acp{CPD} presentan, sin embargo, unas particularidades que los diferencian de otros consumidores eléctricos: operan de forma continua, con una carga crítica que no admite interrupciones, y disponen habitualmente de \acp{SAI} y de redundancia en sus instalaciones. Debido a esta condición de servicio continuo, el dimensionado de cualquier sistema de generación distribuida debe tener en cuenta tanto el perfil de consumo como los márgenes de seguridad exigidos por la criticidad de la carga.
+
+Por otro lado, el autoconsumo fotovoltaico con almacenamiento mediante baterías permite ampliar el aprovechamiento de la energía generada in situ más allá de las horas de sol, así como reducir la dependencia de la red en los periodos tarifarios de mayor coste. En un \ac{CPD}, cuya curva de consumo es prácticamente plana a lo largo del día, esta capacidad de desplazar energía entre periodos cobra especial relevancia frente a otros perfiles de consumo con mayor variabilidad horaria.
+
+Cabe destacar que este trabajo se enmarca en dicho contexto: aborda el diseño de una instalación de autoconsumo fotovoltaico con sistema de almacenamiento para un \ac{CPD} ubicado en Madrid, evaluando su viabilidad técnica y económica.
+
+\section{Justificación: actualidad del tema y Objetivo de Desarrollo Sostenible al que contribuye}
+\label{sec:intro-justificacion}
+
+La reducción de emisiones asociadas a la generación eléctrica y la mejora de la eficiencia energética en el sector de las tecnologías de la información constituyen dos líneas de trabajo presentes en la agenda energética actual, tanto a nivel europeo como nacional.
+% TODO Mario: cita necesaria — normativa o informe que respalde la actualidad del tema (p. ej. objetivos de descarbonización de la UE, PNIEC, evolución del autoconsumo fotovoltaico en España; procesar vía bibliotecario-pdf).
+
+El autoconsumo fotovoltaico se ha posicionado como una de las medidas más accesibles para que un consumidor eléctrico, ya sea residencial, industrial o de servicios, reduzca su huella de carbono y su dependencia energética. Aplicada a un \ac{CPD}, cuyo consumo es constante y elevado, dicha medida adquiere un valor añadido, puesto que cualquier reducción porcentual del consumo procedente de la red se traduce en un ahorro significativo en términos absolutos.
+
+Este trabajo contribuye directamente al \ac{ODS} 7, «Energía asequible y no contaminante», al plantear una solución de generación renovable que reduce el coste energético de la instalación. Asimismo, se relaciona con el \ac{ODS} 13, «Acción por el clima», al disminuir las emisiones de gases de efecto invernadero asociadas al consumo eléctrico del \ac{CPD}. Por último, guarda relación con el \ac{ODS} 9, «Industria, innovación e infraestructura», ya que propone una mejora tecnológica sobre una infraestructura crítica como es un centro de proceso de datos.
+
+\section{Objetivos del proyecto}
+\label{sec:intro-objetivos}
+
+El objetivo general de este Trabajo Fin de Máster es diseñar y dimensionar una instalación de autoconsumo fotovoltaico con sistema de almacenamiento para un centro de proceso de datos ubicado en Madrid, evaluando su viabilidad técnica, económica y medioambiental.
+
+Para alcanzar dicho objetivo general, se plantean los siguientes objetivos específicos:
+
+\begin{itemize}
+    \item Analizar el estado del arte de las tecnologías de generación fotovoltaica, el almacenamiento electroquímico y la eficiencia energética en \acp{CPD}, así como el marco normativo aplicable al autoconsumo.
+    \item Caracterizar el emplazamiento y el perfil de consumo del \ac{CPD}, incluyendo sus restricciones de criticidad y operación.
+    \item Determinar la modalidad de autoconsumo más adecuada y describir el procedimiento de tramitación asociado.
+    \item Evaluar distintas alternativas de integración de la instalación fotovoltaica y seleccionar la solución más adecuada según los criterios establecidos.
+    \item Dimensionar el campo generador fotovoltaico y simular su producción mediante el software PVsyst.
+    \item Diseñar el sistema de almacenamiento, incluyendo la estrategia de gestión de carga y descarga por periodos tarifarios.
+    \item Analizar la rentabilidad económica de la instalación mediante los indicadores \ac{VAN}, \ac{TIR} y \ac{LCOE}, así como un análisis de sensibilidad.
+    \item Evaluar el impacto medioambiental de la instalación, incluyendo la huella de carbono y el fin de vida de sus componentes.
+\end{itemize}
+
+\section{Alcance del trabajo}
+\label{sec:intro-alcance}
+
+El alcance de este trabajo comprende el diseño y dimensionado a nivel de anteproyecto de una instalación de autoconsumo fotovoltaico con almacenamiento, así como la evaluación de su viabilidad técnica y económica. Incluye, entre otros aspectos:
+
+\begin{itemize}
+    \item El dimensionado del campo generador fotovoltaico y la simulación de su producción mediante PVsyst.
+    \item El dimensionado del sistema de almacenamiento electroquímico y de su estrategia de gestión.
+    \item El análisis económico de la instalación: presupuesto, \ac{VAN}, \ac{TIR}, \ac{LCOE} y análisis de sensibilidad.
+    \item El análisis medioambiental básico: emisiones evitadas y fin de vida de los componentes.
+\end{itemize}
+
+Quedan fuera del alcance de este trabajo la ejecución material de la instalación, la redacción de un proyecto constructivo completo con todos los documentos exigibles para su ejecución, así como la tramitación administrativa real ante los organismos competentes, que se describe de forma orientativa pero no se lleva a cabo. Del mismo modo, no se incluye un diseño estructural detallado de la cubierta del edificio, si bien se tienen en cuenta sus restricciones de capacidad portante a efectos de dimensionado.
+
+Por otro lado, los cálculos y resultados obtenidos se apoyan en los datos disponibles sobre el perfil de consumo del \ac{CPD} y en el recurso solar de la ubicación considerada, por lo que la validez de las conclusiones queda condicionada a la precisión de dichos datos de partida.
+
+\section{Emplazamiento}
+\label{sec:intro-emplazamiento}
+
+El \ac{CPD} objeto de este trabajo se encuentra ubicado en Madrid.
+% TODO Mario: facilitar la dirección exacta y/o referencia catastral del CPD para completar este apartado; no se dispone todavía de este dato.
+% TODO Mario: facilitar las coordenadas UTM del emplazamiento (huso, X, Y) una vez confirmada la ubicación exacta.
+
+La localización concreta del emplazamiento condiciona directamente el recurso solar disponible, la orientación e inclinación óptimas del campo generador fotovoltaico, así como las posibles restricciones urbanísticas y de sombreado del entorno. Por este motivo, dicho dato debe incorporarse antes de desarrollar el capítulo 3 (análisis del emplazamiento y perfil de consumo), del que depende directamente el resto del dimensionado técnico del proyecto.
+
+\section{Metodología}
+\label{sec:intro-metodologia}
+
+La metodología seguida en este trabajo combina el uso de herramientas de simulación especializadas con el desarrollo de modelos de cálculo propios, en función de la naturaleza de cada apartado.
+
+La simulación del campo generador fotovoltaico se realiza mediante el software PVsyst, herramienta de referencia en el sector para la estimación de la producción energética de instalaciones fotovoltaicas, ya que permite modelar de forma detallada las pérdidas del sistema, el recurso solar de la ubicación y el comportamiento de los componentes seleccionados.
+
+Para aquellos aspectos que PVsyst no cubre, se desarrolla un modelo propio en hoja de cálculo Excel. Este modelo incluye, por un lado, el balance horario anual entre generación fotovoltaica, consumo del \ac{CPD} y sistema de almacenamiento, empleado para determinar la estrategia de carga y descarga de las baterías por periodos tarifarios. Por otro lado, incluye el análisis económico de la instalación, a partir del cual se obtienen los indicadores de rentabilidad (\ac{VAN}, \ac{TIR} y \ac{LCOE}), así como el análisis de sensibilidad frente a variaciones en las principales hipótesis de partida.
+
+De forma general, el trabajo se desarrolla siguiendo las fases indicadas a continuación:
+
+\begin{enumerate}
+    \item Recopilación de datos de partida: perfil de consumo del \ac{CPD}, recurso solar del emplazamiento y marco normativo aplicable.
+    \item Análisis del emplazamiento y determinación de la modalidad de autoconsumo.
+    \item Estudio de alternativas de integración y selección de la solución óptima.
+    \item Diseño y simulación del campo fotovoltaico mediante PVsyst.
+    \item Diseño del sistema de almacenamiento y de su estrategia de gestión.
+    \item Análisis económico y medioambiental de la solución adoptada.
+    \item Extracción de conclusiones y propuesta de líneas futuras.
+\end{enumerate}
