@@ -35,9 +35,9 @@ desktop.ini
 .vscode/
 *.swp
 
-# Rutas demasiado largas para Git en Windows (material de apoyo de otra
-# asignatura, no es contenido del TFM; los archivos siguen en disco)
-Documentacion de apoyo/Presentaciones y apuntes/M6 Autoconsumo/Ejercicios y Ejemplos/Configuraciones/
+# Comprimidos ya extraídos en disco: no versionar ambas copias a la vez
+*.zip
+*.rar
 
 # claude-obsidian: estado de ejecución (locks de transacciones), no versionar
 .vault-meta/
