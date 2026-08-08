@@ -20,6 +20,7 @@ This catalog is updated by completed knowledge operations.
 ## Concepts
 
 - [[claude-obsidian]]
+- [[git-worktrees]]
 
 ## Entities
 
