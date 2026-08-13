@@ -22,6 +22,8 @@ This catalog is updated by completed knowledge operations.
 - [[claude-obsidian]]
 - [[git-worktrees]]
 - [[tfm-subagentes]]
+- [[tfm-skills]]
+- [[superpowers]]
 
 ## Entities
 

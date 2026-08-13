@@ -18,11 +18,14 @@ related:
   - "[[tfm-subagente-redactor-humanizador]]"
   - "[[tfm-subagente-revisor-calidad]]"
   - "[[tfm-subagente-conservador-memoria]]"
+  - "[[tfm-skills]]"
 ---
 
 # Subagentes del TFM
 
 Siete agentes especializados definidos en `.claude/agents/` del repositorio del TFM (autoconsumo fotovoltaico con almacenamiento en un CPD, Máster ERMA). Cada uno declara `memory: project` (memoria persistente propia) y se invoca delegando desde la conversación principal según la tabla de `CLAUDE.md`, nunca redactando directamente sin pasar por el agente adecuado.
+
+Las herramientas (skills) que estos agentes usan, o que Mario usa junto a ellos, están catalogadas aparte en [[tfm-skills]].
 
 ## Catálogo
 
@@ -41,7 +44,7 @@ El pipeline bibliográfico y de redacción, tal como lo fija `CLAUDE.md`, conect
 1. **Entrada de bibliografía**: [[tfm-subagente-bibliotecario-pdf]] convierte cada PDF nuevo en un resumen citable en `Bibliografia/Resumenes/`. Es la única puerta de entrada — nadie cita un PDF directamente.
 2. **Verificación previa**: [[tfm-subagente-investigador-cientifico]] contrasta cualquier cifra, norma o dato de mercado contra esos resúmenes (o la normativa oficial) antes de que lleguen a redacción.
 3. **Cifras canónicas de ingeniería y economía**: [[tfm-subagente-ingeniero-dominio]] (dimensionado, PVsyst, almacenamiento) y [[tfm-subagente-analista-economico]] (Excel, VAN/TIR/LCOE) comparten el capítulo 7 (estrategia de carga/descarga): el primero decide la estrategia técnica, el segundo la modela hora a hora. Ambos alimentan de cifras trazables al redactor.
-4. **Redacción**: [[tfm-subagente-redactor-humanizador]] solo puede citar a partir de lo que producen los cuatro agentes anteriores — nunca de memoria del modelo. Genera el borrador, Mario añade su voz, y pasa por la skill `humanizer` antes de considerarse cerrado.
+4. **Redacción**: [[tfm-subagente-redactor-humanizador]] solo puede citar a partir de lo que producen los cuatro agentes anteriores — nunca de memoria del modelo. Genera el borrador, Mario añade su voz, y pasa por la skill [[tfm-skill-humanizer]] antes de considerarse cerrado.
 5. **Cierre de capítulo**: [[tfm-subagente-revisor-calidad]] revisa el capítulo redactado contra formato, citas, terminología y riesgo Turnitin residual; puede devolverlo a redacción si falla algún punto.
 6. **Mantenimiento de memoria**: tras la aprobación de un capítulo grande o una corrección de rumbo importante, [[tfm-subagente-conservador-memoria]] audita `MEMORY.md` y las memorias de proyecto de todos los agentes anteriores para mantenerlas correctas y sin contradicciones.
 

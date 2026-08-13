@@ -14,6 +14,7 @@ related:
   - "[[tfm-subagentes]]"
   - "[[tfm-subagente-redactor-humanizador]]"
   - "[[tfm-subagente-conservador-memoria]]"
+  - "[[tfm-skill-humanizer]]"
 ---
 
 # revisor-calidad
@@ -35,11 +36,11 @@ Al cerrar cualquier sección o capítulo grande, antes de darlo por definitivo.
 5. Citas: cada cifra trazable a un resumen de `Bibliografia/Resumenes/`; señala cifras "sueltas" sin fuente.
 6. Terminología consistente a lo largo del documento.
 7. Compilación: exige `pdflatex → biber → pdflatex ×2` con 0 referencias/citas indefinidas.
-8. Riesgo Turnitin residual: confirma paso por `humanizer` y puntuación BAJA; si es MEDIO/ALTO, devuelve a modo STEALTH.
+8. Riesgo Turnitin residual: confirma paso por la skill [[tfm-skill-humanizer]] y puntuación BAJA; si es MEDIO/ALTO, devuelve a modo STEALTH.
 9. Conclusiones (capítulo 11): correspondencia 1:1 con cada alcance/resultado, sin elementos nuevos.
 
 Nunca aprueba un capítulo que falle alguno de estos puntos; enumera exactamente qué falla y dónde.
 
-## Relación con otros agentes
+## Relación con otros agentes y skills
 
-Recibe el borrador de [[tfm-subagente-redactor-humanizador]] y, tras aprobar un capítulo grande, dispara la auditoría de [[tfm-subagente-conservador-memoria]] sobre la memoria persistente del proyecto.
+Recibe el borrador de [[tfm-subagente-redactor-humanizador]] — ya pasado por [[tfm-skill-humanizer]] — y, tras aprobar un capítulo grande, dispara la auditoría de [[tfm-subagente-conservador-memoria]] sobre la memoria persistente del proyecto.
