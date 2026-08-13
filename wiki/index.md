@@ -3,7 +3,7 @@ type: meta
 title: Wiki Index
 status: evergreen
 created: 2026-08-05
-updated: 2026-08-06
+updated: 2026-08-13
 tags:
   - meta
   - index
@@ -21,6 +21,7 @@ This catalog is updated by completed knowledge operations.
 
 - [[claude-obsidian]]
 - [[git-worktrees]]
+- [[tfm-subagentes]]
 
 ## Entities
 
