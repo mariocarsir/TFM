@@ -14,7 +14,7 @@ Combina dos fuentes:
 ## 1. Clase base y página
 
 | Parámetro | Valor |
-|---|---|
+| --- | --- |
 | Clase | `book`, opciones `a4paper, 12pt, oneside` |
 | Tamaño de papel | A4 |
 | Cuerpo de texto | 12 pt |
@@ -25,7 +25,7 @@ Combina dos fuentes:
 Márgenes generales del documento:
 
 | Margen | Valor |
-|---|---|
+| --- | --- |
 | Interior (`inner`) | 2,5 cm |
 | Exterior (`outer`) | 2,5 cm |
 | Superior (`top`) | 2,5 cm |
@@ -43,7 +43,7 @@ general en la página siguiente.
 ## 3. Tipografía
 
 | Elemento | Especificación |
-|---|---|
+| --- | --- |
 | Fuente principal | **Palatino** vía `mathpazo` (texto y matemáticas) |
 | Idioma | `babel` con opción `spanish` |
 | Sangría de párrafo (`parindent`) | **0 pt** (sin sangría) |
@@ -61,7 +61,7 @@ Color común de títulos: **`lechuga` = RGB(39, 30, 32)** — un negro cálido, 
 Las subsubsecciones usan `grissection` = HTML `#6D6E71` (gris medio).
 
 | Nivel | Formato | Prefijo |
-|---|---|---|
+| --- | --- | --- |
 | Capítulo | `\Huge\bfseries`, color RGB(39,30,32) | `Capítulo N.` |
 | Sección | `\Large\bfseries`, color RGB(39,30,32) | `N.M.` |
 | Subsección | `\Large\bfseries`, color RGB(39,30,32) | `N.M.K.` |
@@ -143,7 +143,7 @@ fotovoltaicos, útil como referencia de qué NO hacer):
 **Recomendados** (la guía los llama así explícitamente, no son de cumplimiento estricto):
 
 | Aspecto | Recomendación ERMA | Estado frente a `MUXLaTeX.cls` |
-|---|---|---|
+| --- | --- | --- |
 | Tamaño de letra | 10-11 pt | **Resuelto**: ahora usa 11 pt, alineado con la recomendación ERMA (decisión de Mario, 3 de agosto de 2026). |
 | Interlineado | Máximo 1,5 (o mínimo 15 pt) | Compatible: la clase usa interlineado simple, dentro del máximo. |
 | Márgenes superiores y laterales | 2-3 cm | Compatible: la plantilla usa 2,5 cm. |

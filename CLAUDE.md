@@ -28,7 +28,7 @@
 La estructura es la que Mario ya tenía montada, sin renombrar a convención numérica:
 
 | Carpeta | Contenido |
-|---|---|
+| --- | --- |
 | `Memoria/` | Fuente LaTeX de la memoria + PDF compilado. Incluye `indice_propuesto.md`. |
 | `Bibliografia/PDFs/` | PDFs originales de bibliografía. |
 | `Bibliografia/Resumenes/` | Resúmenes densos generados por `bibliotecario-pdf`, únicas fuentes citables. |
@@ -45,7 +45,7 @@ La estructura es la que Mario ya tenía montada, sin renombrar a convención num
 ## Catálogo de agentes
 
 | Agente | Cuándo delegar |
-|---|---|
+| --- | --- |
 | `redactor-humanizador` | Redactar o desarrollar cualquier sección/capítulo de la memoria. |
 | `bibliotecario-pdf` | Mario aporta un PDF nuevo de bibliografía a citar. |
 | `analista-economico` | Estructurar o revisar cálculos en Excel: modelo horario de almacenamiento, VAN, TIR, LCOE, sensibilidad. |
@@ -70,7 +70,7 @@ La estructura es la que Mario ya tenía montada, sin renombrar a convención num
 
 ## Pipeline bibliográfico
 
-```
+```text
 PDF nuevo → bibliotecario-pdf → resumen denso en Bibliografia/Resumenes/<paper>.md
          → redactor-humanizador SOLO cita a partir de resúmenes verificados
          → revisor-calidad contrasta cada cifra citada contra el resumen
