@@ -37,6 +37,7 @@ La estructura es la que Mario ya tenía montada, sin renombrar a convención num
 | `Plantillas/` | Portada oficial, plantilla de presentación/defensa, resumen TFM. |
 | `Imagenes/` | Logos y figuras del documento. |
 | `Documentacion de apoyo/` | TFM de referencia, apuntes de las asignaturas, TFG propio de Mario. |
+| `conocimiento fotovoltaico/` | Base de conocimiento de `piloto-pvsyst`: `Manuales PVsyst/` (14 manuales oficiales v6/v7/v8), `Referencia/` (datasheets, notas técnicas, guía de diseño generada) y `Capturas/` (pantallazos de trabajo, formato `AAAA-MM-DD_HHMM.png`). |
 | `Auditorias/` | Informes de auditoría del meta-flujo y `registro.md` con el estado de cada hallazgo. |
 | `.claude/agents/` | Agentes especializados (tabla abajo). |
 
@@ -50,6 +51,7 @@ La estructura es la que Mario ya tenía montada, sin renombrar a convención num
 | `bibliotecario-pdf` | Mario aporta un PDF nuevo de bibliografía a citar. |
 | `analista-economico` | Estructurar o revisar cálculos en Excel: modelo horario de almacenamiento, VAN, TIR, LCOE, sensibilidad. |
 | `ingeniero-dominio` | Cualquier decisión o cálculo de ingeniería: dimensionado FV, PVsyst, almacenamiento, autoconsumo, tramitación. |
+| `piloto-pvsyst` | Manejo operativo de PVsyst: guía paso a paso de la interfaz, dudas sobre capturas de pantalla del programa, validación de resultados de simulación. |
 | `investigador-cientifico` | Verificar una cifra, norma o dato de mercado antes de que entre en el documento. |
 | `revisor-calidad` | Cerrar una sección o capítulo grande: formato, citas, terminología, compilación, riesgo Turnitin residual. |
 | `conservador-memoria` | Tras un hito importante o corrección de rumbo: auditar memorias obsoletas o contradictorias. |

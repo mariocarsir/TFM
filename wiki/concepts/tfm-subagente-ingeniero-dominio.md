@@ -12,6 +12,7 @@ domain: "Flujo de trabajo TFM"
 complexity: intermediate
 related:
   - "[[tfm-subagentes]]"
+  - "[[tfm-subagente-piloto-pvsyst]]"
   - "[[tfm-subagente-analista-economico]]"
   - "[[tfm-subagente-redactor-humanizador]]"
 ---
@@ -43,3 +44,5 @@ Para cualquier cálculo o decisión de ingeniería de los capítulos 6 y 7 de la
 ## Relación con otros agentes
 
 Comparte el capítulo 7 (estrategia de carga/descarga) con [[tfm-subagente-analista-economico]]: este agente decide la estrategia técnica, el analista económico la modela hora a hora en Excel. Ambos alimentan de cifras canónicas a [[tfm-subagente-redactor-humanizador]].
+
+Se apoya en [[tfm-subagente-piloto-pvsyst]] para todo lo operativo del software (dónde clickar, cómo leer una pantalla o un resultado) — este agente aporta el criterio de ingeniería (qué valor usar y por qué), no el manejo de la interfaz.

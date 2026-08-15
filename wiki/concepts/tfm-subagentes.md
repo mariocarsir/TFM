@@ -14,6 +14,7 @@ related:
   - "[[tfm-subagente-bibliotecario-pdf]]"
   - "[[tfm-subagente-investigador-cientifico]]"
   - "[[tfm-subagente-ingeniero-dominio]]"
+  - "[[tfm-subagente-piloto-pvsyst]]"
   - "[[tfm-subagente-analista-economico]]"
   - "[[tfm-subagente-redactor-humanizador]]"
   - "[[tfm-subagente-revisor-calidad]]"
@@ -23,7 +24,7 @@ related:
 
 # Subagentes del TFM
 
-Siete agentes especializados definidos en `.claude/agents/` del repositorio del TFM (autoconsumo fotovoltaico con almacenamiento en un CPD, Máster ERMA). Cada uno declara `memory: project` (memoria persistente propia) y se invoca delegando desde la conversación principal según la tabla de `CLAUDE.md`, nunca redactando directamente sin pasar por el agente adecuado.
+Ocho agentes especializados definidos en `.claude/agents/` del repositorio del TFM (autoconsumo fotovoltaico con almacenamiento en un CPD, Máster ERMA). Cada uno declara `memory: project` (memoria persistente propia) y se invoca delegando desde la conversación principal según la tabla de `CLAUDE.md`, nunca redactando directamente sin pasar por el agente adecuado.
 
 Las herramientas (skills) que estos agentes usan, o que Mario usa junto a ellos, están catalogadas aparte en [[tfm-skills]].
 
@@ -32,6 +33,7 @@ Las herramientas (skills) que estos agentes usan, o que Mario usa junto a ellos,
 - [[tfm-subagente-bibliotecario-pdf]] (modelo sonnet) — procesa un PDF de bibliografía una sola vez y genera su resumen ultradenso trazable.
 - [[tfm-subagente-investigador-cientifico]] (modelo sonnet) — fact-checking: evita que entren al TFM cifras o normas sin fuente verificada.
 - [[tfm-subagente-ingeniero-dominio]] (modelo opus) — núcleo técnico: dimensionado FV, PVsyst, almacenamiento, autoconsumo/autosuficiencia, tramitación.
+- [[tfm-subagente-piloto-pvsyst]] (modelo opus) — manejo operativo de PVsyst: guía paso a paso de la interfaz, lectura de capturas de pantalla, validación de resultados de simulación.
 - [[tfm-subagente-analista-economico]] (modelo sonnet) — arquitectura de las hojas Excel: modelo horario de almacenamiento y análisis económico (VAN, TIR, LCOE).
 - [[tfm-subagente-redactor-humanizador]] (modelo sonnet) — redacta los capítulos en LaTeX con la voz propia de Mario y los prepara para el humanizador.
 - [[tfm-subagente-revisor-calidad]] (modelo sonnet) — revisión post-redacción: formato, citas, terminología, riesgo Turnitin residual.
