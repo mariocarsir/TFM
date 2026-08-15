@@ -1,0 +1,30 @@
+# Energía Solar Fotovoltaica (Perpiñán Lamigueiro, 2013)
+
+## Referencia IEEE
+[X] O. Perpiñán Lamigueiro, *Energía Solar Fotovoltaica*, v. 1.5. Madrid, España, mar. 2013. [En línea]. Disponible: http://procomun.wordpress.com/documentos/libroesf
+
+## Nota sobre la naturaleza de la fuente
+Apuntes/manual docente de libre distribución (licencia CC BY-NC-SA 3.0 España), 175 páginas, sin ISBN ni editorial. Cubre teoría de la célula solar, asociación de dispositivos FV, sistemas conectados a red (SFCR), sistemas autónomos (SFA), sistemas de bombeo y seguridad eléctrica. **Dos advertencias importantes para su uso en el TFM:**
+1. La normativa española que cita (RD 1578/2008, RD 1699/2011, RD 1565/2010) está **desactualizada**: fue derogada/sustituida por el RD 244/2019 (regulación vigente de autoconsumo). No citar el contenido normativo de este documento como vigente; solo sirve como contexto histórico.
+2. El capítulo de almacenamiento (cap. 7, Sistemas Fotovoltaicos Autónomos) trata **exclusivamente baterías de plomo-ácido** (p. 94: "la variada gama de acumuladores que se emplean en los SFA se basan, casi en su totalidad, en la tecnología de ácido-plomo"). No contiene datos de baterías de ion-litio, que es la tecnología previsible para el almacenamiento del CPD del TFM. Útil para la metodología de dimensionado (LLP) y los conceptos de ciclado/degradación, no para las cifras técnicas de la química de la batería.
+
+## Datos clave (con página)
+- **p. 45** — Factor de forma de una célula: $FF = \dfrac{I_{mpp}\cdot V_{mpp}}{I_{sc}\cdot V_{oc}}$, con valor típico entre 0,7 y 0,8.
+- **p. 46** — Las células industriales de silicio cristalino ofrecen eficiencias de conversión comprendidas entre el 13 % y el 17 % (fig. 4.7, según datos NREL).
+- **p. 48** — Condiciones estándar de medida (STC): irradiancia $G_{stc}=1000\,\mathrm{W/m^2}$ con incidencia normal, temperatura de célula $T_c^*=25\,^{\circ}\mathrm{C}$, masa de aire $AM=1{,}5$. Coeficiente térmico habitual para células de silicio cristalino (si el fabricante no lo especifica): $dV_{oc}/dT_c = -2{,}3\,\mathrm{mV/^{\circ}C}$.
+- **p. 58** — Ejemplo numérico de "punto caliente": para un módulo con $N_D=18$ células por diodo de paso, $C_T=0{,}036\,^{\circ}\mathrm{C\cdot m^2/W}$ y $\eta=0{,}14$, a $G_{ef}=1000\,\mathrm{W/m^2}$ la diferencia de temperatura entre la célula sombreada y el resto alcanza ≈91 °C; sin diodos de paso (36 células en serie), la diferencia supera los 180 °C.
+- **p. 73** — Fórmula de inclinación óptima de un generador estático en función de la latitud: $\beta_{opt} = 3{,}7 + 0{,}69\cdot|\phi|$ (grados sexagesimales); la inclinación no debe bajar de 15° para permitir la autolimpieza por lluvia.
+- **p. 76** — Relación recomendada de sobredimensionamiento generador/inversor ($P_g^*/P_{inv}$): entre 1 y 1,4 para sistemas estáticos (menor probabilidad de trabajar en zona de alta eficiencia); próxima a 1 (sin sobredimensionar) para sistemas con seguimiento solar.
+- **p. 77** — Pérdidas de producción por sombreado parcial en generadores FV: estudios sobre sistemas en Alemania citados por el autor sitúan estas pérdidas entre el 4 % y el 30 % según el caso.
+- **pp. 94-95** — Definiciones de acumulador: capacidad nominal $C_b$, régimen de carga/descarga (p.ej. $C_{10}$), relación aproximada $C_{100}\simeq 1{,}35\cdot C_{10}$ (importante: no equivale a $I_{100}=0{,}1\cdot I_{10}$).
+- **p. 104** — Definición de fiabilidad de un SFA mediante la probabilidad de pérdida de carga: $LLP = E_{def}/L$ (energía no suministrada entre energía total solicitada). Capacidad normalizada del generador: $C_A = \eta_G\cdot A_G\cdot \overline{G_d}(\beta,\alpha)/L$; capacidad normalizada del acumulador: $C_S = C_{UI}/L = C_b\cdot PD_{max}/L$.
+- **p. 106** — Método LLP con parámetros de ajuste específicos para Madrid: $C_A' = f\cdot C_S^{-u}$, con $f=f_1+f_2\log(LLP)$ y $u=\exp(u_1+u_2\cdot LLP)$; para Madrid: $f_1=-0{,}2169$, $f_2=-0{,}7865$, $u_1=-1{,}2138$, $u_2=-15{,}280$.
+- **p. 106** — Tabla 7.1, valores recomendados de $C_A$/$C_S$ para SFA en España (Norma Técnica Universal): Norte de España, doméstico $C_A=1{,}2$, $C_S=5$; profesional $C_A=1{,}3$, $C_S=8$. Sur de España, doméstico $C_A=1{,}1$, $C_S=4$; profesional $C_A=1{,}2$, $C_S=6$.
+- **p. 109** — Valores orientativos de rendimiento para el cálculo del consumo total de un SFA: $\eta_{inv}=0{,}9$; $\eta_r=0{,}95$ (regulador); $\eta_{bat}=0{,}85$ (batería); $\eta_c=0{,}98$ (cableado).
+
+## Relevancia para el TFM
+- **Capítulo(s) del índice a los que aporta:** dimensionado (generador/inversor, orientación e inclinación, relación de sobredimensionamiento); almacenamiento (metodología de dimensionado por fiabilidad LLP, definiciones de capacidad normalizada, ciclado y degradación de baterías — con la salvedad de que aquí solo cubre plomo-ácido); posiblemente autoconsumo, en su definición conceptual de balance neto frente a tarifa con prima (p. 61-62), aunque el desarrollo normativo asociado está obsoleto.
+- Proporciona la base física y de nomenclatura estándar (STC, factor de forma, curva I-V/P-V, MPP, THD, rendimiento europeo del inversor) que puede usarse para justificar hipótesis de cálculo del capítulo de dimensionado del generador FV, con trazabilidad a fórmulas concretas y no a "conocimiento general".
+- El método LLP (Loss of Load Probability) y sus ecuaciones (7.8 a 7.18) son directamente aplicables como referencia metodológica para justificar el criterio de fiabilidad del sistema de almacenamiento del CPD, aunque el TFM previsiblemente usará baterías de ion-litio y un enfoque horario en Excel en vez del método estadístico diario aquí descrito.
+- Útil como fuente citable para justificar valores de eficiencia de componentes (inversor, cableado, regulador) cuando no se disponga de datos de fabricante concretos, siempre indicando que son "valores orientativos" según el propio autor (p. 109), no medidas de un caso real.
+- **No usar** como fuente para: normativa vigente de autoconsumo/conexión a red (desactualizada, ver advertencia arriba), ni para datos técnicos de baterías de ion-litio (no tratadas en el documento).
