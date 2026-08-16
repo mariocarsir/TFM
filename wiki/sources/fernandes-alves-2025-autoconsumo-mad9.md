@@ -2,7 +2,7 @@
 type: source
 title: "Instalación fotovoltaica para autoconsumo en centro logístico de almacenaje (Amazon MAD9) (Fernandes Alves, 2025)"
 created: 2026-08-16
-updated: 2026-08-16
+updated: 2026-08-17
 status: active
 tags:
   - source
@@ -31,6 +31,7 @@ review_state: active
 citable: false
 related:
   - "[[instalacion-fotovoltaica-centro-logistico-mad9]]"
+  - "[[resumenes]]"
 claim_ids:
   - clm-mad9-potencia-config
   - clm-mad9-bateria-seleccion
@@ -71,3 +72,4 @@ El resumen técnico exhaustivo ya generado por `bibliotecario-pdf` (skill `resum
 ## Relacionado
 
 - [[instalacion-fotovoltaica-centro-logistico-mad9]] — resumen técnico completo (no citable, solo referencia interna)
+- [[resumenes]] — nodo temático que relaciona esta fuente con las demás fuentes de referencia del TFM (almacenamiento, PVsyst, análisis económico)

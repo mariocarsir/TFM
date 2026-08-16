@@ -2,7 +2,7 @@
 type: source
 title: "Proyecto de autoconsumo industrial con almacenamiento en la fábrica de San Martín PYL (Manuel Arcas Navarro, TFM ERMA UPM, 2024)"
 created: 2026-08-16
-updated: 2026-08-16
+updated: 2026-08-17
 status: active
 tags:
   - source
@@ -23,6 +23,7 @@ review_state: active
 citable: false
 related:
   - "[[autoconsumo-industrial-san-martin-pyl]]"
+  - "[[resumenes]]"
 claim_ids:
   - clm-arcas2024-potencia-elegida
   - clm-arcas2024-almacenamiento-no-rentable
@@ -59,3 +60,4 @@ El resumen técnico exhaustivo ya generado por `bibliotecario-pdf` (skill `resum
 ## Relacionado
 
 - [[autoconsumo-industrial-san-martin-pyl]] — resumen técnico completo (no-citable, referencia de metodología)
+- [[resumenes]] — nodo temático que relaciona esta fuente con las demás fuentes de referencia del TFM (almacenamiento, PVsyst, análisis económico)

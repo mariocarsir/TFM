@@ -3,7 +3,7 @@ type: meta
 title: Hot Cache
 status: developing
 created: 2026-08-05
-updated: 2026-08-16
+updated: 2026-08-17
 tags:
   - meta
   - hot-cache
@@ -13,8 +13,8 @@ tags:
 
 ## Last Updated
 
-2026-08-16 — ingest: [[arcas-2024-autoconsumo-industrial-san-martin-pyl]] y
-[[fernandes-alves-2025-autoconsumo-mad9]] completadas.
+2026-08-17 — save: creado el nodo temático [[resumenes]] que relaciona las
+tres fuentes de referencia del TFM ya indexadas.
 
 ## Key Recent Facts
 
@@ -36,6 +36,11 @@ tags:
   admite `normal/high`; `high` exige dos fuentes independientes para poder
   aceptarse, así que una única fuente no revisada por pares sigue siendo
   `normal`, con la reserva puesta en `notes`, no en `risk`.
+- Los wikilinks del vault resuelven por el nombre de archivo (ASCII
+  kebab-case, sin tildes), no por el `title` del frontmatter: aunque el
+  título de una nota sea "Resúmenes", el archivo y el enlace correcto son
+  `resumenes.md` / `[[resumenes]]`, siguiendo la convención ya usada en
+  `wiki/concepts/` y `wiki/sources/`.
 
 ## Recent Changes
 
@@ -52,6 +57,11 @@ tags:
   autoconsumo sin excedentes Amazon MAD9 con almacenamiento en media
   tensión — aporta el método de degradación de batería por ciclos
   equivalentes más útil metodológicamente para el capítulo 7 de Mario).
+- Creado el nodo temático [[resumenes]] que agrupa y relaciona las tres
+  fuentes anteriores por temas compartidos (autoconsumo industrial,
+  almacenamiento en baterías, PVsyst, análisis económico VAN/TIR/LCOE,
+  Performance Ratio), con enlace bidireccional añadido en cada una de las
+  tres páginas fuente.
 
 ## Active Threads
 

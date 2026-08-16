@@ -2,7 +2,7 @@
 type: source
 title: "Energía Solar Fotovoltaica (Perpiñán Lamigueiro, 2013)"
 created: 2026-08-16
-updated: 2026-08-16
+updated: 2026-08-17
 status: active
 tags:
   - source
@@ -21,6 +21,7 @@ independence_key: perpinan-lamigueiro-esf-2013
 review_state: active
 related:
   - "[[Perpiñán_2013]]"
+  - "[[resumenes]]"
 claim_ids:
   - clm-perpinan2013-beta-opt
   - clm-perpinan2013-llp-metodo
@@ -82,3 +83,4 @@ vive en el vault como [[Perpiñán_2013]]
 ## Relacionado
 
 - [[Perpiñán_2013]] — resumen técnico completo (fuente citable primaria)
+- [[resumenes]] — nodo temático que relaciona esta fuente con las demás fuentes de referencia del TFM (almacenamiento, PVsyst, análisis económico)

@@ -3,7 +3,7 @@ type: meta
 title: Wiki Log
 status: evergreen
 created: 2026-08-05
-updated: 2026-08-16
+updated: 2026-08-17
 tags:
   - meta
   - log
@@ -12,6 +12,21 @@ tags:
 # Wiki Log
 
 Newest completed operations appear first.
+
+## 2026-08-17 — save: nodo temático Resúmenes
+
+Creada la nota conceptual `wiki/concepts/resumenes.md` (título "Resúmenes"),
+que agrupa y relaciona las tres fuentes de referencia del TFM indexadas hasta
+ahora ([[perpinan-2013-energia-solar-fotovoltaica]],
+[[arcas-2024-autoconsumo-industrial-san-martin-pyl]] y
+[[fernandes-alves-2025-autoconsumo-mad9]]) según los temas técnicos que
+comparten: autoconsumo fotovoltaico industrial, almacenamiento en baterías
+(con sus tres conclusiones divergentes), simulación con PVsyst, análisis
+económico VAN/TIR/LCOE y Performance Ratio. Incluye una tabla comparativa y
+distingue explícitamente la única fuente citable (Perpiñán) de las dos no
+citables (TFM de otros autores). Añadido enlace bidireccional
+`[[resumenes]]` en el frontmatter y en la sección "Relacionado" de cada una
+de las tres páginas fuente, y en `wiki/index.md` (sección Concepts).
 
 ## 2026-08-16 — ingest: TFM de referencia San Martín PYL (Arcas Navarro, 2024) y MAD9 (Fernandes Alves, 2025)
 
