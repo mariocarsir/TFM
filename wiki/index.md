@@ -3,7 +3,7 @@ type: meta
 title: Wiki Index
 status: evergreen
 created: 2026-08-05
-updated: 2026-08-13
+updated: 2026-08-16
 tags:
   - meta
   - index
@@ -15,7 +15,7 @@ This catalog is updated by completed knowledge operations.
 
 ## Sources
 
-- No sources indexed yet.
+- [[perpinan-2013-energia-solar-fotovoltaica]]
 
 ## Concepts
 

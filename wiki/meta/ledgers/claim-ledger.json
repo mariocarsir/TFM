@@ -1,5 +1,86 @@
 {
-  "claims": {},
-  "generated_at": "2026-08-05T17:14:20Z",
-  "schema": "claude-obsidian.claim-ledger.v1"
+  "schema": "claude-obsidian.claim-ledger.v1",
+  "generated_at": "2026-08-16T00:00:00Z",
+  "claims": {
+    "clm-perpinan2013-beta-opt": {
+      "text": "Inclinación óptima para sistemas fotovoltaicos estáticos: β_opt = 3,7 + 0,69·|φ| (grados), donde φ es la latitud.",
+      "risk": "normal",
+      "assessment": "accepted",
+      "confidence": "high",
+      "location": {
+        "path": "wiki/sources/perpinan-2013-energia-solar-fotovoltaica.md",
+        "anchor": null
+      },
+      "reviewed_at": "2026-08-16",
+      "notes": null,
+      "supersedes": null,
+      "evidence": [
+        {
+          "source_id": "src-9c7e1dd83466536bf360",
+          "relation": "supports",
+          "locator": "p.16, ec. 3.33 / 6.10"
+        }
+      ]
+    },
+    "clm-perpinan2013-llp-metodo": {
+      "text": "El método LLP (Loss of Load Probability, ecs. 7.8-7.18) es la referencia metodológica de dimensionado por fiabilidad de sistemas fotovoltaicos autónomos con acumulación.",
+      "risk": "normal",
+      "assessment": "accepted",
+      "confidence": "high",
+      "location": {
+        "path": "wiki/sources/perpinan-2013-energia-solar-fotovoltaica.md",
+        "anchor": null
+      },
+      "reviewed_at": "2026-08-16",
+      "notes": null,
+      "supersedes": null,
+      "evidence": [
+        {
+          "source_id": "src-9c7e1dd83466536bf360",
+          "relation": "supports",
+          "locator": "p.104-108, cap. 7"
+        }
+      ]
+    },
+    "clm-perpinan2013-pr-rango": {
+      "text": "El Performance Ratio (PR) anual de sistemas fotovoltaicos conectados a red se sitúa típicamente entre 0,4 y 0,85, con un promedio europeo de 0,74 (base de datos IEA, sistemas desde 1996).",
+      "risk": "normal",
+      "assessment": "accepted",
+      "confidence": "high",
+      "location": {
+        "path": "wiki/sources/perpinan-2013-energia-solar-fotovoltaica.md",
+        "anchor": null
+      },
+      "reviewed_at": "2026-08-16",
+      "notes": null,
+      "supersedes": null,
+      "evidence": [
+        {
+          "source_id": "src-9c7e1dd83466536bf360",
+          "relation": "supports",
+          "locator": "p.88, tabla 6.2"
+        }
+      ]
+    },
+    "clm-perpinan2013-almacenamiento-plomo-acido": {
+      "text": "El capítulo 7 (Sistemas Fotovoltaicos Autónomos) de esta fuente trata exclusivamente baterías de plomo-ácido; no contiene datos de baterías de ion-litio.",
+      "risk": "normal",
+      "assessment": "accepted",
+      "confidence": "high",
+      "location": {
+        "path": "wiki/sources/perpinan-2013-energia-solar-fotovoltaica.md",
+        "anchor": null
+      },
+      "reviewed_at": "2026-08-16",
+      "notes": "Caveat de alcance: no citar esta fuente para cifras técnicas de química de ion-litio en el capítulo de almacenamiento del TFM.",
+      "supersedes": null,
+      "evidence": [
+        {
+          "source_id": "src-9c7e1dd83466536bf360",
+          "relation": "supports",
+          "locator": "p.93-112, cap. 7"
+        }
+      ]
+    }
+  }
 }

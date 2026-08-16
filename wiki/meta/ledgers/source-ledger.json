@@ -1,5 +1,25 @@
 {
-  "generated_at": "2026-08-05T17:14:20Z",
   "schema": "claude-obsidian.source-ledger.v1",
-  "sources": {}
+  "generated_at": "2026-08-16T00:00:00Z",
+  "sources": {
+    "src-9c7e1dd83466536bf360": {
+      "origin": {
+        "kind": "file",
+        "locator": "Bibliografia/Resumenes/Perpiñán_2013.md"
+      },
+      "content_kind": "document",
+      "title": "Energía Solar Fotovoltaica (Perpiñán Lamigueiro, 2013)",
+      "authority": "primary",
+      "content_sha256": "f028b3f2f74519de77a45c9e6ed92589be2982256326cc832bdd4b38e91959dd",
+      "ingested_at": null,
+      "retrieved_at": "2026-08-16",
+      "refresh_due": "2027-08-16",
+      "review_status": "active",
+      "independence_key": "perpinan-lamigueiro-esf-2013",
+      "pages": [
+        "wiki/sources/perpinan-2013-energia-solar-fotovoltaica.md"
+      ],
+      "supersedes": null
+    }
+  }
 }
