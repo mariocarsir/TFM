@@ -16,6 +16,8 @@ This catalog is updated by completed knowledge operations.
 ## Sources
 
 - [[perpinan-2013-energia-solar-fotovoltaica]]
+- [[arcas-2024-autoconsumo-industrial-san-martin-pyl]]
+- [[fernandes-alves-2025-autoconsumo-mad9]]
 
 ## Concepts
 

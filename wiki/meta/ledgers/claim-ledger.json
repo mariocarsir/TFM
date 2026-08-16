@@ -81,6 +81,138 @@
           "locator": "p.93-112, cap. 7"
         }
       ]
+    },
+    "clm-arcas2024-potencia-elegida": {
+      "text": "El sistema fotovoltaico elegido en el TFM de referencia (tejado, 2 orientaciones) tiene una potencia instalada de 1.626 kWp, con PR anual 0,784, autoconsumo 96,60% y autosuficiencia 15,05%.",
+      "risk": "normal",
+      "assessment": "accepted",
+      "confidence": "medium",
+      "location": { "path": "wiki/sources/arcas-2024-autoconsumo-industrial-san-martin-pyl.md", "anchor": null },
+      "reviewed_at": "2026-08-16",
+      "notes": "NO CITABLE en el TFM de Mario Carrión: dato de un TFM de otro autor (Manuel Arcas Navarro, Máster ERMA UPM 2023/2024), no fuente académica primaria. Uso exclusivo como referencia de metodología/orden de magnitud, nunca como cita.",
+      "supersedes": null,
+      "evidence": [
+        { "source_id": "src-172f6b5c8b5ffc6b4914", "relation": "supports", "locator": "p.22-37, Tabla 18" }
+      ]
+    },
+    "clm-arcas2024-almacenamiento-no-rentable": {
+      "text": "En el caso de San Martín PYL, el almacenamiento en baterías (120 €/kWh) no resulta rentable bajo ninguna estrategia de carga/descarga simulada, principalmente por el bajo diferencial de precio entre periodos tarifarios P1 y P6 (~38%) y el sobredimensionamiento del consumo frente a la producción FV.",
+      "risk": "normal",
+      "assessment": "accepted",
+      "confidence": "medium",
+      "location": { "path": "wiki/sources/arcas-2024-autoconsumo-industrial-san-martin-pyl.md", "anchor": null },
+      "reviewed_at": "2026-08-16",
+      "notes": "NO CITABLE. Relevante solo como contraste metodológico: el CPD de Mario tiene perfil 24/7 similar, pero puede diferir en ratio FV/consumo y diferencial tarifario — no extrapolar sin recalcular con datos propios.",
+      "supersedes": null,
+      "evidence": [
+        { "source_id": "src-172f6b5c8b5ffc6b4914", "relation": "supports", "locator": "p.38-45, cap. 6" }
+      ]
+    },
+    "clm-arcas2024-resultados-financieros": {
+      "text": "Para la configuración elegida (solo fotovoltaica, sin batería, financiación 100% propia), el TFM de referencia obtiene: payback 6 años, TIR 18%, VAN 1.872.921 €, LCOE 0,023 €/kWh.",
+      "risk": "normal",
+      "assessment": "accepted",
+      "confidence": "medium",
+      "location": { "path": "wiki/sources/arcas-2024-autoconsumo-industrial-san-martin-pyl.md", "anchor": null },
+      "reviewed_at": "2026-08-16",
+      "notes": "NO CITABLE. Útil solo como referencia de orden de magnitud y de estructura del análisis económico (VAN/TIR/LCOE), no como cifra a reproducir.",
+      "supersedes": null,
+      "evidence": [
+        { "source_id": "src-172f6b5c8b5ffc6b4914", "relation": "supports", "locator": "p.47, Tabla 24" }
+      ]
+    },
+    "clm-arcas2024-ahorro-anual": {
+      "text": "El ahorro medio conseguido con la instalación FV elegida es de 268.695,16 €/año, equivalente a una reducción del 13,4% del coste de la factura eléctrica sobre un horizonte de 25 años (LCOE combinado 0,123 €/kWh frente a 0,142 €/kWh sin FV).",
+      "risk": "normal",
+      "assessment": "accepted",
+      "confidence": "medium",
+      "location": { "path": "wiki/sources/arcas-2024-autoconsumo-industrial-san-martin-pyl.md", "anchor": null },
+      "reviewed_at": "2026-08-16",
+      "notes": "NO CITABLE. Ver también nota en clm-arcas2024-resultados-financieros.",
+      "supersedes": null,
+      "evidence": [
+        { "source_id": "src-172f6b5c8b5ffc6b4914", "relation": "supports", "locator": "p.47-48, Tablas 26-27" }
+      ]
+    },
+    "clm-mad9-potencia-config": {
+      "text": "La instalación fotovoltaica final proyectada para el centro logístico Amazon MAD9 tiene una potencia pico de 2.710 kWp (4.928 módulos JA Solar JAM72D30-550-MB de 550 Wp), con 8 inversores Huawei SUN2000-330KTL-H1 (330 kW) y ratio DC/AC citado de forma inconsistente entre 1,03 y 1,13 en la fuente.",
+      "risk": "normal",
+      "assessment": "accepted",
+      "confidence": "high",
+      "location": {
+        "path": "wiki/sources/fernandes-alves-2025-autoconsumo-mad9.md",
+        "anchor": null
+      },
+      "reviewed_at": "2026-08-16",
+      "notes": "No citar como fuente académica en el TFM de Mario Carrión (TFM de otro autor, no publicado, no revisado por pares). Válido solo como referencia interna de comparación de magnitud/configuración para el capítulo 6 del índice de Mario. La discrepancia DC/AC (1,03 vs 1,13) no está resuelta en la fuente.",
+      "supersedes": null,
+      "evidence": [
+        {
+          "source_id": "src-124b39acc88046c98ba7",
+          "relation": "supports",
+          "locator": "p.51-52, p.5 (resumen)"
+        }
+      ]
+    },
+    "clm-mad9-bateria-seleccion": {
+      "text": "Se selecciona una batería de 2.000 kWh (Huawei LUNA2000) frente a las alternativas de 200 kWh y 4.500 kWh evaluadas, por ofrecer el mejor equilibrio entre rentabilidad y durabilidad: la de 200 kWh alcanza el fin de su vida útil (6.000 ciclos) en el año 16 y requiere una reposición de +90.000 €, mientras que la de 4.500 kWh queda sobredimensionada e infrautilizada (solo 11,70 % de degradación acumulada en 30 años).",
+      "risk": "normal",
+      "assessment": "accepted",
+      "confidence": "high",
+      "location": {
+        "path": "wiki/sources/fernandes-alves-2025-autoconsumo-mad9.md",
+        "anchor": null
+      },
+      "reviewed_at": "2026-08-16",
+      "notes": "No citar como fuente académica en el TFM de Mario Carrión. Es la aportación más valiosa de este documento como referencia metodológica: método propio de degradación de baterías por ciclos equivalentes (ecuación Ciclos_t = Ciclos_{t-1}·(1+δ)^{t-1}, δ=3%/año), transferible al capítulo 7.4 (modelo horario y degradación) del índice de Mario, pero sin citar la fuente.",
+      "supersedes": null,
+      "evidence": [
+        {
+          "source_id": "src-124b39acc88046c98ba7",
+          "relation": "supports",
+          "locator": "p.46-51"
+        }
+      ]
+    },
+    "clm-mad9-resultado-economico": {
+      "text": "Con la configuración final (2.710 kWp + batería 2.000 kWh), el estudio económico del TFM de referencia obtiene: CAPEX 2.372.000 €, ahorro anual 498.096 €, payback simple 5,75 años, VAN 4.481.881,96 € (tasa de descuento 4 %), TIR 15,76 % y LCOE 0,0393 €/kWh.",
+      "risk": "normal",
+      "assessment": "accepted",
+      "confidence": "high",
+      "location": {
+        "path": "wiki/sources/fernandes-alves-2025-autoconsumo-mad9.md",
+        "anchor": null
+      },
+      "reviewed_at": "2026-08-16",
+      "notes": "No citar como fuente académica en el TFM de Mario Carrión. Válido solo como referencia de orden de magnitud esperable (VAN/TIR/LCOE/payback) para una instalación industrial de escala similar con almacenamiento significativo, útil para contrastar plausibilidad del capítulo 8 de Mario, nunca como cifra citada.",
+      "supersedes": null,
+      "evidence": [
+        {
+          "source_id": "src-124b39acc88046c98ba7",
+          "relation": "supports",
+          "locator": "p.74-76, p.82"
+        }
+      ]
+    },
+    "clm-mad9-resultado-energetico": {
+      "text": "La simulación PVsyst de la propuesta final del TFM de referencia estima una producción anual de 4.150,8 MWh, un 87,5 % de autoconsumo (sobre generación), una autosuficiencia del 77 % (sobre demanda) y un Performance Ratio del 70,61 %.",
+      "risk": "normal",
+      "assessment": "accepted",
+      "confidence": "high",
+      "location": {
+        "path": "wiki/sources/fernandes-alves-2025-autoconsumo-mad9.md",
+        "anchor": null
+      },
+      "reviewed_at": "2026-08-16",
+      "notes": "No citar como fuente académica en el TFM de Mario Carrión. El PR relativamente bajo (70,61%) se explica en la fuente por las pérdidas de proceso de almacenamiento (>9%, arquitectura AC-coupling) — útil como referencia cualitativa de factores a considerar en el capítulo 6.4 de Mario, no como cifra citable.",
+      "supersedes": null,
+      "evidence": [
+        {
+          "source_id": "src-124b39acc88046c98ba7",
+          "relation": "supports",
+          "locator": "p.68-70"
+        }
+      ]
     }
   }
 }

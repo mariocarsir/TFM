@@ -13,6 +13,23 @@ tags:
 
 Newest completed operations appear first.
 
+## 2026-08-16 — ingest: TFM de referencia San Martín PYL (Arcas Navarro, 2024) y MAD9 (Fernandes Alves, 2025)
+
+Registradas dos fuentes de referencia NO citables en el ledger de fuentes
+(`wiki/meta/ledgers/source-ledger.json`), con 4 afirmaciones verificables cada
+una extraídas al ledger de afirmaciones (`wiki/meta/ledgers/claim-ledger.json`,
+todas con nota explícita de no-citabilidad). Creadas las páginas fuente
+`wiki/sources/arcas-2024-autoconsumo-industrial-san-martin-pyl.md` y
+`wiki/sources/fernandes-alves-2025-autoconsumo-mad9.md`, enlazadas a los
+resúmenes técnicos ya generados por `bibliotecario-pdf` en
+`conocimiento fotovoltaico/Referencia/autoconsumo-industrial-san-martin-pyl.md`
+y `conocimiento fotovoltaico/Referencia/instalacion-fotovoltaica-centro-logistico-mad9.md`
+(fuentes ya presentes dentro del vault, producidas por el pipeline
+bibliográfico propio del proyecto — no se capturó ningún payload crudo
+adicional en `.raw/`). Ambos son TFM de otros autores del Máster ERMA UPM;
+sirven solo como referencia de estructura, metodología y formato, nunca como
+fuente académica citable en el TFM de Mario Carrión.
+
 ## 2026-08-16 — ingest: Energía Solar Fotovoltaica (Perpiñán Lamigueiro, 2013)
 
 Registrada la primera fuente bibliográfica citable del TFM en el ledger de

@@ -20,6 +20,44 @@
         "wiki/sources/perpinan-2013-energia-solar-fotovoltaica.md"
       ],
       "supersedes": null
+    },
+    "src-172f6b5c8b5ffc6b4914": {
+      "origin": {
+        "kind": "file",
+        "locator": "conocimiento fotovoltaico/Referencia/autoconsumo-industrial-san-martin-pyl.md"
+      },
+      "content_kind": "document",
+      "title": "Proyecto de autoconsumo industrial con almacenamiento en la fábrica de San Martín PYL (Manuel Arcas Navarro, TFM ERMA UPM, 2024)",
+      "authority": "secondary",
+      "content_sha256": "312e92d83f4ceaa79d956ee5a65a05afed99a52b3f99815ea3380d75773ad8c2",
+      "ingested_at": null,
+      "retrieved_at": "2026-08-16",
+      "refresh_due": "2027-08-16",
+      "review_status": "active",
+      "independence_key": "arcas-navarro-sanmartinpyl-tfm-2024",
+      "pages": [
+        "wiki/sources/arcas-2024-autoconsumo-industrial-san-martin-pyl.md"
+      ],
+      "supersedes": null
+    },
+    "src-124b39acc88046c98ba7": {
+      "origin": {
+        "kind": "file",
+        "locator": "conocimiento fotovoltaico/Referencia/instalacion-fotovoltaica-centro-logistico-mad9.md"
+      },
+      "content_kind": "document",
+      "title": "Instalación fotovoltaica para autoconsumo en centro logístico de almacenaje (Amazon MAD9) (Fernandes Alves, 2025)",
+      "authority": "community",
+      "content_sha256": "2f885181c5eba6b522323de9f69d07661419ec3f9d7fbfabe4e4abe22815a841",
+      "ingested_at": null,
+      "retrieved_at": "2026-08-16",
+      "refresh_due": "2027-08-16",
+      "review_status": "active",
+      "independence_key": "fernandes-alves-mad9-tfm-2025",
+      "pages": [
+        "wiki/sources/fernandes-alves-2025-autoconsumo-mad9.md"
+      ],
+      "supersedes": null
     }
   }
 }
