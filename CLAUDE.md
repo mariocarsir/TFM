@@ -31,13 +31,13 @@ La estructura es la que Mario ya tenía montada, sin renombrar a convención num
 | --- | --- |
 | `Memoria/` | Fuente LaTeX de la memoria + PDF compilado. Incluye `indice_propuesto.md`. |
 | `Bibliografia/PDFs/` | PDFs originales de bibliografía. |
-| `Bibliografia/Resumenes/` | Resúmenes densos generados por `bibliotecario-pdf`, únicas fuentes citables. |
+| `Bibliografia/Resumenes/` | Resúmenes densos generados por `bibliotecario-pdf` vía skill `resumen-tecnico` (PDFs de papers/normas/manuales citables), únicas fuentes citables. |
 | `Datos/` | `PVsyst/` (informes de simulación) y `Consumo CPD/` (perfil horario de consumo). |
 | `Normativa TFM/` | Normativa ERMA oficial y `guia_tipografica.md`. |
 | `Plantillas/` | Portada oficial, plantilla de presentación/defensa, resumen TFM. |
 | `Imagenes/` | Logos y figuras del documento. |
 | `Documentacion de apoyo/` | TFM de referencia, apuntes de las asignaturas, TFG propio de Mario. |
-| `conocimiento fotovoltaico/` | Base de conocimiento de `piloto-pvsyst`: `Manuales PVsyst/` (14 manuales oficiales v6/v7/v8), `Referencia/` (datasheets, notas técnicas, guía de diseño generada) y `Capturas/` (pantallazos de trabajo, formato `AAAA-MM-DD_HHMM.png`). |
+| `conocimiento fotovoltaico/` | Base de conocimiento de `piloto-pvsyst`: `Manuales PVsyst/` (14 manuales oficiales v6/v7/v8), `Referencia/` (datasheets, notas técnicas, guía de diseño generada, resúmenes de apuntes/presentaciones/vídeos/TFMs no-citables generados por `bibliotecario-pdf` vía skill `resumen-tecnico`) y `Capturas/` (pantallazos de trabajo, formato `AAAA-MM-DD_HHMM.png`). |
 | `Auditorias/` | Informes de auditoría del meta-flujo y `registro.md` con el estado de cada hallazgo. |
 | `.claude/agents/` | Agentes especializados (tabla abajo). |
 
@@ -47,8 +47,8 @@ La estructura es la que Mario ya tenía montada, sin renombrar a convención num
 
 | Agente | Cuándo delegar |
 | --- | --- |
+| `bibliotecario-pdf` | Mario aporta un PDF/DOCX/PPTX/TXT o vídeo YouTube nuevo de bibliografía a resumir (paper, norma, apuntes, presentación, TFM de referencia). Invoca la skill `resumen-tecnico` automáticamente. |
 | `redactor-humanizador` | Redactar o desarrollar cualquier sección/capítulo de la memoria. |
-| `bibliotecario-pdf` | Mario aporta un PDF nuevo de bibliografía a citar. |
 | `analista-economico` | Estructurar o revisar cálculos en Excel: modelo horario de almacenamiento, VAN, TIR, LCOE, sensibilidad. |
 | `ingeniero-dominio` | Cualquier decisión o cálculo de ingeniería: dimensionado FV, PVsyst, almacenamiento, autoconsumo, tramitación. |
 | `piloto-pvsyst` | Manejo operativo de PVsyst: guía paso a paso de la interfaz, dudas sobre capturas de pantalla del programa, validación de resultados de simulación. |
@@ -68,14 +68,31 @@ La estructura es la que Mario ya tenía montada, sin renombrar a convención num
 7. **Auditar por hitos**: al cerrar cada capítulo grande, pasar `revisor-calidad` y `conservador-memoria`.
 8. **Ortografía completa del español** en todo lo generado: tildes y eñes siempre, nunca sustitutos ASCII.
 9. **Commit proactivo** tras cada cambio relevante y verificado, con mensaje descriptivo, sin preguntar. El push sí se consulta. El PDF compilado también se versiona: es el entregable.
-10. **Prohibido citar de memoria del modelo**: toda afirmación con cita debe ser trazable a un PDF que Mario tenga y haya aprobado, vía `bibliotecario-pdf`.
+10. **Prohibido citar de memoria del modelo**: toda afirmación con cita debe ser trazable a un PDF que Mario tenga y haya aprobado, vía `bibliotecario-pdf` + skill `resumen-tecnico`.
 
 ## Pipeline bibliográfico
 
 ```text
-PDF nuevo → bibliotecario-pdf → resumen denso en Bibliografia/Resumenes/<paper>.md
-         → redactor-humanizador SOLO cita a partir de resúmenes verificados
-         → revisor-calidad contrasta cada cifra citada contra el resumen
+PDF/DOCX/PPTX/TXT/YouTube nuevo
+         ↓
+    bibliotecario-pdf (invoca skill resumen-tecnico)
+         ↓
+    Detecta tipo: paper/manual/normativa/apuntes/presentacion/tfm-referencia/video
+         ↓
+    Pregunta nivel de densidad: Ejecutivo / Estándar / Exhaustivo
+         ↓
+    Extrae preservando ecuaciones LaTeX, tablas, gráficas, procedimientos
+         ↓
+    Resume en dos pasos: extracción exhaustiva → limpieza/organización
+         ↓
+    Genera .md con frontmatter compatible Obsidian
+         ↓
+    Si es citable → Bibliografia/Resumenes/<Autor>_<Año>.md
+    Si es no-citable → conocimiento fotovoltaico/Referencia/<slug-titulo>.md
+         ↓
+    redactor-humanizador SOLO cita a partir de estos resúmenes
+         ↓
+    revisor-calidad contrasta cada cifra citada contra el resumen
 ```
 
 ## Consejos heredados (de la experiencia de Gonzalo)
