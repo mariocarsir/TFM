@@ -17,7 +17,7 @@
 - **Bibliografía:** estilo IEEEtran, fichero `biblio.bib`.
 - **Normativa ERMA:** máx. 150 páginas, entrega en PDF firmado digitalmente, estructura índice → memoria → anexos.
 - **Universidad usa Turnitin:** el flujo de humanización con voz propia (skill `humanizer`) es OBLIGATORIO en cada capítulo, no opcional.
-- **Índice de trabajo:** `Memoria/indice_propuesto.md` — 11 capítulos + anexos, validado como **provisional** (revisable con el tutor).
+- **Índice de trabajo:** `Memoria/indice_propuesto.md` — 13 capítulos + anexos (incluye pliego de condiciones técnicas y estudio de seguridad y salud, cap. 10-11, con precedente en `TFM-MAD9_signed.pdf`), validado como **provisional** (revisable con el tutor).
 - **Cálculo:** PVsyst para la simulación fotovoltaica (núcleo del TFM); Excel para todo lo que PVsyst no cubre (modelo horario de almacenamiento, análisis económico: VAN, TIR, LCOE, sensibilidad).
 - **TFM de referencia** (los tres indexados en `conocimiento fotovoltaico/Referencia/`; comparativa transversal en `analisis-comparativo-tfm-referencia-erma.md`):
   - **Primario — `TFM-MAD9_signed.pdf`** (Diego Fernandes Alves, 2025, centro logístico Amazon MAD9): arquitectura y resultados esperables. El más reciente, el único con almacenamiento realmente dimensionado, escala comparable y perfil de consumo 24/7.
