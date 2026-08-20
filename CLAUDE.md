@@ -19,7 +19,10 @@
 - **Universidad usa Turnitin:** el flujo de humanización con voz propia (skill `humanizer`) es OBLIGATORIO en cada capítulo, no opcional.
 - **Índice de trabajo:** `Memoria/indice_propuesto.md` — 11 capítulos + anexos, validado como **provisional** (revisable con el tutor).
 - **Cálculo:** PVsyst para la simulación fotovoltaica (núcleo del TFM); Excel para todo lo que PVsyst no cubre (modelo horario de almacenamiento, análisis económico: VAN, TIR, LCOE, sensibilidad).
-- **TFM de referencia más cercano:** `Documentacion de apoyo/Ejemplos TFM/TFM_M_A.pdf` (Manuel Arcas, autoconsumo con almacenamiento). También `TFM_ANDREA_BARRIOS_L.pdf`.
+- **TFM de referencia** (los tres indexados en `conocimiento fotovoltaico/Referencia/`; comparativa transversal en `analisis-comparativo-tfm-referencia-erma.md`):
+  - **Primario — `TFM-MAD9_signed.pdf`** (Diego Fernandes Alves, 2025, centro logístico Amazon MAD9): arquitectura y resultados esperables. El más reciente, el único con almacenamiento realmente dimensionado, escala comparable y perfil de consumo 24/7.
+  - **`TFM_M_A.pdf`** (Manuel Arcas, 2024, San Martín PYL; cotutor Julio Amador): método de cálculo — cargas de viento CTE, strings, P50/P90, modelo Excel de gestión de batería.
+  - **`TFM_ANDREA_BARRIOS_L.pdf`** (Andrea Barrios López, 2023): tramitación y economía — procedimiento administrativo con plazos, escenarios de precio, subvenciones, dimensionado eléctrico con ecuaciones.
 - **Reuniones con el tutor:** sin frecuencia fija, puntuales por hitos — no asumir cadencia regular al planificar seguimiento.
 - **Git:** Mario no tenía experiencia previa; explicar lo mínimo imprescindible (qué es un commit, cómo revisar el historial) según haga falta.
 
