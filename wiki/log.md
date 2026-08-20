@@ -3,7 +3,7 @@ type: meta
 title: Wiki Log
 status: evergreen
 created: 2026-08-05
-updated: 2026-08-17
+updated: 2026-08-20
 tags:
   - meta
   - log
@@ -12,6 +12,24 @@ tags:
 # Wiki Log
 
 Newest completed operations appear first.
+
+## 2026-08-20 — ingest: TFM de referencia Evaluación FV para autoconsumo en gran industria (Barrios López, 2023)
+
+Registrada la tercera fuente de referencia NO citable en el ledger de fuentes
+(`wiki/meta/ledgers/source-ledger.json`), con 4 afirmaciones verificables
+extraídas al ledger de afirmaciones (`wiki/meta/ledgers/claim-ledger.json`,
+todas con nota explícita de no-citabilidad). Creada la página fuente
+`wiki/sources/barrios-2023-evaluacion-fv-autoconsumo-gran-industria.md`,
+enlazada al resumen técnico ya generado por `bibliotecario-pdf` en
+`conocimiento fotovoltaico/Referencia/evaluacion-fv-autoconsumo-gran-industria.md`
+(fuente ya presente dentro del vault, producida por el pipeline bibliográfico
+propio del proyecto — no se capturó ningún payload crudo adicional en
+`.raw/`). Es un TFM de otra autora del Máster ERMA UPM; sirve solo como
+referencia de estructura, metodología (dimensionado eléctrico, tramitación
+administrativa, análisis de sensibilidad de precios de mercado) y formato,
+nunca como fuente académica citable en el TFM de Mario Carrión. Actualizado
+el nodo temático [[resumenes]] para incorporar esta cuarta fuente a la
+comparativa.
 
 ## 2026-08-17 — save: nodo temático Resúmenes
 

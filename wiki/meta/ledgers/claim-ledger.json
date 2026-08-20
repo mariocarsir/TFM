@@ -213,6 +213,86 @@
           "locator": "p.68-70"
         }
       ]
+    },
+    "clm-barrios2023-propuesta-elegida": {
+      "text": "La Propuesta A (instalación en suelo) es la seleccionada como más viable técnica y económicamente entre las tres propuestas comparadas: 1.657 kWp preliminar (2.714.388 kWh/año, autoconsumo 96%, autosuficiencia 30%), desarrollada en ingeniería básica final como 1,603 MWp (3.024 módulos JinkoSolar JKM530M-7TL4-V de 530 Wp, 14 inversores Fronius TAURO ECO 100).",
+      "risk": "normal",
+      "assessment": "accepted",
+      "confidence": "medium",
+      "location": {
+        "path": "wiki/sources/barrios-2023-evaluacion-fv-autoconsumo-gran-industria.md",
+        "anchor": null
+      },
+      "reviewed_at": "2026-08-20",
+      "notes": "NO CITABLE en el TFM de Mario Carrión: TFM de otra autora (Andrea Barrios López, Máster ERMA UPM 2022/2023). Válido solo como referencia de metodología/orden de magnitud, nunca como cita. En la ingeniería de detalle se cambió el módulo/inversor respecto al análisis preliminar por un problema de stock declarado en la propia fuente.",
+      "supersedes": null,
+      "evidence": [
+        {
+          "source_id": "src-9f8f45186f8660af81a6",
+          "relation": "supports",
+          "locator": "p.33-35, 43, 54"
+        }
+      ]
+    },
+    "clm-barrios2023-almacenamiento-descartado": {
+      "text": "La hibridación con baterías se descarta explícitamente en las tres propuestas (A, B y C) por ser la energía excedentaria demasiado baja para rentabilizar el almacenamiento (nula en la Propuesta B), a diferencia de la fuente MAD9 donde sí resulta rentable.",
+      "risk": "normal",
+      "assessment": "accepted",
+      "confidence": "high",
+      "location": {
+        "path": "wiki/sources/barrios-2023-evaluacion-fv-autoconsumo-gran-industria.md",
+        "anchor": null
+      },
+      "reviewed_at": "2026-08-20",
+      "notes": "NO CITABLE. Tercer caso de referencia (junto a San Martín PYL y MAD9) donde se evalúa la rentabilidad del almacenamiento en un contexto de autoconsumo industrial sin excedentes; aquí el motivo es distinto al de San Martín PYL (excedentes bajos por diseño ajustado al 95% de autoconsumo, no por diferencial tarifario P1-P6). Útil como contraste metodológico para el capítulo de almacenamiento del CPD de Mario, nunca como conclusión a extrapolar.",
+      "supersedes": null,
+      "evidence": [
+        {
+          "source_id": "src-9f8f45186f8660af81a6",
+          "relation": "supports",
+          "locator": "p.42"
+        }
+      ]
+    },
+    "clm-barrios2023-resultados-economicos": {
+      "text": "Para la Propuesta A a 25 años, los resultados económicos varían según escenario de precios de mercado (decreciente/base/incremental) y subvención RD 477/2021: TIR entre 13,36% (sin subvención, escenario decreciente) y 40,77% (con subvención, escenario incremental); payback entre 6,0 y 2,5 años; ahorros acumulados entre 1.398.314 € y 6.293.651 €.",
+      "risk": "normal",
+      "assessment": "accepted",
+      "confidence": "medium",
+      "location": {
+        "path": "wiki/sources/barrios-2023-evaluacion-fv-autoconsumo-gran-industria.md",
+        "anchor": null
+      },
+      "reviewed_at": "2026-08-20",
+      "notes": "NO CITABLE. Útil como referencia de orden de magnitud y de estructura del análisis de sensibilidad (tres escenarios de precio de mercado eléctrico a 25 años + línea de subvención), más detallado en este aspecto que los otros dos TFM de referencia ya indexados — aplicable como plantilla para el capítulo 8 de Mario, nunca como cifra citada.",
+      "supersedes": null,
+      "evidence": [
+        {
+          "source_id": "src-9f8f45186f8660af81a6",
+          "relation": "supports",
+          "locator": "p.47-48, Tabla 32"
+        }
+      ]
+    },
+    "clm-barrios2023-presupuesto-tramitacion": {
+      "text": "El presupuesto de ejecución material de la instalación final (Propuesta A, ingeniería básica) asciende a 983.250 € sin IVA; la inversión total incluyendo tramitación e IVA es de 1.252.350 €.",
+      "risk": "normal",
+      "assessment": "accepted",
+      "confidence": "high",
+      "location": {
+        "path": "wiki/sources/barrios-2023-evaluacion-fv-autoconsumo-gran-industria.md",
+        "anchor": null
+      },
+      "reviewed_at": "2026-08-20",
+      "notes": "NO CITABLE. Válido solo como referencia de orden de magnitud del CAPEX (0,61-0,78 €/Wp según propuesta) y como ejemplo muy detallado y trazable del procedimiento administrativo de legalización (ayuntamiento, Comunidad de Madrid, CHT por proximidad al Dominio Público Hidráulico del río Jarama, AESA por proximidad aeroportuaria, CAU), más exhaustivo en este aspecto que los otros dos TFM de referencia ya indexados.",
+      "supersedes": null,
+      "evidence": [
+        {
+          "source_id": "src-9f8f45186f8660af81a6",
+          "relation": "supports",
+          "locator": "p.63-64"
+        }
+      ]
     }
   }
 }

@@ -58,6 +58,25 @@
         "wiki/sources/fernandes-alves-2025-autoconsumo-mad9.md"
       ],
       "supersedes": null
+    },
+    "src-9f8f45186f8660af81a6": {
+      "origin": {
+        "kind": "file",
+        "locator": "conocimiento fotovoltaico/Referencia/evaluacion-fv-autoconsumo-gran-industria.md"
+      },
+      "content_kind": "document",
+      "title": "Evaluación inicial de un proyecto real de implantación de instalación fotovoltaica para autoconsumo en gran industria (Andrea Barrios López, 2023)",
+      "authority": "community",
+      "content_sha256": "1d777ddccda656a31512021e0431014f3c0ba1eea6d70adcbf60a93c8a2399ef",
+      "ingested_at": null,
+      "retrieved_at": "2026-08-20",
+      "refresh_due": "2027-08-20",
+      "review_status": "active",
+      "independence_key": "barrios-lopez-granindustria-tfm-2023",
+      "pages": [
+        "wiki/sources/barrios-2023-evaluacion-fv-autoconsumo-gran-industria.md"
+      ],
+      "supersedes": null
     }
   }
 }

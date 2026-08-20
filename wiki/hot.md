@@ -3,7 +3,7 @@ type: meta
 title: Hot Cache
 status: developing
 created: 2026-08-05
-updated: 2026-08-17
+updated: 2026-08-20
 tags:
   - meta
   - hot-cache
@@ -13,8 +13,9 @@ tags:
 
 ## Last Updated
 
-2026-08-17 — save: creado el nodo temático [[resumenes]] que relaciona las
-tres fuentes de referencia del TFM ya indexadas.
+2026-08-20 — ingest: registrada la cuarta fuente de referencia del TFM,
+[[barrios-2023-evaluacion-fv-autoconsumo-gran-industria]] (Andrea Barrios
+López, 2023), y actualizado el nodo temático [[resumenes]] para incorporarla.
 
 ## Key Recent Facts
 
@@ -62,6 +63,14 @@ tres fuentes de referencia del TFM ya indexadas.
   almacenamiento en baterías, PVsyst, análisis económico VAN/TIR/LCOE,
   Performance Ratio), con enlace bidireccional añadido en cada una de las
   tres páginas fuente.
+- Registrada una tercera fuente de referencia NO citable:
+  [[barrios-2023-evaluacion-fv-autoconsumo-gran-industria]] (Andrea Barrios
+  López, 2023, evaluación FV para autoconsumo en gran industria — descarta
+  el almacenamiento por baja energía excedentaria, complementario a la
+  conclusión de San Martín PYL; aporta la metodología de tramitación
+  administrativa y de dimensionado eléctrico más detallada de las tres
+  fuentes de referencia). Actualizado [[resumenes]] para incorporarla a la
+  comparativa (ahora con 4 filas: Perpiñán, Arcas, Fernandes Alves, Barrios).
 
 ## Active Threads
 

@@ -3,7 +3,7 @@ type: meta
 title: Wiki Index
 status: evergreen
 created: 2026-08-05
-updated: 2026-08-17
+updated: 2026-08-20
 tags:
   - meta
   - index
@@ -18,6 +18,7 @@ This catalog is updated by completed knowledge operations.
 - [[perpinan-2013-energia-solar-fotovoltaica]]
 - [[arcas-2024-autoconsumo-industrial-san-martin-pyl]]
 - [[fernandes-alves-2025-autoconsumo-mad9]]
+- [[barrios-2023-evaluacion-fv-autoconsumo-gran-industria]]
 
 ## Concepts
 
