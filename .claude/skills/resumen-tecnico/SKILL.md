@@ -217,6 +217,20 @@ La skill invoca scripts Python que pueden necesitar paquetes adicionales:
 
 Cada script retorna un error explícito si le falta su dependencia.
 
+### Qué intérprete de Python usar (Windows)
+
+Los scripts de `scripts/` se invocan con `python3`, pero en Windows ese nombre es ambiguo: lo primero que aparece en el PATH de Git Bash es `AppData/Local/Microsoft/WindowsApps/python3`, el alias de ejecución de la Microsoft Store. En algunas sesiones ese alias no ejecuta nada: imprime un mensaje invitando a instalar Python desde la tienda y devuelve código de salida 9009, sin ninguna traza de error que apunte a la causa real.
+
+**Comprueba el intérprete antes de invocar cualquier script** y quédate con el primero que responda con un número de versión de verdad:
+
+```bash
+python3 --version || python --version || py -3 --version
+```
+
+Verificado el 2026-08-21 en esta máquina: `python3` resuelve a Python 3.12.10 (instalación real bajo `AppData/Local/Programs/Python/Python312`), pero el alias de la Store sigue por delante en el PATH, así que la comprobación no sobra. Si en vez de una versión aparece el mensaje de la Microsoft Store, cambia a `py -3` y sigue adelante: no es un fallo de la skill ni hay que instalar nada.
+
+Dentro de WSL (necesario solo para la ingesta a Obsidian, ver `references/ingesta-obsidian.md`) `python3` es siempre el intérprete correcto y esta comprobación no aplica.
+
 ### Alcance de lectura
 
 No existen límites por número de páginas. Lo que se lee lo decide **exclusivamente** el nivel de densidad (ver Fase 2). Un documento de 200 páginas pedido en Exhaustivo se lee entero; uno de 20 pedido en Ejecutivo no. Referencia real de coste: un PDF de 132 pp. en Exhaustivo consumió ~360.000 tokens y ~48 llamadas a herramienta en unos 25 minutos — es el precio esperado de ese nivel, no un desvío que haya que recortar por el camino.
