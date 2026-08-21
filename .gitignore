@@ -45,3 +45,6 @@ desktop.ini
 # Obsidian: estado de sesion (pestanas abiertas), cambia constantemente
 .obsidian/workspace.json
 .obsidian/workspace-mobile.json
+
+# Worktrees de sesiones de Claude Code: son checkouts temporales, nunca versionables
+.claude/worktrees/
