@@ -3,7 +3,7 @@ type: meta
 title: Wiki Index
 status: evergreen
 created: 2026-08-05
-updated: 2026-08-20
+updated: 2026-08-21
 tags:
   - meta
   - index
@@ -28,6 +28,7 @@ This catalog is updated by completed knowledge operations.
 - [[tfm-skills]]
 - [[superpowers]]
 - [[resumenes]]
+- [[registro-auditorias]]
 
 ## Entities
 

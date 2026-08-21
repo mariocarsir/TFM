@@ -2,7 +2,7 @@
 type: concept
 title: "Skill: auditor"
 created: 2026-08-13
-updated: 2026-08-13
+updated: 2026-08-21
 status: developing
 tags:
   - concept
@@ -11,6 +11,7 @@ tags:
 domain: "Flujo de trabajo TFM"
 complexity: intermediate
 related:
+  - "[[registro-auditorias]]"
   - "[[tfm-skills]]"
   - "[[tfm-subagente-revisor-calidad]]"
   - "[[tfm-subagente-conservador-memoria]]"
@@ -37,6 +38,10 @@ Audita **cómo se trabaja** en el proyecto — herramientas, organización de fi
 - No propone crear algo cuya capacidad ya figure en el mapa de la Fase 0, ni repite un hallazgo marcado `rechazado`.
 - Un informe sin hallazgos es un resultado válido — ante la duda, calla en vez de inflar el informe.
 - Cada cambio aplicado es un commit atómico (`auditoría(AUD-NNN): <resumen>`), sin worktree, con evidencia legible de que quedó hecho.
+
+## Hallazgos producidos
+
+Todo lo que esta skill ha encontrado está catalogado en [[registro-auditorias]], con una ficha por hallazgo explicando qué problema trataba de resolver, qué se propuso y qué se decidió finalmente. A 2026-08-21 son 18 hallazgos repartidos en dos pasadas: la auditoría completa del 2026-08-08 ([[aud-001-humanizer-no-invocable]] a [[aud-010-config-obsidian-versionada]]) y la auditoría con foco del 2026-08-21 sobre las skills de resumen e ingesta ([[aud-011-escritura-por-trozos]] a [[aud-018-pvsyst-sin-ejercitar]]).
 
 ## Relación con los subagentes
 

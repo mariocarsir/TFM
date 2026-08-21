@@ -3,7 +3,7 @@ type: meta
 title: Wiki Log
 status: evergreen
 created: 2026-08-05
-updated: 2026-08-20
+updated: 2026-08-21
 tags:
   - meta
   - log
@@ -12,6 +12,24 @@ tags:
 # Wiki Log
 
 Newest completed operations appear first.
+
+## 2026-08-21 — markdown: registro de auditorías del meta-flujo
+
+Creado el nodo [[registro-auditorias]] como índice navegable de los hallazgos
+de la skill `auditor`, más una ficha por hallazgo (`aud-001-*` a `aud-018-*`,
+18 notas) con el problema que trataba de resolver, la decisión planteada, la
+decisión finalmente adoptada y el detalle técnico de cada una. El hub queda
+enlazado desde `wiki/concepts/tfm-skill-auditor.md` y desde el índice.
+
+Las fichas reflejan las dos pasadas de auditoría realizadas hasta la fecha: la
+completa del 2026-08-08 (AUD-001 a AUD-010, informe en
+`Auditorias/2026-08-08-auditoria.md`) y la de foco del 2026-08-21 sobre las
+skills `resumen-tecnico` e ingesta a Obsidian (AUD-011 a AUD-018, informe en
+`Auditorias/2026-08-21-auditoria.md`). La fuente de verdad operativa sigue
+siendo `Auditorias/registro.md`; estas notas son su versión navegable y
+explicada, sin sustituirla. No se registró ninguna fuente ni afirmación nueva
+en los ledgers: el contenido procede íntegramente de documentos ya versionados
+en el propio repositorio.
 
 ## 2026-08-20 — ingest: TFM de referencia Evaluación FV para autoconsumo en gran industria (Barrios López, 2023)
 
