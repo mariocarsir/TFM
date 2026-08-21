@@ -40,21 +40,23 @@ Triggers: "resumen técnico", "resume este PDF", "extrae los datos clave", "hazm
    - **tfm-referencia**: TFM de otros autores, informes de referencia → `conocimiento fotovoltaico/Referencia/` sin IEEE
    - **video**: Transcripción de vídeo YouTube → `conocimiento fotovoltaico/Referencia/` sin IEEE
 
-3. **Pregunta el nivel de densidad** con `AskUserQuestion`:
-   - **Ejecutivo** (~1 página): tesis + 5-7 cifras clave, ecuaciones/tablas/gráficas sumarias
-   - **Estándar** (~3-5 páginas, recomendado): denso por sección, preserva ecuaciones/tablas/gráficas clave, procedimientos resumidos
-   - **Exhaustivo** (~10+ páginas): método FOCUS completo, nada omitido, todas las ecuaciones/tablas/gráficas/procedimientos
+3. **Fija el nivel de densidad. Lo elige siempre Mario, nunca la skill:**
+   - Si el encargo **ya lo especifica** (lo dijo Mario, o el agente que invoca la skill lo trae en el encargo), úsalo tal cual y **no preguntes**.
+   - Si **no** viene especificado, **pregúntalo con `AskUserQuestion` antes de extraer nada**. No lo deduzcas del tamaño del documento ni lo elijas por tu cuenta.
+   - Niveles:
+     - **Ejecutivo** (~1 página): tesis + 5-7 cifras clave, ecuaciones/tablas/gráficas sumarias
+     - **Estándar** (~3-5 páginas, recomendado): denso por sección, preserva ecuaciones/tablas/gráficas clave, procedimientos resumidos
+     - **Exhaustivo** (~10+ páginas): método FOCUS completo, nada omitido, todas las ecuaciones/tablas/gráficas/procedimientos
 
 ### Fase 2: Extraer contenido
 
-**PDF (< 10 páginas):**
-- Usa el `Read` nativo de Claude Code, extrae completo.
-
-**PDF (10–80 páginas):**
-- Lee con `Read` por rangos (primeras 10 + muestra de mitad + últimas 5), con constancia explícita de qué se muestreó.
-
-**PDF (> 80 páginas, manuales):**
-- Índice de contenidos (si existe) + introducción/resumen ejecutivo + secciones con ecuaciones/tablas/gráficas clave + conclusiones. Documen explícitamente: "Se muestreó por presupuesto de tokens (documento > 80 pp): TOC + intro + secciones con contenido técnico clave + conclusiones."
+**PDF:**
+- Usa el `Read` nativo de Claude Code, por rangos de páginas si hace falta.
+- **El alcance de lectura lo fija el nivel de densidad, no el número de páginas.** No hay ningún umbral de páginas que autorice a muestrear un documento pedido en Exhaustivo:
+  - **Exhaustivo** → se lee el documento **entero**, tenga las páginas que tenga. Si es largo, se encadenan lecturas por rangos sucesivos hasta cubrirlo por completo. No se omite nada; no se recorta "por presupuesto de tokens".
+  - **Estándar** → completas las secciones con contenido técnico (ecuaciones, tablas, gráficas, procedimientos) más introducción y conclusiones; se pueden saltar anexos y material repetido, **dejando constancia** de qué se saltó.
+  - **Ejecutivo** → índice + introducción/resumen + conclusiones + las 3-4 secciones técnicas principales, **dejando constancia**.
+- Si el documento es tan largo que el nivel pedido resulta inviable, **párate y dilo** antes de empezar; nunca entregues un muestreo etiquetado como exhaustivo.
 
 **DOCX:**
 - Ejecuta `scripts/extract_docx.py <ruta>` para extraer párrafos y tablas a texto legible.
@@ -157,7 +159,7 @@ related: []
 - **Confianza en los datos**: [cifras verificadas en fuente original, todo explícitamente citado]
 
 ## Notas de procesamiento
-[Opcional; registra si se muestreó (ej: "Documento > 80 pp: muestreado índice + intro + secciones técnicas clave"), si hay imágenes no extraídas, si faltan partes por error de extracción, etc.]
+[En Exhaustivo, confirma explícitamente "documento leído íntegro (N pp.)". En Estándar/Ejecutivo, registra qué secciones se saltaron y por qué. Anota también imágenes no extraíbles o partes que fallaron en la extracción.]
 ```
 
 ### Fase 5: Guardar en carpeta correcta
@@ -213,11 +215,9 @@ La skill invoca scripts Python que pueden necesitar paquetes adicionales:
 
 Cada script retorna un error explícito si le falta su dependencia.
 
-### Límites de presupuesto de tokens
+### Alcance de lectura
 
-- Documento < 10 pp: extrae completo
-- Documento 10–80 pp: muestrea primeras 10 + mitad + últimas 5, con constancia
-- Documento > 80 pp: TOC + intro + secciones con ecuaciones/tablas + conclusiones, con constancia
+No existen límites por número de páginas. Lo que se lee lo decide **exclusivamente** el nivel de densidad (ver Fase 2). Un documento de 200 páginas pedido en Exhaustivo se lee entero; uno de 20 pedido en Ejecutivo no. Referencia real de coste: un PDF de 132 pp. en Exhaustivo consumió ~360.000 tokens y ~48 llamadas a herramienta en unos 25 minutos — es el precio esperado de ese nivel, no un desvío que haya que recortar por el camino.
 
 ### Nivel de densidad y qué recorta
 
@@ -240,7 +240,8 @@ Cada script retorna un error explícito si le falta su dependencia.
 ```
 1. Aporto documento o URL (PDF/DOCX/PPTX/TXT/YouTube)
    ↓
-2. Skill pregunta: "¿Nivel de densidad?" (Ejecutivo/Estándar/Exhaustivo)
+2. Si no dije el nivel de densidad, la skill pregunta: "¿Ejecutivo/Estándar/Exhaustivo?"
+   (si ya lo dije en el encargo, no pregunta y usa el que dije)
    ↓
 3. Skill extrae, clasifica, resume en dos pasos
    ↓
