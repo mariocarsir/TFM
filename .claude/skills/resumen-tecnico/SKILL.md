@@ -199,7 +199,9 @@ Al terminar, reporta:
 
 > **Resumen generado:** `<ruta-archivo-md>`
 >
-> **Obsidian (opcional):** El frontmatter es compatible con `claude-obsidian:wiki-ingest`. Si quieres indexarlo en el vault, pídelo explícitamente en una sesión posterior, preferentemente desde WSL (la escritura al vault requiere WSL en Windows).
+> **Obsidian (opcional):** El frontmatter es compatible con `claude-obsidian`. Si quieres indexarlo en el vault, pídelo explícitamente (la escritura al vault requiere WSL en Windows).
+
+Cuando Mario pida esa indexación, **no re-deduzcas el procedimiento**: está escrito, verificado y completo en `references/ingesta-obsidian.md` (rutas del plugin, esquema del bundle transaccional, esquema de los dos ledgers, enums válidos, cálculo del `source_id`, los 7 ficheros que hay que tocar y el ruido conocido del linter). Re-derivarlo desde cero cuesta 30-45k tokens por ingesta.
 >
 > **Próximos pasos:** [redactor-humanizador puede citar este resumen vía wikilink o referencia directa]
 
@@ -232,7 +234,7 @@ No existen límites por número de páginas. Lo que se lee lo decide **exclusiva
 1. **Nunca resumir de memoria del modelo**: si un dato no está en la fuente, dilo explícitamente.
 2. **Cifras canónicas**: cada número que entra en el resumen es trazable a la fuente original (página/minuto).
 3. **Citas trazables**: cuando se cite de manera exacta, siempre con página de origen.
-4. **Sin auto-inyección en Obsidian**: la skill NO invoca `claude-obsidian:wiki-ingest` ni ninguna mutación del vault — solo genera `.md` con frontmatter compatible. La indexación real queda bajo demanda explícita (respeta la regla de Mario de mecanismos "pull", no "push").
+4. **Sin auto-inyección en Obsidian**: la skill NO invoca `claude-obsidian:wiki-ingest` ni ninguna mutación del vault — solo genera `.md` con frontmatter compatible. La indexación real queda bajo demanda explícita (respeta la regla de Mario de mecanismos "pull", no "push"). El procedimiento a seguir cuando Mario la pida está en `references/ingesta-obsidian.md`.
 5. **Ortografía completa del español**: tildes y eñes siempre, nunca sustitutos ASCII.
 
 ## Flujo manual para el usuario (Mario o subagentes)
