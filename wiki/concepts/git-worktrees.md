@@ -3,11 +3,13 @@ type: concept
 title: Git worktrees en Claude Code
 status: accepted
 created: 2026-08-06
-updated: 2026-08-06
+updated: 2026-08-22
 tags:
   - git
   - workflow
   - claude-code
+related:
+  - "[[trabajos-en-segundo-plano]]"
 ---
 
 # Git worktrees en Claude Code
@@ -20,11 +22,11 @@ Un worktree es como una **mesa auxiliar** junto a la mesa de trabajo principal. 
 
 ## Por qué se usa en este proyecto
 
-Claude Code usa worktrees en contextos de **background jobs** para aislar cambios del checkout principal:
+Claude Code usa worktrees en contextos de [[trabajos-en-segundo-plano|background jobs]] para aislar cambios del checkout principal, y también bajo demanda en sesiones en primer plano cuando Mario pide explícitamente trabajar aislado:
 
 ### Aislamiento de seguridad
 
-- Si estoy editando archivos en un background job, el working directory principal (`~/Escritorio/Claudio/TFM`) permanece intacto
+- Si estoy editando archivos en un worktree, el working directory principal (`~/Escritorio/Claudio/TFM`) permanece intacto
 - Mario puede seguir trabajando localmente (en Obsidian, VS Code, etc.) sin que mis cambios interfieran
 
 ### Evita conflictos en trabajos paralelos
@@ -43,8 +45,10 @@ Claude Code usa worktrees en contextos de **background jobs** para aislar cambio
 
 Un worktree se crea cuando:
 
-1. Se invoca manualmente `EnterWorktree(name: "...")`
-2. Un background job necesita editar código — se crea automáticamente **al abrir la sesión**, antes de la primera edición
+1. Mario lo pide explícitamente (o el `CLAUDE.md`/la memoria lo exige) en una sesión en primer plano — se invoca manualmente `EnterWorktree(name: "...")`
+2. Es un [[trabajos-en-segundo-plano|background job]] que necesita editar código — se crea automáticamente **al abrir la sesión**, antes de la primera edición
+
+Ambos casos usan la misma infraestructura de Git, pero con reglas de fusión distintas: ver [[trabajos-en-segundo-plano]] para la restricción de "nunca a `master`" propia de los background jobs, que **no** aplica igual a un worktree abierto en primer plano.
 
 ### Durante la lectura
 
@@ -65,12 +69,12 @@ Por eso cada worktree activo añade espacio en disco proporcional al tamaño de 
 
 ### Cuándo se eliminan los archivos duplicados
 
-La carpeta del worktree se limpia **automáticamente al terminar el background job**, independientemente de si sus cambios se fusionaron a `master` o no. Los commits hechos dentro del worktree, en cambio, permanecen en Git (en su propia rama) aunque la carpeta desaparezca — fusionarlos a `master` es un paso aparte, no una condición para que se limpien.
+La carpeta del worktree se limpia **automáticamente al terminar la sesión que lo abrió** (o el background job), independientemente de si sus cambios se fusionaron a `master` o no. Los commits hechos dentro del worktree, en cambio, permanecen en Git (en su propia rama) aunque la carpeta desaparezca — fusionarlos a `master` es un paso aparte, no una condición para que se limpien.
 
 ## Secuencia de trabajo
 
 ```text
-1. Se abre una sesión nueva
+1. Se abre una sesión nueva (o se pide un worktree en una ya abierta)
         ↓
 2. Se crea el worktree (EnterWorktree)
         ↓
@@ -90,8 +94,9 @@ Puedo editar múltiples archivos o capítulos dentro del **mismo worktree** ante
 
 ## Relación con GitHub
 
-GitHub es la fuente de verdad del repositorio. El worktree es solo infraestructura local temporal:
+GitHub es la fuente de verdad del repositorio. El worktree es solo infraestructura local temporal — pero la regla de fusión a `master` **depende de qué tipo de sesión abrió el worktree**, no del worktree en sí:
 
-- Los commits dentro del worktree se pueden pushear a su propia rama en GitHub (nunca directamente a `master`)
-- Fusionar o pushear a `master` requiere confirmación explícita de Mario — no es una acción automática
-- La única restricción operativa es: si voy a editar algo, primero necesito estar dentro de un worktree
+- Los commits dentro del worktree se pueden pushear a su propia rama en GitHub.
+- **En una sesión en primer plano**, si Mario está presente y autoriza ahí mismo fusionar o pushear a `master`, esa fusión es una acción normal más — el worktree no lo impide. Sigue exigiendo confirmación explícita de Mario, nunca es automática.
+- **En un [[trabajos-en-segundo-plano|background job]]** rige una restricción más estricta y no negociable: nunca fusiona ni pushea directamente a `master`/`main`, aunque el trabajo esté terminado y verificado — ver [[trabajos-en-segundo-plano]] para el detalle y el porqué.
+- La única restricción operativa común a ambos casos: si voy a editar algo, primero necesito estar dentro de un worktree.

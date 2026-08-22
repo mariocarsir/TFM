@@ -3,7 +3,7 @@ type: meta
 title: Wiki Index
 status: evergreen
 created: 2026-08-05
-updated: 2026-08-21
+updated: 2026-08-22
 tags:
   - meta
   - index
@@ -24,6 +24,7 @@ This catalog is updated by completed knowledge operations.
 
 - [[claude-obsidian]]
 - [[git-worktrees]]
+- [[trabajos-en-segundo-plano]]
 - [[tfm-subagentes]]
 - [[tfm-skills]]
 - [[superpowers]]
