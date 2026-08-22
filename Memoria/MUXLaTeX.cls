@@ -16,10 +16,22 @@
 \usepackage{amsmath, amssymb}
 \usepackage{siunitx}
 \usepackage{enumitem}
+% Un único \sisetup: antes había dos (este y otro más abajo), y el segundo
+% pisaba al primero. Fusionados aquí.
 \sisetup{
-  per-mode = symbol, % usa símbolo "por" en lugar de exponente
-  per-symbol = /    % el símbolo que usa es la barra /
+  per-mode = symbol,            % usa símbolo "por" en lugar de exponente
+  per-symbol = /,               % el símbolo que usa es la barra /
+  output-decimal-marker = {,},  % coma decimal (4,038) - guía tipográfica ERMA
+  detect-all
 }
+% Unidades que siunitx NO trae de serie y que este TFM usa constantemente.
+% Comprobado: \kW, \kWh, \W y \hour sí vienen definidas, estas no.
+\DeclareSIUnit{\Wp}{Wp}     % vatio pico
+\DeclareSIUnit{\kWp}{kWp}   % kilovatio pico — potencia del campo FV
+\DeclareSIUnit{\MWp}{MWp}   % megavatio pico
+\DeclareSIUnit{\MWh}{MWh}   % megavatio hora — consumo anual del CPD
+\DeclareSIUnit{\kVA}{kVA}   % potencia aparente — inversores
+\DeclareSIUnit{\kvar}{kvar} % potencia reactiva
 
 % Margin setup
 \usepackage[headheight=10ex,inner=2.5cm,
@@ -42,12 +54,6 @@
 \usepackage[spanish]{babel}
 \usepackage{watermark}
 \usepackage[most]{tcolorbox}
-% <<< AÑADE ESTO >>>
-\usepackage{siunitx}
-\sisetup{
-  output-decimal-marker = {,}, % si quieres coma decimal 4,038
-  detect-all
-}
 
 \newcommand{\digital}[1]{
         \ifthenelse{\equal{#1}{no}}{
@@ -73,7 +79,6 @@
 
 %%%%%%%%%%%%%%%%%%%%%%% <- MOD. Cap/Sec
 
-\usepackage{xcolor}
 \definecolor{lechuga}{RGB}{39, 30, 32}
 \definecolor{azulsection}{RGB}{39, 30, 32}
 \definecolor{verdesection}{RGB}{39, 30, 32}
@@ -84,29 +89,16 @@
 \definecolor{good_green}{RGB}{109, 191, 81}
 \newcommand{\capitulo}[2]{
     \chapter*{Chapter #1. #2}    \addcontentsline{toc}{chapter}{\protect\numberline{#1}#2}}
+% Modo alto contraste. Solo define \estilopagina, que sí usa main.tex.
+% Se han eliminado \palitos y \logoUCM: no los llamaba nadie y \logoUCM
+% apuntaba a logos de la UCM heredados del TFG que no existen en LOGOS/.
 \newcommand{\bajavision}[1]{
  \ifthenelse{\equal{#1}{si}}{
     \newcommand{\estilopagina}{
         \pagecolor{good_black}
         \color{good_green}
     }
-    \newcommand{\palitos}{
-        \color{good_green}{\rule[0.5ex]{\linewidth}{2pt}\vspace*{-\baselineskip}\vspace*{3.2pt}\\
-            \rule[0.2ex]{\linewidth}{2pt}\\
-            [1mm]}
-    }
-    \newcommand{\logoUCM}{
-        \includegraphics[width=0.65\textwidth]{LOGOS/logo_UCM_LV.png}
-    }
 }{ \newcommand{\estilopagina}{}
-    \newcommand{\palitos}{
-        \rule[0.5ex]{\linewidth}{2pt}\vspace*{-\baselineskip}\vspace*{3.2pt}\\
-            \rule[0.2ex]{\linewidth}{2pt}\\
-            [1mm]
-    }
-    \newcommand{\logoUCM}{
-        \includegraphics[width=0.65\textwidth]{LOGOS/logo_UCM.jpg}
-    }
 }
 }
 
@@ -129,30 +121,57 @@
         }
     }
 }
-\newcommand{\figuras}[3]{
+% \figuras{ruta izq}{pie izq}{etiqueta izq}{ruta dcha}{pie dcha}{etiqueta dcha}
+%
+% Coloca dos figuras INDEPENDIENTES una al lado de la otra. Cada una recibe
+% su propio número y su propio pie: p. ej. Figura 2.5 y Figura 2.6. Sirve
+% para ahorrar espacio cuando son dos cosas distintas (dos gráficas de
+% PVsyst, por ejemplo), no para partir una misma figura en dos paneles.
+%
+% Las etiquetas pueden ir vacías ({}), y entonces se usa fig:<pie> igual que
+% en \figura; pero conviene darlas para que cambiar el pie no rompa los \ref.
+%
+% Ejemplo:
+%   \figuras{prod_ene.png}{Producción en enero}{fig:prod-enero}
+%           {prod_jul.png}{Producción en julio}{fig:prod-julio}
+%
+% OJO: la versión anterior metía las dos imágenes bajo UN SOLO pie y un solo
+% número, así que no se podía referenciar cada una por separado. Nadie la
+% usaba todavía, por eso se ha podido cambiar sin romper nada.
+\newcommand{\figuras}[6]{
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.45\textwidth]{#1}
-    \includegraphics[width=0.45\textwidth]{#2}
-    \ifthenelse{\equal{#3}{}}
-    {}
-    {
-        \caption{#3}
-        \label{fig:#3}
-    }
+    \begin{minipage}[t]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{#1}
+        \caption{#2}
+        \ifthenelse{\equal{#3}{}}{\label{fig:#2}}{\label{#3}}
+    \end{minipage}\hfill
+    \begin{minipage}[t]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{#4}
+        \caption{#5}
+        \ifthenelse{\equal{#6}{}}{\label{fig:#5}}{\label{#6}}
+    \end{minipage}
 \end{figure}
 }
 
-\newcommand{\figura}[3]{
+% \figura[etiqueta]{ruta}{ancho}{pie}
+%   etiqueta - OPCIONAL pero recomendada: clave estable para \ref.
+%              Si se omite, se usa fig:<pie> igual que antes, pero entonces
+%              cambiar el texto del pie rompe todas las referencias.
+%              Ejemplo: \figura[fig:curva-carga]{img.png}{0.8}{Curva de carga}
+%   ancho    - fracción de \textwidth; vacío = ancho completo.
+\newcommand{\figura}[4][]{
 \begin{figure}[H]
     \centering
-    \ifthenelse{\equal{#2}{}} {\includegraphics[width=\textwidth]{#1}}{\includegraphics[width=#2\textwidth]{#1}}
+    \ifthenelse{\equal{#3}{}} {\includegraphics[width=\textwidth]{#2}}{\includegraphics[width=#3\textwidth]{#2}}
 
-    \ifthenelse{\equal{#3}{}}
+    \ifthenelse{\equal{#4}{}}
     {}
     {
-        \caption{#3}
-        \label{fig:#3}
+        \caption{#4}
+        \ifthenelse{\equal{#1}{}}{\label{fig:#4}}{\label{#1}}
     }
 \end{figure}
 }
@@ -168,19 +187,10 @@
         }
     }
 }
-\newcommand{\autoria}[2]{
-    \ifthenelse{\equal{#2}{si}}
-    {Mario Carrión \\ \phantom{a}}
-    {Mario Carrión Sirvent \\ Grado en Ingeniería Eléctrica}
-}
-
-\newcommand{\direccion}[3]{
-    \ifthenelse{\equal{#3}{no}}
-    {\ifthenelse{\equal{#2}{no}}
-    {Dr. Jorge Moreno Mohíno \\ \phantom{a} \\ \phantom{a}}
-    {Dr. Jorge Moreno Mohíno \\ Departamento de Ingeniería Eléctrica, Electrónica, Automática y Física Aplicada \\ \phantom{a}}}
-    {Dr. Jorge Moreno Mohíno \\ Nombre cotutor \\ Departamento de Ingeniería Eléctrica, Electrónica, Automática y Física Aplicada}
-}
+% Eliminadas \autoria y \direccion: hardcodeaban los datos del TFG
+% (Grado en Ingeniería Eléctrica, Dr. Jorge Moreno Mohíno) y no las
+% llamaba nadie. Autor y tutor del TFM se pasan como argumentos a
+% \maquetacion desde main.tex.
 
 \usepackage{titlesec}
 
@@ -454,10 +464,8 @@
     {\noindent\large\textsf{\textbf{Keywords:} #1.}}\par%
 }
 
-\usepackage{xcolor}
 \colorlet{mdtRed}{red!50!black}
 
-\RequirePackage{hyperref}
 \usepackage{multicol}
 \hypersetup{pdfpagemode={UseOutlines},
 bookmarksopen=true,
@@ -466,7 +474,7 @@ hypertexnames=false,
 colorlinks=true,% Set to false to disable coloring links
 citecolor=magenta,% The color of citations
 linkcolor=blue,% The color of references to document elements (sections, figures, etc)
-urlcolor=mdRed,% The color of hyperlinks (URLs)
+urlcolor=mdtRed,% The color of hyperlinks (URLs)
 pdfstartview={FitV},
 unicode,
 breaklinks=true,
@@ -483,5 +491,9 @@ breaklinks=true,
 \WarningsOff[crimson]
 \WarningsOff[fontenc]
 \WarningsOff[babel]
-\WarningsOff[latex]
+% NO reactivar \WarningsOff[latex]: silenciaba TODOS los avisos de LaTeX,
+% incluidos "Citation undefined", "Reference undefined" y "There were
+% undefined references". El documento compilaba con éxito aparente mientras
+% arrastraba citas y referencias rotas (que salen como ?? en el PDF).
+% Verificado: con esta línea activa, un \cite inexistente no genera aviso.
 \endinput
