@@ -2,7 +2,7 @@
 type: concept
 title: "Subagente: revisor-calidad"
 created: 2026-08-13
-updated: 2026-08-13
+updated: 2026-08-22
 status: developing
 tags:
   - concept
@@ -35,7 +35,7 @@ Al cerrar cualquier sección o capítulo grande, antes de darlo por definitivo.
 4. Límite de extensión: máximo 150 páginas (normativa ERMA) — vigila el cómputo acumulado.
 5. Citas: cada cifra trazable a un resumen de `Bibliografia/Resumenes/`; señala cifras "sueltas" sin fuente.
 6. Terminología consistente a lo largo del documento.
-7. Compilación: exige `pdflatex → biber → pdflatex ×2` con 0 referencias/citas indefinidas.
+7. Compilación: exige `pdflatex → bibtex → pdflatex ×2` con 0 referencias/citas indefinidas. `MUXLaTeX.cls` usa `\bibliographystyle{IEEEtran}` + `\bibliography{biblio}` (BibTeX clásico, no biblatex), así que el backend correcto es `bibtex`, no `biber`. Comprueba también que las citas usen `\cite{}` y nunca `\parencite{}`/`\textcite{}`, propios de biblatex y que no compilan con esta clase.
 8. Riesgo Turnitin residual: confirma paso por la skill [[tfm-skill-humanizer]] y puntuación BAJA; si es MEDIO/ALTO, devuelve a modo STEALTH.
 9. Conclusiones (capítulo 11): correspondencia 1:1 con cada alcance/resultado, sin elementos nuevos.
 
