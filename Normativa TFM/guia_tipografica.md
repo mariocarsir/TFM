@@ -101,6 +101,8 @@ Palabras clave al final del resumen (`\clave{...}`) y *keywords* al final del ab
 ## 7. Bibliografía
 
 - Estilo: **IEEEtran** (`\bibliographystyle{IEEEtran}`), fichero `biblio.bib`.
+- Backend: **BibTeX clásico** (no biblatex/biber — `MUXLaTeX.cls` no carga `biblatex`).
+- Cita siempre con `\cite{clave}`. Nunca `\parencite{}`/`\textcite{}`: son de biblatex y no compilan con esta clase.
 - Se añade al índice como capítulo sin numerar.
 
 ## 8. Paquetes de apoyo relevantes
@@ -206,7 +208,7 @@ y `image2.jpeg`). Habrá que reconstruir esta portada en LaTeX respetando posici
 
 ## 15. Verificación
 
-Toda edición del documento se cierra compilando `pdflatex → biber/bibtex → pdflatex ×2` y
+Toda edición del documento se cierra compilando `pdflatex → bibtex → pdflatex ×2` y
 comprobando 0 referencias y 0 citas indefinidas, según la regla de verificación del CLAUDE.md.
 El `revisor-calidad` debe además comprobar el cumplimiento de las secciones 9-13 (estilo de
 redacción, formato de figuras/tablas/ecuaciones, unidades) antes de cerrar cualquier capítulo.

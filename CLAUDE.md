@@ -63,7 +63,7 @@ La estructura es la que Mario ya tenía montada, sin renombrar a convención num
 ## Reglas operativas
 
 1. **Delegar siempre**: al recibir una petición, identificar el agente ideal e invocarlo con un resumen telegráfico del encargo.
-2. **Verificar siempre**: ninguna edición al documento se cierra sin compilar (`pdflatex → biber → pdflatex ×2`, 0 referencias/citas indefinidas).
+2. **Verificar siempre**: ninguna edición al documento se cierra sin compilar (`pdflatex → bibtex → pdflatex ×2`, 0 referencias/citas indefinidas). `MUXLaTeX.cls` usa `\bibliographystyle{IEEEtran}` + BibTeX clásico, no biblatex: el backend es `bibtex`, no `biber`, y la cita correcta es `\cite{}` (nunca `\parencite`/`\textcite`, que son de biblatex).
 3. **Flujo de redacción fijo**: `redactor-humanizador` genera el borrador → Mario corrige y añade voz propia → skill `humanizer` (modo ADVANCED por defecto, STEALTH si ya está muy detectado) → verificación LaTeX. Nunca saltarse un paso.
 4. **Memoria antes que repetición**: si algo se explicó dos veces, va a memoria persistente.
 5. **Cifras canónicas**: cada número del documento sale de una fuente única (informe PVsyst, hoja Excel, resumen de `Bibliografia/Resumenes/`), nunca de la memoria del modelo. Ante la duda, recalcular desde la fuente.
