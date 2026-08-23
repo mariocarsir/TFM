@@ -167,7 +167,8 @@ Consumo de referencia: **3.832 MWh/año**.
 | **V1a** BIPV en tragaluz | 472 m² (378 m² de vidrio activo) | 47 | 76 | 100 % | **2,0 %** |
 | **V1b** Cubierta convencional (liberada por geotermia) | 1.562 m² útiles | 290 | 468 | 100 % | **12,2 %** |
 | **V1 = V1a + V1b** | ≈ 2.034 m² | **338** | **544** | 100 % | **14,2 %** |
-| **V2** Marquesinas de parking | *por cada 1.000 m²* | 143 | 234 | 100 % | **6,1 %** |
+| **V2** Marquesinas de parking | **2.461 m²** (1.723 m² de marquesina) | **351** | **576** | 100 % | **15,0 %** |
+| **V1 + V2** (todo el emplazamiento) | ≈ 4.495 m² | **689** | **1.120** | 99,5 % | **29,1 %** |
 | **V3** Planta en suelo | *por cada 1 ha* | 758 | 1.362 | 95 % | **33,8 %** |
 
 ### 5.1 Variante 1 — BIPV en tragaluz + cubierta liberada
@@ -212,24 +213,32 @@ propio, no una nota al pie.
 
 ### 5.3 Variante 2 — Marquesinas de parking
 
-Regla de cálculo, para aplicar en cuanto se mida la superficie real:
+Superficie del aparcamiento **medida: 2.461 m²**.
 
-> **Por cada 1.000 m² de aparcamiento: ≈ 143 kWp, ≈ 234 MWh/año, ≈ 6,1 % del consumo.**
-> (hipótesis: 70 % del recinto cubrible con marquesina, 90 % de la marquesina ocupada por
-> módulo, 8° de inclinación, azimut −30° siguiendo la trama del edificio)
+```
+Recinto de aparcamiento                        2.461 m²
+  × 0,70  (fracción cubrible con marquesina: plazas y parte
+           de los pasillos, descontando accesos y giros)     1.723 m²  de marquesina
+  × 0,90  (ocupación de módulo sobre la marquesina)          1.550 m²  de módulo
+  × 226,7 W/m²                                         →       351 kWp
+```
 
-| Superficie de parking | kWp | E_PV | A_PV | C_D |
-| --- | --- | --- | --- | --- |
-| 3.000 m² | 428 | 702 MWh | 100 % | 18,3 % |
-| **4.500 m²** | **643** | **1.053 MWh** | **100 %** | **27,5 %** |
-| 6.000 m² | 857 | 1.404 MWh | 92,8 % | 34,0 % |
+| Magnitud | Valor |
+| --- | --- |
+| Potencia | **351 kWp** |
+| Producción | **576 MWh/año** (Y_F 1.639 kWh/kWp) |
+| Autoconsumo A_PV | **100 %** — el pico (258 kW) no llega a los 437 kW de carga |
+| **Cobertura C_D** | **15,0 %** (16,6 % si la geotermia ya ha bajado el consumo) |
 
-A partir de ~5.500 m² la potencia pico empieza a superar los 437 kW de carga y **aparecen los
-primeros excedentes**. Ese es el umbral en el que la batería empieza a tener sentido.
+> **Es la variante con mejor relación cobertura/esfuerzo de las tres.** Con 2.461 m² de un recinto
+> que ya está pavimentado y sin uso en altura, aporta **más que toda la cubierta del edificio**
+> (15,0 % frente al 14,2 % de V1), sin tocar el sistema de refrigeración, sin obra sobre un
+> edificio en explotación y con la ventaja añadida de sombrear las plazas. No hay excedentes:
+> todo lo que produce se consume.
 
-> **Dato pendiente:** la superficie del aparcamiento. En la vista satelital se aprecia un recinto
-> al noreste del edificio que, a ojo, ronda los 4.000–6.000 m², pero no es una medición. Basta
-> con acotarlo en Google Earth para cerrar la variante.
+Regla parametrizada, por si el recinto se amplía o se reconsidera el factor de cubrición:
+**≈ 143 kWp, ≈ 234 MWh/año y ≈ 6,1 % del consumo por cada 1.000 m² de aparcamiento.**
+Los primeros excedentes no aparecerían hasta ~5.500 m².
 
 ### 5.4 Variante 3 — Planta en suelo
 
@@ -297,15 +306,40 @@ números.
 
 | Escenario | kWp | E_PV | A_PV | C_D vs 3.832 | C_D vs 3.467 (con geotermia) |
 | --- | --- | --- | --- | --- | --- |
+| V1a BIPV tragaluz | 47 | 76 MWh | 100 % | 2,0 % | 2,2 % |
 | V1 (tragaluz + cubierta) | 338 | 544 MWh | 100 % | 14,2 % | 15,7 % |
-| V1 + V2 (parking 3.000 m²) | 766 | 1.246 MWh | ~100 % | 31,6 % | 33,6 % |
-| **V1 + V2 (parking 4.500 m²)** | **980** | **1.597 MWh** | **86,9 %** | **36,2 %** | **37,6 %** |
-| V1 + V2 (parking 6.000 m²) | 1.194 | 1.948 MWh | 76 % | 38,8 % | 39,9 % |
+| V2 (marquesinas, 2.461 m²) | 351 | 576 MWh | 100 % | 15,0 % | 16,6 % |
+| **V1 + V2 (todo el emplazamiento)** | **689** | **1.120 MWh** | **99,5 %** | **29,1 %** | **31,4 %** |
 
-Con geotermia y toda la fotovoltaica que cabe en el propio emplazamiento (parking de 4.500 m²),
-quedarían **1.870 MWh/año** por cubrir → **1,04 MWp ≈ 1,37 ha** de planta en suelo para cerrar
-el balance anual. Es una cifra mucho más manejable que las 2,81 ha del caso aislado, y sugiere
-que **la combinación es el escenario que hay que defender**, no las variantes por separado.
+**Todo lo que cabe en la propiedad, sin salir de ella, es el 29,1 % del consumo** — un 31,4 % si
+antes se ha hecho la geotermia. Y llega ahí **sin generar prácticamente excedentes** (A_PV 99,5 %):
+689 kWp es justo la potencia que la carga plana de 437 kW es capaz de absorber. Es un punto de
+diseño notablemente limpio.
+
+### 6.1 Cuánta planta en suelo hace falta para cerrar el balance
+
+| Escenario de partida | Falta por cubrir | **V3 necesaria** |
+| --- | --- | --- |
+| V1 + V2, sin geotermia | 2.712 MWh/año | 1,51 MWp = **1,99 ha** (19.910 m²) |
+| **V1 + V2, con geotermia** | **2.347 MWh/año** | **1,31 MWp = 1,72 ha** (17.231 m²) |
+
+Frente a las **2,81 ha** que haría falta si la planta en suelo fuese la única medida, el conjunto
+**baja el requisito de suelo a 1,72 ha: un 39 % menos**. Este es el argumento para defender la
+combinación de variantes en vez de compararlas como alternativas excluyentes.
+
+### 6.2 El conjunto completo V1 + V2 + V3 con geotermia
+
+**1.994 kWp** (338 en cubierta + 351 en marquesinas + 1.305 en suelo) → **3.467 MWh/año**, que
+iguala exactamente el consumo en balance anual. Pero la autosuficiencia real sigue siendo del
+**43,7 %**, con **1.953 MWh** vertidos a la red y recomprados de noche. Añadiendo batería:
+
+| Batería | C_D real |
+| --- | --- |
+| — | 43,7 % |
+| 1 MWh | 53,4 % |
+| 2 MWh | 63,0 % |
+| 3 MWh | 72,4 % |
+| **4 MWh** | **80,2 %** |
 
 ---
 
@@ -318,18 +352,26 @@ que **la combinación es el escenario que hay que defender**, no las variantes p
    justifíquese por arquitectura, no por producción.
 4. **La geotermia ahorra ~365 MWh/año (9,5 %)** por sí sola, equivalente a 205 kWp de FV sin
    ocupar superficie. Es la mejor relación resultado/esfuerzo del estudio.
-5. **V2**: **6,1 % del consumo por cada 1.000 m²** de parking. Falta medir la superficie real.
-6. **V3**: **1,32 ha/MWp**. Para el 100 % en balance anual, **2,81 ha**; para el 80 %, **2,25 ha**.
-7. **Sin batería la autosuficiencia real satura en 50,5 %.** El 80 % real exige ~3 MWp + 4 MWh.
-8. **La batería queda justificada** por esta barrera, no por el argumento de excedentes que no
+5. **V2** (marquesinas sobre los 2.461 m² de aparcamiento) = **15,0 %**, con 351 kWp y sin un solo
+   kWh de excedente. **Rinde más que toda la cubierta del edificio** y es mucho menos invasiva:
+   es la variante con mejor relación cobertura/esfuerzo de las tres.
+6. **Todo el emplazamiento (V1 + V2) llega al 29,1 %** — 31,4 % con geotermia — con A_PV 99,5 %.
+   Ahí se agota la superficie propia.
+7. **V3**: **1,32 ha/MWp**. En solitario, **2,81 ha** para el 100 % en balance anual y **2,25 ha**
+   para el 80 %. Pero **combinada con V1 + V2 y geotermia bastan 1,72 ha** (−39 %). La combinación
+   es lo que hay que defender, no la comparación entre variantes excluyentes.
+8. **Sin batería la autosuficiencia real satura en 50,5 %.** Sobre el conjunto completo, llegar al
+   **80 % real exige 4 MWh** de almacenamiento.
+9. **La batería queda justificada** por esta barrera, no por el argumento de excedentes que no
    valía en el trabajo previo.
 
 ## 8. Pendiente de cerrar
 
 | # | Asunto | Cómo |
 | --- | --- | --- |
-| 1 | **Superficie del aparcamiento** | Medir en Google Earth. Es el único dato que bloquea V2. |
-| 2 | **Parcela para la planta en suelo** | Identificar y medir; comprobar titularidad y clasificación urbanística. |
+| 1 | ~~Superficie del aparcamiento~~ | **Cerrado: 2.461 m²** (aportado por Mario, 23/08/2026). |
+| 2 | **Parcela para la planta en suelo** | Identificar y medir ≈1,72 ha; comprobar titularidad y clasificación urbanística. Es ahora el dato crítico. |
+| 2b | Factor de cubrición del aparcamiento (0,70) | Verificar contra la trama real de plazas y viales del recinto. |
 | 3 | Alcance del TFM: ¿total o solo HVAC? | Confirmar con Julio Amador — cambia el denominador de todo. |
 | 4 | SEER real de las enfriadoras y del sistema geotérmico | `investigador-cientifico` + placa de características. |
 | 5 | Densidad de potencia del vidrio BIPV | Datasheet de fabricante (Onyx Solar u otro) vía `bibliotecario-pdf`. |
