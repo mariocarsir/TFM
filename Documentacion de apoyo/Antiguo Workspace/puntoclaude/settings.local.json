@@ -1,0 +1,29 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(rm \"c:/Users/Usuario/.claude/commands/rellenar-hito.md\")",
+      "Bash(rm \"c:/Users/Usuario/OneDrive - Universidad Politécnica de Madrid/Escritorio/MASTER/TFM/Hitos/Inicio TFM - Mario Carrión.docx\")",
+      "Bash(pdflatex -interaction=nonstopmode planificacion_temporal.tex)",
+      "Read(//c/Users/Usuario/.claude/commands/**)",
+      "Read(//c/Users/Usuario/.claude/**)",
+      "Bash(git --version)",
+      "Bash(gh --version)",
+      "Bash(git init *)",
+      "Bash(git config *)",
+      "Bash(git tag *)",
+      "Bash(git add *)",
+      "Bash(git -c 'user.name=Mario Carrion Sirvent' -c user.email=clankergpt0@gmail.com commit -m 'Recuperar Resumen TFM.docx perdido en migración *)",
+      "PowerShell(git *)",
+      "Skill(snapshot)",
+      "Bash(git commit *)",
+      "Bash(git push *)",
+      "Bash(python -c ' *)",
+      "Bash(echo \"EXIT: $?\")",
+      "Bash(python -c \"import PyPDF2\")",
+      "Bash(python -c \"from PyPDF2 import PdfReader; print\\('Paginas:', len\\(PdfReader\\('MANUAL_WORKSPACE.pdf'\\).pages\\)\\)\")",
+      "Bash(rm -f MANUAL_WORKSPACE.pdf)",
+      "Bash(rm -f *.aux *.log *.out _build_manual.py)",
+      "Bash(ls MANUAL_WORKSPACE.*)"
+    ]
+  }
+}
