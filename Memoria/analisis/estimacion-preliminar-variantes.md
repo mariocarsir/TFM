@@ -1,13 +1,16 @@
 ---
 title: "Estimación preliminar de las tres variantes de autoconsumo FV del CPD"
 fecha: 2026-08-23
+actualizado: 2026-08-28
 estado: preliminar
 margen_objetivo: "5–8 %"
 fuentes_canonicas:
   - "Datos/Consumo CPD/Mensual/ (12 ficheros, resolución 5 min, dic-2024 → nov-2025)"
   - "Documentacion de apoyo/Trabajo Autoconsumo CPD/Trabajo_DataCenter_Project.VC0-Report1.pdf (PVsyst V8.0.19)"
   - "Datos/Imagenes/PlantaCPD.png y VistaSatelitalCPD.png (Google Earth)"
-tags: [fotovoltaica, autoconsumo, CPD, variantes, BIPV, marquesinas, planta-suelo, geotermia]
+  - "Datos/Google Earth/TFM.kmz (polígonos de parcela, cubierta, aparcamiento y subestaciones)"
+  - "Datos/Google Earth/Coordenadas CPD.png (40°35'53,61\" N, 3°43'1,81\" O — WGS84)"
+tags: [fotovoltaica, autoconsumo, CPD, variantes, BIPV, marquesinas, planta-suelo, geotermia, BESS, parcela]
 ---
 
 # Estimación preliminar de las tres variantes
@@ -300,6 +303,118 @@ masivos** (57 % de la producción en la variante de 2,13 MWp), y la batería pas
 medio de superar la barrera del 50,5 %. El argumento ya no hay que forzarlo: sale solo de los
 números.
 
+### 5.6 La parcela candidata identificada (58,8 ha)
+
+Mario localizó una parcela apta y la delimitó a mano en `Datos/Google Earth/TFM.kmz`
+(polígono `Layout1`, descripción «58,7 ha»). El fichero **sí es legible**: un `.kmz` es un ZIP
+con un `doc.kml` dentro, de modo que sus polígonos se pueden medir directamente en lugar de
+estimarlos sobre la vista aérea.
+
+| Magnitud | Valor medido sobre el KMZ |
+| --- | --- |
+| **Superficie bruta** | **588.401 m² = 58,84 ha** (la anotación de Mario, 58,7 ha, cuadra al 0,2 %) |
+| Envolvente | ≈ 961 m (E–O) × 1.135 m (N–S) |
+| Centroide respecto al CPD | **3,72 km al noroeste** (rumbo 316°) |
+| **Borde más cercano al CPD** | **2,93 km** |
+
+**Capacidad instalable.** Con la misma ocupación del apartado 5.4 (13,2 m²/kWp: fijo a 30° Sur,
+GCR 0,40, más un 20 % de viales, márgenes y centro de transformación):
+
+```
+Superficie bruta                                     588.401 m²
+  × 0,85  (servidumbres, drenaje, retranqueos, franja cortafuegos)   500.141 m²  netos
+  ÷ 13,2 m²/kWp                                            →          37,9 MWp
+```
+
+- **Capacidad bruta teórica: 44,6 MWp.** **Capacidad neta realista: ≈ 37,9 MWp.**
+- Producción asociada: **68,1 GWh/año**, con una punta de **28,2 MW**.
+
+> ### La parcela no es el cuello de botella: sobra suelo por un factor de veinte
+>
+> Esos 68,1 GWh/año son **17,8 veces el consumo anual del CPD** (3.832 MWh), y los 28,2 MW de
+> punta son **59 veces** su punta de demanda (0,48 MW). Si se ocupara entera, **el 97,2 % de la
+> producción se vertería a la red**: dejaría de ser un proyecto de autoconsumo para ser una
+> planta comercial con PPA, que es otro TFM.
+>
+> La consecuencia de diseño es que **la superficie deja de ser la variable limitante** y el
+> dimensionado pasa a gobernarlo el binomio potencia–batería. La pregunta útil ya no es «cuánto
+> cabe», sino «cuánto conviene».
+
+**Qué fracción de la parcela hace falta realmente.** Barrido de potencia y capacidad de batería
+sobre la serie horaria de carga (rendimiento de ciclo 92 %), con la planta en suelo como única
+fuente:
+
+| Objetivo de **autosuficiencia real** | Fotovoltaica | Superficie | **% de la parcela** | Batería |
+| --- | --- | --- | --- | --- |
+| 80 % | 2,25 MWp | 2,97 ha | **5,9 %** | 4,5 MWh |
+| 90 % | 2,50 MWp | 3,30 ha | **6,6 %** | 5,5 MWh |
+| 95 % | 2,75 MWp | 3,63 ha | **7,3 %** | 6,0 MWh |
+| 98 % | 3,00 MWp | 3,96 ha | **7,9 %** | 6,5 MWh |
+| **99 %** | **3,25 MWp** | **4,29 ha** | **8,6 %** | **7,0 MWh** |
+| 100 % | — | — | — | **inalcanzable** |
+
+El 100 % estricto no se alcanza ni con 25 MWp y 60 MWh: la curva se satura en torno al 99,9 %
+porque siempre queda algún episodio invernal de varios días nublados encadenados que agotaría
+cualquier batería de ciclo diario. Cubrir ese último 0,1 % exigiría almacenamiento estacional,
+que no tiene sentido técnico ni económico frente a mantener la acometida de red como respaldo.
+
+**Combinando con la fotovoltaica del propio emplazamiento** (V1 + V2 = 689 kWp, 1.120 MWh/año):
+
+| Escenario | Objetivo | Planta en suelo | Superficie | % parcela | Batería |
+| --- | --- | --- | --- | --- | --- |
+| Sin geotermia | 80 % | 1,50 MWp | 1,98 ha | 4,0 % | 4,5 MWh |
+| Sin geotermia | 95 % | 2,25 MWp | 2,97 ha | 5,9 % | 6,0 MWh |
+| **Con geotermia** | **80 %** | **1,50 MWp** | **1,98 ha** | **4,0 %** | **4,0 MWh** |
+| **Con geotermia** | **95 %** | **2,00 MWp** | **2,64 ha** | **5,3 %** | **5,5 MWh** |
+
+**Sobre el dimensionado de la batería.** La potencia de descarga que exige el despacho no pasa
+de **0,47 MW** — es, exactamente, la punta de demanda del CPD, porque la carga es plana. Frente
+a los 7 MWh de capacidad eso da una tasa de **0,07 C**, es decir, **unas 10 horas de autonomía
+nominal**. No es un BESS convencional de 2–4 h de los que dominan el mercado de arbitraje: es un
+sistema orientado a energía, no a potencia, y esa relación C/P condicionará tanto la elección de
+tecnología como el coste unitario en el capítulo económico.
+
+#### 5.6.1 El problema que abre la distancia: 2,93 km
+
+El borde más cercano de la parcela está a **2,93 km del CPD**, y su centroide a 3,72 km. Eso
+saca al proyecto del esquema de autoconsumo que se ha venido suponiendo y **hay que resolverlo
+antes de dar la variante 3 por buena**, porque condiciona todo el análisis económico:
+
+1. **Autoconsumo a distancia a través de la red.** La normativa española acota la separación
+   máxima entre generación y consumo para que la instalación siga siendo autoconsumo
+   (con criterios alternativos por referencia catastral y por subestación). **La distancia
+   medida está por encima del umbral que se maneja habitualmente**, de modo que el encaje no es
+   automático. *Pendiente de verificación normativa con `investigador-cientifico` sobre el texto
+   consolidado del RD 244/2019 y sus modificaciones — no se traslada ninguna cifra al documento
+   sin fuente.*
+2. **Línea directa.** Alternativa regulatoria contemplada en la legislación del sector
+   eléctrico: una línea propia CPD–planta de ~3 km. Técnicamente viable, pero añade un coste de
+   obra civil y servidumbres de paso que hay que meter en el VAN, y exige autorización propia.
+3. **Planta independiente con PPA físico o financiero.** Renuncia a la figura de autoconsumo y
+   convierte el ahorro en una cobertura de precio. Cambia por completo la estructura del
+   capítulo económico y el cálculo del LCOE frente a tarifa.
+
+Conviene señalar que **el KMZ ya trae mapeados los puntos de conexión**, lo que facilita cerrar
+esta cuestión:
+
+| Subestación | Distancia al CPD | Distancia a la parcela |
+| --- | --- | --- |
+| **La Cereal 220 / 400** | **0,56 km** | 2,41 km |
+| **Tres Cantos GIS 220** | **0,59 km** | 2,35 km |
+| Tres Cantos 220 | 2,33 km | 3,10 km |
+| BBVA 4145 66 | 2,48 km | 3,98 km |
+| Lavander 4196 | 8,67 km | 4,28 km |
+| Colmenar Viejo 4013 | 8,54 km | 4,68 km |
+| San Agustín de Guadalix 4091 | 11,64 km | 11,99 km |
+
+Que La Cereal y Tres Cantos GIS estén a ~0,6 km del CPD y ~2,4 km de la parcela sugiere que
+**ambos puntos podrían colgar de la misma subestación**, que es precisamente uno de los
+criterios alternativos al de distancia. Merece la pena comprobarlo: si se cumple, el problema
+del apartado 1 desaparece sin necesidad de línea directa.
+
+Además, con 2–3 MWp la potencia de acceso supera holgadamente 1 MW, con lo que el procedimiento
+de acceso y conexión ya no es el simplificado (punto pendiente n.º 7 del apartado 8).
+
 ---
 
 ## 6. Escenario combinado
@@ -364,14 +479,26 @@ iguala exactamente el consumo en balance anual. Pero la autosuficiencia real sig
    **80 % real exige 4 MWh** de almacenamiento.
 9. **La batería queda justificada** por esta barrera, no por el argumento de excedentes que no
    valía en el trabajo previo.
+10. **La parcela localizada tiene 58,84 ha y admitiría ≈37,9 MWp** (68,1 GWh/año, 17,8 veces el
+    consumo del CPD). **El suelo deja de ser la restricción**: para el 95 % de autosuficiencia real
+    basta el **5,9 % de la parcela** (2,97 ha) y para el 99 % el **8,6 %** (4,29 ha). El 100 %
+    estricto no se alcanza ni con 25 MWp y 60 MWh — el último 0,1 % exigiría almacenamiento
+    estacional.
+11. **El riesgo de la variante 3 ya no es técnico sino regulatorio: 2,93 km separan la parcela del
+    CPD.** Hay que decidir entre autoconsumo a distancia (encaje normativo por verificar), línea
+    directa de ~3 km o planta independiente con PPA. Que La Cereal y Tres Cantos GIS estén a
+    ~0,6 km del CPD y ~2,4 km de la parcela abre la vía de la subestación común, que sería la
+    salida limpia.
 
 ## 8. Pendiente de cerrar
 
 | # | Asunto | Cómo |
 | --- | --- | --- |
 | 1 | ~~Superficie del aparcamiento~~ | **Cerrado: 2.461 m²** (aportado por Mario, 23/08/2026). |
-| 2 | **Parcela para la planta en suelo** | Identificar y medir ≈1,72 ha; comprobar titularidad y clasificación urbanística. Es ahora el dato crítico. |
-| 2b | Factor de cubrición del aparcamiento (0,70) | Verificar contra la trama real de plazas y viales del recinto. |
+| 2 | ~~Localizar la parcela~~ | **Cerrado: 58,84 ha medidas sobre `TFM.kmz` (28/08/2026).** Sobra suelo por un factor 20. |
+| 2a | **Encaje regulatorio de la distancia (2,93 km)** | **Dato crítico ahora.** Autoconsumo a distancia vs. línea directa vs. PPA. Verificar con `investigador-cientifico` el RD 244/2019 consolidado y comprobar si CPD y parcela cuelgan de la misma subestación (La Cereal / Tres Cantos GIS). |
+| 2c | Titularidad y clasificación urbanística de la parcela | Sede electrónica del Catastro + planeamiento de Tres Cantos / Colmenar Viejo. |
+| 2b | **Discrepancia en la superficie del aparcamiento** | El `TFM.kmz` da 6.252 m² de recinto (`Parking - General`) y **3.332 m² de huella de marquesinas** (polígonos F1–F8), frente a la huella de 1.723 m² que se dedujo de los 2.461 m². Si se confirman los 3.332 m², **V2 pasa de 351 a 680 kWp y de 15,0 % a 28,9 % de C_D** — casi el doble. Mario tiene que aclarar qué mide cada polígono antes de recalcular. |
 | 3 | Alcance del TFM: ¿total o solo HVAC? | Confirmar con Julio Amador — cambia el denominador de todo. |
 | 4 | SEER real de las enfriadoras y del sistema geotérmico | `investigador-cientifico` + placa de características. |
 | 5 | Densidad de potencia del vidrio BIPV | Datasheet de fabricante (Onyx Solar u otro) vía `bibliotecario-pdf`. |
