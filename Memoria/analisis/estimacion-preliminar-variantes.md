@@ -2,6 +2,7 @@
 title: "Estimación preliminar de las tres variantes de autoconsumo FV del CPD"
 fecha: 2026-08-23
 actualizado: 2026-08-28
+revision: 2  # V2 corregida a 3.332 m2 + marco regulatorio 2026
 estado: preliminar
 margen_objetivo: "5–8 %"
 fuentes_canonicas:
@@ -9,8 +10,11 @@ fuentes_canonicas:
   - "Documentacion de apoyo/Trabajo Autoconsumo CPD/Trabajo_DataCenter_Project.VC0-Report1.pdf (PVsyst V8.0.19)"
   - "Datos/Imagenes/PlantaCPD.png y VistaSatelitalCPD.png (Google Earth)"
   - "Datos/Google Earth/TFM.kmz (polígonos de parcela, cubierta, aparcamiento y subestaciones)"
+  - "Bibliografia/PDFs/MITECO_2026_PRD_CentrosDatos_audiencia_publica.pdf (proyecto de RD, audiencia 27/08–04/09/2026)"
+  - "Bibliografia/PDFs/BOE_RDL_7-2026_PlanIntegral_OrienteMedio.pdf (BOE-A-2026-6544)"
+  - "Bibliografia/PDFs/BOE_RD_244-2019_autoconsumo_consolidado.pdf (texto consolidado, act. 21/03/2026)"
   - "Datos/Google Earth/Coordenadas CPD.png (40°35'53,61\" N, 3°43'1,81\" O — WGS84)"
-tags: [fotovoltaica, autoconsumo, CPD, variantes, BIPV, marquesinas, planta-suelo, geotermia, BESS, parcela]
+tags: [fotovoltaica, autoconsumo, CPD, variantes, BIPV, marquesinas, planta-suelo, geotermia, BESS, parcela, regulacion, PPA, RDL-7-2026]
 ---
 
 # Estimación preliminar de las tres variantes
@@ -170,8 +174,8 @@ Consumo de referencia: **3.832 MWh/año**.
 | **V1a** BIPV en tragaluz | 472 m² (378 m² de vidrio activo) | 47 | 76 | 100 % | **2,0 %** |
 | **V1b** Cubierta convencional (liberada por geotermia) | 1.562 m² útiles | 290 | 468 | 100 % | **12,2 %** |
 | **V1 = V1a + V1b** | ≈ 2.034 m² | **338** | **544** | 100 % | **14,2 %** |
-| **V2** Marquesinas de parking | **2.461 m²** (1.723 m² de marquesina) | **351** | **576** | 100 % | **15,0 %** |
-| **V1 + V2** (todo el emplazamiento) | ≈ 4.495 m² | **689** | **1.120** | 99,5 % | **29,1 %** |
+| **V2** Marquesinas de parking | **3.332 m²** de huella (F1–F8) | **680** | **1.114** | 99,5 % | **28,9 %** |
+| **V1 + V2** (todo el emplazamiento) | ≈ 5.366 m² | **1.017** | **1.658** | 85,0 % | **36,8 %** |
 | **V3** Planta en suelo | *por cada 1 ha* | 758 | 1.362 | 95 % | **33,8 %** |
 
 ### 5.1 Variante 1 — BIPV en tragaluz + cubierta liberada
@@ -216,32 +220,41 @@ propio, no una nota al pie.
 
 ### 5.3 Variante 2 — Marquesinas de parking
 
-Superficie del aparcamiento **medida: 2.461 m²**.
+Superficie **medida sobre `TFM.kmz`**, donde Mario dibujó una a una las ocho filas de
+marquesinas (polígonos `F1`–`F8`). Conviene no confundir las dos cifras que da el fichero: el
+polígono `Parking - General` mide 6.252 m², pero **incluye las calles de circulación**; la huella
+que realmente se puede cubrir es la suma de las filas.
 
 ```
-Recinto de aparcamiento                        2.461 m²
-  × 0,70  (fracción cubrible con marquesina: plazas y parte
-           de los pasillos, descontando accesos y giros)     1.723 m²  de marquesina
-  × 0,90  (ocupación de módulo sobre la marquesina)          1.550 m²  de módulo
-  × 226,7 W/m²                                         →       351 kWp
+Filas de marquesinas F1..F8 (huella medida)     3.332 m²
+  × 0,90  (ocupación de módulo sobre la marquesina)          2.999 m²  de módulo
+  × 226,7 W/m²                                         →       680 kWp
 ```
 
 | Magnitud | Valor |
 | --- | --- |
-| Potencia | **351 kWp** |
-| Producción | **576 MWh/año** (Y_F 1.639 kWh/kWp) |
-| Autoconsumo A_PV | **100 %** — el pico (258 kW) no llega a los 437 kW de carga |
-| **Cobertura C_D** | **15,0 %** (16,6 % si la geotermia ya ha bajado el consumo) |
+| Potencia | **680 kWp** |
+| Producción | **1.114 MWh/año** (Y_F 1.639 kWh/kWp) |
+| Autoconsumo A_PV | **99,5 %** — el pico (500 kW) roza ya los 437 kW de carga media |
+| **Cobertura C_D** | **28,9 %** (31,3 % si la geotermia ya ha bajado el consumo) |
 
-> **Es la variante con mejor relación cobertura/esfuerzo de las tres.** Con 2.461 m² de un recinto
-> que ya está pavimentado y sin uso en altura, aporta **más que toda la cubierta del edificio**
-> (15,0 % frente al 14,2 % de V1), sin tocar el sistema de refrigeración, sin obra sobre un
-> edificio en explotación y con la ventaja añadida de sombrear las plazas. No hay excedentes:
-> todo lo que produce se consume.
+> **Es, con diferencia, la mejor variante de las tres.** Sobre un recinto ya pavimentado y sin uso
+> en altura, **duplica lo que aporta toda la cubierta del edificio** (28,9 % frente al 14,2 % de
+> V1), sin tocar el sistema de refrigeración, sin obra sobre un edificio en explotación y
+> sombreando las plazas de paso. Los excedentes son testimoniales (5 MWh/año, un 0,5 % de la
+> producción), así que sigue encajando en una configuración antivertido.
 
-Regla parametrizada, por si el recinto se amplía o se reconsidera el factor de cubrición:
-**≈ 143 kWp, ≈ 234 MWh/año y ≈ 6,1 % del consumo por cada 1.000 m² de aparcamiento.**
-Los primeros excedentes no aparecerían hasta ~5.500 m².
+Regla parametrizada, por si se revisa la huella: **≈ 204 kWp, ≈ 334 MWh/año y ≈ 8,7 % del consumo
+por cada 1.000 m² de marquesina**. Los excedentes empiezan a ser apreciables a partir de
+~3.300 m², que es justo donde está el proyecto: **la variante 2 llega sola al límite de lo que el
+CPD puede absorber en las horas centrales del día**, y todo lo que se añada por encima ya exige
+batería para no verterse.
+
+> **Corrección respecto a la versión anterior de este documento.** Se había partido de una
+> superficie de aparcamiento de 2.461 m² y de un factor de cubrición del 0,70, lo que daba
+> 1.723 m² de marquesina y 351 kWp. La medición real de las ocho filas sobre el KMZ da 3.332 m²
+> de huella, de modo que **V2 pasa de 351 a 680 kWp y de 15,0 % a 28,9 % de cobertura**. Todas
+> las cifras combinadas de los apartados 5.6 y 6 están recalculadas con el valor nuevo.
 
 ### 5.4 Variante 3 — Planta en suelo
 
@@ -358,44 +371,81 @@ porque siempre queda algún episodio invernal de varios días nublados encadenad
 cualquier batería de ciclo diario. Cubrir ese último 0,1 % exigiría almacenamiento estacional,
 que no tiene sentido técnico ni económico frente a mantener la acometida de red como respaldo.
 
-**Combinando con la fotovoltaica del propio emplazamiento** (V1 + V2 = 689 kWp, 1.120 MWh/año):
+**Combinando con la fotovoltaica del propio emplazamiento** (V1 + V2 = **1.017 kWp**,
+**1.658 MWh/año**, que ya cubren por sí solos el **36,8 %** del consumo):
 
-| Escenario | Objetivo | Planta en suelo | Superficie | % parcela | Batería |
-| --- | --- | --- | --- | --- | --- |
-| Sin geotermia | 80 % | 1,50 MWp | 1,98 ha | 4,0 % | 4,5 MWh |
-| Sin geotermia | 95 % | 2,25 MWp | 2,97 ha | 5,9 % | 6,0 MWh |
-| **Con geotermia** | **80 %** | **1,50 MWp** | **1,98 ha** | **4,0 %** | **4,0 MWh** |
-| **Con geotermia** | **95 %** | **2,00 MWp** | **2,64 ha** | **5,3 %** | **5,5 MWh** |
+| Escenario | Objetivo | Planta en suelo | Superficie | % parcela | Batería | FV total |
+| --- | --- | --- | --- | --- | --- | --- |
+| Sin geotermia | 80 % | 1,25 MWp | 1,65 ha | 3,3 % | 4,4 MWh | 2,27 MWp |
+| Sin geotermia | 90 % | 1,50 MWp | 1,98 ha | 4,0 % | 5,6 MWh | 2,52 MWp |
+| Sin geotermia | 95 % | 2,00 MWp | 2,64 ha | 5,3 % | 5,9 MWh | 3,02 MWp |
+| Sin geotermia | 99 % | 2,50 MWp | 3,30 ha | 6,6 % | 6,6 MWh | 3,52 MWp |
+| **Con geotermia** | **80 %** | **1,00 MWp** | **1,32 ha** | **2,6 %** | **4,1 MWh** | **2,02 MWp** |
+| Con geotermia | 90 % | 1,25 MWp | 1,65 ha | 3,3 % | 5,1 MWh | 2,27 MWp |
+| **Con geotermia** | **95 %** | **1,75 MWp** | **2,31 ha** | **4,6 %** | **5,3 MWh** | **2,77 MWp** |
+| Con geotermia | 99 % | 2,25 MWp | 2,97 ha | 5,9 % | 6,0 MWh | 3,27 MWp |
+
+Con la variante 2 corregida, **el 80 % de autosuficiencia real se alcanza con 1,32 ha de planta
+en suelo — el 2,6 % de la parcela — y 4,1 MWh de batería.**
 
 **Sobre el dimensionado de la batería.** La potencia de descarga que exige el despacho no pasa
-de **0,47 MW** — es, exactamente, la punta de demanda del CPD, porque la carga es plana. Frente
-a los 7 MWh de capacidad eso da una tasa de **0,07 C**, es decir, **unas 10 horas de autonomía
-nominal**. No es un BESS convencional de 2–4 h de los que dominan el mercado de arbitraje: es un
-sistema orientado a energía, no a potencia, y esa relación C/P condicionará tanto la elección de
-tecnología como el coste unitario en el capítulo económico.
+de **0,43–0,47 MW** — es, exactamente, la punta de demanda del CPD, porque la carga es plana.
+Frente a los 4–7 MWh de capacidad eso da una tasa de **0,07–0,11 C**, es decir, **entre 9 y 14
+horas de autonomía nominal**. No es un BESS convencional de 2–4 h de los que dominan el mercado
+de arbitraje: es un sistema orientado a energía, no a potencia, y esa relación C/P condicionará
+tanto la elección de tecnología como el coste unitario en el capítulo económico.
 
-#### 5.6.1 El problema que abre la distancia: 2,93 km
+#### 5.6.1 La distancia de 2,93 km: el problema está resuelto por normativa de marzo de 2026
 
-El borde más cercano de la parcela está a **2,93 km del CPD**, y su centroide a 3,72 km. Eso
-saca al proyecto del esquema de autoconsumo que se ha venido suponiendo y **hay que resolverlo
-antes de dar la variante 3 por buena**, porque condiciona todo el análisis económico:
+El borde más cercano de la parcela está a **2,93 km del CPD** y su centroide a 3,72 km. En una
+versión anterior de este documento se señaló como riesgo crítico, porque el umbral que se venía
+manejando para el autoconsumo a través de la red eran 2.000 m. **Ese umbral ya no está vigente.**
 
-1. **Autoconsumo a distancia a través de la red.** La normativa española acota la separación
-   máxima entre generación y consumo para que la instalación siga siendo autoconsumo
-   (con criterios alternativos por referencia catastral y por subestación). **La distancia
-   medida está por encima del umbral que se maneja habitualmente**, de modo que el encaje no es
-   automático. *Pendiente de verificación normativa con `investigador-cientifico` sobre el texto
-   consolidado del RD 244/2019 y sus modificaciones — no se traslada ninguna cifra al documento
-   sin fuente.*
-2. **Línea directa.** Alternativa regulatoria contemplada en la legislación del sector
-   eléctrico: una línea propia CPD–planta de ~3 km. Técnicamente viable, pero añade un coste de
-   obra civil y servidumbres de paso que hay que meter en el VAN, y exige autorización propia.
-3. **Planta independiente con PPA físico o financiero.** Renuncia a la figura de autoconsumo y
-   convierte el ahorro en una cobertura de precio. Cambia por completo la estructura del
-   capítulo económico y el cálculo del LCOE frente a tarifa.
+El **Real Decreto-ley 7/2026, de 20 de marzo** (BOE-A-2026-6544, convalidado por el Congreso el
+26 de marzo de 2026, BOE-A-2026-7125), en su **disposición final decimocuarta**, modificó el
+artículo 3.g) del RD 244/2019. El texto consolidado vigente dice literalmente:
 
-Conviene señalar que **el KMZ ya trae mapeados los puntos de conexión**, lo que facilita cerrar
-esta cuestión:
+> «También tendrá la consideración de instalación de producción próxima a las de consumo y
+> asociada a través de la red, aquella instalación de generación que empleando tecnología
+> fotovoltaica o eólica **con una potencia de hasta 5 MW**, esta se conecte al consumidor o
+> consumidores a través de las líneas de transporte o distribución y siempre que estas se
+> encuentren **a una distancia inferior a 5.000 metros** de los consumidores asociados. A tal
+> efecto se tomará la distancia entre los equipos de medida en su proyección ortogonal en
+> planta.»
+>
+> — RD 244/2019, art. 3.g).iii), redacción dada por la DF 14.ª del RDL 7/2026
+
+**La variante 3 cumple las dos condiciones con holgura:**
+
+| Condición del art. 3.g).iii) | Exigencia | Caso del CPD | ¿Cumple? |
+| --- | --- | --- | --- |
+| Tecnología | Fotovoltaica o eólica | Fotovoltaica | Sí |
+| Potencia | ≤ 5 MW | 1,0–2,5 MWp según objetivo | Sí, con margen |
+| Distancia entre equipos de medida | < 5.000 m | 2.930 m (borde) – 3.720 m (centroide) | Sí, con margen |
+
+Es decir: **la planta en suelo puede acogerse a autoconsumo a través de la red sin necesidad de
+línea directa ni de renunciar a la figura de autoconsumo.** El criterio de la distancia, que era
+el obstáculo, se resolvió cinco meses antes de redactarse este análisis. Conviene medir la
+distancia definitiva entre los equipos de medida reales —no entre centroides— cuando se fije la
+posición del centro de seccionamiento de la planta, pero incluso el peor caso (3,72 km) deja
+1,3 km de margen.
+
+Dos observaciones que conviene no perder:
+
+- **La línea directa no era inviable, pero ya no hace falta.** La objeción de que 3 km de línea
+  directa son técnicamente imposibles es correcta *en baja tensión*: 2,5 MW a 400 V son 3.608 A,
+  y ni con diez conductores de 240 mm² por fase la caída baja del 58 %. Pero una línea directa no
+  obliga a trabajar en BT: los mismos 2,5 MW a **20 kV son 72 A**, con una caída del **0,4 %** y
+  unas pérdidas de **9,7 kW (0,39 %)** sobre 3 km de 150 mm² de aluminio subterráneo. Es una
+  línea de distribución completamente ordinaria. Cálculo reproducible en
+  `scripts/linea_directa.py`. La línea directa queda, por tanto, como alternativa técnica válida
+  y no como imposibilidad —simplemente, el autoconsumo a través de la red es más barato.
+- **La vía del PPA sigue abierta como comparación económica**, no como necesidad regulatoria.
+  Deja de ser el plan B forzoso para convertirse en un término de comparación en el capítulo
+  económico: autoconsumo a distancia frente a PPA con una planta de terceros.
+
+Los puntos de conexión que el propio KMZ trae mapeados sirven ahora para dimensionar la
+infraestructura de evacuación, no para resolver el encaje regulatorio:
 
 | Subestación | Distancia al CPD | Distancia a la parcela |
 | --- | --- | --- |
@@ -407,13 +457,8 @@ esta cuestión:
 | Colmenar Viejo 4013 | 8,54 km | 4,68 km |
 | San Agustín de Guadalix 4091 | 11,64 km | 11,99 km |
 
-Que La Cereal y Tres Cantos GIS estén a ~0,6 km del CPD y ~2,4 km de la parcela sugiere que
-**ambos puntos podrían colgar de la misma subestación**, que es precisamente uno de los
-criterios alternativos al de distancia. Merece la pena comprobarlo: si se cumple, el problema
-del apartado 1 desaparece sin necesidad de línea directa.
-
-Además, con 2–3 MWp la potencia de acceso supera holgadamente 1 MW, con lo que el procedimiento
-de acceso y conexión ya no es el simplificado (punto pendiente n.º 7 del apartado 8).
+Sigue en pie que, con 1–2,5 MWp, la potencia de acceso de la planta supera 1 MW y el
+procedimiento de acceso y conexión no es el simplificado (RD 1183/2020).
 
 ---
 
@@ -422,43 +467,164 @@ de acceso y conexión ya no es el simplificado (punto pendiente n.º 7 del apart
 | Escenario | kWp | E_PV | A_PV | C_D vs 3.832 | C_D vs 3.467 (con geotermia) |
 | --- | --- | --- | --- | --- | --- |
 | V1a BIPV tragaluz | 47 | 76 MWh | 100 % | 2,0 % | 2,2 % |
+| V1b Cubierta liberada | 290 | 468 MWh | 100 % | 12,2 % | 13,5 % |
 | V1 (tragaluz + cubierta) | 338 | 544 MWh | 100 % | 14,2 % | 15,7 % |
-| V2 (marquesinas, 2.461 m²) | 351 | 576 MWh | 100 % | 15,0 % | 16,6 % |
-| **V1 + V2 (todo el emplazamiento)** | **689** | **1.120 MWh** | **99,5 %** | **29,1 %** | **31,4 %** |
+| **V2 (marquesinas, 3.332 m²)** | **680** | **1.114 MWh** | **99,5 %** | **28,9 %** | **31,3 %** |
+| **V1 + V2 (todo el emplazamiento)** | **1.017** | **1.658 MWh** | **85,0 %** | **36,8 %** | **38,1 %** |
 
-**Todo lo que cabe en la propiedad, sin salir de ella, es el 29,1 % del consumo** — un 31,4 % si
-antes se ha hecho la geotermia. Y llega ahí **sin generar prácticamente excedentes** (A_PV 99,5 %):
-689 kWp es justo la potencia que la carga plana de 437 kW es capaz de absorber. Es un punto de
-diseño notablemente limpio.
+**Todo lo que cabe en la propiedad, sin salir de ella, es el 36,8 % del consumo** — un 38,1 % si
+antes se ha hecho la geotermia. Con la superficie de marquesinas ya medida, el emplazamiento
+propio aporta más del doble de lo que aportaba la estimación anterior.
+
+Aparece aquí un umbral de diseño que antes no existía: **el A_PV cae al 85,0 %**, con 249 MWh/año
+de excedente. Con 1.017 kWp la producción de mediodía ya rebasa los ~437 kW que la carga plana
+puede absorber, de modo que **una configuración estrictamente antivertido empezaría a recortar
+producción**. O se vierte a la red, o se almacena. Es el primer punto del estudio en que la
+batería deja de ser una opción de mejora y pasa a ser necesaria para no desperdiciar energía ya
+generada — y ocurre **antes incluso de plantear la planta en suelo**.
 
 ### 6.1 Cuánta planta en suelo hace falta para cerrar el balance
 
 | Escenario de partida | Falta por cubrir | **V3 necesaria** |
 | --- | --- | --- |
-| V1 + V2, sin geotermia | 2.712 MWh/año | 1,51 MWp = **1,99 ha** (19.910 m²) |
-| **V1 + V2, con geotermia** | **2.347 MWh/año** | **1,31 MWp = 1,72 ha** (17.231 m²) |
+| V1 + V2, sin geotermia | 2.174 MWh/año | 1,21 MWp = **1,60 ha** (16.000 m²) |
+| **V1 + V2, con geotermia** | **1.809 MWh/año** | **1,01 MWp = 1,33 ha** (13.300 m²) |
 
 Frente a las **2,81 ha** que haría falta si la planta en suelo fuese la única medida, el conjunto
-**baja el requisito de suelo a 1,72 ha: un 39 % menos**. Este es el argumento para defender la
-combinación de variantes en vez de compararlas como alternativas excluyentes.
+**baja el requisito de suelo a 1,33 ha: un 53 % menos**, y a solo el **2,7 % de la parcela
+localizada**. Este es el argumento para defender la combinación de variantes en vez de
+compararlas como alternativas excluyentes.
 
 ### 6.2 El conjunto completo V1 + V2 + V3 con geotermia
 
-**1.994 kWp** (338 en cubierta + 351 en marquesinas + 1.305 en suelo) → **3.467 MWh/año**, que
+**2.024 kWp** (338 en cubierta + 680 en marquesinas + 1.006 en suelo) → **3.467 MWh/año**, que
 iguala exactamente el consumo en balance anual. Pero la autosuficiencia real sigue siendo del
-**43,7 %**, con **1.953 MWh** vertidos a la red y recomprados de noche. Añadiendo batería:
+**43,8 %**, con **1.949 MWh** vertidos a la red y recomprados de noche. Añadiendo batería:
 
-| Batería | C_D real |
-| --- | --- |
-| — | 43,7 % |
-| 1 MWh | 53,4 % |
-| 2 MWh | 63,0 % |
-| 3 MWh | 72,4 % |
-| **4 MWh** | **80,2 %** |
+| Batería | C_D real | Excedentes | Energía de red |
+| --- | --- | --- | --- |
+| — | 43,8 % | 1.949 MWh | 1.949 MWh |
+| 1 MWh | 53,5 % | 1.552 MWh | 1.613 MWh |
+| 2 MWh | 63,1 % | 1.156 MWh | 1.278 MWh |
+| 3 MWh | 72,2 % | 783 MWh | 963 MWh |
+| **4 MWh** | **79,7 %** | **477 MWh** | **703 MWh** |
+| 6 MWh | 87,2 % | 172 MWh | 445 MWh |
 
 ---
 
-## 7. Resumen ejecutivo
+## 7. El marco regulatorio cambió mientras se hacía este análisis
+
+Dos normas de 2026 afectan de lleno al TFM, y las dos cuelgan del mismo tronco. Conviene tratarlas
+juntas porque una **habilita** la variante 3 y la otra **la exige**.
+
+### 7.1 El RDL 7/2026 desbloquea la variante 3
+
+Ya desarrollado en el apartado 5.6.1: la disposición final decimocuarta del **Real Decreto-ley
+7/2026, de 20 de marzo** (BOE-A-2026-6544, convalidado el 26 de marzo, BOE-A-2026-7125) elevó de
+2.000 a **5.000 m** la distancia admisible para el autoconsumo a través de la red, para
+instalaciones fotovoltaicas o eólicas de hasta **5 MW**. Con 2,93 km y 1–2,5 MWp, la planta en
+suelo entra en el supuesto con margen.
+
+### 7.2 El proyecto de RD de centros de datos: el 80 % deja de ser una ambición y pasa a ser un umbral
+
+El mismo RDL 7/2026, en su **disposición adicional primera**, ordenó aprobar por real decreto los
+requisitos de sostenibilidad aplicables a los centros de datos. Ese desarrollo está **ahora mismo
+en audiencia pública**:
+
+| | |
+| --- | --- |
+| Norma | *Proyecto de Real Decreto por el que se regulan los requisitos de sostenibilidad energética, medioambiental y de resiliencia y soberanía digital aplicables a los centros de datos* |
+| Trámite | Audiencia e información pública, MITECO |
+| Plazo | **27 de agosto – 4 de septiembre de 2026** |
+| Documentos | `Bibliografia/PDFs/MITECO_2026_PRD_CentrosDatos_audiencia_publica.pdf` y su memoria de análisis de impacto normativo |
+
+**Lo que exige, artículo por artículo:**
+
+| Art. | Requisito | Cifra |
+| --- | --- | --- |
+| 2.1 | Ámbito: centros de datos que soliciten permisos de acceso y conexión (RD 1183/2020) | potencia de acceso **≥ 1 MW** (también grupos de CPD en la misma ubicación y titularidad que agreguen esa potencia) |
+| 2.3 | Obligación de publicidad del art. 14 | potencia de TI **≥ 500 kW** |
+| 6.1 | Eficiencia energética e hídrica: clase «A» de la etiqueta europea (Directiva (UE) 2023/1791) | transitoriamente, hasta agosto de 2027: **PUE ≤ 1,15** y **WUE ≤ 0,1** (anexo III del Reglamento Delegado (UE) 2024/1364) |
+| 7 | Los requisitos renovables decaen si la cuota renovable nacional supera el 90 % en el año n−2 | **90 %** |
+| 8 | **Adicionalidad**: cubrir el 80 % del consumo total con autoconsumo (RD 244/2019) o PPA con productores renovables ubicados en España | **80 %**, con acta de puesta en servicio no anterior en más de **18 meses** |
+| 9 | **Correlación horaria**: la energía consumida **en cada hora** respaldada al menos en un 80 % por renovable generada **en esa misma hora** | **80 % horario** |
+| 10 | Recargo sobre peajes y cargos por incumplimiento | **65 %**, +10 puntos por cada año consecutivo adicional |
+| 12 | Características exigidas a los PPA | duración mínima **10 años**, elevación a escritura pública |
+
+El artículo 9.1 dice literalmente:
+
+> «(…) deberán garantizar que la energía consumida en cada hora se encuentra respaldada, al menos
+> en un **80 por ciento**, por un volumen equivalente de electricidad de origen renovable
+> **generada en esa misma hora**. El respaldo podrá articularse mediante alguna de las modalidades
+> de autoconsumo previstas en el Real Decreto 244/2019, de 5 de abril, o mediante uno o más
+> contratos de compra de electricidad renovable a plazo (…)»
+
+> ### Por qué esto reorienta el TFM
+>
+> **La métrica que exige el borrador es exactamente la que este análisis lleva calculando.** No es
+> el balance anual neto —el que daba «100 % de cobertura» con 2,81 ha— sino la **autosuficiencia
+> real hora a hora**, que es el C_D que se ha venido reportando en todas las tablas. Y el umbral
+> que fija, el **80 %**, es justo el objetivo que se había elegido como referencia.
+>
+> Dicho de otro modo: el criterio de diseño que se adoptó por rigor técnico resulta ser, cinco
+> meses después, el criterio regulatorio. Eso convierte la tabla del apartado 5.6 en algo más que
+> un ejercicio académico.
+>
+> **Y el artículo 9.3 menciona expresamente las «instalaciones de producción y, en su caso, de
+> almacenamiento asociadas»** a efectos de verificar el cumplimiento horario. El almacenamiento no
+> es un añadido opcional en el esquema de la norma: es un medio reconocido para cumplirla. Esto
+> refuerza, desde el lado regulatorio, la justificación de la batería que en el apartado 5.5 se
+> había obtenido solo desde el lado físico.
+
+### 7.3 El CPD de este TFM no está sujeto, y esa es una decisión que hay que argumentar
+
+Hay que ser precisos con el ámbito, porque es tentador exagerarlo:
+
+- El artículo 2.1 aplica la norma a los centros de datos **que hayan solicitado o vayan a
+  solicitar** los permisos de acceso y conexión.
+- La **disposición transitoria tercera** lo cierra: los requisitos «se aplicarán a todos los
+  centros de datos **que se conecten con posterioridad a su entrada en vigor**», entendiendo por
+  conectado el que está acoplado eléctricamente y tiene contrato ATR suscrito.
+- El CPD de este TFM está en explotación, con contrato ATR vigente. **No queda sujeto.**
+- Tampoco alcanzaría el umbral del artículo 2.3 para la obligación de publicidad: su potencia de
+  TI media es de ~295 kW (2.585 MWh/año), por debajo de los 500 kW.
+
+**Pero el proyecto del TFM sí lo activa.** Instalar 1–2,5 MWp en una parcela a 2,93 km exige
+solicitar permisos de acceso y conexión para la planta, y una ampliación o modificación de la
+potencia de acceso del propio CPD entraría en el supuesto del artículo 2.1. Conviene por tanto
+plantear el diseño como **conforme por anticipado**: no porque obligue hoy, sino porque es la
+dirección en la que va la norma y porque un CPD con PUE 1,482 está lejísimos del 1,15 que se
+exigirá a los nuevos.
+
+Eso da, además, un argumento adicional y no buscado para la geotermia del apartado 5.2: el
+PUE estimado bajaría de **1,482 a ~1,341**. Sigue por encima de 1,15, pero recorta el 30 % de la
+distancia. Cerrar esa brecha del todo exigiría medidas de refrigeración que quedan fuera del
+alcance de este TFM, y merece la pena decirlo explícitamente en la memoria en vez de dejarlo
+implícito.
+
+### 7.4 Si se optase por la vía del PPA
+
+Ha dejado de ser la salida forzosa, pero sigue siendo el término de comparación económica. El
+artículo 12 del borrador fija qué tendría que cumplir un PPA para servir a efectos de
+adicionalidad y correlación horaria, y **tres de esas condiciones descartan de entrada las
+soluciones más habituales en grupos multinacionales**:
+
+- **c)** «No se considerarán válidos los contratos financieros suscritos por la sociedad matriz o
+  por otra sociedad del grupo en los que dicha relación no quede reflejada.» → un PPA virtual
+  firmado a nivel de grupo no computaría.
+- **e)** Exclusión de coberturas basadas en productos a plazo de mercados organizados «cuyo origen
+  renovable se acredite exclusivamente mediante garantías de origen». → comprar GdO sueltas no
+  vale.
+- **f)** Duración mínima de **diez años**, y **g)** elevación a escritura pública.
+
+Es decir: el borrador empuja hacia el PPA físico, nominado a instalaciones concretas y de largo
+plazo, que es precisamente el modelo que en la literatura se asocia al *24/7 carbon-free energy
+matching* frente al simple *annual matching* con certificados.
+
+
+---
+
+## 8. Resumen ejecutivo
 
 1. **El consumo total del CPD es 3.832 MWh/año**, no 1.260. Los 1.260 MWh del trabajo previo
    eran solo refrigeración y auxiliares. El C_D de partida del TFM es **4,3 %**, no 13,2 %.
@@ -466,41 +632,48 @@ iguala exactamente el consumo en balance anual. Pero la autosuficiencia real sig
 3. **V1** (BIPV 2,0 % + cubierta liberada 12,2 %) = **14,2 %**. El BIPV es marginal en energía;
    justifíquese por arquitectura, no por producción.
 4. **La geotermia ahorra ~365 MWh/año (9,5 %)** por sí sola, equivalente a 205 kWp de FV sin
-   ocupar superficie. Es la mejor relación resultado/esfuerzo del estudio.
-5. **V2** (marquesinas sobre los 2.461 m² de aparcamiento) = **15,0 %**, con 351 kWp y sin un solo
-   kWh de excedente. **Rinde más que toda la cubierta del edificio** y es mucho menos invasiva:
-   es la variante con mejor relación cobertura/esfuerzo de las tres.
-6. **Todo el emplazamiento (V1 + V2) llega al 29,1 %** — 31,4 % con geotermia — con A_PV 99,5 %.
-   Ahí se agota la superficie propia.
-7. **V3**: **1,32 ha/MWp**. En solitario, **2,81 ha** para el 100 % en balance anual y **2,25 ha**
-   para el 80 %. Pero **combinada con V1 + V2 y geotermia bastan 1,72 ha** (−39 %). La combinación
-   es lo que hay que defender, no la comparación entre variantes excluyentes.
-8. **Sin batería la autosuficiencia real satura en 50,5 %.** Sobre el conjunto completo, llegar al
-   **80 % real exige 4 MWh** de almacenamiento.
-9. **La batería queda justificada** por esta barrera, no por el argumento de excedentes que no
-   valía en el trabajo previo.
+   ocupar superficie. Es la mejor relación resultado/esfuerzo del estudio, y además baja el PUE
+   de 1,482 a ~1,341.
+5. **V2** (marquesinas sobre los **3.332 m²** de huella medida) = **28,9 %**, con **680 kWp**.
+   **Duplica lo que aporta toda la cubierta del edificio** y es mucho menos invasiva: es la mejor
+   variante de las tres, con diferencia.
+6. **Todo el emplazamiento (V1 + V2) llega al 36,8 %** — 38,1 % con geotermia — pero el A_PV cae
+   al **85,0 %**: con 1.017 kWp ya sobran 249 MWh/año. **La batería se hace necesaria antes
+   incluso de plantear la planta en suelo.**
+7. **V3**: **1,32 ha/MWp**. Combinada con V1 + V2 y geotermia, cerrar el balance anual exige solo
+   **1,33 ha** (frente a 2,81 ha si fuese la única medida: **−53 %**). La combinación es lo que
+   hay que defender, no la comparación entre variantes excluyentes.
+8. **Sin batería la autosuficiencia real satura en 50,5 %.** Con V1 + V2 + geotermia, el **80 %
+   real** se alcanza con **1,32 ha de planta en suelo y 4,1 MWh** de almacenamiento.
+9. **La batería queda justificada** por esta barrera física, no por el argumento de excedentes que
+   no valía en el trabajo previo — y ahora también por vía regulatoria (punto 12).
 10. **La parcela localizada tiene 58,84 ha y admitiría ≈37,9 MWp** (68,1 GWh/año, 17,8 veces el
-    consumo del CPD). **El suelo deja de ser la restricción**: para el 95 % de autosuficiencia real
-    basta el **5,9 % de la parcela** (2,97 ha) y para el 99 % el **8,6 %** (4,29 ha). El 100 %
-    estricto no se alcanza ni con 25 MWp y 60 MWh — el último 0,1 % exigiría almacenamiento
-    estacional.
-11. **El riesgo de la variante 3 ya no es técnico sino regulatorio: 2,93 km separan la parcela del
-    CPD.** Hay que decidir entre autoconsumo a distancia (encaje normativo por verificar), línea
-    directa de ~3 km o planta independiente con PPA. Que La Cereal y Tres Cantos GIS estén a
-    ~0,6 km del CPD y ~2,4 km de la parcela abre la vía de la subestación común, que sería la
-    salida limpia.
+    consumo del CPD). **El suelo deja de ser la restricción**: el 80 % de autosuficiencia real
+    necesita el **2,6 % de la parcela**. El 100 % estricto no se alcanza ni con 25 MWp y 60 MWh —
+    el último 0,1 % exigiría almacenamiento estacional.
+11. **La distancia de 2,93 km ya no es un obstáculo.** El **RDL 7/2026, de 20 de marzo** elevó de
+    2.000 a **5.000 m** el límite del autoconsumo a través de la red para instalaciones FV de
+    hasta 5 MW. La variante 3 encaja con margen, sin línea directa y sin renunciar a la figura de
+    autoconsumo. (Y la línea directa tampoco era imposible: lo era en BT, no en MT — 2,5 MW a
+    20 kV son 72 A y un 0,4 % de caída sobre 3 km.)
+12. **El proyecto de RD de centros de datos en audiencia pública (27/08–04/09/2026) exigirá que el
+    80 % de la energía consumida en CADA HORA esté respaldada por renovable generada en esa misma
+    hora**, más adicionalidad del 80 % y PUE ≤ 1,15. **Es exactamente la métrica de este análisis
+    y exactamente su objetivo.** El CPD actual no queda sujeto (ya está conectado, DT 3.ª), pero
+    el proyecto del TFM activaría el supuesto al solicitar nuevos permisos de acceso.
 
-## 8. Pendiente de cerrar
+## 9. Pendiente de cerrar
 
 | # | Asunto | Cómo |
 | --- | --- | --- |
-| 1 | ~~Superficie del aparcamiento~~ | **Cerrado: 2.461 m²** (aportado por Mario, 23/08/2026). |
+| 1 | ~~Superficie del aparcamiento~~ | **Cerrado: 3.332 m² de huella de marquesinas** (filas F1–F8 del `TFM.kmz`; confirmado por Mario el 28/08/2026 — `Parking - General`, 6.252 m², incluye las calles y no es la cifra buena). |
 | 2 | ~~Localizar la parcela~~ | **Cerrado: 58,84 ha medidas sobre `TFM.kmz` (28/08/2026).** Sobra suelo por un factor 20. |
-| 2a | **Encaje regulatorio de la distancia (2,93 km)** | **Dato crítico ahora.** Autoconsumo a distancia vs. línea directa vs. PPA. Verificar con `investigador-cientifico` el RD 244/2019 consolidado y comprobar si CPD y parcela cuelgan de la misma subestación (La Cereal / Tres Cantos GIS). |
-| 2c | Titularidad y clasificación urbanística de la parcela | Sede electrónica del Catastro + planeamiento de Tres Cantos / Colmenar Viejo. |
-| 2b | **Discrepancia en la superficie del aparcamiento** | El `TFM.kmz` da 6.252 m² de recinto (`Parking - General`) y **3.332 m² de huella de marquesinas** (polígonos F1–F8), frente a la huella de 1.723 m² que se dedujo de los 2.461 m². Si se confirman los 3.332 m², **V2 pasa de 351 a 680 kWp y de 15,0 % a 28,9 % de C_D** — casi el doble. Mario tiene que aclarar qué mide cada polígono antes de recalcular. |
-| 3 | Alcance del TFM: ¿total o solo HVAC? | Confirmar con Julio Amador — cambia el denominador de todo. |
-| 4 | SEER real de las enfriadoras y del sistema geotérmico | `investigador-cientifico` + placa de características. |
+| 2a | ~~Encaje regulatorio de la distancia (2,93 km)~~ | **Cerrado: encaja.** RD 244/2019 art. 3.g).iii), redacción de la DF 14.ª del RDL 7/2026: hasta 5 MW y menos de 5.000 m. Falta solo medir la distancia definitiva **entre equipos de medida** cuando se fije el centro de seccionamiento. |
+| 2c | **Titularidad y clasificación urbanística de la parcela** | **Dato crítico ahora.** Sede electrónica del Catastro + planeamiento de Tres Cantos / Colmenar Viejo. Con 1,33 ha necesarias sobre 58,84 disponibles hay mucho margen para elegir la subparcela más favorable. |
+| 3 | Alcance del TFM: ¿total o solo HVAC? | Confirmar con Julio Amador — cambia el denominador de todo. El art. 9 del borrador de RD apunta claramente al consumo total. |
+| 4 | SEER real de las enfriadoras y del sistema geotérmico | `investigador-cientifico` + placa de características. Ahora tiene más peso: de ello depende el PUE que se pueda alegar. |
 | 5 | Densidad de potencia del vidrio BIPV | Datasheet de fabricante (Onyx Solar u otro) vía `bibliotecario-pdf`. |
 | 6 | Reparto del no-IT (refrigeración / UPS / iluminación) | Se ha supuesto 70/22/8. Verificar si hay submedida. |
 | 7 | Capacidad del punto de conexión | Con >1 MW cambia el procedimiento de acceso (RD 1183/2020). |
+| 8 | **Seguimiento del proyecto de RD de centros de datos** | La audiencia pública cierra el **4 de septiembre de 2026**. Vigilar el texto final antes de la entrega del TFM (15/09/2026) y, sobre todo, si el 80 % horario y el PUE 1,15 sobreviven al trámite. |
+| 9 | Contraste con casos reales de CPD | Buscar y procesar vía `bibliotecario-pdf` literatura sobre *24/7 carbon-free energy matching* y PPA corporativos de centros de datos, para situar el diseño frente a lo que hace el sector. |
