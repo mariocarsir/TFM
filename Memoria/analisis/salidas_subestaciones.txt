@@ -1,0 +1,13 @@
+Subestacion                                           d_CPD km d_parc km tensiones
+-----------------------------------------------------------------------------------------------
+Tres Cantos GIS 220                                       0.59      2.35 220 kV
+LA CEREAL 220 - LA CEREAL 400                             0.56      2.41 400/220 kV
+Tres Cantos 220 - T.CANTOS 3570 20 - TCANTOS A1 3570 66      2.33      3.10 220/66/20 kV
+BBVA 4145 66                                              2.48      3.98 66 kV
+LAVANDER 4196 20 - LAVANDERAS A 4196 66                   8.66      4.28 66/20 kV
+C.VIEJO 4013 20 - C.VIEJO A 4013 66                       8.54      4.68 66/20 kV
+i-DE ALCOBE.M 3227 20                                     7.84     10.78 20 kV
+Alcobendas 220                                            7.87     10.80 220 kV
+i-DE EQUINIX 4457 66                                      8.47     11.35 66 kV
+FUENCARRAL 220 - FUENCARRAL 400                           9.56     12.32 400/220 kV
+i-DE FUENCA.M 3308 20 - FUENCARR 3308 66 - FUENCARR 3308 132      9.71     12.48 132/66/20 kV

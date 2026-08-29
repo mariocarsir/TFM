@@ -926,12 +926,42 @@ distintas en coste:
 | **Conexión directa a barras de una SET de distribución** | La línea no admite la potencia, o el gestor lo impone | Obliga a llevar la línea hasta la SET y, en su caso, a ampliar posición |
 | **Conexión a la red de transporte (≥ 132/220 kV)** | Solo si el gestor lo exige por saturación | Descartable a esta escala: la SET propia y la posición en 220 kV no guardan proporción con 1–2,5 MW |
 
-Las siete subestaciones inventariadas en el `TFM.kmz` (apartado 5.6) cobran aquí su sentido real:
-no son un dato de contexto, son **el mapa de puntos de conexión candidatos**. Las dos más
-próximas a la parcela son La Cereal 220/400 kV (2,41 km) y Tres Cantos GIS 220 kV (2,35 km),
-ambas de transporte; la de distribución más cercana en el inventario es BBVA 4145 de 66 kV a
-3,98 km. **Falta identificar las líneas de MT que cruzan o bordean la parcela**, que es lo que
-realmente decide el coste de conexión.
+**El inventario de subestaciones del `TFM.kmz`** (versión de Mario del 29/08/2026, once
+subestaciones con sus niveles de tensión) no es un dato de contexto: es **el mapa de puntos de
+conexión candidatos**. Medidas sobre el KMZ, ordenadas por distancia a la parcela:
+
+| Subestación | d. al CPD | **d. a la parcela** | Tensiones | Gestor |
+| --- | --- | --- | --- | --- |
+| Tres Cantos GIS 220 | 0,59 km | **2,35 km** | 220 kV | REE |
+| La Cereal 220 – La Cereal 400 | 0,56 km | **2,41 km** | 400/220 kV | REE |
+| **Tres Cantos 220 – T.CANTOS 3570 20 – TCANTOS A1 3570 66** | 2,33 km | **3,10 km** | **220/66/20 kV** | REE + i‑DE |
+| BBVA 4145 66 | 2,48 km | 3,98 km | 66 kV | i‑DE |
+| Lavander 4196 20 – Lavanderas A 4196 66 | 8,66 km | 4,28 km | 66/**20** kV | i‑DE |
+| C. Viejo 4013 20 – C. Viejo A 4013 66 | 8,54 km | 4,68 km | 66/**20** kV | i‑DE |
+| i‑DE Alcobe.M 3227 20 | 7,84 km | 10,78 km | 20 kV | i‑DE |
+| Alcobendas 220 | 7,87 km | 10,80 km | 220 kV | REE |
+| i‑DE Equinix 4457 66 | 8,47 km | 11,35 km | 66 kV | i‑DE |
+| Fuencarral 220 – Fuencarral 400 | 9,56 km | 12,32 km | 400/220 kV | REE |
+| i‑DE Fuenca.M 3308 20 – Fuencarr 3308 66/132 | 9,71 km | 12,48 km | 132/66/**20** kV | i‑DE |
+
+> **El resultado que decide el punto de conexión.** Las dos subestaciones más próximas a la
+> parcela —Tres Cantos GIS y La Cereal, a 2,35 y 2,41 km— son **exclusivamente de transporte**:
+> no tienen nivel de media tensión, así que **no son puntos de conexión viables** para una planta
+> de 2–2,5 MW. La primera con nivel de **20 kV** es **Tres Cantos 3570**, a **3,10 km** de la
+> parcela. Es, con diferencia, la candidata natural: transformación 220/66/20 en el mismo
+> emplazamiento y a solo 2,33 km del propio CPD.
+>
+> **Y el prefijo «i‑DE» de las etiquetas resuelve la duda del apartado 7.5.3: la distribuidora de
+> la zona es i‑DE (Iberdrola Distribución), no UFD.** La numeración de cuatro dígitos (3570, 4196,
+> 4013, 3227, 3308, 4145, 4457) es la nomenclatura de Iberdrola. Confírmese igualmente con el CUPS.
+>
+> Curiosidad con valor de contexto para la memoria: el inventario incluye una **SET «i‑DE Equinix
+> 4457» de 66 kV**, es decir, un centro de datos de la zona con subestación propia dedicada. Es un
+> término de comparación útil sobre el orden de magnitud al que trabaja el sector.
+
+**Falta identificar las líneas de MT que cruzan o bordean la parcela**, que es lo que realmente
+decide el coste de conexión: entroncar en una línea de 20 kV existente es mucho más barato que
+llevar la línea hasta las barras de Tres Cantos 3570.
 
 #### 7.5.3 Qué mapa de capacidad hay que mirar
 
@@ -953,9 +983,10 @@ distintos:
 **Dónde mirar, en la práctica:**
 
 1. **Identificar primero la distribuidora** por el CUPS de la factura del CPD. En el entorno de
-   Tres Cantos la distribuidora previsible es **UFD (Unión Fenosa Distribución, grupo Naturgy)**,
-   que publica un fichero específico de *capacidad de acceso para generación en las subestaciones
-   de Madrid* — **confirmar contra la factura antes de dar esto por bueno**.
+   Tres Cantos la distribuidora es **i‑DE (Iberdrola Distribución)**, según las etiquetas del
+   `TFM.kmz` y la nomenclatura numérica de sus subestaciones — **confirmar contra el CUPS de la
+   factura**. (Una versión anterior de este documento apuntaba a UFD; era una conjetura, y el
+   inventario de subestaciones la desmiente.)
 2. **Red de distribución:** consultar el mapa/fichero de capacidad de la distribuidora que
    resulte. Los ficheros descargables (xlsx/csv) son más fiables que el visor cartográfico.
 3. **Red de transporte:** el mapa de capacidad de acceso publicado por Red Eléctrica, para los
@@ -1156,7 +1187,7 @@ media tensión el que aplicaría es el **6.1TDA** (tensiones entre 1 y 30 kV).
 | 4 | SEER real de las enfriadoras y del sistema geotérmico | `investigador-cientifico` + placa de características. Ahora tiene más peso: de ello depende el PUE que se pueda alegar. |
 | 5 | Densidad de potencia del vidrio BIPV | Datasheet de fabricante (Onyx Solar u otro) vía `bibliotecario-pdf`. |
 | 6 | Reparto del no-IT (refrigeración / UPS / iluminación) | Se ha supuesto 70/22/8. Verificar si hay submedida. |
-| 7 | **Capacidad de acceso de GENERACIÓN en los nudos próximos a la parcela** | **Riesgo crítico abierto, el que sustituye al de la distancia.** La V3 es obligatoriamente *con excedentes* (art. 4.5.c) y por tanto necesita permisos de acceso y conexión (art. 7.1.b.iii). Consultar el fichero de capacidad de la distribuidora —previsiblemente UFD, a confirmar por el CUPS— y el mapa de REE para los nudos de 220 kV. Detalle en el apartado 7.5. |
+| 7 | **Capacidad de acceso de GENERACIÓN en los nudos próximos a la parcela** | **Riesgo crítico abierto, el que sustituye al de la distancia.** La V3 es obligatoriamente *con excedentes* (art. 4.5.c) y por tanto necesita permisos de acceso y conexión (art. 7.1.b.iii). Consultar el mapa de capacidad de **i‑DE** (confirmar por el CUPS) para el nivel de 20 kV, empezando por **Tres Cantos 3570**, que es la SET con MT más próxima a la parcela (3,10 km). Detalle en el apartado 7.5. |
 | 6a | **Valores vigentes del peaje 6.1TDA para 2026** | **Impacto económico alto.** La Circular 3/2020 crea el peaje pero los precios los fija la CNMC por resolución anual. Sin ese dato no se puede cuantificar el coste de red de la variante 3 (apartado 7.6). |
 | 6b | Trazado eléctrico de la V2: ¿línea propia de 216 m o conexión a red? | Decide si V2 es *red interior* (exenta de permisos y de peajes) o *a través de la red* (con permisos y con peaje). Ver 5bis.5. Recomendación: línea propia. |
 | 6c | ¿La batería podrá cargar de la red? | Decide si entra en el régimen de acceso de demanda flexible (art. 33.13 Ley 24/2013) o queda fuera por la DT 5.ª del RD 244/2019. Ver 7.5.4. |
