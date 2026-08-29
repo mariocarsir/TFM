@@ -544,9 +544,80 @@ Encadenando el RD 244/2019 con la reforma del RDL 7/2026:
 
 | Variante | Distancia | Figura del art. 3.g) | Modalidad del art. 4 | ¿Permisos de acceso? |
 | --- | --- | --- | --- | --- |
-| **V1** | 0 m, misma parcela | **Próxima de red interior** (art. 3.g.i) | **Sin excedentes** (nunca vierte) | **No** — exenta por art. 7.1.b).i) |
-| **V2** | ~0 m, misma propiedad | **Próxima de red interior** (art. 3.g.i) | **Sin excedentes**, con antivertido | **No** — exenta por art. 7.1.b).i) |
+| **V1** | 0 m, mismo edificio | **Próxima de red interior** (art. 3.g.i) | **Sin excedentes** (nunca vierte) | **No** — exenta por art. 7.1.b).i) |
+| **V2** | **216 m** | **Red interior o línea directa** (art. 3.g.i) — ver 5bis.5 | **Sin excedentes**, con antivertido | **No** — exenta por art. 7.1.b).i) |
 | **V3** | 2,93 km | **Próxima a través de la red** (art. 3.g, párr. 2.º) | **Con excedentes obligatoriamente** (art. 4.5.c) | **Sí** — art. 7.1.b).iii) |
+
+### 5bis.5 V2: los 216 m y las dos referencias catastrales
+
+Datos aportados por Mario el 29/08/2026 y verificados sobre el `TFM.kmz`:
+
+| Dato | Valor |
+| --- | --- |
+| Referencia catastral del **aparcamiento** | `9347902VK3994N` |
+| Referencia catastral del **edificio del CPD** | `9347904VK3994N` |
+| Distancia CPD → aparcamiento (medida sobre el KMZ) | **215,8 m** (Mario: 216 m) |
+| Borde de cubierta → borde de aparcamiento | 138 m |
+
+**Las dos referencias no coinciden en sus 14 primeros dígitos** (difieren en el séptimo carácter:
+`9347902…` frente a `9347904…`). Son dos parcelas catastrales distintas, así que **la vía del
+art. 3.g).iv) —misma referencia catastral— no está disponible.** Conviene decirlo explícitamente
+en la memoria porque es la puerta que uno esperaría usar y no sirve.
+
+Quedan dos vías, y **la elección no es administrativa sino de trazado eléctrico**:
+
+| Vía | Cómo se materializa | Figura resultante | Consecuencia |
+| --- | --- | --- | --- |
+| **Art. 3.g).i)** — red interior **o línea directa** | Cable propio de 216 m del aparcamiento al cuadro del CPD, sin pisar red de distribuidora | **Próxima de red interior** | **Sin excedentes**, exenta de permisos (art. 7.1.b.i), energía autoconsumida **exenta de peajes y cargos** |
+| **Art. 3.g).iii)** — menos de 500 m | Conexión a la red de distribución en el aparcamiento | **Próxima a través de la red** | **Con excedentes obligatoria** (art. 4.5.c), **exige permisos** (art. 7.1.b.iii) y **paga peaje** por la energía autoconsumida (ver 7.6) |
+
+Los 216 m cumplen holgadamente los 500 m del art. 3.g).iii), de modo que **V2 encaja por las dos
+vías**. Pero son muy distintas en consecuencias: la primera es la de un autoconsumo convencional
+y la segunda arrastra todo el aparato de la variante 3. **Recomendación: tender los 216 m de línea
+propia.** Nótese además que el art. 3.g).i) admite expresamente la **línea directa** como forma de
+cumplir la condición i, de modo que atravesar dos referencias catastrales distintas no rompe el
+encaje mientras la línea sea propia y no de la distribuidora.
+
+### 5bis.6 Por qué la V3 no puede ser «sin excedentes»: los vertidos, en cifras
+
+La razón de fondo no es jurídica sino física, y hay que separarla en dos.
+
+**Primero, lo estructural.** En la V3 la energía **llega al CPD precisamente inyectándola en la
+red**: la planta vierte en su nudo y el CPD retira del suyo, y la distribuidora casa las dos series
+hora a hora (apartado 7.5.1). Un mecanismo antivertido en la planta —que por definición «impide en
+todo momento el vertido de energía eléctrica a la red» (art. 3.k del RD 244/2019)— **bloquearía el
+propio mecanismo de entrega**. La planta no dejaría de verter: dejaría de producir. No es que la
+modalidad esté prohibida; es que no existe.
+
+**Segundo, y esto responde a si un buen diseño podría evitar los excedentes: no puede.**
+
+| Configuración V3 | Vertido | % de E_PV | Horas con vertido | Pico vertido |
+| --- | --- | --- | --- | --- |
+| 2,00 MWp, sin batería | 1.946 MWh | 54,1 % | 3.282 h | 1.052 kW |
+| **2,00 MWp + 4,51 MWh** | **273 MWh** | **7,6 %** | 696 h | 832 kW |
+| 2,25 MWp, sin batería | 2.374 MWh | 58,7 % | 3.398 h | 1.238 kW |
+| **2,25 MWp + 5,73 MWh** | **274 MWh** | **6,8 %** | 631 h | 831 kW |
+| 2,25 MWp + 10 MWh | 185 MWh | 4,6 % | 471 h | 728 kW |
+| 2,25 MWp + **20 MWh** | **163 MWh** | **4,0 %** | 414 h | 728 kW |
+
+**Cuadruplicar la batería de 5,7 a 20 MWh solo baja el vertido de 274 a 163 MWh.** El excedente no
+es un problema de tamaño de batería: es **estacional**. Su reparto mensual con 2,25 MWp + 5,73 MWh
+lo enseña sin lugar a dudas:
+
+| Mes | E F M A M J J A S O N D |
+| --- | --- |
+| MWh vertidos | 0 · 5 · 37 · 0 · 33 · **51** · **58** · **45** · 43 · 1 · 0 · 0 |
+
+De junio a septiembre se concentra el 72 % del vertido. La causa es aritmética: el CPD consume
+**10,5 MWh/día** constantes, y en julio una planta de 2,25 MWp produce del orden de **14 MWh/día**.
+Sobran ~3,5 MWh **todos los días de julio**, y la batería llega llena al final de cada jornada.
+Para absorberlos habría que trasladar energía de julio a diciembre, no de mediodía a medianoche:
+eso es **almacenamiento estacional**, fuera del alcance de este TFM y del estado del arte comercial.
+
+> **La conclusión que interesa para la memoria:** un antivertido en la V3 no «evitaría» esos
+> 274 MWh — los **recortaría**. Serían 274 MWh/año generables y tirados, un 6,8 % de la producción.
+> El vertido no es un defecto de diseño que se pueda corregir dimensionando mejor: es la
+> consecuencia inevitable de cubrir con una fuente estacional una demanda que no lo es.
 
 **V2 y el antivertido.** V2 vierte 5 MWh/año en 355 horas. Un mecanismo antivertido recortaría esa
 producción y la variante seguiría siendo *sin excedentes* perdiendo un 0,4 % de la generación.
@@ -895,6 +966,46 @@ distintos:
 
 #### 7.5.4 El acceso flexible y el régimen de la batería
 
+> **Corrección (29/08/2026).** Una versión anterior de este apartado afirmaba que la batería del
+> TFM entra en el régimen de acceso flexible del art. 33.13 de la Ley 24/2013. **Es incorrecto para
+> una batería de autoconsumo**, por lo que se explica a continuación. La afirmación solo vale para
+> almacenamiento que solicita permiso de acceso propio.
+
+**Dónde NO se aplica: la batería integrada en el autoconsumo.** La **disposición transitoria
+quinta del RD 244/2019** resuelve el encaje de las baterías de autoconsumo:
+
+> «(…) dichos elementos de almacenamiento se instalarán de tal forma que **compartan equipo de
+> medida y protecciones con la instalación de generación**.»
+
+Es decir: en autoconsumo, la batería **no es una instalación independiente**. Va detrás del mismo
+contador y de las mismas protecciones que el campo fotovoltaico, y jurídicamente forma parte de la
+instalación de generación. No solicita permiso propio, luego no hay «permiso de demanda» que pueda
+ser firme o flexible. Y el **RD 1183/2020, art. 3.2** lo cierra por el otro lado, excluyendo de su
+ámbito a las instalaciones de almacenamiento «**cuando las mismas nunca inyecten energía a las
+redes de transporte o distribución**».
+
+**Consecuencia por variante:**
+
+| Batería en… | ¿Instalación independiente? | ¿Permiso de acceso de demanda? | ¿Art. 33.13 (flexible)? |
+| --- | --- | --- | --- |
+| **V1 / V2** (sin excedentes, nunca inyecta) | No: DT 5.ª, comparte medida y protecciones | **No** | **No aplica** |
+| **V3, hibridada con la planta**, cargando solo de la FV | No: parte de la instalación de generación | **No** por sí misma | **No aplica** |
+| **V3, con capacidad de cargar de la red** | **Sí** | **Sí** | **Sí, flexible por imperativo legal** |
+
+**La frontera real es si la batería puede cargar de la red**, no dónde esté físicamente. Y es una
+decisión de diseño con consecuencias: una batería que solo carga de la fotovoltaica se queda fuera
+de todo el régimen de acceso; una que además pueda cargar de la red —para arbitraje, o para
+garantizar el 80 % horario del borrador de RD en días de poco sol— entra en él.
+
+**El aparente conflicto con la DT sexta se resuelve así:** el art. 33.13 es la **regla de futuro**
+(los permisos que se otorguen serán flexibles) y la DT sexta es la **vía de migración** para el
+almacenamiento que **ya tiene** un permiso de demanda firme concedido antes de la reforma. A esos
+no se les puede reconvertir el permiso por decreto, así que se les da un plazo de tres meses y se
+usa como incentivo la pérdida de las exenciones de peajes y cargos. No hay contradicción: una cosa
+es lo que se concede a partir de ahora y otra qué se hace con lo ya concedido.
+
+
+
 El RDL 7/2026 no solo tocó las distancias del autoconsumo: **creó la figura del acceso flexible**
 y la aplicó al almacenamiento de forma imperativa. Su preámbulo lo explica:
 
@@ -911,22 +1022,25 @@ un **apartado 13 al artículo 33 de la Ley 24/2013**:
 > permisos de **acceso flexibles desde la perspectiva de demanda**.»
 
 **Qué significa esto para este TFM.** El CPD ya está conectado y con contrato ATR, así que la
-reforma del acceso de demanda no le afecta *como consumidor*. Pero **la batería de 4–6 MWh sí es
-una instalación de almacenamiento**, y por tanto:
+reforma del acceso de demanda no le afecta *como consumidor*. Y su batería, mientras cargue solo
+de la fotovoltaica, tampoco entra en el régimen. **Solo si se le da capacidad de cargar de la red**
+pasa a ser instalación de almacenamiento con permiso propio, y entonces:
 
-1. **Necesita su propio permiso de acceso y conexión de demanda**, que será **flexible por
-   imperativo legal** — no es una opción que se elija.
-2. La **disposición transitoria sexta** da tres meses para adaptarse a las modalidades de acceso
-   flexible que fije la CNMC, y avisa de la sanción: quien no se adapte **pierde las excepciones**
-   del art. 1.3.b) del RD 148/2021 (cargos) y del art. 2.2.c) y d) de la Circular 3/2020 de la
-   CNMC (peajes) — es decir, **pasaría a pagar peajes y cargos por la energía de carga**. Sobre
-   4–6 MWh ciclando a diario eso no es un matiz: es una partida del capítulo económico.
-3. **Dónde se ubique la batería cambia su régimen.** El nuevo último párrafo del art. 39.3 de la
-   Ley 24/2013 dice que **no tendrán consideración de consumidor** las instalaciones de producción
-   **hibridadas con almacenamiento** que puedan consumir de la red conforme a su permiso. Es decir:
-   una batería hibridada con la planta de la V3 y una batería instalada junto al CPD **no son la
-   misma figura jurídica ni pagan lo mismo**. Es una decisión de diseño que este documento no ha
-   tomado todavía y que conviene tomar antes del capítulo económico.
+1. Ese permiso de demanda será **flexible por imperativo legal** (art. 33.13) — no es una opción.
+2. Le aplicarían las exenciones de peajes y cargos sobre la energía de carga: **art. 1.3.b) del
+   RD 148/2021** exime de cargos «la energía consumida por los titulares de instalaciones de
+   almacenamiento (…) **que sea posteriormente inyectada en la red**», y **art. 2.2.d) de la
+   Circular 3/2020** exime de peajes a «las baterías de almacenamiento conectadas en la red de
+   transporte o distribución». La lógica es evitar el doble pago: se paga cuando la energía se
+   consume de verdad, no cuando solo pasa por la batería.
+3. **Por qué la batería no cuenta como «consumidor».** Normalmente, todo lo que retira energía de
+   la red es consumidor y paga peajes y cargos por ello. Si la batería contase como consumidor,
+   cada kWh pagaría al cargarse y **volvería a pagar** cuando el CPD lo gastase: peaje doble por
+   la misma energía. Para evitarlo, el nuevo último párrafo del art. 39.3 de la Ley 24/2013
+   declara que **no tienen consideración de consumidor** las instalaciones de producción
+   hibridadas con almacenamiento que, conforme a su permiso, puedan consumir de la red. La
+   consecuencia práctica: **una batería hibridada con la planta de la V3 y una batería suelta
+   junto al CPD no son la misma figura jurídica ni pagan lo mismo.**
 
 > **Sobre la demanda flexible como oportunidad para centros de datos.** La intuición es correcta y
 > la norma la respalda: el acceso flexible existe precisamente para **consumos modulables**, y en
@@ -943,6 +1057,51 @@ una instalación de almacenamiento**, y por tanto:
 > es la superficie ni el coste: es **si existe capacidad de acceso de generación disponible** en
 > algún nudo razonablemente próximo a la parcela. Es una comprobación de horas, no de semanas, y
 > conviene hacerla antes de invertir tiempo en la simulación PVsyst de la variante 3.
+
+### 7.6 La energía autoconsumida de la V3 SÍ paga peaje de red
+
+> **Corrección (29/08/2026), con impacto directo en el capítulo económico.** Una versión anterior
+> de este documento afirmaba, apoyándose en los artículos 17.1 y 18.1 del RD 244/2019, que la
+> energía autoconsumida renovable está «exenta de todo tipo de peajes y cargos» también en el
+> autoconsumo a distancia. **Al ir a la fuente que fija los peajes, resulta que no es así.**
+
+La **Circular 3/2020 de la CNMC**, que es la norma que establece la metodología de los peajes,
+explica el matiz en su preámbulo:
+
+> «El artículo 9 de la Ley 24/2013 establece que la energía autoconsumida de origen renovable,
+> cogeneración o residuos estará exenta de todo tipo de cargos y peajes. **En caso de que se
+> produzca una transferencia de energía a través de la red de distribución en instalaciones
+> próximas a efectos de autoconsumo, se podrán establecer las cantidades que resulten de aplicación
+> por el uso de dicha red de distribución.**»
+
+Y su **artículo 2.3** lo aplica sin ambigüedad:
+
+> «Asimismo, la circular será de aplicación para la determinación de los pagos por el uso de las
+> redes de los autoconsumidores por la energía consumida de la red **y por la energía autoconsumida
+> en el caso instalaciones próximas a través de la red**.»
+
+Para materializarlo, la Circular crea una **familia de peajes específica, los «TDA»** (art. 9.3):
+2.0TDA, 3.0TDA y 6.1TDA a 6.4TDA, compuestos **solo de términos de energía** —sin término de
+potencia— aplicables a la energía autoconsumida a través de la red. Para una planta y un CPD en
+media tensión el que aplicaría es el **6.1TDA** (tensiones entre 1 y 30 kV).
+
+**La regla, ordenada:**
+
+| Concepto | V1 y V2 (red interior) | **V3 (a través de la red)** |
+| --- | --- | --- |
+| Energía autoconsumida — **peajes** | **Exenta** | **Paga peaje 6.1TDA** (solo términos de energía) |
+| Energía autoconsumida — **cargos** | **Exenta** (Ley 24/2013 art. 9.5) | **Exenta** (la salvedad de la Circular es solo por *uso de red*) |
+| Energía retirada de la red | Peajes y cargos completos | Peajes y cargos completos |
+
+> **Por qué importa.** El argumento de que «el autoconsumo a distancia sale mucho más barato que un
+> PPA porque no paga red» **queda matizado**: sí paga red, aunque con un peaje reducido y sin
+> término de potencia. La ventaja económica de la variante 3 frente a un PPA es real pero **menor
+> de lo que este documento daba a entender**, y el capítulo 8 tiene que cuantificar el 6.1TDA sobre
+> los ~3.400 MWh/año autoconsumidos, no darlos por gratuitos. **Es la corrección de mayor impacto
+> económico de todo el análisis hasta la fecha.**
+>
+> Pendiente: los **valores numéricos** del 6.1TDA los fija la CNMC por resolución anual, no la
+> Circular. Hay que localizar la resolución vigente para 2026 antes de meter cifras.
 
 
 ---
@@ -998,6 +1157,9 @@ una instalación de almacenamiento**, y por tanto:
 | 5 | Densidad de potencia del vidrio BIPV | Datasheet de fabricante (Onyx Solar u otro) vía `bibliotecario-pdf`. |
 | 6 | Reparto del no-IT (refrigeración / UPS / iluminación) | Se ha supuesto 70/22/8. Verificar si hay submedida. |
 | 7 | **Capacidad de acceso de GENERACIÓN en los nudos próximos a la parcela** | **Riesgo crítico abierto, el que sustituye al de la distancia.** La V3 es obligatoriamente *con excedentes* (art. 4.5.c) y por tanto necesita permisos de acceso y conexión (art. 7.1.b.iii). Consultar el fichero de capacidad de la distribuidora —previsiblemente UFD, a confirmar por el CUPS— y el mapa de REE para los nudos de 220 kV. Detalle en el apartado 7.5. |
+| 6a | **Valores vigentes del peaje 6.1TDA para 2026** | **Impacto económico alto.** La Circular 3/2020 crea el peaje pero los precios los fija la CNMC por resolución anual. Sin ese dato no se puede cuantificar el coste de red de la variante 3 (apartado 7.6). |
+| 6b | Trazado eléctrico de la V2: ¿línea propia de 216 m o conexión a red? | Decide si V2 es *red interior* (exenta de permisos y de peajes) o *a través de la red* (con permisos y con peaje). Ver 5bis.5. Recomendación: línea propia. |
+| 6c | ¿La batería podrá cargar de la red? | Decide si entra en el régimen de acceso de demanda flexible (art. 33.13 Ley 24/2013) o queda fuera por la DT 5.ª del RD 244/2019. Ver 7.5.4. |
 | 7a | Trazado de las líneas de MT que cruzan o bordean la parcela | Decide el coste de conexión (entronque en línea frente a llevar línea hasta SET). No está en el `TFM.kmz`. |
 | 7b | Tensión de suministro actual del CPD y si ya dispone de CT propio | Condiciona el coste de cualquier alternativa de línea directa y la ampliación de potencia de acceso. De la factura y del esquema unifilar. |
 | 8 | **Seguimiento del proyecto de RD de centros de datos** | La audiencia pública cierra el **4 de septiembre de 2026**. Vigilar el texto final antes de la entrega del TFM (15/09/2026) y, sobre todo, si el 80 % horario y el PUE 1,15 sobreviven al trámite. |
