@@ -465,7 +465,105 @@ procedimiento de acceso y conexión no es el simplificado (RD 1183/2020).
 
 ---
 
-## 6. Escenario combinado
+## 5bis. Las tres variantes como alternativas excluyentes
+
+> **Encuadre.** Mario planteó V1, V2 y V3 como **variantes**, es decir, como alternativas que se
+> comparan y entre las que se elige una. Este apartado responde a esa pregunta en sus propios
+> términos: qué da cada una **por separado**, con y sin batería, y bajo qué figura jurídica de
+> autoconsumo quedaría. El apartado 6 mantiene el escenario combinado como **caso adicional**,
+> no como sustituto de la comparación. Cálculo en `scripts/variantes_excluyentes.py`, salida
+> íntegra en `salidas_variantes_excluyentes.txt`.
+
+### 5bis.1 Qué da cada variante por sí sola
+
+| Variante | kWp | E_PV | A_PV | **C_D sin batería** | Excedentes | Horas con vertido |
+| --- | --- | --- | --- | --- | --- | --- |
+| **V1** Cubierta (BIPV + liberada) | 338 | 544 MWh | 100 % | **14,2 %** | **0 MWh** | **0 h** |
+| **V2** Marquesinas (3.332 m²) | 680 | 1.114 MWh | 99,5 % | **28,9 %** | 5 MWh | 355 h |
+| **V3** Planta suelo 1,00 MWp | 1.000 | 1.798 MWh | 80,5 % | 37,8 % | 350 MWh | 2.273 h |
+| **V3** Planta suelo 2,00 MWp | 2.000 | 3.597 MWh | 45,9 % | 43,1 % | 1.946 MWh | 3.282 h |
+| **V3** Planta suelo 2,25 MWp | 2.250 | 4.046 MWh | 41,3 % | 43,6 % | 2.374 MWh | 3.399 h |
+| **V3** Planta suelo 2,50 MWp | 2.500 | 4.496 MWh | 37,6 % | 44,1 % | 2.807 MWh | 3.485 h |
+
+**El dato que hay que leer dos veces:** de 1,00 a 2,50 MWp, el C_D sin batería sube de 37,8 % a
+44,1 %. **Se multiplica por 2,5 la potencia y se ganan 6 puntos.** Todo lo demás se vierte. Es la
+barrera del 50,5 % del apartado 5.5 vista de cerca: contra una carga plana, sobredimensionar el
+campo fotovoltaico sin almacenamiento no sirve prácticamente de nada.
+
+### 5bis.2 La batería: imprescindible en V3, inútil en V1 y V2
+
+Techo de autosuficiencia alcanzable con batería de capacidad infinita:
+
+| Variante | C_D sin batería | **Techo con batería** | Ganancia | ¿Batería justificada? |
+| --- | --- | --- | --- | --- |
+| **V1** | 14,2 % | **14,2 %** | **0,0 pp** | **No.** Nunca hay excedente que almacenar |
+| **V2** | 28,9 % | **29,1 %** | **0,2 pp** | **No.** 5 MWh/año de excedente, irrelevante |
+| **V3** 1,00 MWp | 37,8 % | 45,5 % | 7,7 pp | Marginal |
+| **V3** 2,00 MWp | 43,1 % | 86,0 % | **42,9 pp** | **Sí, decisiva** |
+| **V3** 2,25 MWp | 43,6 % | 96,0 % | **52,4 pp** | **Sí, decisiva** |
+| **V3** 2,50 MWp | 44,1 % | 99,2 % | **55,1 pp** | **Sí, decisiva** |
+
+La razón es geométrica y no económica: V1 y V2 nunca superan de forma apreciable los ~437 kW de
+carga plana, así que **no producen excedente que guardar**. La batería no es una mejora general
+del autoconsumo: **es el complemento específico de una planta sobredimensionada**.
+
+### 5bis.3 Cuánta batería, y la comprobación de la hipótesis de 2,25–2,50 MWp
+
+Capacidad mínima de BESS para cada objetivo de autosuficiencia **real**:
+
+| Variante | 50 % | 60 % | 70 % | **80 %** | **90 %** |
+| --- | --- | --- | --- | --- | --- |
+| V1 / V2 | — | — | — | — | — |
+| V3 1,50 MWp | 0,99 MWh | 2,22 MWh | — | — | — |
+| V3 2,00 MWp | 0,79 MWh | 1,93 MWh | 3,10 MWh | **4,51 MWh** | — |
+| V3 2,25 MWp | 0,73 MWh | 1,87 MWh | 3,01 MWh | **4,20 MWh** | **5,73 MWh** |
+| V3 2,50 MWp | 0,68 MWh | 1,82 MWh | 2,96 MWh | **4,11 MWh** | **5,36 MWh** |
+
+Y los pares FV + BESS más económicos para cada objetivo (coste orientativo 0,55 k€/kWp y
+0,30 k€/kWh, solo para ordenar):
+
+| Objetivo C_D real | **MWp** | **BESS** | Superficie | % de la parcela | Excedentes |
+| --- | --- | --- | --- | --- | --- |
+| **80 %** | **2,00** | **4,5 MWh** | 2,64 ha | 5,3 % | 274 MWh |
+| **85 %** | 2,25 | 4,9 MWh | 2,97 ha | 5,9 % | 499 MWh |
+| **90 %** | **2,25** | **5,7 MWh** | 2,97 ha | 5,9 % | 273 MWh |
+| 95 % | 2,50 | 6,3 MWh | 3,30 ha | 6,6 % | 499 MWh |
+
+> **La hipótesis de 2,25–2,50 MWp para el 80–90 % es correcta**, con una precisión que conviene
+> fijar: esa potencia da el 80–90 % **solo acompañada de 4–6 MWh de batería**. Sola, se queda en
+> el 43–44 %. La potencia fija el techo; **la batería es la que decide dónde se aterriza dentro
+> de ese techo.**
+>
+> La potencia de descarga que pide el modelo es de **471 kW** — la punta de la carga plana. Con
+> 4–6 MWh eso son **0,08–0,12 C y 9–13 h de autonomía**: una batería de **energía**, no la de
+> potencia de 2–4 h que domina el mercado. Es un condicionante real de suministro y de coste.
+
+### 5bis.4 Tipología de autoconsumo de cada variante
+
+Encadenando el RD 244/2019 con la reforma del RDL 7/2026:
+
+| Variante | Distancia | Figura del art. 3.g) | Modalidad del art. 4 | ¿Permisos de acceso? |
+| --- | --- | --- | --- | --- |
+| **V1** | 0 m, misma parcela | **Próxima de red interior** (art. 3.g.i) | **Sin excedentes** (nunca vierte) | **No** — exenta por art. 7.1.b).i) |
+| **V2** | ~0 m, misma propiedad | **Próxima de red interior** (art. 3.g.i) | **Sin excedentes**, con antivertido | **No** — exenta por art. 7.1.b).i) |
+| **V3** | 2,93 km | **Próxima a través de la red** (art. 3.g, párr. 2.º) | **Con excedentes obligatoriamente** (art. 4.5.c) | **Sí** — art. 7.1.b).iii) |
+
+**V2 y el antivertido.** V2 vierte 5 MWh/año en 355 horas. Un mecanismo antivertido recortaría esa
+producción y la variante seguiría siendo *sin excedentes* perdiendo un 0,4 % de la generación.
+Alternativamente, **50 kWh de batería bastan para llevar el vertido a cero** sin recortar nada. Es
+la única función que tiene una batería en V2, y a esa escala es un detalle de diseño, no una
+inversión.
+
+**Y la pregunta de si la batería cambia la tipología: no, no la cambia por sí sola.** Lo que
+define la modalidad es el mecanismo antivertido (art. 4.1.a), no el almacenamiento. La batería
+puede *facilitar* que una instalación se mantenga sin excedentes al absorber los picos, y en V2
+haría justo eso. Pero **en V3 no hay elección posible**: el art. 4.5.c) obliga a *con excedentes*
+por mucha batería que se ponga, porque la energía viaja por la red de un nudo a otro. La batería
+reduce cuánto se vierte; no cambia la figura jurídica.
+
+---
+
+## 6. Escenario combinado (caso adicional, no sustituye a la comparación)
 
 | Escenario | kWp | E_PV | A_PV | C_D vs 3.832 | C_D vs 3.467 (con geotermia) |
 | --- | --- | --- | --- | --- | --- |
@@ -736,8 +834,18 @@ que la norma acota no es la longitud de un cable, sino la separación entre dos 
 
 #### 7.5.2 Cuándo la evacuación va a una SET, y de qué red
 
-El punto de conexión no lo elige el promotor: lo determina el gestor de la red conforme al
-RD 1183/2020. Para el orden de magnitud de la variante 3 (1–2,5 MWp) el escenario esperable es
+**El nudo lo elige y lo nombra el solicitante.** El artículo 10.1 del RD 1183/2020 es explícito:
+
+> «En el caso de los permisos de acceso y de conexión para las instalaciones de generación de
+> **más de 100 kW**, las solicitudes deberán efectuarse **para un nudo o tramo de línea concreto
+> de la red**.»
+
+Es decir, el promotor identifica el nudo —o el tramo de línea— y solicita ahí; en transporte, eso
+obliga además a localizar previamente la SET de afección. Lo que hace el gestor es **evaluar** si
+hay capacidad (art. 11) y responder con una **propuesta previa** (art. 12) que fija tensión,
+ubicación exacta, potencias de cortocircuito y el pliego de condiciones técnicas de la conexión —
+o denegar (art. 9). El promotor propone el nudo; el gestor valida y concreta el punto. Para el
+orden de magnitud de la variante 3 (1–2,5 MWp) el escenario esperable es
 conexión a la **red de distribución en media tensión**, y dentro de ella caben dos soluciones muy
 distintas en coste:
 
@@ -784,6 +892,51 @@ distintos:
 4. **Sesgo a tener presente:** la capacidad publicada es una **foto con fecha**, y en la red de
    distribución española la saturación de nudos es la norma y no la excepción. El dato hay que
    fecharlo en la memoria y, si es determinante, contrastarlo con una consulta formal al gestor.
+
+#### 7.5.4 El acceso flexible y el régimen de la batería
+
+El RDL 7/2026 no solo tocó las distancias del autoconsumo: **creó la figura del acceso flexible**
+y la aplicó al almacenamiento de forma imperativa. Su preámbulo lo explica:
+
+> «(…) se regula la figura del **acceso flexible** a las redes eléctricas (…). Frente al modelo
+> tradicional "firme" del acceso —que exige garantizar el suministro todas las horas del año y
+> deja sin utilizar márgenes de red disponibles— el acceso flexible (…) permitirá que
+> determinados **consumos modulables y el almacenamiento** se conecten bajo condiciones
+> explícitas de disponibilidad de red. Con ello **aflora capacidad adicional hoy bloqueada** (…)»
+
+Y el articulado lo convierte en obligación. La **disposición final octava, apartado Seis**, añadió
+un **apartado 13 al artículo 33 de la Ley 24/2013**:
+
+> «13. Los permisos de acceso y conexión de las **instalaciones de almacenamiento** serán
+> permisos de **acceso flexibles desde la perspectiva de demanda**.»
+
+**Qué significa esto para este TFM.** El CPD ya está conectado y con contrato ATR, así que la
+reforma del acceso de demanda no le afecta *como consumidor*. Pero **la batería de 4–6 MWh sí es
+una instalación de almacenamiento**, y por tanto:
+
+1. **Necesita su propio permiso de acceso y conexión de demanda**, que será **flexible por
+   imperativo legal** — no es una opción que se elija.
+2. La **disposición transitoria sexta** da tres meses para adaptarse a las modalidades de acceso
+   flexible que fije la CNMC, y avisa de la sanción: quien no se adapte **pierde las excepciones**
+   del art. 1.3.b) del RD 148/2021 (cargos) y del art. 2.2.c) y d) de la Circular 3/2020 de la
+   CNMC (peajes) — es decir, **pasaría a pagar peajes y cargos por la energía de carga**. Sobre
+   4–6 MWh ciclando a diario eso no es un matiz: es una partida del capítulo económico.
+3. **Dónde se ubique la batería cambia su régimen.** El nuevo último párrafo del art. 39.3 de la
+   Ley 24/2013 dice que **no tendrán consideración de consumidor** las instalaciones de producción
+   **hibridadas con almacenamiento** que puedan consumir de la red conforme a su permiso. Es decir:
+   una batería hibridada con la planta de la V3 y una batería instalada junto al CPD **no son la
+   misma figura jurídica ni pagan lo mismo**. Es una decisión de diseño que este documento no ha
+   tomado todavía y que conviene tomar antes del capítulo económico.
+
+> **Sobre la demanda flexible como oportunidad para centros de datos.** La intuición es correcta y
+> la norma la respalda: el acceso flexible existe precisamente para **consumos modulables**, y en
+> un contexto de nudos saturados es la puerta que queda abierta. El problema es igual de real: un
+> CPD con compromisos de disponibilidad no puede ofrecer modulación de su carga de TI. **La salida
+> que la propia norma sugiere no es modular el CPD, sino modular su almacenamiento**, que es lo
+> que el art. 33.13 declara flexible por defecto. Para un CPD *nuevo*, presentar el conjunto
+> CPD + BESS puede ser la diferencia entre obtener acceso y no obtenerlo. Para este CPD, que ya
+> está conectado, el interés es menor pero no nulo: es el marco en el que se va a tramitar su
+> batería.
 
 > **Riesgo abierto que sustituye al de la distancia.** El apartado 5.6.1 cerró el riesgo
 > regulatorio de los 2,93 km. Lo que ocupa ahora ese lugar en la lista de riesgos del proyecto no
