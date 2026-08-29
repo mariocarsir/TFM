@@ -398,12 +398,15 @@ tanto la elección de tecnología como el coste unitario en el capítulo económ
 #### 5.6.1 La distancia de 2,93 km: el problema está resuelto por normativa de marzo de 2026
 
 El borde más cercano de la parcela está a **2,93 km del CPD** y su centroide a 3,72 km. En una
-versión anterior de este documento se señaló como riesgo crítico, porque el umbral que se venía
-manejando para el autoconsumo a través de la red eran 2.000 m. **Ese umbral ya no está vigente.**
+versión anterior de este documento se señaló como riesgo crítico. Lo era: el criterio general de
+proximidad del RD 244/2019 son **500 m** entre equipos de medida, y 2,93 km lo incumplía por un
+factor de casi seis. **Lo que ha cambiado no es la distancia de la parcela, sino la norma.**
 
 El **Real Decreto-ley 7/2026, de 20 de marzo** (BOE-A-2026-6544, convalidado por el Congreso el
-26 de marzo de 2026, BOE-A-2026-7125), en su **disposición final decimocuarta**, modificó el
-artículo 3.g) del RD 244/2019. El texto consolidado vigente dice literalmente:
+26 de marzo de 2026, BOE-A-2026-7125), en su **disposición final decimocuarta, apartado Uno**,
+dio nueva redacción a la letra iii) del apartado g) del artículo 3 del RD 244/2019. La redacción
+resultante **mantiene los 500 m como regla general y añade un segundo párrafo** con un supuesto
+específico para fotovoltaica y eólica:
 
 > «También tendrá la consideración de instalación de producción próxima a las de consumo y
 > asociada a través de la red, aquella instalación de generación que empleando tecnología
@@ -520,10 +523,43 @@ juntas porque una **habilita** la variante 3 y la otra **la exige**.
 ### 7.1 El RDL 7/2026 desbloquea la variante 3
 
 Ya desarrollado en el apartado 5.6.1: la disposición final decimocuarta del **Real Decreto-ley
-7/2026, de 20 de marzo** (BOE-A-2026-6544, convalidado el 26 de marzo, BOE-A-2026-7125) elevó de
-2.000 a **5.000 m** la distancia admisible para el autoconsumo a través de la red, para
-instalaciones fotovoltaicas o eólicas de hasta **5 MW**. Con 2,93 km y 1–2,5 MWp, la planta en
+7/2026, de 20 de marzo** (BOE-A-2026-6544, convalidado el 26 de marzo, BOE-A-2026-7125) dio nueva
+redacción al art. 3.g).iii) del RD 244/2019: junto a la regla general de **500 m**, que se mantiene,
+añadió un supuesto de **5.000 m** para instalaciones fotovoltaicas o eólicas de hasta **5 MW**. Con 2,93 km y 1–2,5 MWp, la planta en
 suelo entra en el supuesto con margen.
+
+#### 7.1.1 El apartado que legaliza el escenario combinado
+
+La misma disposición final decimocuarta, en su **apartado Dos**, dio nueva redacción al
+**artículo 4.5 del RD 244/2019**, y ahí hay dos frases que condicionan el diseño de este TFM
+tanto como la distancia:
+
+> «b) En ningún caso un sujeto consumidor podrá estar asociado de forma simultánea a más de una
+> de las modalidades de autoconsumo reguladas en el presente artículo **con la única excepción de
+> un autoconsumo individual sin excedentes combinado con un autoconsumo mediante instalaciones
+> próximas y asociadas a través de la red**.
+>
+> c) En aquellos casos en que se realice autoconsumo mediante instalaciones próximas y asociadas
+> a través de la red, el autoconsumo **deberá pertenecer a la modalidad de suministro con
+> autoconsumo con excedentes**.»
+
+**Lectura para el TFM, en dos consecuencias:**
+
+1. **La combinación V1 + V2 + V3 es exactamente la única excepción que la norma admite**, y no lo
+   era antes. La cubierta y las marquesinas pueden explotarse como **autoconsumo individual sin
+   excedentes** (con mecanismo antivertido, art. 4.1.a), mientras la planta en suelo funciona en
+   paralelo como **instalación próxima a través de la red**. El escenario combinado del apartado 6
+   deja de ser una hipótesis de trabajo y pasa a tener encaje jurídico expreso.
+2. **La variante 3 no puede ser «sin excedentes»**: la letra c) la obliga a ser *con excedentes*.
+   Esto no es un matiz formal, porque encadena con el artículo 7.1.b).iii) del propio RD 244/2019:
+   toda instalación de producción con excedentes por encima de 15 kW **debe disponer de sus
+   propios permisos de acceso y conexión**. Es decir, la planta en suelo necesita capacidad de
+   acceso de generación en el nudo — la normativa de distancia la habilita, pero no la exime del
+   procedimiento del RD 1183/2020. Ver el apartado 7.5.
+   
+   El contraste con V1 y V2 es nítido: al ser *sin excedentes*, el artículo 7.1.b).i) las declara
+   **exentas de obtener permisos de acceso y conexión**. Esa asimetría —no la superficie ni el
+   coste— es la principal barrera de entrada de la variante 3.
 
 ### 7.2 El proyecto de RD de centros de datos: el 80 % deja de ser una ambición y pasa a ser un umbral
 
@@ -676,6 +712,85 @@ fuente primaria (LevelTen Energy, WindEurope, PexaQuote, BOE).
 > PPA. El mercado sigue contratando energía anual, no energía horaria. **Ahí es exactamente donde
 > el art. 9 del borrador español y este TFM se adelantan.**
 
+### 7.5 Evacuación, punto de conexión y capacidad de acceso
+
+Este es el apartado que decide si la variante 3 es ejecutable, y es independiente de todo lo
+anterior: la distancia ya está resuelta y el suelo sobra, pero **la capacidad puede no existir**.
+
+#### 7.5.1 Por qué hay que evacuar a la red sí o sí
+
+Encadenando los tres preceptos ya citados:
+
+| Precepto | Qué dice | Consecuencia |
+| --- | --- | --- |
+| RD 244/2019 art. 4.5.c) *(red. RDL 7/2026)* | El autoconsumo a través de la red **debe ser con excedentes** | La V3 no puede llevar antivertido |
+| RD 244/2019 art. 7.1.b).iii) | Con excedentes y > 15 kW → **permisos de acceso y conexión obligatorios** | La V3 entra en el RD 1183/2020 |
+| RD 244/2019 art. 3.g) | La energía llega al consumidor **«a través de las líneas de transporte o distribución»** | No hay línea propia: se inyecta en un nudo y se retira en otro |
+
+De ahí la idea que conviene fijar: **en el autoconsumo a distancia no hay ningún electrón que
+viaje de la planta al CPD.** La planta inyecta en su nudo, el CPD consume del suyo, y lo que los
+une es una **liquidación horaria** que hace la distribuidora aplicando el anexo I del RD 244/2019.
+El autoconsumo es real a efectos de facturación y **virtual a efectos físicos**. Por eso el
+artículo 3.g) insiste dos veces en que la distancia se mide **entre los equipos de medida**: lo
+que la norma acota no es la longitud de un cable, sino la separación entre dos puntos frontera.
+
+#### 7.5.2 Cuándo la evacuación va a una SET, y de qué red
+
+El punto de conexión no lo elige el promotor: lo determina el gestor de la red conforme al
+RD 1183/2020. Para el orden de magnitud de la variante 3 (1–2,5 MWp) el escenario esperable es
+conexión a la **red de distribución en media tensión**, y dentro de ella caben dos soluciones muy
+distintas en coste:
+
+| Solución | Cuándo | Implicación |
+| --- | --- | --- |
+| **Entronque en línea aérea/subterránea de MT existente** (15/20 kV) | Hay capacidad en el nudo y la línea admite la potencia | La más barata: CT de la planta + celdas + tramo de conexión |
+| **Conexión directa a barras de una SET de distribución** | La línea no admite la potencia, o el gestor lo impone | Obliga a llevar la línea hasta la SET y, en su caso, a ampliar posición |
+| **Conexión a la red de transporte (≥ 132/220 kV)** | Solo si el gestor lo exige por saturación | Descartable a esta escala: la SET propia y la posición en 220 kV no guardan proporción con 1–2,5 MW |
+
+Las siete subestaciones inventariadas en el `TFM.kmz` (apartado 5.6) cobran aquí su sentido real:
+no son un dato de contexto, son **el mapa de puntos de conexión candidatos**. Las dos más
+próximas a la parcela son La Cereal 220/400 kV (2,41 km) y Tres Cantos GIS 220 kV (2,35 km),
+ambas de transporte; la de distribución más cercana en el inventario es BBVA 4145 de 66 kV a
+3,98 km. **Falta identificar las líneas de MT que cruzan o bordean la parcela**, que es lo que
+realmente decide el coste de conexión.
+
+#### 7.5.3 Qué mapa de capacidad hay que mirar
+
+Desde el RDL 7/2026 (disposición final decimoquinta, que reescribió el art. 2.k) del
+RD 1183/2020) la capacidad de acceso está definida en dos sentidos que **no son intercambiables**:
+
+> «k) *Capacidad de acceso*: será la potencia activa máxima que podrá **inyectarse** a la red por
+> una instalación de generación de electricidad **o absorbida** de la red por una instalación de
+> demanda (…)»
+
+De modo que hay **dos contabilidades separadas** y el proyecto toca las dos, pero por motivos
+distintos:
+
+| Contabilidad | Quién la consume | En este TFM |
+| --- | --- | --- |
+| **Capacidad de acceso de GENERACIÓN** | La planta de la V3, que inyecta | **Es la que hay que consultar.** Sin capacidad de generación en el nudo, la variante 3 no existe, por mucho suelo y mucha distancia habilitada que haya |
+| **Capacidad de acceso de DEMANDA** (firme u ordinaria / flexible) | El CPD, que absorbe | Solo si se amplía la potencia de acceso del CPD. **Ojo:** hacerlo es justo lo que activaría el ámbito del art. 2.1 del proyecto de RD de centros de datos (apartado 7.3) |
+
+**Dónde mirar, en la práctica:**
+
+1. **Identificar primero la distribuidora** por el CUPS de la factura del CPD. En el entorno de
+   Tres Cantos la distribuidora previsible es **UFD (Unión Fenosa Distribución, grupo Naturgy)**,
+   que publica un fichero específico de *capacidad de acceso para generación en las subestaciones
+   de Madrid* — **confirmar contra la factura antes de dar esto por bueno**.
+2. **Red de distribución:** consultar el mapa/fichero de capacidad de la distribuidora que
+   resulte. Los ficheros descargables (xlsx/csv) son más fiables que el visor cartográfico.
+3. **Red de transporte:** el mapa de capacidad de acceso publicado por Red Eléctrica, para los
+   nudos de 220 kV del inventario.
+4. **Sesgo a tener presente:** la capacidad publicada es una **foto con fecha**, y en la red de
+   distribución española la saturación de nudos es la norma y no la excepción. El dato hay que
+   fecharlo en la memoria y, si es determinante, contrastarlo con una consulta formal al gestor.
+
+> **Riesgo abierto que sustituye al de la distancia.** El apartado 5.6.1 cerró el riesgo
+> regulatorio de los 2,93 km. Lo que ocupa ahora ese lugar en la lista de riesgos del proyecto no
+> es la superficie ni el coste: es **si existe capacidad de acceso de generación disponible** en
+> algún nudo razonablemente próximo a la parcela. Es una comprobación de horas, no de semanas, y
+> conviene hacerla antes de invertir tiempo en la simulación PVsyst de la variante 3.
+
 
 ---
 
@@ -707,8 +822,8 @@ fuente primaria (LevelTen Energy, WindEurope, PexaQuote, BOE).
     necesita el **2,6 % de la parcela**. El 100 % estricto no se alcanza ni con 25 MWp y 60 MWh —
     el último 0,1 % exigiría almacenamiento estacional.
 11. **La distancia de 2,93 km ya no es un obstáculo.** El **RDL 7/2026, de 20 de marzo** elevó de
-    2.000 a **5.000 m** el límite del autoconsumo a través de la red para instalaciones FV de
-    hasta 5 MW. La variante 3 encaja con margen, sin línea directa y sin renunciar a la figura de
+    500 m —la regla general, que sigue vigente— a **5.000 m** el límite del autoconsumo a través
+    de la red, en un supuesto nuevo y específico para instalaciones FV o eólicas de hasta 5 MW. La variante 3 encaja con margen, sin línea directa y sin renunciar a la figura de
     autoconsumo. (Y la línea directa tampoco era imposible: lo era en BT, no en MT — 2,5 MW a
     20 kV son 72 A y un 0,4 % de caída sobre 3 km.)
 12. **El proyecto de RD de centros de datos en audiencia pública (27/08–04/09/2026) exigirá que el
@@ -729,6 +844,8 @@ fuente primaria (LevelTen Energy, WindEurope, PexaQuote, BOE).
 | 4 | SEER real de las enfriadoras y del sistema geotérmico | `investigador-cientifico` + placa de características. Ahora tiene más peso: de ello depende el PUE que se pueda alegar. |
 | 5 | Densidad de potencia del vidrio BIPV | Datasheet de fabricante (Onyx Solar u otro) vía `bibliotecario-pdf`. |
 | 6 | Reparto del no-IT (refrigeración / UPS / iluminación) | Se ha supuesto 70/22/8. Verificar si hay submedida. |
-| 7 | Capacidad del punto de conexión | Con >1 MW cambia el procedimiento de acceso (RD 1183/2020). |
+| 7 | **Capacidad de acceso de GENERACIÓN en los nudos próximos a la parcela** | **Riesgo crítico abierto, el que sustituye al de la distancia.** La V3 es obligatoriamente *con excedentes* (art. 4.5.c) y por tanto necesita permisos de acceso y conexión (art. 7.1.b.iii). Consultar el fichero de capacidad de la distribuidora —previsiblemente UFD, a confirmar por el CUPS— y el mapa de REE para los nudos de 220 kV. Detalle en el apartado 7.5. |
+| 7a | Trazado de las líneas de MT que cruzan o bordean la parcela | Decide el coste de conexión (entronque en línea frente a llevar línea hasta SET). No está en el `TFM.kmz`. |
+| 7b | Tensión de suministro actual del CPD y si ya dispone de CT propio | Condiciona el coste de cualquier alternativa de línea directa y la ampliación de potencia de acceso. De la factura y del esquema unifilar. |
 | 8 | **Seguimiento del proyecto de RD de centros de datos** | La audiencia pública cierra el **4 de septiembre de 2026**. Vigilar el texto final antes de la entrega del TFM (15/09/2026) y, sobre todo, si el 80 % horario y el PUE 1,15 sobreviven al trámite. |
 | 9 | Contraste con casos reales de CPD | **En marcha.** La vía PPA ya está cubierta (§7.4, a partir de `M1_T11_PPA.pdf` procesado). Queda descargar y procesar vía `bibliotecario-pdf` la literatura de *24/7 carbon-free energy matching* y los índices de precio primarios; lista de lectura priorizada en `Memoria/analisis/referencias-autoconsumo-cpd.md`. |
