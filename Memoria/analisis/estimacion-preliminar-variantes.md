@@ -621,6 +621,61 @@ Es decir: el borrador empuja hacia el PPA físico, nominado a instalaciones conc
 plazo, que es precisamente el modelo que en la literatura se asocia al *24/7 carbon-free energy
 matching* frente al simple *annual matching* con certificados.
 
+#### 7.4.1 Qué modalidad de PPA encaja aquí
+
+La taxonomía estándar distingue tres estructuras, y la elección no es de matiz sino estructural:
+
+| Modalidad | Flujo físico | Qué resuelve | Encaje con la variante 3 |
+| --- | --- | --- | --- |
+| **Físico *on site*** | La planta está en el emplazamiento del consumidor | Suministro directo, sin red | No aplica: la parcela está a 2,93 km |
+| **Físico *off site* (*sleeved*)** | La energía llega por la red a través de una comercializadora que hace de intermediaria | Suministro real + atributos verdes | **Es la estructura equivalente al esquema de la variante 3** si se descarta el autoconsumo a distancia |
+| **Virtual (VPPA)** | No hay flujo físico: solo liquidación financiera por diferencias + garantías de origen | Cobertura de precio y atributos, no suministro | **Descartado** por el art. 12.c) y 12.e) del borrador de RD |
+
+El punto que conviene retener: con el RDL 7/2026 en la mano, el autoconsumo a distancia es la vía
+preferente y el PPA *sleeved* es el plan B. Pero **no son excluyentes en el capítulo económico**:
+el precio del PPA es el término de comparación natural para el LCOE que arroje el modelo propio.
+
+#### 7.4.2 Órdenes de magnitud y precedentes del mercado español
+
+Cifras tomadas de la presentación `M1_T11_PPA.pdf` del propio máster (Marta Arias Álvarez, EDP,
+2025), resumida en `conocimiento fotovoltaico/Referencia/ppa-renovables-mercado-energetico.md`.
+**Material docente, no citable:** antes de entrar en la memoria hay que reextraer cada cifra de su
+fuente primaria (LevelTen Energy, WindEurope, PexaQuote, BOE).
+
+- **Precio de referencia solar en España:** índice LevelTen P25, **38,97 €/MWh** en Q4 2024
+  (−9,4 % interanual), con caídas adicionales de ~5 % en Q1 2025 y un repunte del +4,2 % en junio
+  de 2025. Es menos de la mitad del P25 europeo mixto (75,97 €/MWh).
+- **Subasta española** (BOE-A-2021-1251): 2.036 MW FV adjudicados entre **14,89 y 28,9 €/MWh**.
+  Es un suelo de mercado, no un precio contratable hoy, y conviene decirlo al usarlo.
+- **España es el primer mercado europeo de PPA** por capacidad acumulada: **6.852 MW**, muy por
+  delante de Suecia (4.043) y Alemania (3.429).
+- **Duración modal en España/Portugal: 10 años** (12 de 16 contratos de 2020-2022) — coincide
+  exactamente con el mínimo que exigirá el art. 12.f) del borrador de RD.
+- **Precedentes españoles físicos *off site*:** Acciona–Telefónica (100 GWh/año, 10 años),
+  Iberdrola–Orange (200 GWh/año, 12 años), Endesa–Cellnex (300 GWh/año, 10 años). El único
+  *on site* documentado, Iberdrola–Makro, es de **6 MW**.
+
+> ### Dos hallazgos que refuerzan el planteamiento del TFM
+>
+> **1. La carga plana 24/7 es el perfil de comprador que el mercado PPA prefiere.** La modalidad
+> *baseload* es la que mejor reparte el riesgo de precio y de volumen entre las partes, frente a
+> *as generated* (riesgo al comprador) y *as consumed* (riesgo al vendedor). Un CPD de
+> 3.832 MWh/año con ~437 kW planos es el arquetipo. Lo que en el apartado 5.5 aparecía como el
+> gran problema técnico —la carga plana satura el C_D en el 50,5 %— es, en el mercado de
+> contratos, una ventaja.
+>
+> **2. Los operadores de centros de datos ya son los mayores compradores europeos.** En 2023
+> Amazon compró **1.876 MW**, **Equinix 539 MW** (quinto comprador europeo y operador de CPD
+> puro), Microsoft 351 MW y Google 346 MW. El PPA no es una alternativa exótica para un CPD: es
+> lo que hace el sector. Esto da respaldo documental al bloque 4 de
+> `Memoria/analisis/referencias-autoconsumo-cpd.md`.
+>
+> **Y una laguna que es en sí misma un resultado:** de los diez acuerdos españoles de septiembre
+> de 2025 recogidos en la fuente, **ninguno declara capacidad de almacenamiento asociada**, pese a
+> que el Reglamento (UE) 2024/1747 ya anticipa cláusulas de flexibilidad y almacenamiento en los
+> PPA. El mercado sigue contratando energía anual, no energía horaria. **Ahí es exactamente donde
+> el art. 9 del borrador español y este TFM se adelantan.**
+
 
 ---
 
@@ -676,4 +731,4 @@ matching* frente al simple *annual matching* con certificados.
 | 6 | Reparto del no-IT (refrigeración / UPS / iluminación) | Se ha supuesto 70/22/8. Verificar si hay submedida. |
 | 7 | Capacidad del punto de conexión | Con >1 MW cambia el procedimiento de acceso (RD 1183/2020). |
 | 8 | **Seguimiento del proyecto de RD de centros de datos** | La audiencia pública cierra el **4 de septiembre de 2026**. Vigilar el texto final antes de la entrega del TFM (15/09/2026) y, sobre todo, si el 80 % horario y el PUE 1,15 sobreviven al trámite. |
-| 9 | Contraste con casos reales de CPD | Buscar y procesar vía `bibliotecario-pdf` literatura sobre *24/7 carbon-free energy matching* y PPA corporativos de centros de datos, para situar el diseño frente a lo que hace el sector. |
+| 9 | Contraste con casos reales de CPD | **En marcha.** La vía PPA ya está cubierta (§7.4, a partir de `M1_T11_PPA.pdf` procesado). Queda descargar y procesar vía `bibliotecario-pdf` la literatura de *24/7 carbon-free energy matching* y los índices de precio primarios; lista de lectura priorizada en `Memoria/analisis/referencias-autoconsumo-cpd.md`. |
