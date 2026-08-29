@@ -3,7 +3,7 @@ type: meta
 title: Wiki Index
 status: evergreen
 created: 2026-08-05
-updated: 2026-08-22
+updated: 2026-08-29
 tags:
   - meta
   - index
@@ -30,6 +30,7 @@ This catalog is updated by completed knowledge operations.
 - [[superpowers]]
 - [[resumenes]]
 - [[registro-auditorias]]
+- [[variantes-fv-normativa-autoconsumo-2026]]
 
 ## Entities
 

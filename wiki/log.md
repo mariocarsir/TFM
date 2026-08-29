@@ -3,7 +3,7 @@ type: meta
 title: Wiki Log
 status: evergreen
 created: 2026-08-05
-updated: 2026-08-21
+updated: 2026-08-29
 tags:
   - meta
   - log
@@ -12,6 +12,22 @@ tags:
 # Wiki Log
 
 Newest completed operations appear first.
+
+## 2026-08-29 — save: Variantes FV del CPD, normativa de autoconsumo 2026
+
+Nota conceptual creada en `wiki/concepts/`, resumiendo la sesión sobre las tres
+variantes de autoconsumo (V1 cubierta, V2 marquesinas, V3 planta en suelo)
+tratadas como alternativas excluyentes, y el marco normativo 2026 que las
+condiciona (RDL 7/2026, RD 1183/2020, RD 244/2019, Circular 3/2020 de la
+CNMC). Incluye tabla comparativa de C_D con y sin batería, el hallazgo de que
+el vertido de la V3 es estacional e irreducible incluso con batería grande,
+la geometría verificada sobre el `TFM.kmz` (216 m V2, catastro, inventario de
+subestaciones) y seis correcciones aplicadas durante la sesión sobre
+afirmaciones normativas propias previas (distancia real 500→5.000 m no
+2.000→5.000, elección del nudo por el promotor, peaje 6.1TDA sobre la energía
+autoconsumida de la V3, régimen de acceso flexible de la batería). No se
+registró ninguna fuente ni afirmación nueva en los ledgers: es una nota de
+trabajo técnico-normativo propio, no una fuente bibliográfica externa.
 
 ## 2026-08-21 — markdown: registro de auditorías del meta-flujo
 
