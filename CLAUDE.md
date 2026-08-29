@@ -33,7 +33,7 @@ La estructura es la que Mario ya tenía montada, sin renombrar a convención num
 | Carpeta | Contenido |
 | --- | --- |
 | `Memoria/` | Fuente LaTeX de la memoria + PDF compilado. Incluye `indice_propuesto.md`. |
-| `Bibliografia/PDFs/` | PDFs originales de bibliografía. |
+| `Bibliografia/Fuentes/` | PDFs originales de bibliografía. Incluye la subcarpeta `Normativa/` con la normativa sectorial aplicable al proyecto (leyes, reales decretos, circulares) y `NormativaLinks.xlsx` como ficha de seguimiento (título, vigencia, resumen, URL) — no confundir con `Normativa TFM/`, que es la normativa ERMA del propio máster. |
 | `Bibliografia/Resumenes/` | Resúmenes densos generados por `bibliotecario-pdf` vía skill `resumen-tecnico` (PDFs de papers/normas/manuales citables), únicas fuentes citables. |
 | `Datos/` | `PVsyst/` (informes de simulación) y `Consumo CPD/` (perfil horario de consumo). |
 | `Normativa TFM/` | Normativa ERMA oficial y `guia_tipografica.md`. |

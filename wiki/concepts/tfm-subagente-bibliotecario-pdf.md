@@ -24,7 +24,7 @@ Procesa un PDF nuevo de bibliografía y lo convierte en un resumen denso y verif
 
 ## Cuándo se delega
 
-Cuando Mario aporta un paper, norma o libro nuevo que quiere citar en el TFM. El PDF original debe estar (o copiarse) en `Bibliografia/PDFs/`.
+Cuando Mario aporta un paper, norma o libro nuevo que quiere citar en el TFM. El PDF original debe estar (o copiarse) en `Bibliografia/Fuentes/` (o en `Bibliografia/Fuentes/Normativa/` si es normativa sectorial).
 
 ## Reglas clave
 

@@ -5,7 +5,7 @@ autor: "Oscar Perpiñán Lamigueiro"
 anio: 2013
 densidad: exhaustivo
 fecha_resumen: 2026-08-16
-fuente_original: Bibliografia/PDFs/ApuntesFotovoltaica_Perpinan.pdf
+fuente_original: Bibliografia/Fuentes/ApuntesFotovoltaica_Perpinan.pdf
 tags: [fotovoltaica, radiacion-solar, celula-solar, generador-fv, SFCR, SFA, almacenamiento, bombeo, seguridad-electrica]
 related: []
 ---
