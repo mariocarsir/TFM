@@ -13,8 +13,8 @@ tags: [bibliografia, CPD, autoconsumo, PPA, 24-7-CFE, BESS]
 > que sigue son candidatas ordenadas por utilidad, con lo que aporta cada una y por qué.
 >
 > Las **únicas fuentes ya verificadas y disponibles en local** son las normativas del bloque 1,
-> descargadas a `Bibliografia/PDFs/` y leídas literalmente, y el material docente del bloque 0,
-> ya procesado por `bibliotecario-pdf`.
+> descargadas a `Bibliografia/Fuentes/Normativa/` y leídas literalmente, y el material docente del
+> bloque 0, ya procesado por `bibliotecario-pdf`.
 
 ---
 

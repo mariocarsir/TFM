@@ -10,9 +10,9 @@ fuentes_canonicas:
   - "Documentacion de apoyo/Trabajo Autoconsumo CPD/Trabajo_DataCenter_Project.VC0-Report1.pdf (PVsyst V8.0.19)"
   - "Datos/Imagenes/PlantaCPD.png y VistaSatelitalCPD.png (Google Earth)"
   - "Datos/Google Earth/TFM.kmz (polígonos de parcela, cubierta, aparcamiento y subestaciones)"
-  - "Bibliografia/PDFs/MITECO_2026_PRD_CentrosDatos_audiencia_publica.pdf (proyecto de RD, audiencia 27/08–04/09/2026)"
-  - "Bibliografia/PDFs/BOE_RDL_7-2026_PlanIntegral_OrienteMedio.pdf (BOE-A-2026-6544)"
-  - "Bibliografia/PDFs/BOE_RD_244-2019_autoconsumo_consolidado.pdf (texto consolidado, act. 21/03/2026)"
+  - "Bibliografia/Fuentes/Normativa/MITECO_2026_PRD_CentrosDatos_audiencia_publica.pdf (proyecto de RD, audiencia 27/08–04/09/2026)"
+  - "Bibliografia/Fuentes/Normativa/BOE_RDL_7-2026_PlanIntegral_OrienteMedio.pdf (BOE-A-2026-6544)"
+  - "Bibliografia/Fuentes/Normativa/BOE_RD_244-2019_autoconsumo_consolidado.pdf (texto consolidado, act. 21/03/2026)"
   - "Datos/Google Earth/Coordenadas CPD.png (40°35'53,61\" N, 3°43'1,81\" O — WGS84)"
 tags: [fotovoltaica, autoconsumo, CPD, variantes, BIPV, marquesinas, planta-suelo, geotermia, BESS, parcela, regulacion, PPA, RDL-7-2026]
 ---
@@ -741,7 +741,7 @@ en audiencia pública**:
 | Norma | *Proyecto de Real Decreto por el que se regulan los requisitos de sostenibilidad energética, medioambiental y de resiliencia y soberanía digital aplicables a los centros de datos* |
 | Trámite | Audiencia e información pública, MITECO |
 | Plazo | **27 de agosto – 4 de septiembre de 2026** |
-| Documentos | `Bibliografia/PDFs/MITECO_2026_PRD_CentrosDatos_audiencia_publica.pdf` y su memoria de análisis de impacto normativo |
+| Documentos | `Bibliografia/Fuentes/Normativa/MITECO_2026_PRD_CentrosDatos_audiencia_publica.pdf` y su memoria de análisis de impacto normativo |
 
 **Lo que exige, artículo por artículo:**
 
