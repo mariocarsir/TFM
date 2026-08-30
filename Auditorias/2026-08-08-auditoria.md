@@ -37,6 +37,7 @@ Registro previo: vacío. Primera auditoría real del proyecto.
 | AUD-007 | Doctrina/realidad | Cosmético | `CLAUDE.md` declara `Presentaciones/` (no existe) y describe `Skills/` con contenido desactualizado | Trivial | El mapa de carpetas deja de ser fiable | Retirar ambas filas |
 
 **No priorizados** (quedan en `Auditorias/registro.md` como `pendiente`):
+
 - Nombre de fichero con una nota-recordatorio sin resolver como nombre (`Datos/Consumo CPD/datos/miraaverfalta...zip`).
 - Configuración de `.obsidian/` (salvo `workspace.json`) versionada sin necesidad aparente.
 - `Skills/optimizador-prompts.skill`, un `.zip` sin desempaquetar y sin ninguna dependencia que lo referencie (surgió al aplicar AUD-007).
@@ -56,7 +57,7 @@ Registro previo: vacío. Primera auditoría real del proyecto.
 
 ## Commits de esta auditoría
 
-```
+```text
 a18a228 auditoría(AUD-001): mueve humanizer a .claude/skills/ para que sea invocable
 c2ede82 auditoría(AUD-005): desanida obsidian y obsidian-vault-maintainer, y las traslada a .claude/skills/
 9b94c84 auditoría(AUD-004,AUD-006): destrackea zips duplicados y limpia entrada obsoleta de .gitignore
