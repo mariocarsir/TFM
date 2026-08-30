@@ -3,7 +3,7 @@ type: meta
 title: Wiki Log
 status: evergreen
 created: 2026-08-05
-updated: 2026-08-29
+updated: 2026-08-30
 tags:
   - meta
   - log
@@ -12,6 +12,50 @@ tags:
 # Wiki Log
 
 Newest completed operations appear first.
+
+## 2026-08-30 — save: corrección del umbral de 2.000 m en el art. 3.g).iii)
+
+Mario pidió revisar el artículo tras un aviso propio de contradicción (la nota
+[[variantes-fv-normativa-autoconsumo-2026]] afirmaba que el umbral previo
+«nunca fueron 2.000 m», pero la diapositiva `M6_T12_AnalisisRentabilidadI.pdf`
+p. 14 y el Excel de normativa documentaban lo contrario). Verificado contra el
+texto literal de `BOE_RD_244-2019_autoconsumo_consolidado.pdf` y la DF 14.ª
+del `BOE_RDL_7-2026_PlanIntegral_OrienteMedio.pdf`: el art. 3.g).iii) tiene
+dos párrafos con historiales distintos — el primero (500 m, regla general)
+nunca cambió; el segundo (supuesto especial de FV en cubierta/suelo
+industrial/estructuras) sí subió de cifra varias veces (500→1.000 m con el
+RDL 18/2022→2.000 m con el RDL 20/2022→5.000 m sin restricción de ubicación
+con el RDL 7/2026, vigente desde el 22/03/2026). El error de la sesión del
+29/08 fue generalizar la estabilidad del primer párrafo al segundo.
+Corregidas la nota `wiki/concepts/variantes-fv-normativa-autoconsumo-2026.md`
+y tres memorias de la persistencia del proyecto (fuera del vault):
+`project_marco_regulatorio_2026`, `project_localizacion_cpd_parcela_v3` y
+`feedback_normativa_fuente_primaria` (a la que además se añadió una regla
+operativa nueva: verificar el historial de modificación de cada párrafo de
+un artículo por separado). No se registró ninguna fuente ni afirmación nueva
+en los ledgers: es una corrección interna sobre normativa ya presente en el
+vault.
+
+## 2026-08-30 — save: Contraste con normativa expuesta en presentaciones
+
+Nota conceptual creada en `wiki/concepts/contraste-normativa-presentaciones.md`
+con el resultado del cruce entre las 15 normativas registradas en
+`Bibliografia/Fuentes/Normativa/NormativaLinks.xlsx` (referencia autorizada) y
+la normativa citada en los 52 PDFs de presentaciones del máster, incluidas las
+14 de M6 al completo. Dos comprobaciones: normativa del Excel omitida en las
+diapositivas (7 de 15, de las que 4 son omisiones reales — Resolución CNMC de
+peajes de 18/12/2025, Circular 1/2024, Reglamento Delegado UE 2024/1364 y
+Directiva UE 2023/1791 — y 2 son ausencias solo de M6, cubiertas en M15 y M1),
+y normativa de las diapositivas desactualizada respecto al Excel (7 hallazgos).
+Los dos críticos: `M6_T7_RegulacionTramitacion1.pdf` pp. 38-40 presenta los
+5 km del RDL 7/2026 bajo el epígrafe «Normativa pendiente de aprobación» pese a
+estar en vigor desde el 22/03/2026, y las diapositivas de peajes (`T9` p. 5,
+`T7_2` p. 16) usan la resolución de 2025 y la de 2021 en lugar de la de
+18/12/2025 vigente desde el 01/01/2026. Verificado además que ninguna
+presentación cita el RDL 7/2025 no convalidado. No se registró ninguna fuente
+ni afirmación nueva en los ledgers: el contraste se apoya en documentos ya
+presentes en el vault (el Excel de normativa y los PDFs de presentaciones),
+no en fuentes externas nuevas.
 
 ## 2026-08-29 — save: Variantes FV del CPD, normativa de autoconsumo 2026
 

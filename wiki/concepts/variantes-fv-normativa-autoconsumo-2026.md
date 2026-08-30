@@ -2,7 +2,7 @@
 type: concept
 title: "Variantes FV del CPD: normativa de autoconsumo 2026"
 created: 2026-08-29
-updated: 2026-08-29
+updated: 2026-08-30
 status: developing
 tags:
   - concept
@@ -62,10 +62,18 @@ en julio la planta produce ~14 MWh/día). Es almacenamiento estacional, fuera de
 Esta sesión corrigió varios errores propios, todos verificados contra el articulado literal
 (`Bibliografia/PDFs/` y `Bibliografia/Normativa/`), no de memoria del modelo:
 
-1. **La distancia previa NO eran 2.000 m, eran 500 m.** El RDL 7/2026 (DF 14.ª, apartado Uno) no
-   sustituye el umbral: le **añade un segundo párrafo** con un supuesto nuevo de 5.000 m para
-   FV/eólica ≤ 5 MW. La distancia se mide **en proyección ortogonal en planta** (línea recta entre
-   equipos de medida), no por la línea de evacuación.
+1. **La distancia previa: el primer párrafo del art. 3.g).iii) nunca cambió (500 m); el segundo sí,
+   varias veces.** El RDL 7/2026 (DF 14.ª, apdo. Uno) dice literalmente «se modifica la letra
+   iii)», es decir sustituye su texto completo, no que se limite a añadirle un párrafo a un texto
+   intacto. La regla general de 500 m (primer párrafo) es la que nunca ha cambiado. Pero el
+   segundo párrafo — el supuesto especial para FV en cubierta/suelo industrial/estructuras — sí
+   llevaba subiendo de cifra desde 2019 (500 → 1.000 m con el RDL 18/2022 → **2.000 m** con el
+   RDL 20/2022, documentado en `M6_T12_AnalisisRentabilidadI.pdf` p. 14 del máster), y el
+   RDL 7/2026 lo reemplazó por su versión vigente: **5.000 m**, sin restricción de ubicación,
+   para FV/eólica ≤ 5 MW. **Corrección del 30/08/2026** sobre una primera lectura (29/08/2026) que
+   había generalizado la estabilidad del primer párrafo al segundo, dándolos por un único umbral
+   que "siempre fueron 500 m". La distancia se mide **en proyección ortogonal en planta** (línea
+   recta entre equipos de medida), no por la línea de evacuación.
 2. **El apartado Dos de la misma DF 14.ª (art. 4.5 RD 244/2019) legaliza combinar** autoconsumo
    individual sin excedentes con autoconsumo a través de la red — es la única excepción admitida,
    y por eso el escenario V1+V2+V3 combinado tiene ahora encaje jurídico expreso. El mismo apartado
