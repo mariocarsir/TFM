@@ -1,0 +1,70 @@
+============================================================================================
+A) CADA VARIANTE POR SEPARADO, SIN BATERIA  (demanda 3832 MWh/ano)
+============================================================================================
+Variante                            kWp     E_PV    A_PV     C_D    exced     red
+--------------------------------------------------------------------------------------------
+V1 Cubierta (BIPV+liberada)         338      544  100.0%   14.2%        0    3288
+V2 Marquesinas 3.332 m2             680     1114   99.5%   28.9%        5    2723
+V3 Planta suelo 1.00 MWp           1000     1798   80.5%   37.8%      350    2384
+V3 Planta suelo 1.50 MWp           1500     2697   58.7%   41.3%     1114    2248
+V3 Planta suelo 2.00 MWp           2000     3597   45.9%   43.1%     1946    2182
+V3 Planta suelo 2.25 MWp           2250     4046   41.3%   43.6%     2374    2160
+V3 Planta suelo 2.50 MWp           2500     4496   37.6%   44.1%     2807    2144
+V3 Planta suelo 3.00 MWp           3000     5395   31.8%   44.7%     3681    2118
+
+============================================================================================
+B) BATERIA MINIMA PARA CADA OBJETIVO DE C_D REAL, VARIANTE A VARIANTE
+============================================================================================
+V1 Cubierta (BIPV+liberada)    techo con bateria infinita =  14.2 %  |  50%: --  60%: --  70%: --  80%: --  90%: --
+V2 Marquesinas 3.332 m2        techo con bateria infinita =  29.1 %  |  50%: --  60%: --  70%: --  80%: --  90%: --
+V3 Planta suelo 1.00 MWp       techo con bateria infinita =  45.5 %  |  50%: --  60%: --  70%: --  80%: --  90%: --
+V3 Planta suelo 1.50 MWp       techo con bateria infinita =  65.9 %  |  50%: 0.99 MWh  60%: 2.22 MWh  70%: --  80%: --  90%: --
+V3 Planta suelo 2.00 MWp       techo con bateria infinita =  86.0 %  |  50%: 0.79 MWh  60%: 1.93 MWh  70%: 3.10 MWh  80%: 4.51 MWh  90%: --
+V3 Planta suelo 2.25 MWp       techo con bateria infinita =  96.0 %  |  50%: 0.73 MWh  60%: 1.87 MWh  70%: 3.01 MWh  80%: 4.20 MWh  90%: 5.73 MWh
+V3 Planta suelo 2.50 MWp       techo con bateria infinita =  99.2 %  |  50%: 0.68 MWh  60%: 1.82 MWh  70%: 2.96 MWh  80%: 4.11 MWh  90%: 5.36 MWh
+V3 Planta suelo 3.00 MWp       techo con bateria infinita =  99.9 %  |  50%: 0.60 MWh  60%: 1.74 MWh  70%: 2.89 MWh  80%: 4.03 MWh  90%: 5.17 MWh
+
+============================================================================================
+C) V3 SOLA: QUE HACE FALTA PARA 80 / 85 / 90 % DE C_D REAL
+============================================================================================
+  obj     MWp  BESS MWh     ha  % parcela     C_D  exced MWh
+--------------------------------------------------------------------------------------------
+  80%    2.00      4.51   2.64       5.3%   80.0%        274
+  85%    2.25      4.89   2.97       5.9%   85.0%        499
+  90%    2.25      5.73   2.97       5.9%   90.0%        273
+  95%    2.50      6.28   3.30       6.6%   95.0%        499
+
+============================================================================================
+D) COMPROBACION DE LA HIPOTESIS DE MARIO: 2,25-2,50 MWp -> 80-90 %?
+============================================================================================
+  V3 = 2.25 MWp (E_PV 4046 MWh, 1.06x la demanda)
+      BESS   0.0 MWh -> C_D  43.6 %  exced  2374 MWh  red  2160 MWh  P_desc    0 kW
+      BESS   2.0 MWh -> C_D  61.2 %  exced  1581 MWh  red  1488 MWh  P_desc  471 kW
+      BESS   4.0 MWh -> C_D  78.4 %  exced   799 MWh  red   827 MWh  P_desc  471 kW
+      BESS   6.0 MWh -> C_D  91.0 %  exced   228 MWh  red   345 MWh  P_desc  471 kW
+      BESS   8.0 MWh -> C_D  91.9 %  exced   189 MWh  red   312 MWh  P_desc  471 kW
+      BESS  12.0 MWh -> C_D  92.1 %  exced   181 MWh  red   305 MWh  P_desc  471 kW
+  V3 = 2.50 MWp (E_PV 4496 MWh, 1.17x la demanda)
+      BESS   0.0 MWh -> C_D  44.1 %  exced  2807 MWh  red  2144 MWh  P_desc    0 kW
+      BESS   2.0 MWh -> C_D  61.6 %  exced  2014 MWh  red  1472 MWh  P_desc  471 kW
+      BESS   4.0 MWh -> C_D  79.1 %  exced  1221 MWh  red   802 MWh  P_desc  471 kW
+      BESS   6.0 MWh -> C_D  94.1 %  exced   540 MWh  red   226 MWh  P_desc  471 kW
+      BESS   8.0 MWh -> C_D  95.6 %  exced   474 MWh  red   170 MWh  P_desc  471 kW
+      BESS  12.0 MWh -> C_D  95.7 %  exced   469 MWh  red   167 MWh  P_desc  471 kW
+
+============================================================================================
+E) EXCEDENTES: LO QUE DECIDE LA TIPOLOGIA (con excedentes / sin excedentes)
+============================================================================================
+Horas con vertido y energia vertida, SIN bateria:
+  V1 Cubierta (BIPV+liberada)        0 h/ano con excedente (  0.0 %)        0 MWh
+  V2 Marquesinas 3.332 m2          355 h/ano con excedente (  4.1 %)        5 MWh
+  V3 Planta suelo 1.00 MWp        2273 h/ano con excedente ( 25.9 %)      350 MWh
+  V3 Planta suelo 1.50 MWp        2946 h/ano con excedente ( 33.6 %)     1114 MWh
+  V3 Planta suelo 2.00 MWp        3282 h/ano con excedente ( 37.5 %)     1946 MWh
+  V3 Planta suelo 2.25 MWp        3399 h/ano con excedente ( 38.8 %)     2374 MWh
+  V3 Planta suelo 2.50 MWp        3485 h/ano con excedente ( 39.8 %)     2807 MWh
+  V3 Planta suelo 3.00 MWp        3554 h/ano con excedente ( 40.6 %)     3681 MWh
+
+Bateria minima para vertido CERO (permitiria 'sin excedentes' sin recortar):
+  V1 Cubierta (BIPV+liberada)    no vierte nunca: 0 MWh
+  V2 Marquesinas 3.332 m2        0.05 MWh
