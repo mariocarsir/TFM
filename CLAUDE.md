@@ -70,8 +70,33 @@ La estructura es la que Mario ya tenía montada, sin renombrar a convención num
 6. **Correcciones de estilo = ley**: lo que Mario rechace una vez no se vuelve a proponer; se registra en la memoria de estilo (`feedback_estilo_mario`) y en la tabla de vocabulario prohibido de `Skills/humanizer/humanizer/SKILL.md`.
 7. **Auditar por hitos**: al cerrar cada capítulo grande, pasar `revisor-calidad` y `conservador-memoria`.
 8. **Ortografía completa del español** en todo lo generado: tildes y eñes siempre, nunca sustitutos ASCII.
-9. **Commit proactivo** tras cada cambio relevante y verificado, con mensaje descriptivo, sin preguntar. El push sí se consulta. El PDF compilado también se versiona: es el entregable.
+9. **Commit proactivo** tras cada cambio relevante y verificado, sin preguntar. El título sigue obligatoriamente la «Convención de títulos de commit» de abajo; el cuerpo del mensaje explica el detalle. El push sí se consulta. El PDF compilado también se versiona: es el entregable.
 10. **Prohibido citar de memoria del modelo**: toda afirmación con cita debe ser trazable a un PDF que Mario tenga y haya aprobado, vía `bibliotecario-pdf` + skill `resumen-tecnico`.
+
+## Convención de títulos de commit
+
+Aplica **solo a la primera línea** del mensaje (el título). El cuerpo se escribe en español normal, con tildes y eñes, y conserva los trailers de coautoría.
+
+**Forma:**
+
+1. **Máximo 4 palabras, prioriza 3.** Solo se sube a 4 cuando con 3 el título no queda claro o se parecería demasiado a otro ya existente.
+2. **Solo letras y números.** Nada de espacios, guiones, dos puntos, tildes, eñes ni emojis. `Diseño` → `Diseno`.
+3. **Palabras pegadas, inicial de cada una en mayúscula** (PascalCase): `VariantesV3Parcela`.
+4. **Siglas enteras en mayúsculas**: CPD, FV, PPA, SIG, BIPV, PVsyst → `DocumentacionAutoconsumoCPD`, `ResumenM6T13SIG`.
+5. **Orden de general a concreto**: la primera palabra da el contexto y cada siguiente concreta a la anterior. `Variantes` → `V3` → `Parcela`.
+6. **El título refleja el cambio de fondo, no un detalle secundario.** Si un commit corrige una superficie *y* desbloquea una variante entera por normativa, el título habla del desbloqueo: `VariantesV3DesbloqueoNormativa`, no `VariantesV2Marquesinas`.
+7. **Unicidad**: ningún título repetido ni casi idéntico a otro del historial. Si dos commits tocan lo mismo, se separan por la palabra final (`NormativaFichaExcel` vs `NormativaFichaVerificacion`).
+
+**Prefijos obligatorios por tipo:**
+
+| Tipo de commit | Forma | Ejemplo |
+| --- | --- | --- |
+| Vault de Obsidian (`wiki/`, `.obsidian/`) | `Obsidian` + acción del plugin (`Fix`, `Save`…) + 2 palabras. **Aquí se permiten 4 palabras siempre.** | `ObsidianSaveContrastePresentaciones` |
+| Merge | `Merge` + qué se integra | `MergeVariantesAutoconsumo` |
+| Resumen de presentación del máster | `Resumen` + código `M<módulo>T<tema>` + tema | `ResumenM6T4Inversores` |
+| Resto | contexto + concreción | `BibliografiaFuentesReorganizacion` |
+
+**Reescritura de historial:** los títulos antiguos solo se corrigen en commits **no publicados** (`origin/master..master`). Lo ya empujado a `origin` se queda como está: renombrarlo exigiría `push --force`, que está prohibido. Antes de cualquier reescritura, rama de respaldo (`git branch backup-<motivo>`) y verificación posterior de que `git diff <backup> <rama>` sale vacío.
 
 ## Pipeline bibliográfico
 
