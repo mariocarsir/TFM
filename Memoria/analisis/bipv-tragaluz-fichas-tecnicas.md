@@ -695,3 +695,378 @@ La lección de Bell Works es tranquilizadora y desplaza el foco del problema:
 **Fabricantes consultados sin ficha técnica verificable**
 - **ertex solar** (Austria): fabrica módulos VSG y VSG-ISO para cubierta acristalada y declara que el montaje se resuelve «*mit Klemmleisten an den Glaskanten*» (con perfiles de presión en los cantos del vidrio), con la subestructura y el montaje a cargo de la obra (<https://www.ertex-solar.at/angebot/isolierendes-dach/>). **No publica fichas técnicas descargables**: el índice de descargas (<https://www.ertex-solar.at/ertexdownload/broschueren/>) no expone PDF y el catálogo de ArchiExpo está tras protección anti-bot. Un dato de terceros (~116 Wp/m², 40 kg/m², mono, PVB, EN 61215/61730 — <https://solarchitecture.ch/ertex-solar-vsg-laminated-safety-glass-module/>) corresponde a un módulo **opaco con impresión cerámica**, no al semitransparente: **no aplicable**. Es un candidato serio para V1a por su enfoque de constructor de vidrio, pero **hay que pedirle la ficha directamente**.
 - **Metsolar** (Lituania): fabrica vidrio-vidrio semitransparente a medida (<https://metsolar.eu/products/met-glass-glass/>) pero **no publica ninguna cifra de Wp/m² ni ficha descargable**. Descartado por no verificable.
+
+---
+
+## 9. Normativa española sobre PVB en acristalamiento horizontal/inclinado — verificación adicional
+
+> **Pregunta que se contesta aquí.** El apdo. 4.3 dejó la elección de encapsulante apoyada en
+> una fuente alemana (BauNetz Wissen) y advirtió de que su traslación a España **no estaba
+> verificada**. Esta sección busca si existe normativa o práctica normativa **española** que
+> exija o recomiende PVB frente a EVA en acristalamiento fotovoltaico horizontal o inclinado
+> sobre zona ocupada. Es una pregunta binaria y el resultado condiciona qué se puede escribir
+> en el capítulo de V1a.
+>
+> Se han recorrido, en este orden: UNE 85247, UNE-EN 12488, la serie UNE-EN ISO 12543,
+> UNE-EN 14449, ISO/TS 18178, UNE-EN 50583, CEN/TS 19100, el catálogo de Documentos de
+> Idoneidad Técnica del IETcc-CSIC, la legislación laboral española y la literatura técnica
+> sectorial española sobre BIPV.
+
+### 9.1 UNE 85247 no es la norma que la literatura sectorial sugería — pregunta abierta nº 8, cerrada
+
+El apdo. 4.2 anotó **UNE 85247** («acristalamientos en posición horizontal o inclinada») como
+la pista más prometedora, marcada *NO VERIFICADO — pendiente de acceso a AENOR*. Verificada
+en el catálogo oficial:
+
+| Campo | Valor |
+| --- | --- |
+| Título exacto | **«Ventanas y puertas. Estanquidad al agua. Ensayo *in situ*»** |
+| Edición | 2011-12-07 (sustituye a UNE 85247:2004 EX) |
+| Estado | **En vigor** (fecha de confirmación 2017-02-20) |
+| Comité técnico | CTN 85 — Cerramientos de huecos en edificación y sus accesorios |
+| ICS | 91.060.50 — Puertas y ventanas |
+
+**Fuente:** Tienda AENOR, ficha de la norma —
+<https://tienda.aenor.com/p/norma-une-85247-2011-n0048490>
+
+**UNE 85247 no trata de acristalamiento en posición horizontal o inclinada.** Es un método de
+ensayo de estanquidad al agua de ventanas y puertas ya instaladas. Su aparición en literatura
+sectorial asociada a acristalamientos inclinados es una **atribución errónea**: el documento
+donde se localiza la cita, el *Documento Reconocido DRC 06/23* de la Generalitat Valenciana,
+la emplea precisamente en su contexto correcto — **estanquidad de fachadas**
+(<https://habitatge.gva.es/documents/20051105/371759982/Estanquidad_de_fachadas.pdf/0246f828-b3c0-935b-1840-dc3720da51dd>).
+
+→ **Consecuencia:** la pregunta abierta nº 8 de la tabla del apdo. 7.3 queda cerrada, pero en
+negativo. **UNE 85247 no debe citarse en el TFM** en relación con el lucernario. No hace falta
+gestionar el acceso a AENOR para esta norma.
+
+### 9.2 La norma española que sí regula el acristalamiento inclinado: UNE-EN 12488:2017
+
+| Campo | Valor |
+| --- | --- |
+| Título | **«Vidrio para la edificación. Recomendaciones para el acristalamiento. Reglas de montaje para acristalamiento vertical e inclinado»** |
+| Edición | 2017-04-12; idéntica a EN 12488:2016 |
+| Estado | **En vigor** |
+| Comité técnico | CTN 85 |
+
+**Fuente:** Tienda AENOR — <https://tienda.aenor.com/p/norma-une-en-12488-2017-n0058183>
+
+Es la norma que ocupa el hueco que se le atribuía a UNE 85247, y además es la que
+**UNE-EN 50583-1 referencia** para las «*assembly rules for sloped and vertical glazing*»
+(ver 9.5). Su contenido, según las fichas de los organismos de normalización que sí lo
+describen:
+
+> «*[The standard] defines principles of glazing as well as recommendations on the selection of
+> components, such as frame sections, beads, and drainage holes, for fitting glazing into frames
+> of any material. […] It applies to all basic types of edge supported vertical and sloping
+> glazing systems.*»
+>
+> — BuildWise (CSTC/WTCB, Bélgica), ficha de EN 12488 —
+> <https://www.buildwise.be/en/standards-and-regulations/standards-regulations/en-12488-en/>;
+> concordante con la ficha de BSI para BS EN 12488:2016 —
+> <https://knowledge.bsigroup.com/products/glass-in-building-glazing-recommendations-assembly-principles-for-vertical-and-sloping-glazing>
+
+Es decir: regula **cómo se monta** el vidrio en el marco (calzos, perfiles, drenaje,
+ventilación de la cámara), no **qué vidrio** hay que poner. No prescribe laminado ni tipo de
+intercalario.
+
+**NO VERIFICADO — norma de pago, solo título, alcance y comité confirmados.** No se ha accedido
+al articulado. Si Mario quiere blindar este punto, esta —y no UNE 85247— es la norma que
+merece pedirse en la biblioteca de la UPM.
+
+### 9.3 El laminado se regula por prestación, no por intercalario
+
+Las dos normas españolas que sí gobiernan el vidrio laminado como producto:
+
+| Norma | Título | Estado |
+| --- | --- | --- |
+| **UNE-EN ISO 12543-1:2022** | «Vidrio para la edificación. Vidrio laminado y vidrio laminado de seguridad. Parte 1: Definiciones y descripción de los componentes» (ISO 12543-1:2021) | En vigor |
+| UNE-EN ISO 12543-1:2011 | Misma serie, edición anterior | **Anulada el 2022-07-13** |
+| **UNE-EN 14449:2006** | «Vidrio para la edificación. Vidrio laminado y vidrio laminado de seguridad. Evaluación de la conformidad/Norma de producto» (idéntica a EN 14449:2005/AC:2005) | En vigor |
+
+**Fuentes:** <https://tienda.aenor.com/norma-une-en-iso-12543-1-2022-n0069955> ·
+<https://tienda.aenor.com/p/norma-une-en-iso-12543-1-2011-n0048366> (donde consta la anulación) ·
+<https://tienda.aenor.com/p/norma-une-en-14449-2006-n0036520>
+
+> **Aviso para la bibliografía del TFM.** Si en algún borrador aparece
+> «UNE-EN ISO 12543-1:2011», está **anulada** desde julio de 2022. La referencia correcta es
+> la edición **2022**.
+
+UNE-EN 14449 es la **norma armonizada de producto** que da el marcado CE del vidrio laminado
+en España. Es la vía legal por la que el vidrio del lucernario entra en obra, y es de
+**evaluación de la conformidad**: fija ensayos y prestaciones, no una lista cerrada de
+intercalarios admisibles.
+
+**NO VERIFICADO — ambas son normas de pago; solo se han confirmado título, edición y estado.**
+No se ha leído el articulado de ninguna de las dos. Ahora bien, el propio título de
+UNE-EN ISO 12543-1 («*definiciones y descripción de los componentes*», en la edición 2021
+«*vocabulary and description of component parts*») indica que **describe** los componentes,
+no que restrinja cuál usar; y el informe de la IEA citado en 9.4 confirma que la serie ISO 12543
+es la referencia de requisitos que ISO/TS 18178 invoca sin cerrar el intercalario.
+
+### 9.4 La norma específica de vidrio fotovoltaico laminado admite expresamente PVB **y** EVA
+
+Es el hallazgo que resuelve el fondo del asunto. **ISO/TS 18178:2018**, *Glass in building —
+Laminated solar photovoltaic glass for use in buildings*, es la única norma internacional
+dedicada en exclusiva al producto que ocupa a V1a: vidrio laminado fotovoltaico para
+edificación.
+
+**Fuente primaria consultada:** IEA-PVPS Task 15, informe **IEA-PVPS T15-08:2019**,
+*Analysis of requirements, specifications and regulation of BIPV*, §2.1.1.2, **p. 7** —
+<https://iea-pvps.org/wp-content/uploads/2020/01/IEA-PVPS_15_R08__Analysis_of_requirements_specifications_regulation_of_BIPV__report.pdf>
+
+> «*This document specifies requirements for appearance, durability and safety as well as test
+> methods and designation for laminated solar photovoltaic (PV) glass for use in buildings.*
+> […]
+> *ISO 12543 (Glass in building -- Laminated glass and laminated safety glass) is referenced for
+> many of the requirements other than electrical properties.*
+> […]
+> **This standard allows the use of various types of glass (float glass, patterned glass, etc.),
+> solar cells (crystalline silicon solar cells, thin-film solar cells, etc.) and interlayers
+> (polyvinyl butyral, ethylene vinyl acetate, etc.).**»
+
+La norma internacional específica de vidrio FV laminado **cita PVB y EVA en la misma frase, en
+pie de igualdad, sin preferencia ni restricción por posición de montaje**. No hay en ella una
+regla «PVB sí, EVA con autorización» equivalente a la alemana.
+
+*Estado y alcance de la norma:* es una **especificación técnica** (ISO/TS), no una norma plena;
+el ISO/FDIS 18178 fue rechazado en noviembre de 2016 y se reeditó como TS en octubre de 2018.
+ISO/TC 160/SC 1/WG 9 trabaja en elevarla a norma internacional (ISO/CD 18178,
+<https://www.iso.org/standard/87941.html>). **No consta adoptada como UNE**: no aparece en el
+catálogo de AENOR con designación UNE-EN ISO 18178. Es decir, **no es normativa española**;
+es el referente técnico internacional del producto.
+
+### 9.5 UNE-EN 50583: qué cubre y qué no
+
+**EN 50583-1/-2** (CENELEC TC 82, enero de 2016; adoptadas como UNE-EN 50583-1 y -2) son la
+norma paraguas de fotovoltaica en edificios, y son las que el material interno del proyecto
+(CIEMAT, diapositiva 20) y la literatura española señalan como marco aplicable.
+
+**Fuente:** IEA-PVPS T15-08:2019, §2.1.1.1, pp. 6-7 y Tabla 1, **p. 14**.
+
+Cubre: requisitos generales, eléctricos, relativos al edificio, **requisitos para productos con
+paneles de vidrio**, para productos sin vidrio y de etiquetado. Y —esto es lo pertinente—:
+
+> «*The requirements on modules containing glass panes are further categorised according to the
+> modules' mounting position in the building envelope.*» (§2.1.1.1, p. 7)
+
+Es decir, **sí discrimina por posición de montaje**, que es exactamente la lógica del
+*Überkopfverglasung* alemán. Pero al desplegar en la Tabla 1 (p. 14) qué norma referencia para
+cada requisito, lo que EN 50583-1 invoca para el acristalamiento inclinado es
+**«*Assembly rules for sloped and vertical glazing*» → EN 12488** — la norma de montaje del
+apdo. 9.2, que no prescribe intercalario. En la tabulación completa de requisitos del informe
+IEA (pp. 13-24, y las tablas comparativas de pp. 25-32) **no aparece ningún requisito de tipo
+de encapsulante** para ninguna categoría de montaje.
+
+**NO VERIFICADO — no se ha accedido al articulado de UNE-EN 50583-1.** Lo anterior se apoya en
+la tabulación de un informe técnico de la IEA que sí lo analizó requisito a requisito, no en la
+lectura directa de la norma. Sigue siendo, como ya anotaba la pregunta abierta nº 10, la norma
+que convendría pedir en biblioteca.
+
+### 9.6 El marco europeo sí nombra la caída de fragmentos desde cubierta — pero no impone intercalario
+
+**CEN/TS 19100** *Design of glass structures* (partes 1 a 3 publicadas en 2021, parte 4
+posterior) es la primera especificación europea de cálculo estructural del vidrio, precursora
+del futuro Eurocódigo del vidrio bajo el mandato M/515. Está en el catálogo de AENOR
+(<https://tienda.aenor.com/p/norma-cen-ts-19100-1-2021-65078>).
+
+Su **Parte 4** es la que aborda literalmente el riesgo que preocupa en un lucernario:
+
+> «*The risk of glass fragments falling from height onto people who have not caused the
+> breakage, e.g. an overhead glazing.*»
+>
+> «*Part 4 includes 3 annexes. Annex A suggests ranges of geometric dimensions and environmental
+> geometries within which the risk of injury is considered acceptable. Annex B deals with
+> recommendations concerning the choice of glass type.*»
+>
+> «*Part 4 is intended to serve as guidance for the development or the improvement of rules
+> intended to assist in selecting the appropriate glazed product for protection against injury
+> and falls.*»
+>
+> — Feldmann, Laurs, Belis *et al.* (2023), *The new CEN/TS 19100: Design of glass structures*,
+> **Glass Structures & Engineering** (Springer); reproducido en
+> <https://www.glassonweb.com/article/new-cents-19100-design-glass-structures>
+
+Dos conclusiones, ambas útiles para el TFM:
+
+1. **El riesgo de caída de fragmentos sobre los ocupantes sí está identificado y nombrado en el
+   marco normativo europeo** — es el hueco que el apdo. 4.1 constató que el CTE DB-SUA 2 §1.3
+   no cubre. Si en el TFM hay que citar *algo* para justificar el laminado del lucernario, este
+   es el marco correcto, y no el DB-SUA.
+2. **Ese marco es de orientación y por prestación**, no de prescripción de material: la Parte 4
+   es explícitamente *guidance*, su Anexo B da *recomendaciones sobre elección del tipo de
+   vidrio*, y CEN/TS 19100-2 trata el intercalario por **familia de rigidez** (acoplamiento a
+   cortante) a efectos de espesor eficaz, no por su química. **No nombra PVB ni EVA como
+   requisito.**
+
+**NO VERIFICADO — norma de pago.** Las citas proceden del artículo de los propios redactores de
+la norma, publicado en revista científica revisada por pares, no del texto normativo.
+
+### 9.7 La contra-evidencia española: un módulo FV acristalado **con EVA**, evaluado para cubiertas y lucernarios
+
+Buscando Documentos de Idoneidad Técnica del **Instituto de Ciencias de la Construcción Eduardo
+Torroja (IETcc-CSIC)** —el único organismo con reconocimiento del Estado español para emitirlos—
+aparece **un único** documento sobre acristalamiento fotovoltaico, y va justo en contra de la
+hipótesis PVB:
+
+| Campo | Valor |
+| --- | --- |
+| Documento | **DITEX 692EX/24 — AEROJET GREEN ENERGY** |
+| Fecha | 12/09/2024 |
+| Beneficiario | JET CONTRACTORS |
+| Clasificación | **Grupo 3 (Cubiertas), Área 22 (Elementos para cubiertas, lucernarios, claraboyas)** |
+| Uso evaluado | «*prototipo de módulo acristalado fotovoltaico para su uso como cerramiento*» de **cubiertas y marquesinas** |
+| Vidrio | 1.863 × 1.970 × 19 mm, **2 vidrios y células fotovoltaicas encapsuladas en EVA intermedio** |
+| Montaje | Apoyo perimetral sobre subestructura tubular de acero, perfil omega con EPDM, piezas atornilladas de retención en la cara superior; **pendiente mínima 5°** |
+
+**Fuente:** IETcc-CSIC, ficha oficial del DITEX —
+<https://dit.ietcc.csic.es/2024/09/12/ditex-692ex-24-aerojet-green-energy/>
+
+Un organismo oficial español ha evaluado favorablemente, para uso como **cerramiento de cubierta
+y clasificado en el área de lucernarios y claraboyas**, un vidrio fotovoltaico **encapsulado en
+EVA**. Si en España rigiera una regla equivalente a la alemana —PVB con aprobación de base, EVA
+solo con autorización individual—, este documento no existiría en estos términos.
+
+**Tres cautelas que hay que declarar si esto se cita en el TFM:**
+
+1. Es un **DITEX** (Documento de Idoneidad Técnica **Experimental**), no un DIT pleno: evalúa un
+   **prototipo** en fase de introducción en el mercado, no un sistema consolidado.
+2. Los propios DIT «*no [tienen] efectos administrativos por sí mismos, ni representa[n]
+   autorización de uso, ni garantía*» (condiciones de emisión del IETcc —
+   <https://dit.ietcc.csic.es/wp-content/uploads/2023/02/Condiciones-bajo-las-cuales-se-emiten-los-Documentos-de-Idoneidad-Tecnica-_FEB2023.doc.pdf>).
+   Un DITEX es evidencia de que **no hay una prohibición**; no es una autorización genérica.
+3. **El PDF del documento no está disponible.** La ficha del IETcc indica
+   «DESCARGAR DOCUMENTO EN ESPAÑOL (no disponible)». Los datos anteriores proceden de la ficha
+   pública del propio IETcc, no del articulado del DITEX. **NO VERIFICADO contra el documento
+   completo.**
+
+### 9.8 Legislación laboral española: tampoco cubre el caso
+
+El CPD es un centro de trabajo, así que el **RD 486/1997, de 14 de abril, por el que se
+establecen las disposiciones mínimas de seguridad y salud en los lugares de trabajo** le es de
+aplicación directa. Es la única vía **legal** (no normativa técnica) española que podría exigir
+vidrio de seguridad. Se ha ido al articulado:
+
+**Fuente primaria:** BOE-A-1997-8669, texto consolidado —
+<https://www.boe.es/buscar/act.php?id=BOE-A-1997-8669>
+
+- **Anexo I, apdo. 4.1.º**: «*Los tabiques transparentes o translúcidos y, en especial, los
+  tabiques acristalados situados en los locales o en las proximidades de los puestos de trabajo
+  y vías de circulación, deberán estar claramente señalizados y fabricados con materiales
+  seguros, o bien estar separados de dichos puestos y vías, para impedir que los trabajadores
+  puedan golpearse con los mismos o lesionarse en caso de rotura.*»
+  → Habla de **tabiques** (elementos verticales) y del riesgo de que el trabajador **se golpee**
+  contra ellos. Es el mismo enfoque del DB-SUA 2 §1.3 y, por la misma razón, **no alcanza a un
+  lucernario horizontal**.
+- **Anexo I, apdo. 1.2.º**: «*Se prohíbe sobrecargar los elementos citados en el apartado
+  anterior. El acceso a techos o cubiertas que no ofrezcan suficientes garantías de resistencia
+  solo podrá autorizarse cuando se proporcionen los equipos necesarios para que el trabajo pueda
+  realizarse de forma segura.*»
+  → Regula el riesgo del **operario de mantenimiento que anda sobre la cubierta**, no el de los
+  ocupantes de debajo. Es pertinente para el **capítulo 11 (Estudio de seguridad y salud)** y
+  concuerda con la carga concentrada del DB-SE-AE §3.1.1 ya identificada en el apdo. 4.2, pero
+  **no obliga a laminar** ni fija intercalario.
+
+### 9.9 Lo que dice el sector español, y por qué no sirve como cita
+
+- **Literatura técnica solvente.** El artículo de referencia sobre el marco normativo BIPV en
+  España —S. Santamaría Fernández y J. M. Vega de Seoane López (Fundación **Tecnalia**),
+  *La tecnología fotovoltaica integrada (BIPV) en la edificación: retos en su caracterización y
+  cumplimiento de requisitos*, Interempresas, **13/09/2024**—
+  enumera el marco aplicable (UNE-EN 50583-1/-2, ISO 18178, IEC 63092-1/-2, EN 410) y
+  **no menciona en ningún punto el tipo de intercalario, el acristalamiento horizontal sobre
+  zona ocupada, ni ningún DIT**. Es evidencia negativa de buena calidad: si existiera una regla
+  española sobre encapsulante en cubierta, este es el artículo donde aparecería.
+- **Páginas comerciales de vidrieros españoles.** Varias afirman que «el CTE obliga a vidrio
+  laminado en tragaluces» o «en claraboyas accesibles». **Ninguna cita artículo.** Contradicen
+  lo ya verificado en el apdo. 4.1 contra el articulado del DB-SUA y el DA DB-SUA/1.
+  **No son citables** y no deben entrar en el TFM ni como apoyo secundario.
+- **Onyx Solar.** Su página de certificaciones (<https://onyxsolar.com/resources/certifications>)
+  devuelve **HTTP 403** y no ha podido consultarse. **NO VERIFICADO.** Sigue en pie la acción del
+  apdo. 4.3: preguntarles directamente si sirven la gama cristalina con PVB.
+
+### 9.10 Lo que queda sin verificar
+
+| # | Qué falta | Dónde conseguirlo | Impacto si sale distinto |
+| --- | --- | --- | --- |
+| A | Articulado de **UNE-EN 12488:2017** | Biblioteca UPM / AENOR | Es la norma española de montaje de acristalamiento inclinado. Muy improbable que prescriba intercalario, pero es la única que queda por descartar en el eslabón español |
+| B | Articulado de **UNE-EN 50583-1** (requisitos por posición de montaje) | Biblioteca UPM / AENOR | Ya identificada como pregunta abierta nº 10. La tabulación de la IEA no detecta requisito de encapsulante, pero no sustituye a leer la norma |
+| C | Articulado de **CEN/TS 19100-4** (Anexo B, elección del tipo de vidrio) | AENOR | Si el Anexo B recomendara un intercalario concreto para *overhead glazing*, cambiaría la respuesta. Las citas de sus redactores dicen que no |
+| D | PDF completo del **DITEX 692EX/24** | IETcc-CSIC (no publicado) | Confirmaría con qué condiciones y ensayos se aceptó el EVA en posición de cubierta |
+| E | Respuesta de **Onyx Solar** sobre gama cristalina con PVB | Consulta directa | Es la que desbloquea V1a (apdo. 4.3), independientemente del resultado normativo |
+
+Ninguna de las cinco es bloqueante para redactar: las cinco pueden declararse como limitación.
+
+### 9.11 Veredicto
+
+**NO existe justificación normativa española específica: la justificación es europea/alemana.**
+
+No se ha localizado ninguna norma UNE, documento del CTE, Documento de Idoneidad Técnica ni
+disposición legal española que exija o recomiende PVB frente a EVA en acristalamiento
+fotovoltaico horizontal o inclinado sobre zona ocupada. La cadena normativa española
+—UNE-EN 12488 para el montaje, UNE-EN ISO 12543 y UNE-EN 14449 para el producto laminado— es de
+**prestación y evaluación de la conformidad**, no de prescripción de material; la norma
+internacional específica del producto, **ISO/TS 18178:2018, admite PVB y EVA expresamente y en
+pie de igualdad**; el marco europeo que sí nombra la caída de fragmentos desde una
+*overhead glazing*, **CEN/TS 19100-4, es orientativo y trata el intercalario por familia de
+rigidez, no por su química**; y España ha evaluado favorablemente, vía **DITEX 692EX/24 del
+IETcc-CSIC**, un módulo fotovoltaico acristalado **con EVA** clasificado precisamente en el área
+de *cubiertas, lucernarios y claraboyas*. La distinción PVB/EVA del apdo. 4.3 es un rasgo del
+régimen de autorizaciones **alemán-austríaco** (*allgemeine bauaufsichtliche Zulassung* frente a
+*Einzelgenehmigung*), no una exigencia trasladable a España.
+
+### 9.12 Qué cambia esto en el TFM
+
+1. **No escribir** que la normativa española obliga a PVB. No lo hace, y el DITEX 692EX/24 es
+   contraevidencia directa.
+2. **Sí se puede** —y conviene— mantener el argumento del apdo. 4.3, **reetiquetado**: el PVB es
+   la solución de **buena práctica europea consolidada** para acristalamiento en cubierta,
+   respaldada por el régimen alemán-austríaco de autorizaciones y por los dos lucernarios
+   realmente ejecutados que se han documentado (Bell Works y Alcalá 33, ambos con PVB). Se cita
+   **declarando la limitación**: es práctica centroeuropea, no norma española.
+3. **La cita normativa correcta para justificar el laminado** del lucernario no es el CTE
+   DB-SUA 2 §1.3 (verificado en 4.1 que no aplica), sino la combinación de **UNE-EN 50583-1**
+   (requisitos por posición de montaje) y **CEN/TS 19100-4** (riesgo de caída de fragmentos
+   desde acristalamiento en cubierta), con **UNE-EN 14449** como norma de producto para el
+   marcado CE y **DB-SE-AE §3.1.1** para la carga concentrada de mantenimiento.
+4. **Retirar UNE 85247** de cualquier borrador o listado bibliográfico: no trata de esto.
+5. **Corregir la edición** de UNE-EN ISO 12543-1: la de 2011 está anulada; la vigente es la de
+   **2022**.
+6. **La consecuencia práctica sobre V1a mejora.** Si en España no hay regla que penalice el EVA,
+   la rama «cristalino con EVA, ~49 kWp» deja de estar condicionada a una autorización
+   individual inexistente aquí, y la elección entre cristalino (EVA) y capa fina (PVB) vuelve a
+   ser **técnica y de prescripción facultativa**, no de tramitación. La pregunta a Onyx sobre
+   PVB en la gama cristalina sigue mereciendo hacerse —por prestación del laminado y por
+   alineamiento con la práctica europea—, pero **ya no es la pregunta que desbloquea la
+   variante**.
+
+### Fuentes de esta sección
+
+**Catálogo oficial de normas (AENOR)**
+1. UNE 85247:2011 — <https://tienda.aenor.com/p/norma-une-85247-2011-n0048490>
+2. UNE-EN 12488:2017 — <https://tienda.aenor.com/p/norma-une-en-12488-2017-n0058183>
+3. UNE-EN ISO 12543-1:2022 — <https://tienda.aenor.com/norma-une-en-iso-12543-1-2022-n0069955>
+4. UNE-EN ISO 12543-1:2011 (anulada) — <https://tienda.aenor.com/p/norma-une-en-iso-12543-1-2011-n0048366>
+5. UNE-EN 14449:2006 — <https://tienda.aenor.com/p/norma-une-en-14449-2006-n0036520>
+6. CEN/TS 19100-1:2021 — <https://tienda.aenor.com/p/norma-cen-ts-19100-1-2021-65078>
+7. ISO/TS 18178:2018 — <https://www.iso.org/standard/74652.html> · revisión en curso ISO/CD 18178 — <https://www.iso.org/standard/87941.html>
+
+**Normativa y legislación (fuente primaria)**
+8. RD 486/1997, lugares de trabajo, texto consolidado — <https://www.boe.es/buscar/act.php?id=BOE-A-1997-8669>
+9. Generalitat Valenciana, *Documento Reconocido DRC 06/23 — Estanquidad de fachadas* — <https://habitatge.gva.es/documents/20051105/371759982/Estanquidad_de_fachadas.pdf/0246f828-b3c0-935b-1840-dc3720da51dd>
+
+**Evaluación técnica oficial española**
+10. IETcc-CSIC, **DITEX 692EX/24 — AEROJET GREEN ENERGY** — <https://dit.ietcc.csic.es/2024/09/12/ditex-692ex-24-aerojet-green-energy/>
+11. IETcc-CSIC, condiciones de emisión de los DIT (feb. 2023) — <https://dit.ietcc.csic.es/wp-content/uploads/2023/02/Condiciones-bajo-las-cuales-se-emiten-los-Documentos-de-Idoneidad-Tecnica-_FEB2023.doc.pdf>
+
+**Informes y literatura técnica**
+12. IEA-PVPS Task 15, **IEA-PVPS T15-08:2019**, *Analysis of requirements, specifications and regulation of BIPV* — <https://iea-pvps.org/wp-content/uploads/2020/01/IEA-PVPS_15_R08__Analysis_of_requirements_specifications_regulation_of_BIPV__report.pdf>
+13. M. Feldmann, W. Laurs, J. Belis *et al.* (2023), *The new CEN/TS 19100: Design of glass structures*, **Glass Structures & Engineering** (Springer) — reproducido en <https://www.glassonweb.com/article/new-cents-19100-design-glass-structures>
+14. S. Santamaría Fernández y J. M. Vega de Seoane López (Tecnalia), *La tecnología fotovoltaica integrada (BIPV) en la edificación*, Interempresas, 13/09/2024 — <https://www.interempresas.net/Fachadas/572077-tecnologia-fotovoltaica-integrada-(BIPV)-edificacion-retos-caracterizacion-cumplimiento.html>
+
+**Fichas de organismos de normalización sobre EN 12488**
+15. BuildWise (CSTC/WTCB, Bélgica) — <https://www.buildwise.be/en/standards-and-regulations/standards-regulations/en-12488-en/>
+16. BSI, BS EN 12488:2016 — <https://knowledge.bsigroup.com/products/glass-in-building-glazing-recommendations-assembly-principles-for-vertical-and-sloping-glazing>
+
+**Consultada sin éxito**
+- Onyx Solar, certificaciones — <https://onyxsolar.com/resources/certifications> — **HTTP 403**, no accesible.

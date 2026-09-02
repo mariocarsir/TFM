@@ -25,6 +25,7 @@ ocupadas». Verificado en articulado:
 dice lo que se le atribuye es exactamente lo que un tribunal puede pedir localizar.
 
 **How to apply:** consultar con Julio Amador qué artículo citar antes de redactar.
-UNE 85247 (acristalamientos en posición horizontal o inclinada) aparece en
-literatura sectorial pero su vigencia y contenido siguen sin verificar — no es de
-acceso libre. Ver [[bipv-encapsulante-pvb-eva]].
+**UNE 85247 quedó descartada**: verificada en AENOR, es «Ventanas y puertas.
+Estanquidad al agua. Ensayo in situ», nada que ver con acristalamiento inclinado.
+La vía correcta es UNE-EN 50583-1 + CEN/TS 19100-4 — ver
+[[normativa-vidrio-cubierta-espana]] y [[bipv-encapsulante-pvb-eva]].
