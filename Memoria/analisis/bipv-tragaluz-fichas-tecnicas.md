@@ -78,7 +78,7 @@ descargable. Vidrio-vidrio laminado, configurable como UGU.
 
 | Referencia | Dimensiones (mm) | Sup. (m²) | Nº células | VLT | Pmpp (Wp) | **Wp/m²** | Voc (V) | Isc (A) | Vmpp (V) | Impp (A) |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 044A0-14750480-43-M | 1475 × 480 | 0,71 | 16 | 43 % | 81 | 114,1 *(calc.)* | 11 | 9,66 | 9 | 9,35 |
+| 044A0-14750480-43-M | 1475 × 480 | 0,71 | 16 | 43 % | 81 | 114,4 *(calc.)* | 11 | 9,66 | 9 | 9,35 |
 | 044A0-12450635-43-M | 1245 × 635 | 0,79 | 18 | 43 % | 91 | **115,0** | 12 | 9,66 | 10 | 9,35 |
 | 044A0-16500850-35-M | 1650 × 850 | 1,40 | 36 | 35 % | 182 | **129,6** | 24 | 9,66 | 19 | 9,35 |
 | 044A0-17001000-11-M | 1700 × 1000 | 1,70 | 60 | 11 % | 303 | **178,2** | 41 | 9,66 | 32 | 9,35 |
@@ -489,6 +489,52 @@ Tiene **ficha técnica firmada** (§2.3) y es español, pero es de escala muy pe
 
 ---
 
+### 5.4 Contraste con el detalle constructivo del CIEMAT (material interno del proyecto)
+
+Bell Works documenta *qué se hizo*, pero no publica el despiece. Ese hueco lo cubre en parte
+material que ya está en el propio proyecto: la presentación **«Integración de Fotovoltaica en
+Edificios» (Nuria Martín Chivelet, CIEMAT, 2025)**, resumida en
+`conocimiento fotovoltaico/Referencia/integracion-fotovoltaica-en-edificios-bipv.md`, incluye
+en su apartado de **cubiertas acristaladas** (diapositivas 47-56) un detalle constructivo con
+**ocho elementos**:
+
+1. montantes y travesaños de aluminio;
+2. separadores de puente térmico;
+3. el módulo fotovoltaico;
+4. la salida de cableado;
+5. fijación con **silicona estructural**;
+6. juntas selladas con **silicona neutra**;
+7. cableado interno conducido **por los montantes**;
+8. el conjunto resuelto como muro cortina adaptado a cubierta.
+
+**Dónde coincide y dónde no con Bell Works.** Coincide en la tipología general —perfilería de
+aluminio de montantes y travesaños— y en la estanqueidad por juntas de silicona neutra.
+**Discrepa en el cableado**: el detalle del CIEMAT lo conduce *por dentro del montante*,
+mientras que Bell Works lo recogió en *bandeja bajo los paños* (§5.2). Las dos soluciones son
+válidas y la elección no es menor en un CPD: la variante por montante deja el cable fuera de
+la sala, lo que es preferible frente al DB-SI y frente a los criterios de incendios del propio
+centro de datos; la variante por bandeja es más barata y mucho más fácil de mantener, pero
+mete cableado de continua sobre la sala técnica. **Conviene decidirlo explícitamente y
+justificarlo**, no heredarlo del proyecto de referencia sin más.
+
+**Marco normativo específico de BIPV que falta en el análisis del §4.** El CTE regula al
+edificio, pero el módulo integrado tiene norma propia: **UNE-EN 50583 partes 1 y 2** (Europa)
+e **IEC 63092 partes 1 y 2** (internacional), además del Reglamento de Productos de la
+Construcción y la Directiva de Baja Tensión. Estas normas son las que exigen al módulo BIPV
+cumplir simultáneamente las funciones constructivas —rigidez mecánica, protección frente a
+lluvia/nieve/viento/granizo, sombreado e iluminación natural, aislamiento térmico, protección
+contra incendios, protección acústica y separación entre ambientes— además de generar.
+**Es previsiblemente la vía correcta para justificar el vidrio del lucernario en la memoria**,
+más que forzar una cita del DB-SUA que, como se ha visto en §4.1, no dice lo que se le
+atribuye. Queda **pendiente de verificar el articulado literal de la EN 50583-2**, que no se
+ha consultado en este informe: se apunta como línea, no como conclusión.
+
+*Fuente interna:* resumen de la presentación del CIEMAT ya indexado en el proyecto
+(diapositivas 15, 19, 20 y 47-56). Es material **no citable** en el TFM sin verificación
+adicional (regla 10 de CLAUDE.md), pero sirve como orientación técnica.
+
+---
+
 ## 6. Tabla comparativa de las tres fichas
 
 | | **1. Onyx c-Si** | **2. Onyx a-Si + PVB** | **3. AGC SunEwat Vision** |
@@ -614,6 +660,7 @@ La lección de Bell Works es tranquilizadora y desplaza el foco del problema:
 | 7 | ¿Exige el CTE laminado en acristalamiento de cubierta sobre zona ocupada, y **en qué artículo**? | Tutor (Julio Amador) |
 | 8 | Vigencia y contenido de **UNE 85247** | AENOR / biblioteca UPM |
 | 9 | **Precio** por m² del vidrio FV | Oferta a Onyx o TFM de referencia |
+| 10 | Articulado literal de **UNE-EN 50583-2 / IEC 63092-2**: ¿es esta la vía correcta para justificar el vidrio del lucernario, en lugar del DB-SUA? | AENOR / biblioteca UPM |
 
 ---
 
@@ -643,6 +690,7 @@ La lección de Bell Works es tranquilizadora y desplaza el foco del problema:
 
 **Referencia técnica**
 17. BauNetz Wissen, *PV in Überkopfverglasungen* — <https://www.baunetzwissen.de/solar/fachwissen/pv-am-gebaeude/pv-in-ueberkopfverglasungen-165778>
+18. **(Interna, no citable)** N. Martín Chivelet, *Integración de Fotovoltaica en Edificios*, CIEMAT, 2025 — resumen indexado en `conocimiento fotovoltaico/Referencia/integracion-fotovoltaica-en-edificios-bipv.md` (detalle constructivo de cubierta acristalada, diapositivas 47-56; normas UNE-EN 50583 e IEC 63092, diapositiva 20).
 
 **Fabricantes consultados sin ficha técnica verificable**
 - **ertex solar** (Austria): fabrica módulos VSG y VSG-ISO para cubierta acristalada y declara que el montaje se resuelve «*mit Klemmleisten an den Glaskanten*» (con perfiles de presión en los cantos del vidrio), con la subestructura y el montaje a cargo de la obra (<https://www.ertex-solar.at/angebot/isolierendes-dach/>). **No publica fichas técnicas descargables**: el índice de descargas (<https://www.ertex-solar.at/ertexdownload/broschueren/>) no expone PDF y el catálogo de ArchiExpo está tras protección anti-bot. Un dato de terceros (~116 Wp/m², 40 kg/m², mono, PVB, EN 61215/61730 — <https://solarchitecture.ch/ertex-solar-vsg-laminated-safety-glass-module/>) corresponde a un módulo **opaco con impresión cerámica**, no al semitransparente: **no aplicable**. Es un candidato serio para V1a por su enfoque de constructor de vidrio, pero **hay que pedirle la ficha directamente**.
