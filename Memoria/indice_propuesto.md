@@ -40,7 +40,20 @@ descripción, cálculos, conclusiones, referencias) → anexos. Límite: 150 pá
 2.2. Integración arquitectónica: BIPV frente a BAPV
 2.3. Almacenamiento electroquímico aplicado a autoconsumo **[+]**
 2.4. Eficiencia energética en CPDs: métrica PUE
-2.5. Marco normativo y regulatorio
+  — incluye la tendencia regulatoria: proyecto de RD de centros de datos del MITECO (audiencia
+  pública, no exigible todavía), que fija 80 % renovable hora a hora y PUE ≤ 1,15 **[+]**
+2.5. Normativa aplicable **[+ reformulado]**
+
+*(La normativa NO se cita con `\cite` ni figura en el capítulo de Referencias: se relaciona aquí
+de forma completa, al modo del apartado 1.4 de `TFM-MAD9_signed.pdf`, con título completo, qué
+regula y cómo aplica a este proyecto. En el cuerpo del texto se menciona en forma larga la
+primera vez y en forma corta a partir de la segunda.)*
+
+2.5.1. Marco europeo
+2.5.2. Normativa estatal con rango de ley
+2.5.3. Normativa estatal de rango reglamentario
+2.5.4. Normativa autonómica y local
+2.5.5. Normas técnicas de referencia
 
 ## 3. Análisis del emplazamiento y perfil de consumo
 
@@ -93,35 +106,25 @@ descripción, cálculos, conclusiones, referencias) → anexos. Límite: 150 pá
 9.1. Huella de carbono y emisiones evitadas
 9.2. Fin de vida y reciclaje de módulos y baterías **[+]**
 
-## 10. Pliego de condiciones técnicas
+## 10. Estudio de seguridad y salud — PENDIENTE DE ACORDAR CON EL TUTOR
 
-*(Normativa ERMA: "No suele ser parte de un TFM, pero en instalaciones y proyectos es
-imprescindible indicar especificaciones técnicas, calidades y garantías de elementos
-principales". Precedente de 2025: `TFM-MAD9_signed.pdf` incluye un capítulo de mantenimiento
-y garantías equivalente — ver `conocimiento fotovoltaico/Referencia/analisis-comparativo-tfm-referencia-erma.md`.)*
+*(La normativa ERMA lo sitúa entre los apartados «cuando proceda», es decir, opcional, y ninguno
+de los tres TFM de referencia lo incluye — ver `Memoria/analisis/comparacion-estructura-tfm.md`.
+Se mantiene en el índice a la espera de que Julio Amador confirme si lo espera.)*
 
-10.1. Especificaciones de los materiales y componentes del proyecto
-10.2. Calidades mínimas según normas aplicables
-10.3. Pruebas y ensayos requeridos
-10.4. Reglamentación y normativa específica
-10.5. Aspectos del contrato: garantías de suministros y funcionamiento
+10.1. Identificación de riesgos en fase de diseño y montaje
+10.2. Medidas preventivas y de protección
+10.3. Plan de seguridad básico
 
-## 11. Estudio de seguridad y salud
+## 11. Planificación temporal **[+ capítulo nuevo]**
 
-*(Normativa ERMA: "Apartado típico de TFM de proyecto/instalación".)*
+*(Puede degradarse a sección de otro capítulo si el volumen no lo justifica. Único precedente:
+Barrios, cap. III.6.)*
 
-11.1. Identificación de riesgos en fase de diseño y montaje
-11.2. Medidas preventivas y de protección
-11.3. Plan de seguridad básico
+## 12. Conclusiones y líneas futuras
 
-## 12. Planificación temporal **[+ capítulo nuevo]**
-
-*(Puede degradarse a sección de otro capítulo si el volumen no lo justifica.)*
-
-## 13. Conclusiones y líneas futuras
-
-11.1. Conclusiones
-11.2. Líneas futuras **[+]**
+12.1. Conclusiones
+12.2. Líneas futuras **[+]**
 
 ## Referencias
 
@@ -147,13 +150,13 @@ genérica debe quedar cubierta en algún punto del documento:
 | Categoría genérica ERMA | Dónde se cubre en este índice |
 |---|---|
 | Introducción (objetivo, alcance, justificación, emplazamiento, antecedentes, normas) | Cap. 1, con las subsecciones 1.1-1.6 (emplazamiento/ODS/metodología) |
-| Requisitos y datos de partida | Cap. 2 (marco normativo) + Cap. 3 (emplazamiento, consumo, recurso solar, restricciones) |
+| Requisitos y datos de partida | Cap. 2 (normativa aplicable) + Cap. 3 (emplazamiento, consumo, recurso solar, restricciones) |
 | Metodología y cálculos (hipótesis, procedimientos, herramientas) | Cap. 5-9, con PVsyst y Excel como herramientas de cálculo documentadas en el CLAUDE.md |
 | Presentación y análisis de resultados | Secciones de resultados de los caps. 6, 7, 8 y 9 |
-| Pliego de condiciones técnicas | Cap. 10 |
-| Estudio de seguridad y salud | Cap. 11 |
-| Planificación (si aplica) | Cap. 12 (puede degradarse a sección si el volumen no lo justifica) |
-| Conclusiones | Cap. 13 — debe seguir las reglas de la guía: correspondencia 1:1 con alcances/resultados relevantes, sin elementos nuevos ni gráficas/tablas, no es un resumen, redacción clara y rigurosa |
+| Pliego de condiciones técnicas | **Eliminado** (05/09/2026): opcional por normativa y sin precedente en ninguno de los tres TFM de referencia |
+| Estudio de seguridad y salud | Cap. 10, pendiente de acordar con el tutor |
+| Planificación (si aplica) | Cap. 11 (puede degradarse a sección si el volumen no lo justifica) |
+| Conclusiones | Cap. 12 — debe seguir las reglas de la guía: correspondencia 1:1 con alcances/resultados relevantes, sin elementos nuevos ni gráficas/tablas, no es un resumen, redacción clara y rigurosa |
 | Referencias | Capítulo "Referencias" (IEEEtran, compatible con el formato "número entre corchetes" que acepta la guía) |
 | Anexos | Anexos A-E |
 
@@ -167,6 +170,28 @@ genérica debe quedar cubierta en algún punto del documento:
 | Cap. 3 ampliado | Se incorporan restricciones estructurales (viento, cubierta), elección de BBDD meteorológica y datos económicos de partida, todo tomado de Arcas. |
 | Cap. 8 ampliado | Se añaden mediciones, incentivos fiscales, escenarios de precio, LCOE y sensibilidad (Barrios + Arcas). |
 | Nuevos caps. 1.2, 1.5 (emplazamiento/ODS) | Exigencia normativa ERMA: localización formal con referencia catastral/UTM y justificación con Objetivos de Desarrollo Sostenible. |
-| Nuevos caps. 10-11 (condiciones técnicas y seguridad) | Incluidos según la guía ERMA y el precedente de `TFM-MAD9_signed.pdf` (2025), que dedica un capítulo de mantenimiento y garantías equivalente. |
-| Caps. 12 y 13 (antes 10 y 11) | Planificación temporal y conclusiones, desplazadas en numeración por la adición de los dos anteriores. |
 | Sección 3.2 (criticidad del CPD) | Aportación propia: ningún ejemplo trata una carga crítica 24/7; es lo que diferencia este TFM y condiciona el dimensionado de baterías. |
+
+## Cambios del 5 de septiembre de 2026
+
+Derivados de la comparación estructural con los tres TFM de referencia
+(`Memoria/analisis/comparacion-estructura-tfm.md`) y de la decisión sobre el tratamiento de la
+normativa.
+
+| Cambio | Motivo |
+| --- | --- |
+| **Eliminado el capítulo de pliego de condiciones técnicas** | La normativa ERMA lo sitúa entre los apartados «cuando proceda» (opcional) y ninguno de los tres TFM de referencia lo incluye. Lo más parecido es el cap. 7 de Fernandes, «Mantenimiento y garantías», que no es un pliego. |
+| Seguridad y salud pasa de cap. 11 a cap. 10 y queda marcado como pendiente | Igual de opcional y sin precedente en los ejemplos; decisión del tutor. |
+| Planificación temporal 12 → 11; conclusiones 13 → 12 | Renumeración por la eliminación del pliego. Corregida de paso la numeración interna de conclusiones, que decía 11.1/11.2. |
+| **2.5 pasa de «Marco normativo y regulatorio» a «Normativa aplicable»**, con cinco subsecciones por jerarquía | La normativa no se cita con `\cite` ni aparece en Referencias: se relaciona completa en una sección propia al modo del apartado 1.4 de Fernandes. |
+| El proyecto de RD de centros de datos del MITECO se traslada a 2.4 | No es derecho vigente (audiencia pública), así que no cabe en «Normativa aplicable»; como tendencia regulatoria sobre el PUE justifica el enfoque del TFM. |
+
+### Propuestas abiertas tras la comparación
+
+| Propuesta | Origen |
+| --- | --- |
+| Capítulo ligero de mantenimiento y garantías | Fernandes cap. 7; sustituto natural del pliego eliminado |
+| Bloque de definiciones y expresiones matemáticas en los preliminares | Fernandes, «Definiciones y expresiones matemáticas» (11 ecuaciones) |
+| Monitorización como sección del cap. 6, no como capítulo | Fernandes cap. 4 y Barrios 5.5 |
+| Acotar la extensión del cap. 2 por el tope de 150 páginas | Ningún ejemplo tiene estado del arte; es la mayor divergencia propia |
+| Revisar si la portada de firmas debe mantenerse | No la pide la guía ERMA y ningún ejemplo la lleva |

@@ -17,7 +17,8 @@
 - **Bibliografía:** estilo IEEEtran, fichero `biblio.bib`.
 - **Normativa ERMA:** máx. 150 páginas, entrega en PDF firmado digitalmente, estructura índice → memoria → anexos.
 - **Universidad usa Turnitin:** el flujo de humanización con voz propia (skill `humanizer`) es OBLIGATORIO en cada capítulo, no opcional.
-- **Índice de trabajo:** `Memoria/indice_propuesto.md` — 13 capítulos + anexos (incluye pliego de condiciones técnicas y estudio de seguridad y salud, cap. 10-11, con precedente en `TFM-MAD9_signed.pdf`), validado como **provisional** (revisable con el tutor).
+- **Índice de trabajo:** `Memoria/indice_propuesto.md` — 12 capítulos + anexos, validado como **provisional** (revisable con el tutor). El pliego de condiciones se eliminó el 05/09/2026 y el estudio de seguridad y salud (cap. 10) queda pendiente de confirmar con Julio: ambos son opcionales por normativa ERMA y ninguno de los tres TFM de referencia los incluye. Comparación estructural completa en `Memoria/analisis/comparacion-estructura-tfm.md`.
+- **La normativa NO es citable:** ninguna ley, real decreto, real decreto-ley, circular o resolución entra en `biblio.bib` ni aparece en el capítulo de Referencias. Toda la normativa aplicable se relaciona en el apartado 2.5, con título completo, qué regula y cómo aplica al proyecto (modelo: apartado 1.4 de `TFM-MAD9_signed.pdf`). En el texto, forma larga la primera mención y forma corta después. Si una norma no merece figurar en 2.5, se consulta a Mario antes de mencionarla suelta.
 - **Cálculo:** PVsyst para la simulación fotovoltaica (núcleo del TFM); Excel para todo lo que PVsyst no cubre (modelo horario de almacenamiento, análisis económico: VAN, TIR, LCOE, sensibilidad).
 - **TFM de referencia** (los tres indexados en `conocimiento fotovoltaico/Referencia/`; comparativa transversal en `analisis-comparativo-tfm-referencia-erma.md`):
   - **Primario — `TFM-MAD9_signed.pdf`** (Diego Fernandes Alves, 2025, centro logístico Amazon MAD9): arquitectura y resultados esperables. El más reciente, el único con almacenamiento realmente dimensionado, escala comparable y perfil de consumo 24/7.
@@ -115,6 +116,8 @@ PDF/DOCX/PPTX/TXT/YouTube nuevo
          ↓
     Genera .md con frontmatter compatible Obsidian
          ↓
+    Si es normativa → Bibliografia/Fuentes/Normativa/Resumenes/<slug-norma>.md
+                      (NO genera entrada en biblio.bib: alimenta el apartado 2.5)
     Si es citable → Bibliografia/Resumenes/<Autor>_<Año>.md
     Si es no-citable → conocimiento fotovoltaico/Referencia/<slug-titulo>.md
          ↓
