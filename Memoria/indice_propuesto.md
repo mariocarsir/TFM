@@ -146,25 +146,15 @@ sí solo: este capítulo refuerza ese criterio, no lo sostiene.)*
 *(La normativa de residuos y de baterías que aparezca en 10.5 se relaciona en el apartado 2.5,
 no se cita con `\cite`.)*
 
-## 11. Estudio de seguridad y salud — PENDIENTE DE ACORDAR CON EL TUTOR
-
-*(La normativa ERMA lo sitúa entre los apartados «cuando proceda», es decir, opcional, y ninguno
-de los tres TFM de referencia lo incluye — ver `Memoria/analisis/comparacion-estructura-tfm.md`.
-Se mantiene en el índice a la espera de que Julio Amador confirme si lo espera.)*
-
-11.1. Identificación de riesgos en fase de diseño y montaje
-11.2. Medidas preventivas y de protección
-11.3. Plan de seguridad básico
-
-## 12. Planificación temporal **[+ capítulo nuevo]**
+## 11. Planificación temporal **[+ capítulo nuevo]**
 
 *(Puede degradarse a sección de otro capítulo si el volumen no lo justifica. Único precedente:
 Barrios, cap. III.6.)*
 
-## 13. Conclusiones y líneas futuras
+## 12. Conclusiones y líneas futuras
 
-13.1. Conclusiones
-13.2. Líneas futuras **[+]**
+12.1. Conclusiones
+12.2. Líneas futuras **[+]**
 
 ## Referencias
 
@@ -194,9 +184,9 @@ genérica debe quedar cubierta en algún punto del documento:
 | Metodología y cálculos (hipótesis, procedimientos, herramientas) | Cap. 5-10, con PVsyst y Excel como herramientas de cálculo documentadas en el CLAUDE.md |
 | Presentación y análisis de resultados | Secciones de resultados de los caps. 6, 7, 9 y 10 |
 | Pliego de condiciones técnicas | **Eliminado** (05/09/2026): opcional por normativa y sin precedente en ninguno de los tres TFM de referencia. Su función la asume, en versión ligera, el cap. 8 de mantenimiento y garantías |
-| Estudio de seguridad y salud | Cap. 11, pendiente de acordar con el tutor |
-| Planificación (si aplica) | Cap. 12 (puede degradarse a sección si el volumen no lo justifica) |
-| Conclusiones | Cap. 13 — debe seguir las reglas de la guía: correspondencia 1:1 con alcances/resultados relevantes, sin elementos nuevos ni gráficas/tablas, no es un resumen, redacción clara y rigurosa |
+| Estudio de seguridad y salud | **Eliminado** (06/09/2026): decisión de Mario, sin precedente en ningún TFM de referencia y opcional por normativa |
+| Planificación (si aplica) | Cap. 11 (puede degradarse a sección si el volumen no lo justifica) |
+| Conclusiones | Cap. 12 — debe seguir las reglas de la guía: correspondencia 1:1 con alcances/resultados relevantes, sin elementos nuevos ni gráficas/tablas, no es un resumen, redacción clara y rigurosa |
 | Referencias | Capítulo "Referencias" (IEEEtran, compatible con el formato "número entre corchetes" que acepta la guía) |
 | Anexos | Anexos A-E |
 
@@ -241,9 +231,14 @@ Todas las propuestas que quedaron abiertas el día anterior están resueltas.
 | Renumeración: económico 8 → 9; medioambiental 9 → 10; seguridad y salud 10 → 11; planificación 11 → 12; conclusiones 12 → 13 | Consecuencia del nuevo cap. 8 |
 | **Cap. 10 desarrollado y acotado** a seis secciones, 6-8 páginas, sin software de ACV | La rúbrica del tribunal puntúa al 10 % el criterio «Marco socio-económico y medioambiental / Marco Normativo», que el presupuesto del cap. 9 ya cubre. El ambiental refuerza, no sostiene |
 
+**Segunda decisión del mismo día:** **eliminado el capítulo de estudio de seguridad y salud**
+(antes cap. 11). Decisión directa de Mario, sin esperar respuesta del tutor: ningún TFM de
+referencia lo incluye, es opcional por normativa ERMA, y el calendario del TFM no permite
+mantener capítulos sin precedente y sin urgencia. Renumeración: planificación 12 → 11,
+conclusiones 13 → 12.
+
 ### Propuestas que siguen abiertas
 
 | Propuesta | Origen |
 | --- | --- |
 | Acotar la extensión del cap. 2 por el tope de 150 páginas | Ningún ejemplo tiene estado del arte; es la mayor divergencia propia |
-| Confirmar con Julio Amador si espera el estudio de seguridad y salud (cap. 11) | Opcional por normativa y sin precedente en los tres ejemplos |

@@ -187,9 +187,9 @@ Definiciones). Incluye además un ÍNDICE DE PLANOS dentro de la parte III.
 
 ## 3. Estructura del TFM propio
 
-Según `Memoria/indice_propuesto.md`, ya con las decisiones del 5 de septiembre de 2026
-incorporadas (capítulo de pliego eliminado, seguridad y salud pendiente de acordar con el tutor,
-normativa concentrada en 2.5).
+Según `Memoria/indice_propuesto.md`, ya con las decisiones del 5 y 6 de septiembre de 2026
+incorporadas (capítulos de pliego y de seguridad y salud eliminados, normativa concentrada
+en 2.5).
 
 *Actualizado el 06/09/2026 con las decisiones de esa fecha.*
 
@@ -201,8 +201,8 @@ abreviaturas · Definiciones y expresiones matemáticas.
 y perfil de consumo · 4 Tipología de autoconsumo y tramitación · 5 Estudio de alternativas de
 integración · 6 Diseño e ingeniería de la solución fotovoltaica *(con 6.7 Monitorización)* ·
 7 Diseño del sistema de almacenamiento · 8 Explotación: mantenimiento y garantías · 9 Análisis
-económico · 10 Análisis medioambiental · 11 Estudio de seguridad y salud *(pendiente de
-aprobación del tutor)* · 12 Planificación temporal · 13 Conclusiones y líneas futuras.
+económico · 10 Análisis medioambiental · 11 Planificación temporal · 12 Conclusiones y líneas
+futuras.
 
 **Cierre:** Referencias · Anexos A Planos · B Fichas técnicas de los equipos · C Informe de
 simulación PVsyst · D Flujos de caja · E Modelo de gestión del almacenamiento.
@@ -266,10 +266,10 @@ El símbolo ≈ en la columna de Diego se debe a que agrupa los cuatro índices 
 | Análisis económico | 6 | 7 | II.9 | 9 | Opcional en la guía, **puntuado al 10 %** por la rúbrica |
 | Análisis medioambiental | No | No | No | 10 | Opcional en la guía, comparte el criterio del 10 % con el presupuesto |
 | Pliego de condiciones técnicas | No | No | No | **No** (eliminado) | Opcional |
-| Estudio de seguridad y salud | No | No | No | 11, pendiente | Opcional |
-| Planificación temporal | No | No | III.6 | 12 | Opcional |
-| Conclusiones | 8 | 8 | III.5 | 13 | **Obligatorio** |
-| Líneas futuras | No | No | III.5 | 13.2 | Recomendado |
+| Estudio de seguridad y salud | No | No | No | **No** (eliminado 06/09) | Opcional |
+| Planificación temporal | No | No | III.6 | 11 | Opcional |
+| Conclusiones | 8 | 8 | III.5 | 12 | **Obligatorio** |
+| Líneas futuras | No | No | III.5 | 12.2 | Recomendado |
 | Referencias / bibliografía | 9 | Sí | III.7 | Sí | **Obligatorio** |
 | Anexos | I-IV | 1-4 | I-IV | A-E | Opcional |
 | Planos | Anexo I | No | III.4 + anexo | Anexo A | Opcional |
@@ -373,7 +373,7 @@ Con ese criterio, y con el recuento explícito de en cuántos ejemplos aparece c
 | # | Decisión | Estado |
 | --- | --- | --- |
 | 1 | Eliminar el capítulo de pliego de condiciones técnicas | **Aprobada** por Mario el 05/09/2026. Ningún ejemplo lo tiene y la normativa lo marca como «cuando proceda» |
-| 2 | Estudio de seguridad y salud | **Pendiente** de acordar con Julio Amador. Sin precedente en los ejemplos; opcional por norma |
+| 2 | Eliminar el capítulo de estudio de seguridad y salud | **Aprobada** por Mario el 06/09/2026, sin esperar respuesta del tutor. Ningún ejemplo lo tiene, es opcional por norma y el calendario del TFM no da margen para mantener capítulos sin precedente |
 | 3 | Toda la normativa aplicable concentrada en 2.5, en subsecciones por jerarquía | **Aprobada** el 05/09/2026 |
 | 4 | Incorporar un capítulo ligero de mantenimiento y garantías, al estilo del capítulo 7 de Fernandes | **Aprobada** el 06/09/2026. Es el cap. 8, situado antes del económico |
 | 5 | Incorporar un bloque de definiciones y expresiones matemáticas en los preliminares | **Aprobada** el 06/09/2026 |
@@ -392,5 +392,5 @@ Con ese criterio, y con el recuento explícito de en cuántos ejemplos aparece c
 | Fernandes | Punto de conexión y medida en siete subapartados y puesta a tierra como apartado propio | **No se adopta a ese nivel.** El bloqueo real no es el software —strings, sección por intensidad admisible y caída de tensión, unifilar y resistencia de tierra se calculan a mano— sino los datos de la instalación existente del CPD. Se mantiene el cálculo eléctrico manual en 6.3, que la rúbrica puntúa dentro de «Metodología» |
 | Barrios | Procedimiento de legalización en seis subapartados con plazos | **Se adopta la estructura, no los plazos cerrados.** El cap. 4 la usa como modelo, con cada plazo trazable a un artículo; los no trazables se marcan como orientativos, porque la capacidad de acceso y la titularidad de la parcela siguen abiertas |
 | Barrios | Anexo de cálculo de la subvención | **No se adopta.** Depende de una convocatoria vigente y citable; sin ella, es prematuro |
-| Barrios | Planificación temporal como capítulo | **Se mantiene** (cap. 12): coste bajo y único precedente de los tres |
+| Barrios | Planificación temporal como capítulo | **Se mantiene** (cap. 11): coste bajo y único precedente de los tres |
 | Barrios | División del documento en partes I-IV con romanos | **No se adopta.** Divergente de los otros dos y del índice propio |
