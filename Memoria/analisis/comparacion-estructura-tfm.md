@@ -197,7 +197,7 @@ en 2.5).
 general · Índice de figuras · Índice de tablas · Índice de ecuaciones · Lista de acrónimos y
 abreviaturas · Definiciones y expresiones matemáticas.
 
-**Capítulos:** 1 Introducción · 2 Estado del arte y marco normativo · 3 Análisis del emplazamiento
+**Capítulos:** 1 Introducción · 2 Marco normativo · 3 Análisis del emplazamiento
 y perfil de consumo · 4 Tipología de autoconsumo y tramitación · 5 Estudio de alternativas de
 integración · 6 Diseño e ingeniería de la solución fotovoltaica *(con 6.7 Monitorización)* ·
 7 Diseño del sistema de almacenamiento · 8 Explotación: mantenimiento y garantías · 9 Análisis
@@ -252,7 +252,7 @@ El símbolo ≈ en la columna de Diego se debe a que agrupa los cuatro índices 
 | Recurso solar y elección de BBDD meteorológica | 2.6 | 3.4 | II.4 | 3.3 | **Obligatorio** (idem) |
 | Datos económicos de partida / tarifa | No | 3.3 | II.4 (precios) | 3.5 | Recomendado |
 | Restricciones (viento, cubierta, ambientales) | No | 3.5-3.6 | II.3.1 | 3.6 | Opcional |
-| **Estado del arte / tecnologías FV** | **No** | **No** | **No** | **2** | **No mencionado** |
+| **Estado del arte / tecnologías FV** | **No** | **No** | **No** | **No** (repartido 06/09: BIPV/BAPV→5.1, tecnologías FV→6.1, almacenamiento→7.2, PUE→3.2/1.2) | **No mencionado** |
 | Tipología de autoconsumo | 3.5.1 | 4.1 | II.7 | 4.1 | Recomendado |
 | Tramitación y legalización | No | 4.2 | II.6 | 4.2-4.3 | Recomendado |
 | Estudio de alternativas / propuestas | 3.3 | 5.1 | II.8 | 5 | **Obligatorio** (análisis de resultados) |
@@ -338,7 +338,7 @@ Con ese criterio, y con el recuento explícito de en cuántos ejemplos aparece c
 
 | Elemento | Ejemplos que lo tienen | Comentario |
 | --- | --- | --- |
-| **Capítulo 2 de estado del arte** (tecnologías FV, BIPV/BAPV, almacenamiento, PUE) | Ninguno | Es la mayor divergencia estructural. Ningún TFM de referencia lo tiene, pero tampoco la guía lo prohíbe: es contenido de máster, y aporta el marco conceptual que los ejemplos dan por sabido. **Riesgo a vigilar:** con 150 páginas de tope y un capítulo 7 de almacenamiento que es el núcleo del trabajo, un estado del arte largo se come el presupuesto de páginas. Conviene acotarlo. |
+| ~~Capítulo 2 de estado del arte~~ (tecnologías FV, BIPV/BAPV, almacenamiento, PUE) | Ninguno | **Eliminado el 06/09/2026 como bloque independiente.** Era la mayor divergencia estructural y el mayor riesgo de página con el tope de 150. En vez de acotarlo, se repartió cada pieza al capítulo donde justifica una decisión real (BIPV/BAPV→5.1, tecnologías FV→6.1, almacenamiento→7.2, PUE→3.2/1.2), siguiendo el mismo patrón que los tres ejemplos: ninguno explica tecnología en abstracto, la justifican en el punto de la decisión. |
 | **Capítulo de análisis medioambiental** (hoy cap. 10) | Ninguno | La guía lo contempla como «estudio ambiental (EIA o/y LCA)» entre los apartados opcionales, y la rúbrica del tribunal lo puntúa dentro del criterio del 10 % «Marco socio-económico y medioambiental / Marco Normativo». Como ese criterio se satisface con el presupuesto «y/o» el impacto ambiental, el capítulo **refuerza la nota pero no la sostiene**: por eso se acota a 6-8 páginas, 3 tablas y 1 figura, con evaluación simplificada por factores de emisión y sin software de ACV. |
 | **Criticidad y restricciones de operación del CPD** (3.2: redundancia, SAI) | Ninguno | Aportación propia: ningún ejemplo trata una carga crítica 24/7. Es lo que diferencia este TFM. |
 | **Abstract en inglés + keywords** | Ninguno | No lo pide la guía y son redundantes con el resumen y las palabras clave en español, que son los exigidos. **Eliminados el 06/09/2026.** |
@@ -382,7 +382,7 @@ Con ese criterio, y con el recuento explícito de en cuántos ejemplos aparece c
 | 8 | Eliminar el abstract y las keywords en inglés | **Aprobada** el 06/09/2026 |
 | 9 | No incorporar declaración de autoría | **Aprobada** el 06/09/2026, verificada contra el texto de los dos documentos oficiales |
 | 10 | Acotar el capítulo medioambiental a 6-8 páginas con evaluación simplificada, sin ACV | **Aprobada** el 06/09/2026, con seis secciones desarrolladas en el índice |
-| 11 | Acotar la extensión del capítulo 2 de estado del arte por el tope de 150 páginas | **Pendiente**: el estado del arte se mantiene (decisión de Mario), falta fijar el número de páginas |
+| 11 | Acotar la extensión del capítulo 2 de estado del arte por el tope de 150 páginas | **Superada** el 06/09/2026: en vez de acotarlo, se elimina como capítulo independiente y se reparte su contenido en los caps. 1, 3, 5, 6 y 7. El cap. 2 queda reducido a «Marco normativo» |
 
 ## 7. Elementos únicos de cada ejemplo: qué se adopta y qué no (06/09/2026)
 
