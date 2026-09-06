@@ -1,6 +1,6 @@
 ---
 name: project-colmenar-viejo-suelo-no-urbanizable-1987
-description: "La subparcela de V3 esta confirmada en termino de Colmenar Viejo (Catastro); su planeamiento (Modificacion del Plan General, Titulo 5, 1987) tiene un mecanismo de utilidad publica/interes social para FV en suelo Comun, con reservas criticas sin resolver"
+description: "V3 confirmada en Colmenar Viejo; su plan de 1987 clasifica en N/P, y la Disposicion Transitoria 1a de la Ley 9/2001 (verificada en BOE) reinterpreta N como urbanizable no sectorizado -> abre el art 26.1.c si la subparcela es N; parque regional y Red Natura descartados geograficamente; falta saber si es N o P"
 metadata:
   type: project
 ---
@@ -53,7 +53,40 @@ A diferencia de la lista tasada del art. 29.3 de la Ley 9/2001 actual (sin FV, v
 [[project-suelo-agrario-fv-ley9-2001]] en la memoria de proyecto), esta vía de "utilidad pública o
 interés social" en Suelo No Urbanizable Común **no es una lista cerrada**.
 
-## Tres reservas críticas — NO dar el hallazgo por concluyente
+## ACTUALIZACIÓN 06/09/2026 (noche) — dos de las cuatro reservas resueltas
+
+**Derecho transitorio [RESUELTO]:** leí directamente el texto consolidado del BOE de la Ley
+9/2001 (descargado completo, 139 páginas) y encontré la **Disposición Transitoria Primera**
+(p. 135): *"[...] c) Al suelo urbanizable no programado y al suelo no urbanizable común se les
+aplicará el régimen establecido en la presente Ley para el suelo urbanizable no sectorizado. [...]
+d) Al suelo no urbanizable especialmente protegido se le aplicará el régimen [...] para el suelo
+no urbanizable de protección."* Esto significa que el antiguo **Suelo No Urbanizable Común (N) se
+reinterpreta como "urbanizable no sectorizado"**, NO como "no urbanizable de protección". Si la
+subparcela de V3 es N, el **art. 26.1.c de la Ley 9/2001 sí le aplica** (generación FV para
+autoconsumo, habilitable por calificación urbanística) — ya no depende solo de la vía, más débil,
+del art. 43.3 LS. También verifiqué la Disposición Transitoria Tercera (p. 135): los planes ya
+aprobados definitivamente mantienen su vigencia.
+
+**Afección de espacios protegidos [RESUELTO, con matiz]:** consulté los 5 puntos (centroide + 4
+esquinas del rectángulo envolvente) contra los servicios WMS oficiales del IEPNB — capa `enp_2024`
+(`https://geoserver-des.iepnb.es/geoserver/ENP/wms`) y capa `rn2000`
+(`https://geoserver.iepnb.es/geoserver/RN2000/wms`) — con control de sanidad positivo en La
+Pedriza (que sí devolvió el Parque Regional y la ZEC "Cuenca del río Manzanares"). **Los 5 puntos
+de la parcela V3 dan resultado negativo en las dos capas: no está en el Parque Regional de la
+Cuenca Alta del Manzanares ni en Red Natura 2000.** Matiz: solo 5 puntos del rectángulo envolvente,
+no el contorno completo del polígono; no comprobé vías pecuarias (no localicé el servicio WMS
+correspondiente de la CM) ni el criterio general 2 del Anexo III de la Ley 21/2013
+(infraestructura verde).
+
+## Conclusión reformulada tras esta actualización
+
+El pendiente crítico nº1 de este hallazgo (clasificación N/P real de la subparcela, ver planos de
+zonificación 1:10.000 no localizados) es ahora, con diferencia, **el dato más importante de todo
+el análisis de V3**: con el derecho transitorio ya resuelto a favor de N→art.26.1.c, y con la
+protección especial por espacio protegido descartada geográficamente, solo falta saber si la
+subparcela concreta es N o P para determinar si la vía FV está abierta o cerrada.
+
+## Tres reservas críticas originales (dos ya resueltas arriba) — NO dar el hallazgo por concluyente
 
 1. **No sé si las subparcelas concretas** ("Arroyo del Buitre" polígono 45 parcelas 47 y 18 en
    polígono 43 parcela 188, "El Olivo" parcela 213, "La Vencosilla" parcela 74) son **N (Común)**
