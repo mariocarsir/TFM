@@ -39,36 +39,43 @@ control de originalidad se resuelve con Turnitin.
 
 1.1. Contexto y motivación
 1.2. Justificación: actualidad del tema y Objetivo de Desarrollo Sostenible (ODS) al que contribuye **[+]**
+
+*(Incluye la tendencia regulatoria como argumento de actualidad: proyecto de RD de centros de
+datos del MITECO —audiencia pública, no exigible todavía— que fija 80 % renovable hora a hora y
+PUE ≤ 1,15. Trasladado aquí el 06/09/2026 al eliminarse el capítulo de estado del arte; no es
+derecho vigente, así que no entra en el cap. 2 de normativa aplicable.)*
+
 1.3. Objetivos del proyecto
 1.4. Alcance del trabajo
 1.5. Emplazamiento: ubicación del CPD (dirección/referencia catastral, coordenadas UTM) **[+]**
 1.6. Metodología **[+]**
 
-## 2. Estado del arte y marco normativo
+## 2. Marco normativo **[+ renombrado 06/09/2026, ya no «Estado del arte y marco normativo»]**
 
-2.1. Tecnologías de generación solar fotovoltaica
-2.2. Integración arquitectónica: BIPV frente a BAPV
-2.3. Almacenamiento electroquímico aplicado a autoconsumo **[+]**
-2.4. Eficiencia energética en CPDs: métrica PUE
-  — incluye la tendencia regulatoria: proyecto de RD de centros de datos del MITECO (audiencia
-  pública, no exigible todavía), que fija 80 % renovable hora a hora y PUE ≤ 1,15 **[+]**
-2.5. Normativa aplicable **[+ reformulado]**
+*(Capítulo reducido a la sola normativa aplicable. El estado del arte técnico que antes ocupaba
+2.1-2.4 se elimina como bloque independiente y se reparte donde justifica una decisión real —
+ver tabla en «Cambios del 6 de septiembre de 2026, segunda ronda» más abajo. Ningún TFM de
+referencia dedica un capítulo a estado del arte; este reparto sigue su mismo patrón.)*
 
 *(La normativa NO se cita con `\cite` ni figura en el capítulo de Referencias: se relaciona aquí
 de forma completa, al modo del apartado 1.4 de `TFM-MAD9_signed.pdf`, con título completo, qué
 regula y cómo aplica a este proyecto. En el cuerpo del texto se menciona en forma larga la
 primera vez y en forma corta a partir de la segunda.)*
 
-2.5.1. Marco europeo
-2.5.2. Normativa estatal con rango de ley
-2.5.3. Normativa estatal de rango reglamentario
-2.5.4. Normativa autonómica y local
-2.5.5. Normas técnicas de referencia
+2.1. Marco europeo
+2.2. Normativa estatal con rango de ley
+2.3. Normativa estatal de rango reglamentario
+2.4. Normativa autonómica y local
+2.5. Normas técnicas de referencia
 
 ## 3. Análisis del emplazamiento y perfil de consumo
 
 3.1. Descripción del edificio: CPD Madrid
 3.2. Criticidad y restricciones de operación del CPD: redundancia y SAIs **[+]**
+
+*(Incorpora aquí la métrica PUE como característica operativa propia del CPD —definición y
+valor propio, si se dispone de él—, trasladada desde el antiguo cap. 2.4 el 06/09/2026: es un
+dato del emplazamiento, no teoría general.)*
 3.3. Recurso solar: elección y contraste de bases de datos meteorológicas **[+ ampliado]**
 3.4. Determinación del perfil horario de consumo
 3.5. Datos económicos de partida: tarifa de acceso y periodos **[+]**
@@ -83,12 +90,20 @@ primera vez y en forma corta a partir de la segunda.)*
 ## 5. Estudio de alternativas de integración
 
 5.1. Definición de escenarios y tecnologías
+
+*(Incorpora aquí la comparativa BIPV frente a BAPV, trasladada desde el antiguo cap. 2.2 el
+06/09/2026: es literalmente una alternativa de integración, con función real en la comparación
+en vez de quedar como teoría general previa.)*
+
 5.2. Criterios de evaluación **[+]**
 5.3. Selección de la solución óptima
 
 ## 6. Diseño e ingeniería de la solución fotovoltaica
 
 6.1. Selección de componentes: módulos, inversores y estructura **[+]**
+
+*(Incorpora aquí, a modo de justificación breve antes de elegir módulo concreto, el panorama de
+tecnologías de generación FV trasladado desde el antiguo cap. 2.1 el 06/09/2026.)*
 6.2. Dimensionado del campo generador: cálculo de strings y ratio DC/AC **[+ ampliado]**
 6.3. Cálculos eléctricos y esquema unifilar
 6.4. Simulación en PVsyst: pérdidas detalladas y diagrama de pérdidas **[+]**
@@ -105,6 +120,11 @@ la producción real contra la simulada.)*
 
 7.1. Justificación y criterios de dimensionado
 7.2. Selección de la tecnología de baterías
+
+*(Incorpora aquí el panorama de almacenamiento electroquímico trasladado desde el antiguo
+cap. 2.3 el 06/09/2026, como justificación de la química elegida y no como teoría general
+previa.)*
+
 7.3. Estrategia de gestión: carga y descarga por periodos tarifarios
 7.4. Modelo horario anual y degradación
 7.5. Comparativa de resultados con y sin almacenamiento
@@ -237,8 +257,24 @@ referencia lo incluye, es opcional por normativa ERMA, y el calendario del TFM n
 mantener capítulos sin precedente y sin urgencia. Renumeración: planificación 12 → 11,
 conclusiones 13 → 12.
 
-### Propuestas que siguen abiertas
+**Tercera decisión del mismo día — capítulo 2 reducido a marco normativo:** en vez de acotar en
+páginas el antiguo capítulo de estado del arte, se elimina como bloque independiente y se reparte
+su contenido donde justifica una decisión real, siguiendo el mismo patrón que los tres TFM de
+referencia (ninguno dedica un capítulo a explicar tecnología en general; la explican en el punto
+donde toca decidir algo con ella):
 
-| Propuesta | Origen |
-| --- | --- |
-| Acotar la extensión del cap. 2 por el tope de 150 páginas | Ningún ejemplo tiene estado del arte; es la mayor divergencia propia |
+| Contenido (antiguo cap. 2) | Nuevo destino | Motivo |
+| --- | --- | --- |
+| 2.2 Integración arquitectónica: BIPV frente a BAPV | 5.1, Estudio de alternativas | Es literalmente una alternativa de integración |
+| 2.1 Tecnologías de generación solar FV | 6.1, Selección de componentes | Justifica la elección de módulo, no la antecede en abstracto |
+| 2.3 Almacenamiento electroquímico | 7.2, Selección de la tecnología de baterías | Misma lógica: justifica la química elegida |
+| 2.4 Métrica PUE + tendencia regulatoria MITECO | 1.2 Justificación (la tendencia regulatoria) y 3.2 Criticidad del CPD (la métrica como dato operativo propio) | El PUE es una característica operativa del CPD, no teoría general; la tendencia regulatoria es argumento de actualidad del tema |
+
+El capítulo 2 pasa a llamarse «Marco normativo» y su contenido (antes 2.5.1-2.5.5) sube un nivel
+a 2.1-2.5. Reduce el riesgo de página que señalaba la propuesta anterior sin perder ningún
+contenido: cada pieza queda pegada a la decisión que justifica, con más fuerza argumental que
+como bloque de cultura general aislado.
+
+**Consecuencia pendiente de aplicar en la redacción:** el objetivo específico del capítulo 1 que
+dice «Analizar el estado del arte de las tecnologías... así como el marco normativo aplicable»
+debe reformularse cuando se redacte, para no prometer un capítulo que ya no existe como tal.
