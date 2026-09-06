@@ -14,16 +14,26 @@ descripción, cálculos, conclusiones, referencias) → anexos. Límite: 150 pá
 ## Preliminares
 
 - Portada (plantilla oficial `Plantillas/Portada TFM.docx`)
-- Portada de firmas
 - Agradecimientos
 - Resumen + palabras clave
 - Códigos UNESCO **[+]**
-- Abstract + keywords
 - Índice general
 - Índice de figuras
 - Índice de tablas
 - Índice de ecuaciones
 - Lista de acrónimos y abreviaturas
+- Definiciones y expresiones matemáticas **[+ 06/09/2026]**
+
+*(Bloque tomado de Fernandes: define de antemano y numeradas las expresiones que luego se usan
+—Performance Ratio, LCOE, VAN, TIR, payback, grado de autoconsumo, autosuficiencia,
+participación de la batería, degradación—, de modo que el cuerpo del texto las invoque sin
+volver a deducirlas. Alimenta el índice de ecuaciones.)*
+
+**Eliminados el 06/09/2026:** *portada de firmas* (no la pide la normativa ERMA, no la lleva
+ningún TFM de referencia y la entrega es con firma digital sobre el PDF) y *abstract + keywords
+en inglés* (redundantes con el resumen y las palabras clave en español, que sí son los exigidos).
+La *declaración de autoría* no se incorpora: ni la normativa ni la guía ERMA la mencionan; el
+control de originalidad se resuelve con Turnitin.
 
 ## 1. Introducción
 
@@ -84,6 +94,12 @@ primera vez y en forma corta a partir de la segunda.)*
 6.4. Simulación en PVsyst: pérdidas detalladas y diagrama de pérdidas **[+]**
 6.5. Producción esperada: Performance Ratio, P50 y P90 **[+]**
 6.6. Análisis del grado de autoconsumo y autosuficiencia
+6.7. Monitorización y verificación del rendimiento **[+ 06/09/2026]**
+
+*(Sección, no capítulo. Fernandes le dedica un capítulo entero (cap. 4) y Barrios un subapartado
+(5.5); en un CPD, donde ya existe supervisión propia 24/7, encaja como sección del diseño:
+magnitudes registradas, integración con los sistemas del CPD y uso de los datos para contrastar
+la producción real contra la simulada.)*
 
 ## 7. Diseño del sistema de almacenamiento **[+ capítulo nuevo — núcleo del TFM]**
 
@@ -93,38 +109,62 @@ primera vez y en forma corta a partir de la segunda.)*
 7.4. Modelo horario anual y degradación
 7.5. Comparativa de resultados con y sin almacenamiento
 
-## 8. Análisis económico
+## 8. Explotación: mantenimiento y garantías **[+ capítulo nuevo 06/09/2026]**
 
-8.1. Mediciones y presupuesto detallado **[+ ampliado]**
-8.2. Hipótesis de partida: costes, ahorros e incentivos fiscales **[+]**
-8.3. Escenarios de evolución del precio de la electricidad **[+]**
-8.4. Rentabilidad: VAN, TIR, payback y LCOE **[+ LCOE]**
-8.5. Análisis de sensibilidad **[+]**
+*(Capítulo ligero, 3-4 páginas, al estilo del cap. 7 de Fernandes: dos tablas y poco más. Es el
+sustituto natural del pliego de condiciones eliminado. Se coloca **antes** del análisis económico
+porque el plan de mantenimiento y los periodos de garantía son entradas del modelo: fijan el
+OPEX anual y la hipótesis de reposición de la batería al agotarse su garantía.)*
 
-## 9. Análisis medioambiental
+8.1. Plan de mantenimiento preventivo y correctivo: tareas y periodicidad
+8.2. Garantías por equipo: producto, rendimiento y plazos
+8.3. Recomendaciones de explotación en un entorno crítico 24/7
 
-9.1. Huella de carbono y emisiones evitadas
-9.2. Fin de vida y reciclaje de módulos y baterías **[+]**
+## 9. Análisis económico
 
-## 10. Estudio de seguridad y salud — PENDIENTE DE ACORDAR CON EL TUTOR
+9.1. Mediciones y presupuesto detallado **[+ ampliado]**
+9.2. Hipótesis de partida: costes, ahorros e incentivos fiscales **[+]**
+9.3. Escenarios de evolución del precio de la electricidad **[+]**
+9.4. Rentabilidad: VAN, TIR, payback y LCOE **[+ LCOE]**
+9.5. Análisis de sensibilidad **[+]**
+
+## 10. Análisis medioambiental
+
+*(Alcance acotado a 6-8 páginas, 3 tablas y 1 figura, sin software de ACV. Justificación: la guía
+ERMA lo sitúa entre los apartados opcionales, pero la rúbrica del tribunal
+(`Normativa TFM/Rúbrica Tribunal TFM ERMA_v1.pdf`) puntúa al 10 % el criterio «Marco
+socio-económico y medioambiental / Marco Normativo», que el presupuesto del cap. 9 ya cubre por
+sí solo: este capítulo refuerza ese criterio, no lo sostiene.)*
+
+10.1. Alcance y método: evaluación simplificada con factores de emisión publicados, no una ACV completa **[+ 06/09/2026]**
+10.2. Emisiones evitadas durante la explotación
+10.3. Huella de carbono incorporada de la instalación: módulos, inversores y baterías **[+ 06/09/2026]**
+10.4. Balance neto: tiempo de retorno energético y de carbono **[+ 06/09/2026]**
+10.5. Fin de vida y reciclaje de módulos y baterías **[+]**
+10.6. Contribución al ODS y encaje con la huella del CPD **[+ 06/09/2026]**
+
+*(La normativa de residuos y de baterías que aparezca en 10.5 se relaciona en el apartado 2.5,
+no se cita con `\cite`.)*
+
+## 11. Estudio de seguridad y salud — PENDIENTE DE ACORDAR CON EL TUTOR
 
 *(La normativa ERMA lo sitúa entre los apartados «cuando proceda», es decir, opcional, y ninguno
 de los tres TFM de referencia lo incluye — ver `Memoria/analisis/comparacion-estructura-tfm.md`.
 Se mantiene en el índice a la espera de que Julio Amador confirme si lo espera.)*
 
-10.1. Identificación de riesgos en fase de diseño y montaje
-10.2. Medidas preventivas y de protección
-10.3. Plan de seguridad básico
+11.1. Identificación de riesgos en fase de diseño y montaje
+11.2. Medidas preventivas y de protección
+11.3. Plan de seguridad básico
 
-## 11. Planificación temporal **[+ capítulo nuevo]**
+## 12. Planificación temporal **[+ capítulo nuevo]**
 
 *(Puede degradarse a sección de otro capítulo si el volumen no lo justifica. Único precedente:
 Barrios, cap. III.6.)*
 
-## 12. Conclusiones y líneas futuras
+## 13. Conclusiones y líneas futuras
 
-12.1. Conclusiones
-12.2. Líneas futuras **[+]**
+13.1. Conclusiones
+13.2. Líneas futuras **[+]**
 
 ## Referencias
 
@@ -151,12 +191,12 @@ genérica debe quedar cubierta en algún punto del documento:
 |---|---|
 | Introducción (objetivo, alcance, justificación, emplazamiento, antecedentes, normas) | Cap. 1, con las subsecciones 1.1-1.6 (emplazamiento/ODS/metodología) |
 | Requisitos y datos de partida | Cap. 2 (normativa aplicable) + Cap. 3 (emplazamiento, consumo, recurso solar, restricciones) |
-| Metodología y cálculos (hipótesis, procedimientos, herramientas) | Cap. 5-9, con PVsyst y Excel como herramientas de cálculo documentadas en el CLAUDE.md |
-| Presentación y análisis de resultados | Secciones de resultados de los caps. 6, 7, 8 y 9 |
-| Pliego de condiciones técnicas | **Eliminado** (05/09/2026): opcional por normativa y sin precedente en ninguno de los tres TFM de referencia |
-| Estudio de seguridad y salud | Cap. 10, pendiente de acordar con el tutor |
-| Planificación (si aplica) | Cap. 11 (puede degradarse a sección si el volumen no lo justifica) |
-| Conclusiones | Cap. 12 — debe seguir las reglas de la guía: correspondencia 1:1 con alcances/resultados relevantes, sin elementos nuevos ni gráficas/tablas, no es un resumen, redacción clara y rigurosa |
+| Metodología y cálculos (hipótesis, procedimientos, herramientas) | Cap. 5-10, con PVsyst y Excel como herramientas de cálculo documentadas en el CLAUDE.md |
+| Presentación y análisis de resultados | Secciones de resultados de los caps. 6, 7, 9 y 10 |
+| Pliego de condiciones técnicas | **Eliminado** (05/09/2026): opcional por normativa y sin precedente en ninguno de los tres TFM de referencia. Su función la asume, en versión ligera, el cap. 8 de mantenimiento y garantías |
+| Estudio de seguridad y salud | Cap. 11, pendiente de acordar con el tutor |
+| Planificación (si aplica) | Cap. 12 (puede degradarse a sección si el volumen no lo justifica) |
+| Conclusiones | Cap. 13 — debe seguir las reglas de la guía: correspondencia 1:1 con alcances/resultados relevantes, sin elementos nuevos ni gráficas/tablas, no es un resumen, redacción clara y rigurosa |
 | Referencias | Capítulo "Referencias" (IEEEtran, compatible con el formato "número entre corchetes" que acepta la guía) |
 | Anexos | Anexos A-E |
 
@@ -168,7 +208,7 @@ genérica debe quedar cubierta en algún punto del documento:
 | Nuevo cap. 4 de tramitación | Presente en los dos ejemplos; el tribunal espera el recorrido administrativo (modalidad, CAU, punto de acceso). |
 | Cap. 6 desdoblado y ampliado | El preliminar cerraba dimensionado y producción en 3 secciones; se añade el rigor de simulación (pérdidas, PR, P50/P90) que ambos ejemplos documentan. |
 | Cap. 3 ampliado | Se incorporan restricciones estructurales (viento, cubierta), elección de BBDD meteorológica y datos económicos de partida, todo tomado de Arcas. |
-| Cap. 8 ampliado | Se añaden mediciones, incentivos fiscales, escenarios de precio, LCOE y sensibilidad (Barrios + Arcas). |
+| Cap. de análisis económico ampliado (hoy cap. 9) | Se añaden mediciones, incentivos fiscales, escenarios de precio, LCOE y sensibilidad (Barrios + Arcas). |
 | Nuevos caps. 1.2, 1.5 (emplazamiento/ODS) | Exigencia normativa ERMA: localización formal con referencia catastral/UTM y justificación con Objetivos de Desarrollo Sostenible. |
 | Sección 3.2 (criticidad del CPD) | Aportación propia: ningún ejemplo trata una carga crítica 24/7; es lo que diferencia este TFM y condiciona el dimensionado de baterías. |
 
@@ -186,12 +226,24 @@ normativa.
 | **2.5 pasa de «Marco normativo y regulatorio» a «Normativa aplicable»**, con cinco subsecciones por jerarquía | La normativa no se cita con `\cite` ni aparece en Referencias: se relaciona completa en una sección propia al modo del apartado 1.4 de Fernandes. |
 | El proyecto de RD de centros de datos del MITECO se traslada a 2.4 | No es derecho vigente (audiencia pública), así que no cabe en «Normativa aplicable»; como tendencia regulatoria sobre el PUE justifica el enfoque del TFM. |
 
-### Propuestas abiertas tras la comparación
+## Cambios del 6 de septiembre de 2026
+
+Todas las propuestas que quedaron abiertas el día anterior están resueltas.
+
+| Cambio | Motivo |
+| --- | --- |
+| **Eliminada la portada de firmas** | No la pide la normativa ERMA ni la guía, no la lleva ninguno de los tres TFM de referencia y la entrega es con firma digital sobre el PDF |
+| **Eliminados el abstract y las keywords en inglés** | Redundantes con el resumen y las palabras clave en español, que son los que exige la normativa. Tampoco los menciona la guía ni los lleva ningún ejemplo |
+| **Descartada la declaración de autoría** | Ni la normativa ERMA ni la guía la mencionan (verificado sobre el texto completo de ambos PDF); el control de originalidad se resuelve con Turnitin |
+| **Incorporado el bloque «Definiciones y expresiones matemáticas»** a los preliminares | Fernandes; define de antemano PR, LCOE, VAN, TIR, payback, autosuficiencia y participación de la batería. Alimenta el índice de ecuaciones ya previsto |
+| **Nuevo cap. 8, Explotación: mantenimiento y garantías** | Fernandes cap. 7; sustituto ligero del pliego eliminado. Se sitúa antes del análisis económico porque el OPEX y la reposición de batería son entradas del modelo |
+| **Monitorización incorporada como sección 6.7**, no como capítulo | Fernandes cap. 4 y Barrios 5.5. En un CPD con supervisión propia 24/7 no da para capítulo |
+| Renumeración: económico 8 → 9; medioambiental 9 → 10; seguridad y salud 10 → 11; planificación 11 → 12; conclusiones 12 → 13 | Consecuencia del nuevo cap. 8 |
+| **Cap. 10 desarrollado y acotado** a seis secciones, 6-8 páginas, sin software de ACV | La rúbrica del tribunal puntúa al 10 % el criterio «Marco socio-económico y medioambiental / Marco Normativo», que el presupuesto del cap. 9 ya cubre. El ambiental refuerza, no sostiene |
+
+### Propuestas que siguen abiertas
 
 | Propuesta | Origen |
 | --- | --- |
-| Capítulo ligero de mantenimiento y garantías | Fernandes cap. 7; sustituto natural del pliego eliminado |
-| Bloque de definiciones y expresiones matemáticas en los preliminares | Fernandes, «Definiciones y expresiones matemáticas» (11 ecuaciones) |
-| Monitorización como sección del cap. 6, no como capítulo | Fernandes cap. 4 y Barrios 5.5 |
 | Acotar la extensión del cap. 2 por el tope de 150 páginas | Ningún ejemplo tiene estado del arte; es la mayor divergencia propia |
-| Revisar si la portada de firmas debe mantenerse | No la pide la guía ERMA y ningún ejemplo la lleva |
+| Confirmar con Julio Amador si espera el estudio de seguridad y salud (cap. 11) | Opcional por normativa y sin precedente en los tres ejemplos |

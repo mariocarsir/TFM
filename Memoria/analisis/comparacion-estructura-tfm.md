@@ -84,6 +84,32 @@ de referencia incluyan análisis económico es una convención del sector, no un
 **Lo que la guía no menciona en ningún sitio:** abstract en inglés, portada de firmas, índice de
 ecuaciones como elemento separado (lo engloba en «Índice de:») y declaración de autoría.
 
+Sobre la **declaración de autoría** —página firmada en la que el autor declara que el trabajo es
+original y propio, que toda fuente ajena está citada y que no se ha presentado antes para otro
+título—: se buscaron los términos «declaración», «autoría», «originalidad» y «plagio» en el texto
+completo de los dos documentos oficiales y **solo aparece una mención, que no exige declaración
+alguna**: «El Máster ERMA comprobará la originalidad de la memoria del TFM entregada con el
+programa Turnitin […] Será responsabilidad del estudiante […] minimizar el grado de coincidencia
+con otros documentos y fuentes bibliográficas». No se incorpora.
+
+### 1.3 La rúbrica del tribunal
+
+`Normativa TFM/Rúbrica Tribunal TFM ERMA_v1.pdf` reparte 20 % en aspectos formales, 55 % en
+contenidos y 25 % en la defensa. Dos criterios condicionan decisiones de estructura:
+
+- **«Marco socio-económico y medioambiental / Marco Normativo», 10 %**, con la indicación «poner
+  NP cuando no proceda ninguno de ellos». Para la máxima puntuación pide «un presupuesto detallado
+  en todos los conceptos **y/o** un impacto socio-económico o medioambiental bien justificados», y
+  que la solución «tenga en cuenta todos los aspectos de la normativa y regulación aplicables».
+  La conjunción «y/o» es la clave: el presupuesto del capítulo económico **ya cubre el criterio por
+  sí solo**, así que el capítulo medioambiental refuerza la nota pero no la sostiene. De ahí que se
+  acote su extensión.
+- **«Metodología empleada», 10 %**, que valora que «se valoran alternativas». Respalda el capítulo
+  de estudio de alternativas y el cálculo eléctrico manual del capítulo de diseño.
+
+Esto matiza el apartado 1.2: análisis económico y ambiental son formalmente opcionales en la guía,
+pero el tribunal los puntúa explícitamente.
+
 ---
 
 ## 2. Estructura extraída de cada TFM de referencia
@@ -165,16 +191,18 @@ Según `Memoria/indice_propuesto.md`, ya con las decisiones del 5 de septiembre 
 incorporadas (capítulo de pliego eliminado, seguridad y salud pendiente de acordar con el tutor,
 normativa concentrada en 2.5).
 
-**Preliminares:** Portada · Portada de firmas · Agradecimientos · Resumen + palabras clave ·
-Códigos UNESCO · Abstract + keywords · Índice general · Índice de figuras · Índice de tablas ·
-Índice de ecuaciones · Lista de acrónimos y abreviaturas.
+*Actualizado el 06/09/2026 con las decisiones de esa fecha.*
+
+**Preliminares:** Portada · Agradecimientos · Resumen + palabras clave · Códigos UNESCO · Índice
+general · Índice de figuras · Índice de tablas · Índice de ecuaciones · Lista de acrónimos y
+abreviaturas · Definiciones y expresiones matemáticas.
 
 **Capítulos:** 1 Introducción · 2 Estado del arte y marco normativo · 3 Análisis del emplazamiento
 y perfil de consumo · 4 Tipología de autoconsumo y tramitación · 5 Estudio de alternativas de
-integración · 6 Diseño e ingeniería de la solución fotovoltaica · 7 Diseño del sistema de
-almacenamiento · 8 Análisis económico · 9 Análisis medioambiental · 10 Estudio de seguridad y
-salud *(pendiente de aprobación del tutor)* · 11 Planificación temporal · 12 Conclusiones y
-líneas futuras.
+integración · 6 Diseño e ingeniería de la solución fotovoltaica *(con 6.7 Monitorización)* ·
+7 Diseño del sistema de almacenamiento · 8 Explotación: mantenimiento y garantías · 9 Análisis
+económico · 10 Análisis medioambiental · 11 Estudio de seguridad y salud *(pendiente de
+aprobación del tutor)* · 12 Planificación temporal · 13 Conclusiones y líneas futuras.
 
 **Cierre:** Referencias · Anexos A Planos · B Fichas técnicas de los equipos · C Informe de
 simulación PVsyst · D Flujos de caja · E Modelo de gestión del almacenamiento.
@@ -191,20 +219,21 @@ posición. Estatus normativo según el apartado 1.
 | Elemento | Diego | Arcas | Barrios | Propio | Estatus normativo |
 | --- | --- | --- | --- | --- | --- |
 | Portada según plantilla | Sí | Sí | Sí | Sí | **Obligatorio** |
-| Portada de firmas | No | No | No | Sí | No mencionado |
+| Portada de firmas | No | No | No | **No** (eliminada 06/09) | No mencionado |
 | Agradecimientos | No | No | Sí | Sí | Opcional |
 | Resumen | Sí | **No** | Sí | Sí | **Obligatorio** |
 | Palabras clave | No | No | Sí | Sí | Opcional |
-| Abstract en inglés | No | No | No | Sí | No mencionado |
-| *Keywords* | No | No | No | Sí | No mencionado |
+| Abstract en inglés | No | No | No | **No** (eliminado 06/09) | No mencionado |
+| *Keywords* | No | No | No | **No** (eliminadas 06/09) | No mencionado |
 | Códigos UNESCO | No | No | No | Sí | Opcional |
 | Índice general | Sí | Sí | Sí | Sí | **Obligatorio** |
 | Índice de figuras / ilustraciones | ≈ | Sí | Sí (al final) | Sí | **Obligatorio** (bloque) |
 | Índice de tablas | ≈ | Sí | Sí (al final) | Sí | **Obligatorio** (bloque) |
 | Índice de ecuaciones | ≈ | No | No | Sí | Recomendado |
 | Lista de acrónimos / abreviaturas | ≈ | **No** | Sí (al final) | Sí | Recomendado |
+| Definiciones y expresiones matemáticas | Sí | No | No | **Sí** (incorporado 06/09) | No mencionado |
 | Lista de unidades y definiciones | ≈ | No | Sí | No | No mencionado |
-| Declaración de autoría | No | No | No | No | No mencionado |
+| Declaración de autoría | No | No | No | No (descartada 06/09) | No mencionado |
 
 El símbolo ≈ en la columna de Diego se debe a que agrupa los cuatro índices bajo el epígrafe
 «LISTADO DE REFERENCIAS Y PARÁMETROS», con «DEFINICIONES Y EXPRESIONES MATEMÁTICAS» incluido.
@@ -232,15 +261,15 @@ El símbolo ≈ en la columna de Diego se debe a que agrupa los cuatro índices 
 | Simulación PVsyst | 3.3.1 | 5.2-5.3 | II.4 | 6.4-6.5 | **Obligatorio** (idem) |
 | Autoconsumo y autosuficiencia | 5.3 | 5.3 | II.7 | 6.6 | **Obligatorio** (resultados) |
 | Sistema de almacenamiento | 3.3.6 | 6 | No | 7 | **Obligatorio** aquí (está en el título del TFM) |
-| Análisis económico | 6 | 7 | II.9 | 8 | Opcional |
-| Análisis medioambiental | No | No | No | 9 | Opcional |
-| **Monitorización** | **4** | No | 5.5 | **No** | No mencionado |
-| **Mantenimiento y garantías** | **7** | No | No | **No** | No mencionado |
+| **Monitorización** | **4** | No | 5.5 | **6.7** (incorporado 06/09) | No mencionado |
+| **Mantenimiento y garantías** | **7** | No | No | **8** (incorporado 06/09) | No mencionado |
+| Análisis económico | 6 | 7 | II.9 | 9 | Opcional en la guía, **puntuado al 10 %** por la rúbrica |
+| Análisis medioambiental | No | No | No | 10 | Opcional en la guía, comparte el criterio del 10 % con el presupuesto |
 | Pliego de condiciones técnicas | No | No | No | **No** (eliminado) | Opcional |
-| Estudio de seguridad y salud | No | No | No | Pendiente | Opcional |
-| Planificación temporal | No | No | III.6 | 11 | Opcional |
-| Conclusiones | 8 | 8 | III.5 | 12 | **Obligatorio** |
-| Líneas futuras | No | No | III.5 | 12.2 | Recomendado |
+| Estudio de seguridad y salud | No | No | No | 11, pendiente | Opcional |
+| Planificación temporal | No | No | III.6 | 12 | Opcional |
+| Conclusiones | 8 | 8 | III.5 | 13 | **Obligatorio** |
+| Líneas futuras | No | No | III.5 | 13.2 | Recomendado |
 | Referencias / bibliografía | 9 | Sí | III.7 | Sí | **Obligatorio** |
 | Anexos | I-IV | 1-4 | I-IV | A-E | Opcional |
 | Planos | Anexo I | No | III.4 + anexo | Anexo A | Opcional |
@@ -275,32 +304,46 @@ no incumplimientos.
 
 ### 5.2 ¿Qué comparten los ejemplos entre sí pero NO está en el TFM propio?
 
-Solo un elemento lo comparten los tres, y es un vacío real:
+**Con criterio estricto de unanimidad, la respuesta es: ninguno.** No hay un solo elemento que
+esté en los tres ejemplos y falte en el TFM propio. El esqueleto que comparten los tres ya está
+cubierto (apartado 5.1).
 
-- **Ningún ejemplo tiene un capítulo de estado del arte.** Los tres van directos de la
-  introducción a los datos de partida. El TFM propio dedica a ello el capítulo 2 entero
-  (tecnologías FV, BIPV/BAPV, almacenamiento electroquímico, PUE). Esto se trata en el
-  apartado 5.3, porque es un elemento propio, no una carencia.
+Lo único que comparten los tres **en negativo** es una ausencia: **ninguno tiene capítulo de
+estado del arte**. Los tres van directos de la introducción a los datos de partida. Eso convierte
+al capítulo 2 propio en un elemento único, y se trata en el apartado 5.3.
 
-Elementos compartidos por **dos** de los tres ejemplos y ausentes en el propio:
+### Criterio para recomendar una incorporación
 
-| Elemento | Presente en | Valoración |
-| --- | --- | --- |
-| **Sección de definiciones y ecuaciones al inicio** | Diego (bloque «Definiciones y expresiones matemáticas», 11 ecuaciones) | Solo lo tiene Diego, pero es la mejor idea formal de los tres: define PR, LCOE, VAN, TIR, payback, autosuficiencia y participación de la batería antes de usarlos. Encaja con el índice de ecuaciones ya previsto. **Recomendado incorporar.** |
-| **Monitorización** | Diego (cap. 4 completo), Barrios (5.5, como subapartado) | En un CPD, donde la explotación es 24/7 y el operador ya tiene sistemas de supervisión, tiene más sentido que en una nave. **A valorar como sección dentro del capítulo 6, no como capítulo.** |
-| **Mantenimiento y garantías** | Diego (cap. 7: tabla de periodicidad + tabla de garantías por equipo) | Es el sustituto natural del pliego eliminado y tiene precedente directo de 2025. **Recomendado incorporar como capítulo ligero.** |
-| **Lista de unidades y definiciones** | Diego, Barrios | Complemento de la lista de acrónimos. Opcional. |
+Como la pregunta con criterio de unanimidad se queda vacía, la lista útil se construye con un
+criterio distinto, que conviene dejar explícito para no confundir «compartido» con «recomendado».
+Se recomienda incorporar un elemento cuando cumple las **tres** condiciones:
+
+1. **Aparece en al menos un ejemplo** — hay precedente aceptado por un tribunal del mismo máster.
+2. **El ejemplo que lo tiene es el más cercano al caso propio** — Fernandes (2025) es el TFM de
+   referencia primario: almacenamiento realmente dimensionado, perfil de consumo 24/7 y escala
+   comparable. Un elemento que solo tenga Barrios (2023, gran industria sin batería) pesa menos.
+3. **El contenido se va a generar igualmente**, de modo que el coste marginal es de maquetación y
+   no de trabajo nuevo.
+
+Con ese criterio, y con el recuento explícito de en cuántos ejemplos aparece cada uno:
+
+| Elemento | Fernandes | Arcas | Barrios | Recuento | Valoración |
+| --- | --- | --- | --- | --- | --- |
+| **Definiciones y expresiones matemáticas** | Sí (11 ecuaciones) | No | No | **1 de 3** | Cumple las tres condiciones: viene del ejemplo primario, define PR, LCOE, VAN, TIR, payback, autosuficiencia y participación de la batería antes de usarlos, y encaja con el índice de ecuaciones ya previsto. **Incorporado el 06/09/2026.** |
+| **Mantenimiento y garantías** | Sí (cap. 7) | No | No | **1 de 3** | Sustituto natural del pliego eliminado, con precedente directo de 2025. **Incorporado el 06/09/2026 como cap. 8**, situado antes del análisis económico porque el OPEX y la reposición de batería son entradas del modelo. |
+| **Monitorización** | Sí (cap. 4) | No | Sí (5.5) | **2 de 3** | En un CPD, con explotación 24/7 y supervisión propia, tiene más sentido que en una nave, pero no da para capítulo. **Incorporado el 06/09/2026 como sección 6.7.** |
+| **Lista de unidades y definiciones** | Sí | No | Sí | 2 de 3 | Complemento de la lista de acrónimos. Opcional; no se incorpora por ahora. |
 
 ### 5.3 ¿Qué es único del TFM propio?
 
 | Elemento | Ejemplos que lo tienen | Comentario |
 | --- | --- | --- |
 | **Capítulo 2 de estado del arte** (tecnologías FV, BIPV/BAPV, almacenamiento, PUE) | Ninguno | Es la mayor divergencia estructural. Ningún TFM de referencia lo tiene, pero tampoco la guía lo prohíbe: es contenido de máster, y aporta el marco conceptual que los ejemplos dan por sabido. **Riesgo a vigilar:** con 150 páginas de tope y un capítulo 7 de almacenamiento que es el núcleo del trabajo, un estado del arte largo se come el presupuesto de páginas. Conviene acotarlo. |
-| **Capítulo 9 de análisis medioambiental** (huella de carbono, fin de vida y reciclaje) | Ninguno | La guía lo contempla explícitamente como «estudio ambiental (EIA o/y LCA)» entre los apartados opcionales, así que tiene respaldo normativo aunque no precedente en los ejemplos. |
+| **Capítulo de análisis medioambiental** (hoy cap. 10) | Ninguno | La guía lo contempla como «estudio ambiental (EIA o/y LCA)» entre los apartados opcionales, y la rúbrica del tribunal lo puntúa dentro del criterio del 10 % «Marco socio-económico y medioambiental / Marco Normativo». Como ese criterio se satisface con el presupuesto «y/o» el impacto ambiental, el capítulo **refuerza la nota pero no la sostiene**: por eso se acota a 6-8 páginas, 3 tablas y 1 figura, con evaluación simplificada por factores de emisión y sin software de ACV. |
 | **Criticidad y restricciones de operación del CPD** (3.2: redundancia, SAI) | Ninguno | Aportación propia: ningún ejemplo trata una carga crítica 24/7. Es lo que diferencia este TFM. |
-| **Abstract en inglés + keywords** | Ninguno | No lo pide la guía. Se mantiene porque no resta y es práctica académica habitual. |
-| **Códigos UNESCO** | Ninguno | La guía sí los menciona (opcionales). |
-| **Portada de firmas** | Ninguno | Heredada de la plantilla `MUXLaTeX.cls` del TFG. No la pide la guía; la entrega es con firma digital sobre el PDF. **Revisable:** puede sobrar. |
+| **Abstract en inglés + keywords** | Ninguno | No lo pide la guía y son redundantes con el resumen y las palabras clave en español, que son los exigidos. **Eliminados el 06/09/2026.** |
+| **Códigos UNESCO** | Ninguno | La guía sí los menciona (opcionales). Se mantienen. |
+| **Portada de firmas** | Ninguno | Heredada de la plantilla `MUXLaTeX.cls` del TFG. No la pide la guía y la entrega es con firma digital sobre el PDF. **Eliminada el 06/09/2026.** |
 | **Índice de ecuaciones separado** | Diego lo integra en su listado unificado | Coherente con la guía, que menciona ecuaciones dentro del bloque «Índice de:». |
 | **Anexo E, modelo de gestión del almacenamiento** | Ninguno (Arcas lo describe en el cuerpo, no en anexo) | Propio del enfoque con batería. |
 
@@ -332,8 +375,22 @@ Elementos compartidos por **dos** de los tres ejemplos y ausentes en el propio:
 | 1 | Eliminar el capítulo de pliego de condiciones técnicas | **Aprobada** por Mario el 05/09/2026. Ningún ejemplo lo tiene y la normativa lo marca como «cuando proceda» |
 | 2 | Estudio de seguridad y salud | **Pendiente** de acordar con Julio Amador. Sin precedente en los ejemplos; opcional por norma |
 | 3 | Toda la normativa aplicable concentrada en 2.5, en subsecciones por jerarquía | **Aprobada** el 05/09/2026 |
-| 4 | Incorporar un capítulo ligero de mantenimiento y garantías, al estilo del capítulo 7 de Diego | **Propuesta**, pendiente de aprobación |
-| 5 | Incorporar un bloque de definiciones y expresiones matemáticas en los preliminares | **Propuesta**, pendiente de aprobación |
-| 6 | Monitorización como sección del capítulo 6, no como capítulo | **Propuesta**, pendiente de aprobación |
-| 7 | Acotar la extensión del capítulo 2 de estado del arte por el tope de 150 páginas | **Propuesta**, pendiente de aprobación |
-| 8 | Revisar si la portada de firmas debe mantenerse | **Propuesta**, pendiente de aprobación |
+| 4 | Incorporar un capítulo ligero de mantenimiento y garantías, al estilo del capítulo 7 de Fernandes | **Aprobada** el 06/09/2026. Es el cap. 8, situado antes del económico |
+| 5 | Incorporar un bloque de definiciones y expresiones matemáticas en los preliminares | **Aprobada** el 06/09/2026 |
+| 6 | Monitorización como sección del capítulo 6, no como capítulo | **Aprobada** el 06/09/2026. Es la sección 6.7 |
+| 7 | Eliminar la portada de firmas | **Aprobada** el 06/09/2026 |
+| 8 | Eliminar el abstract y las keywords en inglés | **Aprobada** el 06/09/2026 |
+| 9 | No incorporar declaración de autoría | **Aprobada** el 06/09/2026, verificada contra el texto de los dos documentos oficiales |
+| 10 | Acotar el capítulo medioambiental a 6-8 páginas con evaluación simplificada, sin ACV | **Aprobada** el 06/09/2026, con seis secciones desarrolladas en el índice |
+| 11 | Acotar la extensión del capítulo 2 de estado del arte por el tope de 150 páginas | **Pendiente**: el estado del arte se mantiene (decisión de Mario), falta fijar el número de páginas |
+
+## 7. Elementos únicos de cada ejemplo: qué se adopta y qué no (06/09/2026)
+
+| Origen | Elemento | Decisión |
+| --- | --- | --- |
+| Arcas | Cargas de viento según CTE DB-SE-AE y restricciones medioambientales del emplazamiento | **Se adopta.** Cálculo manual, sin software. Criterio de éxito: carga de diseño en kN/m² contrastada contra la capacidad portante de la cubierta, y tabla de afecciones por subparcela de la variante 3 |
+| Fernandes | Punto de conexión y medida en siete subapartados y puesta a tierra como apartado propio | **No se adopta a ese nivel.** El bloqueo real no es el software —strings, sección por intensidad admisible y caída de tensión, unifilar y resistencia de tierra se calculan a mano— sino los datos de la instalación existente del CPD. Se mantiene el cálculo eléctrico manual en 6.3, que la rúbrica puntúa dentro de «Metodología» |
+| Barrios | Procedimiento de legalización en seis subapartados con plazos | **Se adopta la estructura, no los plazos cerrados.** El cap. 4 la usa como modelo, con cada plazo trazable a un artículo; los no trazables se marcan como orientativos, porque la capacidad de acceso y la titularidad de la parcela siguen abiertas |
+| Barrios | Anexo de cálculo de la subvención | **No se adopta.** Depende de una convocatoria vigente y citable; sin ella, es prematuro |
+| Barrios | Planificación temporal como capítulo | **Se mantiene** (cap. 12): coste bajo y único precedente de los tres |
+| Barrios | División del documento en partes I-IV con romanos | **No se adopta.** Divergente de los otros dos y del índice propio |

@@ -72,58 +72,16 @@
     \estilopagina
 }
 
-\renewcommand*{\portadaFirmas}[3]{%
-    % #1 = Título del TFM
-    % #2 = Autor/a (no se usa aquí, se deja por compatibilidad con \maquetacion)
-    % #3 = Datos del tutor/a
-
-    \clearpage
-    \thispagestyle{empty}
-
-    \begin{center}
-        \begin{minipage}[c]{0.48\textwidth}
-            \raggedright
-            \includegraphics[width=0.55\textwidth]{LOGOS/logo_upm.jpeg}
-        \end{minipage}%
-        \begin{minipage}[c]{0.48\textwidth}
-            \raggedleft
-            \includegraphics[width=0.45\textwidth]{LOGOS/logo_erma.jpeg}
-        \end{minipage}
-
-        \vspace{2cm}
-
-        {\large\bfseries\color{azulTFM} Máster en Energías Renovables y Medio Ambiente\par}
-        \vspace{2cm}
-        {\Large\bfseries\color{azulTFM} TRABAJO FIN DE MÁSTER\par}
-
-        \vspace{1.5cm}
-        {\large\bfseries #1\par} % Título del TFM
-    \end{center}
-
-    \vspace{3cm}
-
-    \noindent
-    \begin{minipage}[t]{0.48\textwidth}
-        \raggedright
-        {\normalsize\bfseries Firma autor:\par}
-        \vspace{2cm}
-        \rule{5cm}{0.4pt}
-    \end{minipage}
-    \begin{minipage}[t]{0.48\textwidth}
-        \raggedleft
-        {\normalsize\bfseries Firma tutor:\par}
-        \vspace{2cm}
-        \rule{5cm}{0.4pt}
-    \end{minipage}
-
-    \clearpage
-}
+% Portada de firmas DESACTIVADA el 06/09/2026: no la exige la normativa ERMA ni la guia de
+% elaboracion, no la lleva ninguno de los tres TFM de referencia y la entrega se firma
+% digitalmente sobre el PDF. Se redefine vacia porque \maquetacion la invoca desde la clase.
+\renewcommand*{\portadaFirmas}[3]{}
 
 \begin{document}
 %%%%%%%%%%%%%%%% Elegir si / no (Minúsculas)
 \bajavision{no}
 \digital{no}
-\abstract{no} % TODO: activar y añadir Anexos/resumen.tex cuando exista el resumen definitivo
+\abstract{no} % Decidido el 06/09/2026: sin abstract en inglés, redundante con el resumen en español
 \indicetablas{si}
 \indicefiguras{si}
 
