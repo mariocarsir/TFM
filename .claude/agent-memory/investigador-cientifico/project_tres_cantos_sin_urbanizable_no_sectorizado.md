@@ -1,6 +1,6 @@
 ---
 name: project-tres-cantos-sin-urbanizable-no-sectorizado
-description: "El PGOU vigente de Tres Cantos (2003) no tiene la categoria de suelo urbanizable no sectorizado, lo que puede cerrar la via de la Ley 9/2001 (arts. 26.1.c/27.1.d) para la variante 3 si la subparcela cae en ese termino municipal"
+description: "El PGOU vigente de Tres Cantos (2003) no tiene la categoria de suelo urbanizable no sectorizado; relevante solo para V1/V2 (CPD y aparcamiento, confirmados en Tres Cantos) - la subparcela de V3 se confirmo en Colmenar Viejo, no aqui"
 metadata:
   type: project
 ---
@@ -26,15 +26,27 @@ suelo no urbanizable de protección — y en este último caso, solo el art. 29.
 FV, ver [[project-suelo-agrario-fv-ley9-2001]] en la memoria de proyecto) o la vía excepcional del
 29.1 (sin legislación sectorial habilitante identificada).
 
-## Cómo aplicar
+## RESUELTO 06/09/2026: la subparcela V3 cae en Colmenar Viejo, no Tres Cantos
 
-1. **No dar por buena la vía del art. 26.1.c/27.1.d para V3 sin antes confirmar el término
-   municipal exacto de la subparcela elegida.** Es un pendiente crítico, no un detalle menor.
-2. Si la subparcela cae en **Colmenar Viejo**, este hallazgo no aplica automáticamente — hay que
-   verificar el régimen de suelo de ESE municipio por separado (su planeamiento vigente no se pudo
-   identificar con fuente fiable en la sesión del 06/09/2026; solo se sabe que aprobaron el
-   Documento de Avance de un PGOU nuevo en enero de 2025, fase muy temprana).
+Consulté el centroide y las cuatro esquinas del rectángulo envolvente del polígono `Layout1`
+(coordenadas dadas por el team lead) contra el servicio oficial `Consulta_RCCOOR` del Catastro
+(`ovc.catastro.meh.es`, SRS EPSG:4326). **Los 5 puntos devuelven código de municipio 28045 =
+COLMENAR VIEJO.** Contraste: la coordenada del CPD (40,59823 N/−3,71721 O) sí devuelve Tres
+Cantos, confirmando que el servicio funciona correctamente.
+
+**Consecuencia:** este hallazgo (que en Tres Cantos no existe "suelo urbanizable no sectorizado")
+queda como contexto histórico sin efecto práctico directo sobre V3 — importa solo si se analiza
+la clasificación de V1/V2 (CPD y aparcamiento, confirmados en término de Tres Cantos). Para V3
+aplica en su lugar el planeamiento de Colmenar Viejo — ver [[project-colmenar-viejo-suelo-no-urbanizable-1987]].
+
+## Cómo aplicar (parte todavía vigente de esta memoria)
+
+1. Para **V1/V2**, sigue aplicando: el PGOU de Tres Cantos de 2003 no tiene "suelo urbanizable no
+   sectorizado" — relevante si se analiza la clasificación urbanística de la cubierta del CPD o el
+   aparcamiento (aunque previsiblemente ambos están ya en suelo urbano industrial, sin la fricción
+   de la V3).
+2. Para **V3**, no usar esta memoria — ir a [[project-colmenar-viejo-suelo-no-urbanizable-1987]].
 3. Fuente citable pendiente: descargar `https://web.trescantos.es/contenido/urbanismo/pgou_normas.pdf`
-   (normas urbanísticas completas de Tres Cantos) y procesarlo con `bibliotecario-pdf` antes de
-   escribir el apartado 2.4/análisis de viabilidad de V3 en LaTeX.
+   (normas urbanísticas completas de Tres Cantos) y procesarlo con `bibliotecario-pdf` si se
+   necesita detalle de V1/V2.
 4. Informe completo con más detalle en `Memoria/analisis/normativa-autonomica-y-tecnica.md`.
