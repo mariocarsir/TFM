@@ -25,7 +25,38 @@ tags: [normativa, marco-normativo, autonomica, local, tecnica, capitulo-2, comun
 
 ---
 
-## Hallazgo transversal que condiciona todo el apartado 2.4 (leer antes de lo demás)
+## ACTUALIZACIÓN 06/09/2026 (tarde) — pendiente crítico nº1 resuelto
+
+Encargo del team lead: determinar el término municipal exacto de la subparcela candidata de V3
+a partir de las coordenadas del polígono `Layout1` (centroide 40,62235 N/−3,74762 O; bounding box
+40,61658–40,62677 N / −3,75346 a −3,74208 O).
+
+**Resultado [VERIFICADO — fuente primaria oficial]:** consulté el centroide y las cuatro esquinas
+del rectángulo envolvente contra el servicio público `Consulta_RCCOOR` de la Sede Electrónica del
+Catastro (`ovc.catastro.meh.es`, SRS EPSG:4326). **Los cinco puntos devuelven código de municipio
+28045 = COLMENAR VIEJO** (no Tres Cantos), con referencias catastrales rústicas de los polígonos
+43 y 45 (parajes "Arroyo del Buitre", "El Olivo", "La Vencosilla", "Los Llanillos"). Como
+contraste, consulté también la coordenada del CPD (40,59823 N/−3,71721 O) y esa sí devuelve TRES
+CANTOS — confirma que el servicio funciona correctamente y que la diferencia es real, no un
+artefacto de la consulta.
+
+**Conclusión:** la subparcela de V3 cae íntegramente (o con altísima probabilidad — se
+comprobaron 5 puntos repartidos por todo el rectángulo envolvente, no la totalidad del contorno
+real del polígono) en **término municipal de Colmenar Viejo**. El hallazgo transversal original de
+este informe sobre Tres Cantos (que allí no existe suelo urbanizable no sectorizado) **queda sin
+efecto práctico para V3** — importa, en cambio, el régimen de Colmenar Viejo, que sí pude
+localizar y leer parcialmente (ver 2.4.3 actualizado más abajo). Sigue aplicando a V1/V2 si se
+analiza su clasificación en Tres Cantos (cubierta del CPD y aparcamiento).
+
+**Nuevo hallazgo relevante de la lectura del planeamiento de Colmenar Viejo:** encontré un
+mecanismo de autorización (art. 43.3 de la antigua Ley del Suelo estatal, vigente en el
+planeamiento local de 1987) para instalaciones de "utilidad pública o interés social" en Suelo No
+Urbanizable Común, distinto y potencialmente más abierto que la lista tasada del art. 29.3 de la
+Ley 9/2001 actual. Ver el detalle y las reservas importantes en 2.4.3.
+
+---
+
+## Hallazgo transversal que condiciona todo el apartado 2.4 (leer antes de lo demás — contexto histórico, ya no aplica directamente a V3 tras la resolución del término municipal)
 
 **Contradicción detectada entre dos fuentes, tal como pide el protocolo de este agente:** el
 resumen ya citable `Bibliografia/Resumenes/ComunidadMadrid_2001.md` identifica el art. 26.1.c) y
@@ -196,33 +227,92 @@ ambiental propia y no derogada, que no es el caso de Madrid para proyectos energ
   `bibliotecario-pdf` para extraer exhaustivamente el régimen de suelo no urbanizable de protección
   del término, y cruzarlo con la subparcela candidata de V3 si cae en Tres Cantos.
 
-#### Colmenar Viejo — instrumento de planeamiento [NO VERIFICABLE EN ESTA SESIÓN]
+#### Colmenar Viejo — instrumento de planeamiento [PARCIALMENTE VERIFICADO — leído directamente el texto del plano/norma, con reservas importantes]
 
-- **Estado a fecha de la búsqueda (06/09/2026):** el Ayuntamiento de Colmenar Viejo aprobó en enero
-  de 2025 el **Documento de Avance** de un **nuevo** PGOU — es decir, la fase más temprana de
-  tramitación de un planeamiento nuevo, no su aprobación definitiva. Esto implica que, a día de
-  hoy, **sigue vigente un instrumento de planeamiento anterior** (previsiblemente Normas
-  Subsidiarias, dado que el municipio no tenía PGOU aprobado hasta ahora), pero **no he podido
-  identificar con certeza su nombre exacto, fecha de aprobación ni publicación oficial** — las
-  búsquedas realizadas no han dado una fuente primaria fiable para este dato.
-- **Por qué importa:** si la subparcela candidata de V3 cae en término de Colmenar Viejo en lugar
-  de Tres Cantos, el régimen de suelo aplicable es distinto del de Tres Cantos, y la conclusión
-  sobre disponibilidad de "suelo urbanizable no sectorizado" (que en Tres Cantos no existe) podría
-  no trasladarse sin más.
-- **Pendiente — prioridad crítica:** pedir a Mario el PDF con el planeamiento vigente de Colmenar
-  Viejo directamente desde https://colmenarviejo.com/ayuntamiento/concejalias/urbanismo-actividades-y-disciplina/urbanismo/plan-general-de-ordenacion-urbana
-  (el visor de "Documentos Vigentes de Planeamiento" requiere introducir el nombre del municipio,
-  no es descargable en un solo PDF desde el buscador). **No inventar el nombre ni la fecha de este
-  instrumento**: no se cita nada de Colmenar Viejo en el documento hasta tenerlo confirmado.
+**Término municipal confirmado (06/09/2026):** la subparcela candidata de V3 cae en Colmenar
+Viejo, no en Tres Cantos — ver la actualización al inicio de este informe (verificación directa
+contra el servicio de coordenadas del Catastro, 5/5 puntos consultados).
 
-#### Determinación previa e indispensable: término municipal exacto de la subparcela V3
-
-Ninguno de los dos análisis anteriores puede cerrarse sin saber en qué término municipal cae la
-subparcela que Mario seleccione dentro de `Datos/Catastro/V3 Terreno amplio/` → `afecciones`
-(memoria `project-seleccion-parcela-v3-catastro`). El polígono `Layout1` de 58,84 ha del KMZ podría
-solapar ambos términos. **Recomendación:** antes de redactar el apartado 2.4 en LaTeX, cruzar la
-subparcela finalmente elegida con los límites municipales (disponibles en el propio Catastro o en
-el IECM/Nomenclátor de la Comunidad de Madrid) para saber si aplica Tres Cantos o Colmenar Viejo.
+- **Documento localizado y leído parcialmente:** *"Modificación del Plan General de Colmenar
+  Viejo — Normas Urbanísticas, Volumen 3"*, **Título 5: "Regulación del Suelo No Urbanizable"**.
+  PDF alojado, algo inesperadamente, en el servidor del Ayuntamiento de **Tres Cantos**
+  (`https://web.trescantos.es/contenido/urbanismo/colmenarviejo_no_urba.pdf`) — explicable porque
+  Tres Cantos se segregó del término histórico de Colmenar Viejo en 1991 y conserva documentación
+  de referencia del municipio matriz. Es un escaneado de 60 páginas, con sello húmedo de la
+  **Comunidad de Madrid, Consejería de Ordenación del Territorio, Medio Ambiente y Vivienda**
+  ("DOCUMENTO INFORMADO") en casi todas las páginas, y una diligencia repetida: *"Aprobado
+  [provisionalmente] (ratificación) por el Pleno de este Ayuntamiento en sesión celebrada el día
+  **13 FEB 1987**. El Secretario."*
+- **Reserva importante sobre vigencia — no dar por cerrado:** lo que he leído es una diligencia de
+  **aprobación provisional/ratificación municipal** de 1987, con informe favorable de la
+  Comunidad de Madrid. **No he encontrado en este documento la aprobación definitiva** (que en el
+  régimen urbanístico español suele corresponder a un órgano autonómico para el planeamiento
+  general, y se publica en el BOCM) ni su fecha/número de BOCM. Es razonable — pero no está
+  verificado — que esta modificación de 1987 sea la que sigue rigiendo el suelo no urbanizable de
+  Colmenar Viejo en 2026, dado que (a) el Ayuntamiento solo ha llegado a la fase de "Documento de
+  Avance" de un PGOU nuevo en enero de 2025 (es decir, todavía no hay un instrumento que la
+  sustituya), y (b) el articulado citado usa numeración de la antigua Ley del Suelo estatal
+  (art. 85, 86, 43.3, 94 LS; art. 42, 44 RG — Reglamento de Gestión Urbanística de 1978), coherente
+  con un plan de los años 80 nunca sustituido de fondo. **No debe darse por definitiva la fecha de
+  1987 sin que el Ayuntamiento o la Comunidad de Madrid lo confirmen expresamente.**
+- **Clasificación del suelo no urbanizable en este plan (distinta de las categorías a/b de la
+  Ley 9/2001 actual, por ser anterior a ella):**
+  - **N. Suelo No Urbanizable Común**: N.1 (orientación ganadera) y N.2 (orientación ganadera
+    compatible con explotación agrícola limitada).
+  - **P. Suelo No Urbanizable de Protección Especial**, con 15 subáreas: P.1 Reserva Natural
+    Integral; P'.1 Alto Valor Ecológico; P.2 Parque Comarcal Agropecuario; P.3 Protección
+    Ecológica; P.4 Dehesas; P.5 Interés Paisajístico; P.6 Agrícola de posible regadío; P.7 Interés
+    histórico-cultural; P.8 Ríos/cauces/arroyos; P.9 Carreteras; P.10 Instalaciones ferroviarias;
+    P.11 Infraestructuras hidráulico-sanitarias; P.12 Infraestructuras eléctricas; P.13 Caminos y
+    vías pecuarias; P.14 Instalaciones militares; P.15 Instalaciones especiales en Suelo No
+    Urbanizable.
+- **Hallazgo relevante — mecanismo distinto del art. 29.3 de la Ley 9/2001, texto literal
+  verificado:** el Capítulo 3 ("Régimen Jurídico") del Título 5 dice textualmente: *"No se podrán
+  realizar otras construcciones que las destinadas a explotaciones agrícolas [...] Sin embargo,
+  podrán autorizarse, siguiendo el procedimiento previsto en el artículo 43.3 LS, edificaciones e
+  instalaciones de utilidad pública o interés social [...]. Lo anterior es relativo al suelo no
+  urbanizable común. En el suelo no urbanizable de Especial Protección no podrán ser permitidos
+  usos ni edificaciones que impliquen transformación de su destino o naturaleza."* Y, más
+  específico, el capítulo P.12 "Infraestructuras eléctricas" añade: *"Cuando las instalaciones
+  eléctricas discurran por el suelo no urbanizable común se podrán autorizar instalaciones de
+  utilidad pública, que no hayan sido explícitamente consideradas en el presente Plan según los
+  arts. 85 y 86 LS y siguiendo el procedimiento previsto en art. 43.3 LS [...]. La infraestructura
+  de energía eléctrica tiene atribuida esta utilidad pública por aplicación de su legislación
+  específica (art. 8º Ley 10/1966)."*
+- **Por qué esto es relevante pero no debe darse por bueno todavía:** a diferencia del art. 29.3
+  de la Ley 9/2001 actual (lista tasada de usos que **no incluye** generación FV, ver 2.4.1), este
+  plan de 1987 tiene, para el Suelo No Urbanizable **Común**, una vía de declaración de "utilidad
+  pública o interés social" que no es una lista cerrada. Sin embargo, quedan **tres huecos que
+  impiden concluir nada todavía**:
+  1. No sé si las subparcelas concretas ("Arroyo del Buitre", "El Olivo", "La Vencosilla", "Los
+     Llanillos") están clasificadas como **N (Común)** o como **P (Protección Especial)** — eso
+     solo lo dicen los planos de zonificación a escala 1:10.000, que no forman parte de este
+     volumen de texto y no se han localizado ni consultado en esta sesión. Si son P, esta vía se
+     cierra por completo (mismo régimen restrictivo que el 29.3 de la Ley 9/2001, sin excepción).
+  2. El capítulo P.12 concreto habla de "instalaciones eléctricas" en el sentido de tendidos/
+     infraestructura de transporte-distribución (coherente con el resto de la serie P.9-P.11,
+     todas sobre infraestructuras lineales existentes), no necesariamente de una planta de
+     generación fotovoltaica — la cita general del Capítulo 3 (cualquier "utilidad pública o
+     interés social") es la que realmente abriría la puerta a una planta FV, y esa calificación
+     requeriría de todos modos una declaración expresa caso por caso, no es automática.
+  3. **No he verificado cómo se relaciona jurídicamente esta clasificación de 1987 (bajo la
+     antigua Ley del Suelo estatal) con la clasificación de tres clases de la Ley 9/2001 de 2001
+     (urbano/urbanizable/no urbanizable de protección) que rige hoy a nivel autonómico.** Es una
+     cuestión de derecho transitorio que no he resuelto: si la Ley 9/2001 obliga a reinterpretar
+     "Suelo No Urbanizable Común" de un plan de 1987 como "no urbanizable de protección del
+     art. 16.1.b" (el caso restrictivo sin FV, según ya se documentó en
+     `ComunidadMadrid_2001.md`), la vía del art. 43.3 LS podría no ser invocable sin más en 2026.
+     **No dar por buena la vía del 43.3 LS/utilidad pública sin que esto se aclare.**
+- **Pendiente — prioridad crítica (reformulada):**
+  1. Localizar los planos de zonificación 1:10.000 de este mismo plan (o del PGOU vigente si hay
+     uno más reciente que sustituya a esta modificación de 1987) para saber si las subparcelas
+     candidatas son N o P.
+  2. Confirmar con el Ayuntamiento de Colmenar Viejo o la Comunidad de Madrid si esta modificación
+     de 1987 sigue siendo el instrumento vigente en 2026, o si hay una aprobación definitiva
+     posterior que la sustituye — el propio Ayuntamiento sería la fuente más fiable.
+  3. Aclarar la relación entre la clasificación N/P de 1987 y las tres clases de la Ley 9/2001 de
+     2001 (consultar, si existen, las disposiciones transitorias de la Ley 9/2001 sobre
+     adaptación de planeamiento preexistente — no revisadas en esta sesión).
 
 ### Tabla resumen 2.4 (para volcar a `NormativaLinks.xlsx`)
 
@@ -233,8 +323,8 @@ el IECM/Nomenclátor de la Comunidad de Madrid) para saber si aplica Tres Cantos
 | Ley 21/2013, de 9 de diciembre, de evaluación ambiental | BOE-A-2013-12913, consolidado (incorpora RD 445/2023) | Estatal (sustituye de facto a la autonómica en este punto) | Sí | boe.es/buscar/act.php?id=BOE-A-2013-12913 | Umbrales de EIA ordinaria/simplificada para plantas FV en suelo | V3: por debajo del umbral de 5 ha (Anexo II), salvo espacio protegido | Verificado, texto leído directamente |
 | Decreto 86/2025, de 29 de octubre, del Consejo de Gobierno (CM) | BOCM núm. 260, 31/10/2025 | Autonómica | Sí | (pendiente enlace BOCM oficial) | Procedimientos de autorización de instalaciones de alta tensión | Evacuación de V3 si requiere AT | Localizado, no leído a fondo |
 | Instrucción DG Industria, Energía y Minas (CM) sobre autoconsumo | Sin fecha/número confirmado (¿vigente desde 01/12/2022?) | Autonómica (instrucción administrativa) | Probable, sin confirmar versión | sede.comunidad.madrid/node/212646 | Documentación y trámite de puesta en servicio de autoconsumo | Las tres variantes | Localizado, no verificado |
-| PGOU de Tres Cantos | Aprobado 07/05/2003 | Municipal | Sí | web.trescantos.es/contenido/urbanismo/pgou_normas.pdf | Clasificación de suelo del término; NO existe suelo urbanizable no sectorizado | V1, V2, V3 (si cae en este término) | Parcialmente verificado |
-| Planeamiento de Colmenar Viejo | Sin identificar (nuevo PGOU solo en fase de Avance, ene. 2025) | Municipal | Desconocido cuál es el vigente | colmenarviejo.com (portal urbanismo) | Clasificación de suelo del término | V3 (si cae en este término) | No verificable en esta sesión |
+| PGOU de Tres Cantos | Aprobado 07/05/2003 | Municipal | Sí | web.trescantos.es/contenido/urbanismo/pgou_normas.pdf | Clasificación de suelo del término; NO existe suelo urbanizable no sectorizado | V1, V2 (CPD y aparcamiento están en Tres Cantos, confirmado por Catastro) | Parcialmente verificado |
+| Modificación del Plan General de Colmenar Viejo — Título 5, Suelo No Urbanizable | Diligencia de aprobación provisional/ratificación por el Pleno: 13/02/1987; informado favorablemente por la CM. Aprobación definitiva y BOCM NO localizados | Municipal | Probable (sin confirmar formalmente), no hay PGOU nuevo aprobado (solo Avance, ene. 2025) | web.trescantos.es/contenido/urbanismo/colmenarviejo_no_urba.pdf | Clasifica el suelo no urbanizable en N (Común) y P (Protección Especial, 15 subáreas); en Común admite "utilidad pública o interés social" vía art. 43.3 LS | V3 — confirmado que la subparcela cae en este término (Catastro, 5/5 puntos) | Parcialmente verificado, con reservas críticas explícitas |
 
 ---
 
@@ -371,42 +461,69 @@ independientes, pero no se ha leído el texto normativo]
 
 ## Pendientes de verificación, por orden de criticidad
 
-1. **[CRÍTICO] Término municipal exacto de la subparcela V3 elegida** (Tres Cantos vs. Colmenar
-   Viejo) y su clasificación urbanística real en el planeamiento de ese municipio. Sin esto, todo
-   el apartado 2.4 sobre viabilidad urbanística de V3 queda condicional. Acción: cruzar la
-   subparcela de `Datos/Catastro/.../afecciones` con los límites municipales.
-2. **[CRÍTICO] Planeamiento vigente de Colmenar Viejo** — nombre exacto, fecha, y régimen de suelo
-   no urbanizable. No identificado con una fuente primaria fiable en esta sesión. Acción: pedir a
-   Mario el PDF desde el portal municipal de urbanismo.
-3. **[ALTO] Normas urbanísticas completas de Tres Cantos** (`pgou_normas.pdf`) — descargar y pasar
-   por `bibliotecario-pdf` para extraer el régimen de suelo no urbanizable de protección aplicable
-   a la parcela candidata, dado que se ha confirmado que no existe la categoría "no sectorizado".
-4. **[ALTO] Comprobación geográfica de espacios protegidos** (Red Natura 2000, ZEC/ZEPA) sobre la
+1. **[RESUELTO 06/09/2026]** Término municipal exacto de la subparcela V3: **Colmenar Viejo**,
+   confirmado con el servicio de coordenadas del Catastro (5/5 puntos, centroide + 4 esquinas del
+   rectángulo envolvente). Ya no es un pendiente abierto.
+2. **[CRÍTICO] Clasificación exacta (N-Común o P-Protección Especial) de las subparcelas
+   candidatas dentro del planeamiento de Colmenar Viejo** — solo la dan los planos de zonificación
+   a escala 1:10.000 del propio plan, no localizados en esta sesión (el documento leído es solo el
+   texto normativo). Sin esto no se puede saber si la vía del art. 43.3 LS (utilidad pública/
+   interés social) está disponible para la subparcela real o si aplica el régimen restrictivo de
+   Protección Especial.
+3. **[CRÍTICO] Confirmar vigencia real en 2026 de la Modificación del Plan General de Colmenar
+   Viejo de 1987** — solo se ha visto una diligencia de aprobación provisional/ratificación
+   municipal (13/02/1987) e informe favorable de la CM; no se ha localizado la aprobación
+   definitiva ni su publicación en BOCM. Acción: preguntar directamente al Ayuntamiento de
+   Colmenar Viejo (Concejalía de Urbanismo) cuál es el instrumento vigente citable, ya que el
+   visor web no permite descarga directa por nombre de municipio.
+4. **[ALTO] Relación jurídica entre la clasificación N/P de este plan de 1987 (antigua Ley del
+   Suelo estatal) y las tres clases de la Ley 9/2001 de 2001 (urbano/urbanizable/no urbanizable de
+   protección) que rige hoy a nivel autonómico** — no revisado; sin esto, no está claro si la vía
+   del art. 43.3 LS de 1987 sigue siendo invocable en 2026 o si ha quedado subsumida en el régimen
+   más restrictivo del art. 29 de la Ley 9/2001.
+5. **[ALTO] Normas urbanísticas completas de Tres Cantos** (`pgou_normas.pdf`) — descargar y pasar
+   por `bibliotecario-pdf`; relevante ahora sobre todo para V1/V2 (CPD y aparcamiento, confirmados
+   en término de Tres Cantos por Catastro), no ya para V3.
+6. **[ALTO] Comprobación geográfica de espacios protegidos** (Red Natura 2000, ZEC/ZEPA) sobre la
    subparcela V3 elegida, para descartar el criterio general 1 del Anexo III de la Ley 21/2013 y
    confirmar que la evaluación ambiental simplificada no aplica.
-5. **[ALTO] Instrucción vigente de la Comunidad de Madrid sobre puesta en servicio de autoconsumo**
+7. **[ALTO] Instrucción vigente de la Comunidad de Madrid sobre puesta en servicio de autoconsumo**
    — confirmar versión y fecha exactas (indicios de 01/06/2019 y 01/12/2022, ninguna confirmada
    como la vigente en 2026) antes de citarla.
-6. **[MEDIO] Decreto 86/2025 (alta tensión CM)** — leer el texto completo (BOCM 31/10/2025) para
+8. **[MEDIO] Decreto 86/2025 (alta tensión CM)** — leer el texto completo (BOCM 31/10/2025) para
    confirmar el ámbito de aplicación exacto y si cubre la instalación de evacuación de V3.
-7. **[MEDIO] EN 50600-4-2 y resto de la serie EN 50600** — descargar y procesar con
+9. **[MEDIO] EN 50600-4-2 y resto de la serie EN 50600** — descargar y procesar con
    `bibliotecario-pdf` antes de citar la definición formal de PUE con número de norma.
-8. **[MEDIO] Ediciones/años vigentes exactos de las normas UNE-EN/IEC** del apartado 2.5.4 y 2.5.5
-   — verificar ficha oficial en AENOR/UNE antes de citar con año.
-9. **[BAJO] Ley 2/2002 CM, Anexo Quinto** — confirmar si una planta FV de autoconsumo de
-   2-2,5 MWp figura en su listado de actividades sujetas a licencia municipal.
-10. **[BAJO] ITC-RAT concretas aplicables a la V3** — depende de que el diseño eléctrico del cap. 6/7
+10. **[MEDIO] Ediciones/años vigentes exactos de las normas UNE-EN/IEC** del apartado 2.5.4 y 2.5.5
+    — verificar ficha oficial en AENOR/UNE antes de citar con año.
+11. **[BAJO] Ley 2/2002 CM, Anexo Quinto** — confirmar si una planta FV de autoconsumo de
+    2-2,5 MWp figura en su listado de actividades sujetas a licencia municipal.
+12. **[BAJO] ITC-RAT concretas aplicables a la V3** — depende de que el diseño eléctrico del cap. 6/7
     fije el nivel de tensión de interconexión real.
 
 ## PDFs a priorizar para descarga y procesamiento por `bibliotecario-pdf`
 
 En este orden:
 
-1. Normas urbanísticas completas de Tres Cantos (`pgou_normas.pdf`, ya localizado el enlace).
-2. Planeamiento vigente de Colmenar Viejo (pendiente de que Mario lo localice/descargue).
-3. Instrucción vigente de autoconsumo de la Comunidad de Madrid (sede electrónica).
-4. Ley 21/2013 de evaluación ambiental — **ya verificado el fragmento relevante en esta sesión
+1. **Planos de zonificación (escala 1:10.000) del Plan General de Colmenar Viejo** — es el
+   documento que falta para saber si la subparcela de V3 es Suelo No Urbanizable Común o de
+   Protección Especial. No localizados en esta sesión; probablemente solo disponibles pidiéndolos
+   al Ayuntamiento de Colmenar Viejo (Concejalía de Urbanismo, Plaza del Pueblo 1, tel.
+   91 845 00 53) o en su visor de "Documentos Vigentes de Planeamiento".
+2. **Confirmación municipal de qué instrumento está vigente en 2026** para Colmenar Viejo (¿sigue
+   siendo la Modificación de 1987, Título 5? ¿hay una aprobación definitiva posterior con otra
+   fecha/BOCM?) — pedir directamente al Ayuntamiento, es más fiable que seguir buscando en la web.
+3. El texto normativo ya localizado y parcialmente leído de Colmenar Viejo (`Modificación del
+   Plan General — Normas Urbanísticas Volumen 3, Título 5`) está descargado en esta sesión desde
+   `https://web.trescantos.es/contenido/urbanismo/colmenarviejo_no_urba.pdf` (60 páginas,
+   escaneado). **Recomendación:** que `bibliotecario-pdf` lo procese igual que la Ley 9/2001, para
+   dejarlo citable con exhaustividad en los capítulos 1-16 (especialmente el Capítulo 3 de
+   régimen jurídico y el P.12 de infraestructuras eléctricas, ya identificados como relevantes).
+4. Normas urbanísticas completas de Tres Cantos (`pgou_normas.pdf`, ya localizado el enlace) —
+   ahora relevante sobre todo para V1/V2, no para V3.
+5. Instrucción vigente de autoconsumo de la Comunidad de Madrid (sede electrónica).
+6. Ley 21/2013 de evaluación ambiental — **ya verificado el fragmento relevante en esta sesión
    directamente del BOE**; si se quiere una versión citable completa con resumen estructurado,
    descargar el PDF consolidado y procesarlo igual que se hizo con la Ley 9/2001.
-5. Decreto 86/2025 (alta tensión CM), BOCM 31/10/2025.
-6. EN 50600-4-2 (si Mario tiene acceso a AENOR/CENELEC; es de pago, a diferencia del resto).
+7. Decreto 86/2025 (alta tensión CM), BOCM 31/10/2025.
+8. EN 50600-4-2 (si Mario tiene acceso a AENOR/CENELEC; es de pago, a diferencia del resto).
