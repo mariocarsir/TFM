@@ -56,6 +56,132 @@ Ley 9/2001 actual. Ver el detalle y las reservas importantes en 2.4.3.
 
 ---
 
+## ACTUALIZACIÓN 06/09/2026 (noche) — derecho transitorio resuelto + verificación geográfica negativa
+
+Encargo del team lead, en dos partes: (1) leer las disposiciones transitorias de la Ley 9/2001
+directamente del BOE para saber si el régimen de 1987 de Colmenar Viejo sigue siendo invocable; (2)
+comprobar si la parcela de V3 cae dentro del Parque Regional de la Cuenca Alta del Manzanares, de
+la Red Natura 2000 o de alguna vía pecuaria. También se corrige una imprecisión señalada: el PDF
+`BOE_Ley_9-2001_Suelo_Madrid_consolidado.pdf` **no está** en `Bibliografia/Fuentes/Normativa/` de
+esta rama (solo el resumen sí) — corregido en el apartado 2.4.1.
+
+### (1) Disposición transitoria primera de la Ley 9/2001 [VERIFICADO — texto leído directamente del BOE consolidado, páginas 135-136 del PDF]
+
+Descargué el PDF consolidado completo de la Ley 9/2001 desde el BOE
+(`https://www.boe.es/buscar/pdf/2001/BOE-A-2001-18984-consolidado.pdf`, 139 páginas) y leí
+directamente la **Disposición transitoria primera, "Régimen urbanístico del suelo"** (p. 135).
+Texto literal:
+
+> *"La clasificación del suelo y el régimen urbanístico de la propiedad de éste regulados en la
+> presente Ley serán de aplicación, desde su entrada en vigor, a los planes y normas vigentes en
+> dicho momento, teniendo en cuenta las siguientes reglas: [...] c) Al suelo urbanizable no
+> programado y al **suelo no urbanizable común** se les aplicará el régimen establecido en la
+> presente Ley para el **suelo urbanizable no sectorizado**. [...] d) Al suelo no urbanizable
+> especialmente protegido se le aplicará el régimen establecido en la presente Ley para el suelo
+> no urbanizable de protección."*
+
+**Esto es la respuesta directa a la reserva nº3 que dejé pendiente en el hallazgo anterior, y
+CAMBIA la conclusión:**
+
+- El **Suelo No Urbanizable Común** del plan de 1987 de Colmenar Viejo (categoría "N": N.1
+  ganadera, N.2 ganadera+agrícola) **no se reinterpreta como "no urbanizable de protección"** bajo
+  la Ley 9/2001 — se reinterpreta como **"suelo urbanizable no sectorizado"**. Esto significa que,
+  si la subparcela de V3 es de categoría N, **sí se le aplica el art. 26.1.c) de la Ley 9/2001**
+  ("la generación de energía destinada a autoconsumo" como uso de infraestructuras habilitable
+  mediante calificación urbanística) — la vía que el resumen `ComunidadMadrid_2001.md` ya había
+  identificado como la más directa, y que parecía cerrada al pensar (erróneamente, para V3) en el
+  caso de Tres Cantos.
+- El **Suelo No Urbanizable de Protección Especial** del plan de 1987 (categoría "P", 15
+  subáreas) sí se reinterpreta como "no urbanizable de protección" — mismo régimen restrictivo del
+  art. 29 ya documentado (lista tasada del 29.3, sin FV).
+- Confirmé también la **Disposición transitoria tercera, punto 1** (p. 135): *"Todos los Planes de
+  Ordenación Urbanística y los proyectos técnicos [...] aprobados definitivamente al momento de
+  entrada en vigor de la presente Ley mantendrán su vigencia [...]"* — es decir, el plan de 1987
+  (si estaba definitivamente aprobado en 2001) sigue vigente como instrumento, y su clasificación
+  N/P se traduce automáticamente a las tres clases modernas por la disposición transitoria primera,
+  sin que dependa de que el Ayuntamiento haya completado la adaptación formal en el plazo de dos
+  años (esa adaptación, según los números 5-7 de la propia transitoria primera, es un trámite
+  aparte que puede seguir pendiente sin que ello invalide la aplicación de las reglas a)-d)).
+
+**Conclusión reformulada:** la pregunta decisiva para V3 **ya no es** "¿sigue siendo invocable el
+régimen de 1987?" (respondida: sí, vía la disposición transitoria) sino, exactamente como ya
+apuntaba mi reserva nº1, **"¿es la subparcela candidata N (Común) o P (Protección Especial) según
+los planos de zonificación 1:10.000 del propio plan de 1987?"** Si es N, la vía del art. 26.1.c
+está abierta con fundamento verificado en dos textos legales primarios (el plan municipal + la
+disposición transitoria de la ley autonómica). Si es P, sigue cerrada. **Esta clasificación N/P de
+la subparcela real es ahora, con diferencia, el pendiente más crítico del informe.**
+
+**Reserva que se mantiene:** no verifiqué si la modificación de 1987 llegó a tener aprobación
+*definitiva* (solo vi la diligencia de aprobación provisional/ratificación municipal de
+13/02/1987) — la disposición transitoria tercera exige justamente esa aprobación definitiva para
+mantener la vigencia del instrumento. Sigue siendo un hueco a cerrar, aunque ahora de menor peso
+relativo (39 años de aplicación práctica sin plan sustitutivo hacen razonable, aunque no
+confirmado, que sí se alcanzó la aprobación definitiva).
+
+### (2) Verificación geográfica: Parque Regional y Red Natura 2000 [VERIFICADO — servicios WMS oficiales, con control de sanidad]
+
+Consulté los mismos 5 puntos de antes (centroide 40,62235 N/−3,74762 O y las cuatro esquinas del
+rectángulo envolvente de `Layout1`) contra dos servicios WMS públicos oficiales, vía
+`GetFeatureInfo`:
+
+- **Espacios Naturales Protegidos de España (ENP, capa `enp_2024`)**, servicio del Inventario
+  Español del Patrimonio Natural y la Biodiversidad (IEPNB):
+  `https://geoserver-des.iepnb.es/geoserver/ENP/wms`. Esta capa incluye, según su propia
+  descripción, las categorías estatales de protección **más las figuras autonómicas** (aplica,
+  por tanto, a un Parque Regional como el de la Cuenca Alta del Manzanares).
+- **Red Natura 2000 (capa `rn2000`)**, mismo inventario:
+  `https://geoserver.iepnb.es/geoserver/RN2000/wms`.
+
+**Control de sanidad (para verificar que las capas responden correctamente):** consulté primero un
+punto dentro de La Pedriza (40,7377 N/−3,9195 O), que sí está dentro del Parque Regional y de la
+Red Natura 2000. Resultado: la capa ENP devolvió una feature (`enp_2024.678`, MultiPolygon
+correspondiente al parque) y la capa RN2000 devolvió la feature **"Cuenca del río Manzanares"**
+(ES3110004, LIC/ZEC, 62.999,7 ha). Las dos capas funcionan correctamente.
+
+**Resultado sobre los 5 puntos de la parcela V3: las dos capas devuelven `"features": []` (vacío)
+en los 5 puntos, tanto para ENP como para RN2000.** Es decir, **ni el centroide ni ninguna de las
+cuatro esquinas del rectángulo envolvente de la parcela cae dentro del Parque Regional de la
+Cuenca Alta del Manzanares ni de ningún espacio de la Red Natura 2000.**
+
+**Consecuencia para el art. 16 de la Ley 9/2001:** esto es evidencia a favor de que, si la
+subparcela resulta ser de Protección Especial (P) en el plan de 1987, su fundamento de protección
+NO sería el régimen sectorial del Parque Regional o de Red Natura 2000 (que encajaría en el
+art. 16.1.a, la vía excepcional con legislación sectorial habilitante) — reforzando que, de ser P,
+lo más probable es que caiga en el 16.1.b (valores agrícolas/ganaderos sin protección sectorial) y
+por tanto en el art. 29.3 sin la vía del FV. Y si es N, este resultado negativo es coherente con
+que la vía del art. 26.1.c (abierta por la disposición transitoria, ver arriba) no tenga un
+obstáculo adicional de espacio protegido.
+
+**Consecuencia para el pendiente de evaluación ambiental de la Ley 21/2013 (ver 2.4.2):** con esta
+verificación, el **criterio general 1 del Anexo III** (Red Natura 2000, espacio natural
+protegido...) **queda descartado para la subparcela V3** — refuerza la conclusión de que, con una
+superficie estimada de 3,5-5,1 ha, la planta FV probablemente **no está sometida ni siquiera a
+evaluación ambiental simplificada**. Este pendiente pasa de "alto" a prácticamente resuelto (salvo
+el criterio general 2, sobre infraestructura verde, no comprobado — ver reserva abajo).
+
+**Reserva importante — no es una prueba geométrica completa:** solo comprobé 5 puntos (el
+centroide y las 4 esquinas del rectángulo envolvente), no el contorno real del polígono
+`Layout1` ni el interior completo del rectángulo. Si hubiera una "isla" de espacio protegido
+pequeña dentro del rectángulo que no tocara exactamente esos 5 puntos, no la detectaría. Dado que
+los límites de parques regionales y de la Red Natura 2000 son polígonos grandes y continuos (no
+islas pequeñas dispersas), el riesgo de este falso negativo es bajo, pero no es una comprobación
+geométrica exhaustiva del polígono completo. **No comprobé el criterio general 2 del Anexo III**
+(solape con infraestructura verde formalmente declarada — corredores ecológicos, hábitats en
+estado desfavorable) por no haber localizado una capa WMS pública específica para esa figura en
+esta sesión.
+
+**Vías pecuarias — pendiente, no resuelto:** intenté localizar el servicio WMS de vías pecuarias
+de la Comunidad de Madrid (capa `SIGI_MA_VIAS_PECUARIAS` del visor IDEM,
+`idem.madrid.org`) pero no logré encontrar el endpoint WMS/workspace correcto en esta sesión (los
+dos intentos de `GetCapabilities` no dieron con la capa). El plan de 1987 (Capítulo 14, P.13) lista
+numerosas cañadas/cordeles/veredas por nombre y trazado descriptivo (p. ej. "Cordel de
+Valdeloshielos", "Vereda de las Tapias de Viñuelas y del Pardo"), ninguno con un nombre que
+coincida obviamente con los parajes de la subparcela ("Arroyo del Buitre", "El Olivo", "La
+Vencosilla", "Los Llanillos"), pero esto es una lectura no concluyente del texto, no una
+verificación geométrica. Pendiente de menor prioridad que la clasificación N/P.
+
+---
+
 ## Hallazgo transversal que condiciona todo el apartado 2.4 (leer antes de lo demás — contexto histórico, ya no aplica directamente a V3 tras la resolución del término municipal)
 
 **Contradicción detectada entre dos fuentes, tal como pide el protocolo de este agente:** el
@@ -106,8 +232,15 @@ certeza (ver apartado 2.4.3).
   (arts. 13, 16, 26-29, 29 bis, 147-148), con hallazgo de fricción documentado en la memoria de
   proyecto `project-suelo-agrario-fv-ley9-2001`. **No repetir el resumen aquí**; ver ese archivo
   para el detalle articulado.
-- **Fuente citable ya disponible:** `Bibliografia/Fuentes/Normativa/BOE_Ley_9-2001_Suelo_Madrid_consolidado.pdf`
-  → `Bibliografia/Resumenes/ComunidadMadrid_2001.md`.
+- **Corrección de precisión (06/09/2026):** el resumen `Bibliografia/Resumenes/ComunidadMadrid_2001.md`
+  SÍ está disponible en esta rama, pero **el PDF original que lo generó (`BOE_Ley_9-2001_Suelo_Madrid_consolidado.pdf`)
+  NO está** en `Bibliografia/Fuentes/Normativa/` de esta rama (verificado por listado de directorio:
+  solo hay siete PDFs ahí, ninguno es la Ley del Suelo). No dar el PDF original por disponible en
+  este worktree — puede existir en otra rama que aún no se ha fusionado, o haber sido procesado y
+  no conservado. Usar el resumen citable; si se necesita el texto completo del articulado no
+  extraído por el resumen (p. ej. las disposiciones transitorias, ver más abajo), acceder
+  directamente al BOE consolidado (https://www.boe.es/buscar/act.php?id=BOE-A-2001-18984) en vez
+  de asumir que el PDF está en el repositorio.
 
 #### Ley 2/2002, de 19 de junio, de Evaluación Ambiental de la Comunidad de Madrid [LOCALIZADO, NO LEÍDO A FONDO]
 
@@ -279,40 +412,38 @@ contra el servicio de coordenadas del Catastro, 5/5 puntos consultados).
   arts. 85 y 86 LS y siguiendo el procedimiento previsto en art. 43.3 LS [...]. La infraestructura
   de energía eléctrica tiene atribuida esta utilidad pública por aplicación de su legislación
   específica (art. 8º Ley 10/1966)."*
-- **Por qué esto es relevante pero no debe darse por bueno todavía:** a diferencia del art. 29.3
-  de la Ley 9/2001 actual (lista tasada de usos que **no incluye** generación FV, ver 2.4.1), este
-  plan de 1987 tiene, para el Suelo No Urbanizable **Común**, una vía de declaración de "utilidad
-  pública o interés social" que no es una lista cerrada. Sin embargo, quedan **tres huecos que
-  impiden concluir nada todavía**:
-  1. No sé si las subparcelas concretas ("Arroyo del Buitre", "El Olivo", "La Vencosilla", "Los
-     Llanillos") están clasificadas como **N (Común)** o como **P (Protección Especial)** — eso
-     solo lo dicen los planos de zonificación a escala 1:10.000, que no forman parte de este
-     volumen de texto y no se han localizado ni consultado en esta sesión. Si son P, esta vía se
-     cierra por completo (mismo régimen restrictivo que el 29.3 de la Ley 9/2001, sin excepción).
-  2. El capítulo P.12 concreto habla de "instalaciones eléctricas" en el sentido de tendidos/
-     infraestructura de transporte-distribución (coherente con el resto de la serie P.9-P.11,
-     todas sobre infraestructuras lineales existentes), no necesariamente de una planta de
-     generación fotovoltaica — la cita general del Capítulo 3 (cualquier "utilidad pública o
-     interés social") es la que realmente abriría la puerta a una planta FV, y esa calificación
-     requeriría de todos modos una declaración expresa caso por caso, no es automática.
-  3. **No he verificado cómo se relaciona jurídicamente esta clasificación de 1987 (bajo la
-     antigua Ley del Suelo estatal) con la clasificación de tres clases de la Ley 9/2001 de 2001
-     (urbano/urbanizable/no urbanizable de protección) que rige hoy a nivel autonómico.** Es una
-     cuestión de derecho transitorio que no he resuelto: si la Ley 9/2001 obliga a reinterpretar
-     "Suelo No Urbanizable Común" de un plan de 1987 como "no urbanizable de protección del
-     art. 16.1.b" (el caso restrictivo sin FV, según ya se documentó en
-     `ComunidadMadrid_2001.md`), la vía del art. 43.3 LS podría no ser invocable sin más en 2026.
-     **No dar por buena la vía del 43.3 LS/utilidad pública sin que esto se aclare.**
-- **Pendiente — prioridad crítica (reformulada):**
-  1. Localizar los planos de zonificación 1:10.000 de este mismo plan (o del PGOU vigente si hay
-     uno más reciente que sustituya a esta modificación de 1987) para saber si las subparcelas
-     candidatas son N o P.
-  2. Confirmar con el Ayuntamiento de Colmenar Viejo o la Comunidad de Madrid si esta modificación
-     de 1987 sigue siendo el instrumento vigente en 2026, o si hay una aprobación definitiva
-     posterior que la sustituye — el propio Ayuntamiento sería la fuente más fiable.
-  3. Aclarar la relación entre la clasificación N/P de 1987 y las tres clases de la Ley 9/2001 de
-     2001 (consultar, si existen, las disposiciones transitorias de la Ley 9/2001 sobre
-     adaptación de planeamiento preexistente — no revisadas en esta sesión).
+- **[ACTUALIZADO 06/09/2026 noche — reserva nº3 resuelta]** La cuestión de derecho transitorio
+  **sí se ha verificado**: la Disposición Transitoria Primera de la Ley 9/2001 (texto leído
+  directamente del BOE, ver la actualización al inicio del informe) establece que el antiguo
+  **Suelo No Urbanizable Común se reinterpreta como "suelo urbanizable no sectorizado"** (no como
+  "no urbanizable de protección"). Esto significa que, **si la subparcela es N, el art. 26.1.c de
+  la Ley 9/2001 sí le aplica** — la vía de "generación de energía destinada a autoconsumo" queda
+  abierta con fundamento en dos textos primarios (plan de 1987 + disposición transitoria de la ley
+  vigente), y ya no depende de la vía, más incierta, del art. 43.3 LS por sí sola. El mecanismo del
+  art. 43.3 LS/utilidad pública que se documentó abajo queda como dato de contexto histórico, no
+  como la vía decisiva.
+- **Huecos que quedan (dos, no tres — el de derecho transitorio ya se cerró):**
+  1. **[EL PENDIENTE MÁS CRÍTICO DE TODO EL INFORME]** No sé si las subparcelas concretas
+     ("Arroyo del Buitre", "El Olivo", "La Vencosilla", "Los Llanillos") están clasificadas como
+     **N (Común)** o como **P (Protección Especial)** — eso solo lo dicen los planos de
+     zonificación a escala 1:10.000, que no forman parte de este volumen de texto y no se han
+     localizado ni consultado en esta sesión. Si son N: vía del art. 26.1.c abierta y bien
+     fundamentada. Si son P: régimen restrictivo del art. 29 (probablemente 29.3 sin FV, dado que
+     la verificación geográfica de esta misma sesión descarta que la parcela esté en el Parque
+     Regional de la Cuenca Alta del Manzanares o en Red Natura 2000 — ver la actualización de
+     arriba —, lo que hace más improbable que la protección especial, de haberla, sea de tipo
+     16.1.a con habilitación sectorial).
+  2. No he confirmado que la modificación de 1987 llegara a tener **aprobación definitiva** (solo
+     vi la diligencia de aprobación provisional/ratificación municipal de 13/02/1987) — la
+     Disposición Transitoria Tercera exige justamente esa aprobación definitiva para que el
+     instrumento "mantenga su vigencia". Peso relativo menor tras 39 años de aplicación práctica
+     sin plan sustitutivo, pero sigue sin confirmar con fuente directa.
+- **Pendiente — prioridad crítica (reformulada tras la actualización de derecho transitorio):**
+  1. **Localizar los planos de zonificación 1:10.000** de este mismo plan (o del PGOU vigente si
+     hay uno más reciente) para saber si las subparcelas candidatas son N o P — es, con diferencia,
+     el dato que más cambia la conclusión de todo el apartado 2.4.
+  2. Confirmar con el Ayuntamiento de Colmenar Viejo si esta modificación de 1987 llegó a
+     aprobación definitiva y sigue vigente en 2026.
 
 ### Tabla resumen 2.4 (para volcar a `NormativaLinks.xlsx`)
 
@@ -324,7 +455,8 @@ contra el servicio de coordenadas del Catastro, 5/5 puntos consultados).
 | Decreto 86/2025, de 29 de octubre, del Consejo de Gobierno (CM) | BOCM núm. 260, 31/10/2025 | Autonómica | Sí | (pendiente enlace BOCM oficial) | Procedimientos de autorización de instalaciones de alta tensión | Evacuación de V3 si requiere AT | Localizado, no leído a fondo |
 | Instrucción DG Industria, Energía y Minas (CM) sobre autoconsumo | Sin fecha/número confirmado (¿vigente desde 01/12/2022?) | Autonómica (instrucción administrativa) | Probable, sin confirmar versión | sede.comunidad.madrid/node/212646 | Documentación y trámite de puesta en servicio de autoconsumo | Las tres variantes | Localizado, no verificado |
 | PGOU de Tres Cantos | Aprobado 07/05/2003 | Municipal | Sí | web.trescantos.es/contenido/urbanismo/pgou_normas.pdf | Clasificación de suelo del término; NO existe suelo urbanizable no sectorizado | V1, V2 (CPD y aparcamiento están en Tres Cantos, confirmado por Catastro) | Parcialmente verificado |
-| Modificación del Plan General de Colmenar Viejo — Título 5, Suelo No Urbanizable | Diligencia de aprobación provisional/ratificación por el Pleno: 13/02/1987; informado favorablemente por la CM. Aprobación definitiva y BOCM NO localizados | Municipal | Probable (sin confirmar formalmente), no hay PGOU nuevo aprobado (solo Avance, ene. 2025) | web.trescantos.es/contenido/urbanismo/colmenarviejo_no_urba.pdf | Clasifica el suelo no urbanizable en N (Común) y P (Protección Especial, 15 subáreas); en Común admite "utilidad pública o interés social" vía art. 43.3 LS | V3 — confirmado que la subparcela cae en este término (Catastro, 5/5 puntos) | Parcialmente verificado, con reservas críticas explícitas |
+| Modificación del Plan General de Colmenar Viejo — Título 5, Suelo No Urbanizable | Diligencia de aprobación provisional/ratificación por el Pleno: 13/02/1987; informado favorablemente por la CM. Aprobación definitiva y BOCM NO localizados | Municipal | Probable (sin confirmar formalmente), no hay PGOU nuevo aprobado (solo Avance, ene. 2025) | web.trescantos.es/contenido/urbanismo/colmenarviejo_no_urba.pdf | Clasifica el suelo no urbanizable en N (Común) y P (Protección Especial, 15 subáreas); N se reinterpreta como "urbanizable no sectorizado" por la Disposición Transitoria 1ª de la Ley 9/2001 (verificado BOE) | V3 — confirmado que la subparcela cae en este término (Catastro, 5/5 puntos); falta saber si es N o P | Parcialmente verificado — derecho transitorio resuelto, clasificación N/P real pendiente |
+| Disposición Transitoria Primera, Ley 9/2001 | BOE-A-2001-18984, texto consolidado (mismo BOE que la ley) | Autonómica | Sí | boe.es/buscar/pdf/2001/BOE-A-2001-18984-consolidado.pdf, p. 135 | Reinterpreta clasificaciones de planeamiento preexistente (N-Común → urbanizable no sectorizado; P-Protección Especial → no urbanizable de protección) | V3 — decide si aplica el art. 26.1.c o el art. 29 | Verificado, texto leído directamente |
 
 ---
 
@@ -464,41 +596,50 @@ independientes, pero no se ha leído el texto normativo]
 1. **[RESUELTO 06/09/2026]** Término municipal exacto de la subparcela V3: **Colmenar Viejo**,
    confirmado con el servicio de coordenadas del Catastro (5/5 puntos, centroide + 4 esquinas del
    rectángulo envolvente). Ya no es un pendiente abierto.
-2. **[CRÍTICO] Clasificación exacta (N-Común o P-Protección Especial) de las subparcelas
-   candidatas dentro del planeamiento de Colmenar Viejo** — solo la dan los planos de zonificación
-   a escala 1:10.000 del propio plan, no localizados en esta sesión (el documento leído es solo el
-   texto normativo). Sin esto no se puede saber si la vía del art. 43.3 LS (utilidad pública/
-   interés social) está disponible para la subparcela real o si aplica el régimen restrictivo de
-   Protección Especial.
-3. **[CRÍTICO] Confirmar vigencia real en 2026 de la Modificación del Plan General de Colmenar
+2. **[CRÍTICO — EL MÁS IMPORTANTE DE TODO EL INFORME] Clasificación exacta (N-Común o
+   P-Protección Especial) de las subparcelas candidatas dentro del planeamiento de Colmenar
+   Viejo** — solo la dan los planos de zonificación a escala 1:10.000 del propio plan, no
+   localizados en esta sesión (el documento leído es solo el texto normativo). Con la
+   Disposición Transitoria Primera de la Ley 9/2001 ya verificada (ver más abajo), esta
+   clasificación decide directamente si aplica el art. 26.1.c (N → generación FV para autoconsumo
+   habilitable por calificación urbanística) o el art. 29 restrictivo (P → probablemente 29.3 sin
+   FV).
+3. **[RESUELTO 06/09/2026 noche] Derecho transitorio entre la clasificación de 1987 y la Ley
+   9/2001 de 2001** — leído directamente el texto del BOE consolidado: la Disposición Transitoria
+   Primera reinterpreta el antiguo "Suelo No Urbanizable Común" como "suelo urbanizable no
+   sectorizado" (no como "no urbanizable de protección"). Ya no es un pendiente abierto.
+4. **[RESUELTO 06/09/2026 noche, con matiz] Afección de espacios protegidos sobre la subparcela
+   V3** — verificado contra los servicios WMS oficiales del IEPNB (ENP y Red Natura 2000, con
+   control de sanidad positivo en La Pedriza): los 5 puntos de la parcela (centroide + 4 esquinas)
+   dan resultado negativo en ambas capas. La parcela NO está en el Parque Regional de la Cuenca
+   Alta del Manzanares ni en Red Natura 2000. Matiz: solo se comprobaron 5 puntos del rectángulo
+   envolvente, no el contorno completo del polígono real ni el criterio general 2 del Anexo III
+   (infraestructura verde) ni las vías pecuarias (sin capa WMS localizada en esta sesión).
+5. **[CRÍTICO] Confirmar vigencia real en 2026 de la Modificación del Plan General de Colmenar
    Viejo de 1987** — solo se ha visto una diligencia de aprobación provisional/ratificación
    municipal (13/02/1987) e informe favorable de la CM; no se ha localizado la aprobación
    definitiva ni su publicación en BOCM. Acción: preguntar directamente al Ayuntamiento de
    Colmenar Viejo (Concejalía de Urbanismo) cuál es el instrumento vigente citable, ya que el
    visor web no permite descarga directa por nombre de municipio.
-4. **[ALTO] Relación jurídica entre la clasificación N/P de este plan de 1987 (antigua Ley del
-   Suelo estatal) y las tres clases de la Ley 9/2001 de 2001 (urbano/urbanizable/no urbanizable de
-   protección) que rige hoy a nivel autonómico** — no revisado; sin esto, no está claro si la vía
-   del art. 43.3 LS de 1987 sigue siendo invocable en 2026 o si ha quedado subsumida en el régimen
-   más restrictivo del art. 29 de la Ley 9/2001.
-5. **[ALTO] Normas urbanísticas completas de Tres Cantos** (`pgou_normas.pdf`) — descargar y pasar
+6. **[ALTO] Normas urbanísticas completas de Tres Cantos** (`pgou_normas.pdf`) — descargar y pasar
    por `bibliotecario-pdf`; relevante ahora sobre todo para V1/V2 (CPD y aparcamiento, confirmados
    en término de Tres Cantos por Catastro), no ya para V3.
-6. **[ALTO] Comprobación geográfica de espacios protegidos** (Red Natura 2000, ZEC/ZEPA) sobre la
-   subparcela V3 elegida, para descartar el criterio general 1 del Anexo III de la Ley 21/2013 y
-   confirmar que la evaluación ambiental simplificada no aplica.
-7. **[ALTO] Instrucción vigente de la Comunidad de Madrid sobre puesta en servicio de autoconsumo**
+7. **[MEDIO] Vías pecuarias sobre la subparcela V3** — no se localizó el servicio WMS de vías
+   pecuarias de la Comunidad de Madrid en esta sesión (capa `SIGI_MA_VIAS_PECUARIAS` del visor
+   IDEM, endpoint no identificado); el texto del plan de 1987 no sugiere coincidencia obvia por
+   nombre, pero no es una verificación geométrica.
+8. **[ALTO] Instrucción vigente de la Comunidad de Madrid sobre puesta en servicio de autoconsumo**
    — confirmar versión y fecha exactas (indicios de 01/06/2019 y 01/12/2022, ninguna confirmada
    como la vigente en 2026) antes de citarla.
-8. **[MEDIO] Decreto 86/2025 (alta tensión CM)** — leer el texto completo (BOCM 31/10/2025) para
+9. **[MEDIO] Decreto 86/2025 (alta tensión CM)** — leer el texto completo (BOCM 31/10/2025) para
    confirmar el ámbito de aplicación exacto y si cubre la instalación de evacuación de V3.
-9. **[MEDIO] EN 50600-4-2 y resto de la serie EN 50600** — descargar y procesar con
-   `bibliotecario-pdf` antes de citar la definición formal de PUE con número de norma.
-10. **[MEDIO] Ediciones/años vigentes exactos de las normas UNE-EN/IEC** del apartado 2.5.4 y 2.5.5
+10. **[MEDIO] EN 50600-4-2 y resto de la serie EN 50600** — descargar y procesar con
+    `bibliotecario-pdf` antes de citar la definición formal de PUE con número de norma.
+11. **[MEDIO] Ediciones/años vigentes exactos de las normas UNE-EN/IEC** del apartado 2.5.4 y 2.5.5
     — verificar ficha oficial en AENOR/UNE antes de citar con año.
-11. **[BAJO] Ley 2/2002 CM, Anexo Quinto** — confirmar si una planta FV de autoconsumo de
+12. **[BAJO] Ley 2/2002 CM, Anexo Quinto** — confirmar si una planta FV de autoconsumo de
     2-2,5 MWp figura en su listado de actividades sujetas a licencia municipal.
-12. **[BAJO] ITC-RAT concretas aplicables a la V3** — depende de que el diseño eléctrico del cap. 6/7
+13. **[BAJO] ITC-RAT concretas aplicables a la V3** — depende de que el diseño eléctrico del cap. 6/7
     fije el nivel de tensión de interconexión real.
 
 ## PDFs a priorizar para descarga y procesamiento por `bibliotecario-pdf`
