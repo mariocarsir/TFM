@@ -62,11 +62,19 @@ de forma completa, al modo del apartado 1.4 de `TFM-MAD9_signed.pdf`, con títul
 regula y cómo aplica a este proyecto. En el cuerpo del texto se menciona en forma larga la
 primera vez y en forma corta a partir de la segunda.)*
 
-2.1. Marco europeo
-2.2. Normativa estatal con rango de ley
-2.3. Normativa estatal de rango reglamentario
-2.4. Normativa autonómica y local
-2.5. Normas técnicas de referencia
+2.1. Normativa europea
+2.2. Normativa estatal
+2.3. Normativa autonómica y local
+2.4. Normas técnicas de referencia
+2.5. Síntesis del régimen aplicable a cada variante
+
+*(Estructura ajustada el 07/09/2026 por indicación de Mario: los títulos de sección no indican
+el rango de la norma —basta con «europea», «estatal», etc.—, lo que obliga a fundir en una sola
+sección 2.2 las antiguas «estatal con rango de ley» y «estatal de rango reglamentario», que de
+otro modo quedarían con el mismo nombre. Dentro de cada sección las normas se relacionan como
+lista de viñetas, con el título completo en negrita como entradilla: el capítulo NO tiene
+subsecciones. La síntesis comparativa de las tres variantes cierra el capítulo como sección
+propia, no como subsección.)*
 
 ## 3. Análisis del emplazamiento y perfil de consumo
 
