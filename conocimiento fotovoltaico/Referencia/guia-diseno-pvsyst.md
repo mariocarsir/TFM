@@ -30,6 +30,38 @@ related: [trabajo-previo-modulo6-cpd, analisis-energetico-sistemas-fv-m6t5, m6-t
 
 ---
 
+## 0bis. Aviso de vigencia (19/09/2026): las superficies han cambiado
+
+> Mario midió V1a, V1b y V2 sobre el modelado 3D de PVsyst, y esas cifras sustituyen a las de
+> catastro/KMZ sobre las que está escrita esta guía. **Antes de teclear números de los apartados
+> 6, 7.1, 7.2, 10.1 y 12, mira
+> `Memoria/analisis/recalculo-superficies-3d-pvsyst.md`.**
+>
+> | | En esta guía | **Recálculo 3D** |
+> | --- | --- | --- |
+> | V1a lucernario | 472 m² → 47,2 kWp | **578,91 m² → 57,9 kWp** |
+> | V1b cubierta | 1.562 m² → 612 módulos, 51×12, 287,6 kWp | **2.756,88 m² brutos → 648 módulos, 54×12, 304,56 kWp** |
+> | V2 marquesinas | 3.332 m² → 680 kWp | **3.536 m² → 716,3 kWp** (o 126×12 = 710,6 kWp, 7 inversores) |
+> | Banda de E_PV de la VC1 | 464 / 540 MWh | **491 / 584 MWh** |
+> | C_D de la VC1 | 12,1 % / 14,1 % | **12,81 % / 15,23 %** |
+>
+> **Dos cosas más que cambian el texto de abajo:**
+>
+> 1. **El punto abierto n.º 3 (ratio DC/AC = 0,96) queda resuelto.** Con 304,56 kWp el reparto es
+>    54 strings entre 3 SUN2000-100KTL-M2, 18 strings exactos por inversor, y el ratio sube a
+>    **1,015**. Ya no sobra inversor.
+> 2. **El apartado 7.1 queda condicionado a una pregunta abierta**: si los 2.756,88 m² ya
+>    descuentan los dos patios interiores, V1b sube a 355,32 kWp (63 × 12) y el C_D a 14,95 %. Se
+>    trabaja con la lectura conservadora (304,56 kWp) hasta que Mario lo confirme.
+>
+> Y sobre el apartado 6: la medición 3D **refuerza** la sospecha de la nota de esa sección. Los
+> 578,91 m² son un +22,7 % sobre catastro, que es exactamente 1/cos(35,4°) — o el lucernario tiene
+> ~35° de pendiente y no 5°, o el polígono incluye perfilería. Si además es a dos aguas con un
+> faldón al norte, la producción de V1a cae un 15 %. **No fijes la orientación del sub-array BIPV
+> sin resolverlo.**
+
+---
+
 ## 0. Estado de partida: qué está listo y qué bloquea
 
 | Insumo | Estado | Dónde está |

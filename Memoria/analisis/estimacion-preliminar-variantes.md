@@ -19,6 +19,16 @@ tags: [fotovoltaica, autoconsumo, CPD, variantes, BIPV, marquesinas, planta-suel
 
 # Estimación preliminar de las tres variantes
 
+> ⚠️ **Aviso de vigencia (19/09/2026) — las superficies y potencias de V1a, V1b y V2 están
+> superadas.** Mario midió las tres superficies sobre el modelado 3D de PVsyst y sustituyen a las
+> estimaciones por catastro, Google Earth y KMZ que usa este documento:
+> **V1a 578,91 m² (antes 472) · V1b 2.756,88 m² brutos (antes 1.562 netos) · V2 3.536 m² (antes
+> 3.332)**. Las potencias pasan a **57,9 / 304,6 / 716,3 kWp** y el C_D a **2,42 / 12,81 /
+> 30,20 %**. Recálculo completo, comprobación de coherencia geométrica y preguntas abiertas en
+> **`Memoria/analisis/recalculo-superficies-3d-pvsyst.md`**. Afecta a §4.2, §5.1, §5.3, §5bis.1,
+> §5bis.2 y al resumen ejecutivo. **Todo lo demás de este documento sigue vigente**: metodología,
+> variante 3, batería, marco regulatorio, PPA, evacuación y peajes.
+
 > **Qué es este documento.** Dimensionado de primer orden (margen 5–8 %) de las tres variantes
 > de diseño del TFM, a partir de los datos reales de consumo del CPD y de un modelo solar
 > horario calibrado contra el informe PVsyst del trabajo previo. **No sustituye a la simulación
