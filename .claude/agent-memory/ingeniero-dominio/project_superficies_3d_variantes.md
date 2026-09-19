@@ -1,54 +1,72 @@
 ---
 name: project-superficies-3d-variantes
-description: "Superficies canónicas de V1a/V1b/V2 medidas por Mario sobre el 3D de PVsyst (19/09/2026): 578,91 / 2.756,88 / 3.536 m² → 57,9 / 304,6 / 716,3 kWp. Sustituyen a las de catastro/KMZ. Dos ambigüedades abiertas: patios de V1b y pendiente del lucernario"
+description: "Geometría CERRADA de V1a/V1b/V2 (19/09/2026): 578,91 m² horizontal / 2.756,88 m² ya neto de patios / 3.536 m² → 57,89 / 338,40 / 716,28 kWp y C_D 2,33 / 14,24 / 30,20 %. Sustituye a catastro y KMZ. El limitante de V1b ya no es la superficie, son las entradas DC del inversor"
 metadata:
   type: project
 ---
 
-Recálculo hecho el 19/09/2026. Documento completo:
-`Memoria/analisis/recalculo-superficies-3d-pvsyst.md`; script reproducible:
-`Memoria/analisis/scripts/recalc_superficies_3d.py` (reutiliza `solar.py` + la carga canónica de
-8.760 h). **No rehacer este cálculo desde cero: correr el script.**
+Geometría cerrada el 19/09/2026 con las respuestas de Mario a las cuatro preguntas abiertas.
+Documento completo: `Memoria/analisis/recalculo-superficies-3d-pvsyst.md` (revisión 2); script
+reproducible: `Memoria/analisis/scripts/recalc_superficies_3d.py` (reutiliza `solar.py` + la carga
+canónica de 8.760 h). **No rehacer este cálculo desde cero: correr el script.**
 
-## Cifras de trabajo (lectura conservadora A)
+## Cifras de trabajo
 
-| Variante | Superficie 3D | kWp | E_PV | A_PV | C_D (3.832) | C_D (3.467, geotermia) |
-| --- | --- | --- | --- | --- | --- | --- |
-| V1a BIPV lucernario | 578,9109 m² | **57,9** | 92,6 MWh | 100 % | **2,42 %** | 2,67 % |
-| V1b cubierta | 2.756,8828 m² brutos | **304,56** | 491,0 MWh | 100 % | **12,81 %** | 14,16 % |
-| V1 total | — | **362,5** | 583,7 MWh | 100 % | **15,23 %** | 16,83 % |
-| V2 marquesinas | 3.536 m² | **716,28** | 1.173,7 MWh | 98,6 % | **30,20 %** | 32,43 % |
-| V1 + V2 | — | 1.078,7 | 1.757,4 MWh | 81,9 % | **37,56 %** | 38,81 % |
+| Variante | Superficie 3D | kWp | E_PV | kWh/kWp | A_PV | C_D (3.832) | C_D (3.467, geotermia) |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| V1a BIPV lucernario | 578,9109 m², **horizontal** | **57,89** | 89,2 MWh | 1.540 | 100 % | **2,33 %** | 2,57 % |
+| V1b cubierta | 2.756,8828 m² | **338,40** | 545,6 MWh | 1.612 | 100 % | **14,24 %** | 15,74 % |
+| V1 total | — | **396,3** | 634,8 MWh | 1.602 | 100 % | **16,56 %** | 18,31 % |
+| V2 marquesinas | 3.536 m² | **716,28** | 1.173,7 MWh | 1.639 | 98,6 % | **30,20 %** | 32,43 % |
+| V1 + V2 | — | **1.112,6** | 1.808,5 MWh | 1.625 | **80,4 %** | **37,94 %** | 39,13 % |
 
-Criterios aplicados (sin cambios respecto a la guía): V1a = sup × 0,80 vidrio activo × 125 Wp/m²
-(VLT 20 %); V1b = (sup − 408 patios) × 0,70 × 0,82 × 226,7 W/m²; V2 = huella × 0,90 × 226,7.
-Strings de 12 módulos REC Alpha Pure-RX 470 Wp, redondeo a la baja.
+Criterios: V1a = sup × 0,80 vidrio activo × 125 Wp/m² (VLT 20 %); V1b = sup × 0,70 × 0,82 ×
+226,7 W/m² **sin restar patios** (ya están fuera); V2 = huella × 0,90 × 226,7. Strings de 12
+módulos REC Alpha Pure-RX 470 Wp, redondeo a la baja.
 
-## Las dos ambigüedades que hay que cerrar con Mario
+## Las cuatro respuestas de Mario que cierran la geometría
 
-1. **¿Los 2.756,88 m² de V1b descuentan los dos patios interiores (408 m²)?** Si NO (lectura A,
-   la adoptada): 304,56 kWp. Si SÍ (lectura B): 355,32 kWp y C_D 14,95 %. Se eligió A porque el
-   forjado implícito (2.348,9 m²) queda a +5,3 % de catastro, coherente con el sesgo global del
-   modelo 3D (+7,2 %); la lectura B exigiría +23,6 %, inexplicable. **Nunca tomar los 2.756,88 m²
-   como superficie neta de módulo** — daría 512,5 kWp, que es el error a evitar.
-2. **Pendiente y geometría del lucernario.** 578,91 / 472 = 1,2265 = 1/cos(35,4°). O el lucernario
-   tiene ~35° y no los 5° supuestos, o el polígono incluye perfilería. Horquilla de producción de
-   V1a: **−15,2 % (a dos aguas con faldón norte) a +10,5 % (plano único 35°/−30°)**.
+1. **El lucernario es horizontal (0°), plano único.** Cae la hipótesis de ~35° que la revisión 1
+   dedujo de 578,9109/472 = 1/cos(35,4°): era casualidad aritmética. Cae también la de 5° de
+   catastro. Al ser horizontal, superficie desarrollada = proyección en planta.
+2. **Ninguna superficie lleva márgenes descontados**: son la superficie máxima ideal. Los factores
+   0,80 / 0,70 / 0,82 / 0,90 se aplican desde cero.
+3. **Los patios ya están fuera de los 2.756,88 m²**: Mario midió polígonos de tejado por sección
+   sobre la planta en H, no un rectángulo envolvente. Verificado en las capturas (los patios están
+   modelados como huecos pasantes). **Nunca tomar los 2.756,88 m² como superficie neta de módulo**
+   — daría 512 kWp, que es el error a evitar.
+4. **Fuente de la geometría: catastro a escala 1:1 trazado a mano en el editor 3D de PVsyst.** No
+   hay importación de CAD. Declararlo en la fase 1.4 de ERMA, junto con la desviación de +7,2 %
+   frente a catastro (+23,6 % en el forjado).
 
-## Dos hallazgos laterales que cambian texto ya escrito
+## Tres hallazgos que cambian texto ya escrito
 
-- **El ratio DC/AC de V1b deja de ser un problema.** Con 304,56 kWp son 54 strings entre 3 Huawei
-  SUN2000-100KTL-M2 = 18 exactos por inversor, ratio **1,015** (antes 0,96 con 287,6 kWp). Cierra
-  el punto abierto n.º 3 de `guia-diseno-pvsyst.md`.
-- **V2 ya no es «excedente testimonial».** Pico 529 kW contra 437 kW de carga: 16,5 MWh vertidos
-  en 559 h sin geotermia, **49,5 MWh en 957 h con geotermia (4,2 % de la producción)**. Sigue sin
-  justificar batería (+0,36 / +1,21 pp de techo; bastarían 0,16–0,38 MWh para vertido cero), pero
-  **ya no se puede escribir que V2 nunca vierte**: el antivertido recorta producción real y eso hay
-  que declararlo en el capítulo de resultados.
+- **El limitante de V1b cambia de naturaleza: ya no es la superficie, son las entradas DC.** La
+  superficie da 358,74 kWp = 63 strings, pero 63 entre 3 Huawei SUN2000-100KTL-M2 son 21 por
+  inversor y el equipo tiene ~20 entradas (10 MPPT × 2). Se adopta **60 strings (3 × 20) = 720
+  módulos = 338,40 kWp, ratio DC/AC 1,128** (el 1,13 del trabajo previo). El viejo problema del
+  ratio 0,96 desaparece. **Pendiente de verificar el n.º de entradas con el datasheet de Huawei**:
+  si admitiese más, V1b sube a 355,32 kWp y C_D 14,95 %.
+- **V1a produce menos que antes, no más.** Al ser horizontal, GlobInc baja de 1.857,7 a
+  1.785,6 kWh/m² (−3,9 %) y la productividad de 1.600 a 1.540 kWh/kWp: **es la superficie que peor
+  rinde del proyecto**. Un argumento más para no justificar el BIPV por energía.
+- **V1 + V2 vierte 354,6 MWh en 2.147 h y el A_PV cae al 80,4 %.** Es el primer escenario donde la
+  batería tiene algo real que hacer sin llegar a la planta en suelo. V2 sola vierte 16,5 MWh en
+  559 h (49,5 MWh en 957 h con geotermia): sigue sin justificar batería (+0,36 pp), pero **ya no
+  se puede escribir que V2 nunca vierte**.
 
-**Cómo aplicar:** cualquier cifra de 47 / 290 / 680 kWp o de 472 / 1.562 / 3.332 m² está obsoleta.
-Avisos de vigencia ya añadidos al principio de `estimacion-preliminar-variantes.md` y en la sección
-0bis de `guia-diseno-pvsyst.md`; los cuerpos de ambos documentos aún contienen las cifras viejas y
-hay que rehacerlos cuando se cierre la ambigüedad n.º 1. Ninguna conclusión estratégica se cae: V2
-sigue siendo la mejor variante, V1a sigue siendo marginal en energía (justificación arquitectónica,
-no energética) y la barrera del 50,5 % sin almacenamiento sigue intacta.
+## Abierto a propósito
+
+- **Reparto de strings de V2: 126 o 127.** Mario lo difirió expresamente («conforme avancemos en
+  PVsyst veremos»). 127 → 716,28 kWp, 7 inversores con reparto no uniforme (127 es primo), ratio
+  1,023, C_D 30,20 %. 126 (7 × 18) → 710,64 kWp, ratio 1,015, C_D 30,01 %. Diferencia: 0,19 pp.
+  **No forzar la decisión.**
+- **Errata a corregir antes de simular:** el proyecto `TFM_DataCenter.PRJ` tiene cargado
+  `Carrasqueira_MN82.SIT` (Meteonorm 8.2, **Portugal**), heredado de una plantilla. Y la escena 3D
+  está dibujada pero sin campos FV asignados (`PV Fields (0)`, `Active area 0.00 m²`).
+
+**Cómo aplicar:** cualquier cifra de 47 / 290 / 680 kWp, de 472 / 1.562 / 3.332 m², o las
+intermedias de la revisión 1 (57,9 / 304,56 / 362,5 kWp, C_D 2,42 / 12,81 / 15,23 %) está obsoleta.
+`guia-diseno-pvsyst.md` (rev.2) y `estimacion-preliminar-variantes.md` (rev.3) ya están reescritos.
+Ninguna conclusión estratégica se cae: V2 sigue siendo la mejor variante, V1a sigue siendo marginal
+en energía y la barrera del 50,5 % sin almacenamiento sigue intacta.
