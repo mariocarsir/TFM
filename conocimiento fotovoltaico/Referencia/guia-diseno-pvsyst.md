@@ -283,6 +283,14 @@ están validados por el tutor y por la comprobación de cargas de viento y nieve
 > **Los 5° del tragaluz son una hipótesis, no un dato medido.** Es la pendiente que se supuso en
 > el análisis preliminar. Cuando tengas el detalle constructivo del lucernario (o una foto de
 > perfil acotada), corrígela. A 47 kWp, el impacto en el resultado global de la V1 es de décimas.
+>
+> **Añadido 2026-09-19: confirma también si es un plano único o varios faldones.** La tabla de
+> arriba asume una sola orientación (`Fixed tilted plane`, 5°/−30°), pero un lucernario a dos aguas
+> o en diente de sierra tiene **dos acimuts opuestos**, no uno — eso sí cambia la producción más
+> que la corrección de pendiente. Si el detalle constructivo muestra varios faldones, hacen falta
+> varias orientaciones tipo `Fixed tilted plane` (una por faldón), igual que se hizo entre V1a y
+> V1b en la tabla de arriba, y repartir los 472 m² entre ellas antes de fijar la potencia total de
+> 47 kWp.
 
 **Cómo dejar la orientación 2 preparada sin bloquearte:** créala con `Add Orientation`, ponle
 5° / −30°, ponle nombre `Tragaluz BIPV` y **no le asocies ningún sub-array todavía**. PVsyst
