@@ -1,11 +1,12 @@
 ---
 title: "Estimación preliminar de las tres variantes de autoconsumo FV del CPD"
 fecha: 2026-08-23
-actualizado: 2026-08-28
-revision: 2  # V2 corregida a 3.332 m2 + marco regulatorio 2026
+actualizado: 2026-09-19
+revision: 3  # geometría cerrada sobre el modelo 3D de PVsyst
 estado: preliminar
 margen_objetivo: "5–8 %"
 fuentes_canonicas:
+  - "Medición de Mario sobre el modelado 3D de PVsyst (19/09/2026): V1a 578,9109 m² horizontal · V1b 2.756,8828 m² · V2 3.536 m²"
   - "Datos/Consumo CPD/Mensual/ (12 ficheros, resolución 5 min, dic-2024 → nov-2025)"
   - "Documentacion de apoyo/Trabajo Autoconsumo CPD/Trabajo_DataCenter_Project.VC0-Report1.pdf (PVsyst V8.0.19)"
   - "Datos/Imagenes/PlantaCPD.png y VistaSatelitalCPD.png (Google Earth)"
@@ -18,6 +19,15 @@ tags: [fotovoltaica, autoconsumo, CPD, variantes, BIPV, marquesinas, planta-suel
 ---
 
 # Estimación preliminar de las tres variantes
+
+> **Revisión 3 (19/09/2026) — geometría cerrada sobre el modelo 3D.** Los apartados §4, §5, §5.1,
+> §5.3, §5bis.1, §5bis.2 y el resumen ejecutivo están **reescritos** con las superficies que Mario
+> midió sobre el modelado 3D de PVsyst y con sus cuatro precisiones sobre esa medición. Ya no hay
+> preguntas abiertas de geometría. La cadena de cálculo reproducible está en
+> **`Memoria/analisis/recalculo-superficies-3d-pvsyst.md`** y en
+> `Memoria/analisis/scripts/recalc_superficies_3d.py`. **Todo lo demás de este documento sigue
+> vigente tal cual**: metodología, variante 3, batería, marco regulatorio, PPA, evacuación y
+> peajes.
 
 > **Qué es este documento.** Dimensionado de primer orden (margen 5–8 %) de las tres variantes
 > de diseño del TFM, a partir de los datos reales de consumo del CPD y de un modelo solar
@@ -130,38 +140,77 @@ coincidente con PVGIS. Cifra reutilizable para las variantes 2 y 3.
 
 ## 4. Geometría disponible
 
-### 4.1 Cuál de las dos mediciones usar
+### 4.1 La fuente de la geometría: el modelo 3D de PVsyst
 
-Las dos parejas de superficies disponibles no son igual de fiables:
+Las superficies de las tres variantes **ya no se estiman**: se miden sobre la escena 3D que Mario
+construyó dentro de PVsyst el **19/09/2026**, trazando **planos de Catastro a escala 1:1** a mano
+en el editor de sombreados. No hay importación de CAD, porque PVsyst no admite DWG/DXF para el
+cálculo de sombras. Esa escena es además la que va a alimentar la simulación de sombreado cercano,
+así que la geometría del dimensionado y la de las pérdidas por sombras son, por primera vez, la
+misma.
 
-| Fuente | Tragaluz | Cubierta total | Ratio |
+| Superficie | Valor 3D | Qué es exactamente | Referencias previas |
 | --- | --- | --- | --- |
-| **Catastro** | **472 m²** | **3.111 m²** | **15,2 %** |
-| Google Earth | 614 m² | 3.070 m² | 20,0 % |
+| **V1a** lucernario | **578,9109 m²** | Polígono del tragaluz central, **plano horizontal (0°)** | 472 m² catastro · 614 m² Google Earth |
+| **V1b** cubierta | **2.756,8828 m²** | Polígonos de tejado de las alas de la H, **ya netos de lucernario y de los dos patios** | 2.231 m² de forjado deducido de catastro |
+| **V2** marquesinas | **3.536 m²** | Huella de las filas de marquesina | 3.332 m² (filas F1–F8 del `TFM.kmz`) |
 
-Midiendo en píxeles sobre `PlantaCPD.png`, el tragaluz ocupa el **14,9 %** de la huella del
-edificio — coherente con catastro y no con Google Earth. La medición de Google Earth
-probablemente recoge la **superficie desarrollada** del lucernario (con su pendiente) o incluye
-la perfilería perimetral, mientras que catastro da la **proyección horizontal**. Se adopta
-**catastro** como referencia y se anota Google Earth como cota superior.
+**Cuatro precisiones de Mario que fijan cómo se usan esas cifras:**
+
+1. **El lucernario es horizontal.** No tiene los 5° que se supusieron aquí ni los ~35° que se
+   llegaron a deducir del cociente 578,9109/472 (era coincidencia aritmética). Es un plano único,
+   no varios faldones. Al ser horizontal, **superficie desarrollada y proyección en planta
+   coinciden**: la vieja discusión de §4.1 sobre si Google Earth medía lo desarrollado y Catastro
+   la proyección se resuelve sola, porque en un plano a 0° no hay diferencia que discutir.
+2. **Ninguna de las tres cifras lleva márgenes descontados.** Son la *superficie máxima ideal*.
+   Todos los factores de reducción se aplican **desde cero** sobre ellas.
+3. **Los dos patios interiores ya están fuera de los 2.756,88 m².** Mario midió polígonos de
+   tejado independientes **por sección** sobre la planta en H, no un rectángulo envolvente con
+   agujeros, de modo que el hueco entre las patas de la H queda excluido por construcción. En el
+   modelo 3D esos patios están dibujados como huecos pasantes.
+4. **El reparto de strings de la V2 queda abierto a propósito**, para decidirlo dentro de PVsyst.
+
+> **Una desviación que se declara, no se esconde.** V1a + V1b suman **3.335,8 m²**, un **+7,2 %**
+> sobre los 3.111 m² de catastro, y el forjado del 3D supera en **+23,6 %** el forjado que se
+> deducía de catastro (2.231 m²). Se adopta la medición 3D porque está trazada sobre plano a
+> escala y es la que gobierna las sombras, pero la **fase 1.4 de la metodología ERMA exige
+> declarar la fuente de cada superficie**, así que la diferencia se menciona expresamente en la
+> memoria: catastro da superficie construida, el modelo 3D mide polígonos de cubierta.
 
 ### 4.2 Descuentos sobre la cubierta
 
-La planta cenital muestra **dos patios interiores** (con arbolado visible) que son huecos, no
-cubierta utilizable: ≈ **408 m²** medidos en píxeles. Y el resto del forjado está cuajado de
-condensadoras, además de climatizadoras, cuartos técnicos y casetones de escalera.
-
 ```
-Cubierta total (catastro)                      3.111 m²
-  − tragaluz                                   −  472 m²
-  − patios interiores                          −  408 m²
-  = forjado de cubierta                         2.231 m²
+Cubierta de las alas de la H (modelo 3D)             2.756,8828 m²
+  ├─ ya neta del lucernario (V1a es polígono aparte)
+  └─ ya neta de los dos patios interiores
   × 0,70  (retranqueos de seguridad, equipos que permanecen,
-           pasillos de mantenimiento, casetones)             1.562 m²  disponibles
+           pasillos de mantenimiento, casetones)             1.929,8 m²  disponibles
   × 0,82  (factor de aprovechamiento en sheds a 10°,
-           el mismo que validó el trabajo previo)            1.281 m²  de módulo
-  × 226,7 W/m²                                         →      290 kWp
+           el mismo que validó el trabajo previo)            1.582,5 m²  de módulo
+  × 226,7 W/m²                                         →      358,7 kWp  (techo por superficie)
 ```
+
+El 0,70 y el 0,82 se aplican enteros: el primero es un **criterio de ocupación** y el segundo una
+**penalización de empaquetado**, y ninguno de los dos es geometría que un polígono dibujado sobre
+el modelo pueda contener. Leer los 2.756,88 m² como si ya fuesen superficie neta de módulo daría
+512 kWp y sería insostenible: implicaría que en la cubierta de un CPD en explotación no hay ni
+retranqueos de seguridad ni equipos que permanezcan.
+
+**De los 358,7 kWp de techo por superficie al sistema que se monta.** Aquí aparece un limitante
+nuevo que con 290 kWp no existía. Los 358,7 kWp dan 63 strings de 12 módulos, y 63 strings entre 3
+inversores Huawei SUN2000-100KTL-M2 tocan a 21 por inversor, por encima de las **20 entradas DC**
+que da el equipo (10 MPPT × 2 strings; la corriente lo admite de sobra, 8,6 A por string a 50 °C
+según el informe del trabajo previo). Se adopta por tanto **60 strings × 12 = 720 módulos =
+338,40 kWp**, con 3 inversores a 20 strings exactos y **ratio DC/AC = 1,128** — prácticamente el
+1,13 del trabajo previo. Ocupa el 94,3 % de la superficie neta disponible.
+
+> **El criterio limitante de la V1b ha cambiado, y eso es una frase para la memoria.** En la
+> versión de catastro mandaba la superficie y el ratio DC/AC salía bajo (0,96). Con la superficie
+> real **sobra cubierta y manda la arquitectura eléctrica**. En términos de la fase 2 de la
+> metodología ERMA, el criterio más restrictivo de la V1b deja de ser el n.º 2 (superficie
+> disponible) para pasar a ser una restricción de equipo. Queda pendiente confirmar con el
+> datasheet de Huawei que son efectivamente 20 entradas: si admitiese más, la V1b sube a
+> 355,32 kWp y a 14,95 % de C_D.
 
 ---
 
@@ -171,31 +220,42 @@ Consumo de referencia: **3.832 MWh/año**.
 
 | Variante | Superficie | kWp | E_PV (MWh/año) | A_PV | **% del consumo (C_D)** |
 | --- | --- | --- | --- | --- | --- |
-| **V1a** BIPV en tragaluz | 472 m² (378 m² de vidrio activo) | 47 | 76 | 100 % | **2,0 %** |
-| **V1b** Cubierta convencional (liberada por geotermia) | 1.562 m² útiles | 290 | 468 | 100 % | **12,2 %** |
-| **V1 = V1a + V1b** | ≈ 2.034 m² | **338** | **544** | 100 % | **14,2 %** |
-| **V2** Marquesinas de parking | **3.332 m²** de huella (F1–F8) | **680** | **1.114** | 99,5 % | **28,9 %** |
-| **V1 + V2** (todo el emplazamiento) | ≈ 5.366 m² | **1.017** | **1.658** | 85,0 % | **36,8 %** |
+| **V1a** BIPV en tragaluz | 578,91 m² (463 m² de vidrio activo) | **57,9** | **89,2** | 100 % | **2,33 %** |
+| **V1b** Cubierta convencional (liberada por geotermia) | 1.582,5 m² útiles | **338,4** | **545,6** | 100 % | **14,24 %** |
+| **V1 = V1a + V1b** | ≈ 2.046 m² de módulo | **396,3** | **634,8** | 100 % | **16,56 %** |
+| **V2** Marquesinas de parking | **3.536 m²** de huella | **716,3** | **1.173,7** | 98,6 % | **30,20 %** |
+| **V1 + V2** (todo el emplazamiento) | ≈ 5.205 m² de módulo | **1.112,6** | **1.808,5** | 80,4 % | **37,94 %** |
 | **V3** Planta en suelo | *por cada 1 ha* | 758 | 1.362 | 95 % | **33,8 %** |
 
 ### 5.1 Variante 1 — BIPV en tragaluz + cubierta liberada
 
-El BIPV del tragaluz es, en términos energéticos, **casi irrelevante**: aporta un 2 % del
+El BIPV del tragaluz es, en términos energéticos, **casi irrelevante**: aporta un 2,33 % del
 consumo. Su potencia depende mucho del grado de transparencia que se exija al vidrio:
 
 | Transparencia del vidrio FV | Densidad | kWp | E_PV | C_D |
 | --- | --- | --- | --- | --- |
-| Alta (VLT > 30 %) | 90 Wp/m² | 34 | 54 MWh | 1,4 % |
-| **Media (VLT ≈ 20 %)** | **125 Wp/m²** | **47** | **76 MWh** | **2,0 %** |
-| Baja (VLT ≈ 10 %) | 160 Wp/m² | 60 | 97 MWh | 2,5 % |
+| Alta (VLT > 30 %) | 90 Wp/m² | 41,7 | 64,2 MWh | 1,68 % |
+| **Media (VLT ≈ 20 %)** | **125 Wp/m²** | **57,9** | **89,2 MWh** | **2,33 %** |
+| Baja (VLT ≈ 10 %) | 160 Wp/m² | 74,1 | 114,1 MWh | 2,98 % |
+
+**Y hay un matiz nuevo que empeora ligeramente el caso del BIPV: el lucernario es horizontal.** Un
+plano a 0° en Madrid recibe 1.785,6 kWh/m² al año frente a los 1.857,7 que daba la hipótesis de 5°
+orientada al sureste, un **−3,9 %**. La productividad de V1a baja de 1.600 a **1.540 kWh/kWp**, la
+más baja de las tres variantes (V1b da 1.612 y V2 1.639). Además, un acristalamiento horizontal no
+se autolimpia con la lluvia como uno inclinado y recibe la sombra de todos los petos y casetones
+que lo rodean: entre la hipótesis optimista (0,5 % de sombras, 2 % de suciedad) y un caso realista
+de 15 % y 3 % hay **13 MWh**, es decir 0,34 pp de C_D. El número bueno saldrá de la simulación de
+sombras cercanas, que ya tiene la escena 3D montada.
 
 > La justificación del BIPV en el TFM **no puede ser energética**: tiene que ser arquitectónica
 > (integración, control solar del lucernario, reducción de la carga térmica que entra por él) y
-> demostrativa. Como número de cobertura, 2 % es marginal. Vale la pena plantearlo así
+> demostrativa. Como número de cobertura, 2,33 % es marginal — y ahora se sabe además que es la
+> superficie del proyecto que peor rinde por kWp instalado. Vale la pena plantearlo así
 > explícitamente y no forzar el argumento.
 
 Lo que sí es sustancial es **liberar la cubierta**: pasar de los 450 m² del trabajo previo a
-~1.562 m² triplica la potencia (102 → 290 kWp) y sube del 4,3 % al 12,2 % del consumo total.
+1.582,5 m² útiles multiplica la potencia por 3,3 (102 → 338,4 kWp) y sube del 4,3 % al 14,24 % del
+consumo total.
 
 ### 5.2 El efecto oculto de la geotermia: reduce el propio consumo
 
@@ -220,41 +280,67 @@ propio, no una nota al pie.
 
 ### 5.3 Variante 2 — Marquesinas de parking
 
-Superficie **medida sobre `TFM.kmz`**, donde Mario dibujó una a una las ocho filas de
-marquesinas (polígonos `F1`–`F8`). Conviene no confundir las dos cifras que da el fichero: el
-polígono `Parking - General` mide 6.252 m², pero **incluye las calles de circulación**; la huella
-que realmente se puede cubrir es la suma de las filas.
+Superficie **medida sobre el modelo 3D de PVsyst**: **3.536 m²** de huella de marquesina, un
++6,1 % sobre los 3.332 m² que daban las ocho filas (`F1`–`F8`) dibujadas en el `TFM.kmz`. Conviene
+seguir sin confundir esa huella con el polígono `Parking - General` del KMZ, que mide 6.252 m²
+pero **incluye las calles de circulación** y no es la cifra que se puede cubrir.
 
 ```
-Filas de marquesinas F1..F8 (huella medida)     3.332 m²
-  × 0,90  (ocupación de módulo sobre la marquesina)          2.999 m²  de módulo
-  × 226,7 W/m²                                         →       680 kWp
+Huella de marquesinas (modelo 3D)               3.536 m²
+  × 0,90  (ocupación de módulo sobre la marquesina)          3.182,4 m²  de módulo
+  × 226,7 W/m²                                         →       721,5 kWp  (techo por superficie)
 ```
 
-| Magnitud | Valor |
+**Reparto de strings: decisión deliberadamente abierta.** Mario prefiere cerrarla dentro de
+PVsyst, cuando se llegue a esa fase. Las dos opciones son viables:
+
+| | **127 strings × 12** | **126 strings × 12** |
+| --- | --- | --- |
+| Módulos | 1.524 | 1.512 |
+| **Potencia** | **716,28 kWp** | **710,64 kWp** |
+| Superficie de módulo | 3.159,3 m² ✔ | 3.134,4 m² ✔ |
+| Inversores | 7, reparto no uniforme (127 es primo) | **7 × 18 exactos** |
+| Ratio DC/AC | 1,023 | 1,015 |
+| E_PV | 1.173,7 MWh | 1.164,5 MWh |
+| **C_D** | **30,20 %** | **30,01 %** |
+
+La diferencia es de **0,19 puntos de C_D**: la decisión es de claridad documental (el unifilar y
+la tabla de la fase 6 de ERMA quedan simétricos con 126), no de ingeniería.
+
+| Magnitud | Valor (127 strings) |
 | --- | --- |
-| Potencia | **680 kWp** |
-| Producción | **1.114 MWh/año** (Y_F 1.639 kWh/kWp) |
-| Autoconsumo A_PV | **99,5 %** — el pico (500 kW) roza ya los 437 kW de carga media |
-| **Cobertura C_D** | **28,9 %** (31,3 % si la geotermia ya ha bajado el consumo) |
+| Potencia | **716,28 kWp** |
+| Producción | **1.173,7 MWh/año** (Y_F 1.639 kWh/kWp) |
+| Autoconsumo A_PV | **98,6 %** — el pico (529 kW) **supera** ya los 437 kW de carga media |
+| Excedentes recortados por el antivertido | **16,5 MWh en 559 h** (49,5 MWh en 957 h con geotermia) |
+| **Cobertura C_D** | **30,20 %** (32,43 % si la geotermia ya ha bajado el consumo) |
 
 > **Es, con diferencia, la mejor variante de las tres.** Sobre un recinto ya pavimentado y sin uso
-> en altura, **duplica lo que aporta toda la cubierta del edificio** (28,9 % frente al 14,2 % de
+> en altura, **duplica lo que aporta toda la cubierta del edificio** (30,20 % frente al 16,56 % de
 > V1), sin tocar el sistema de refrigeración, sin obra sobre un edificio en explotación y
-> sombreando las plazas de paso. Los excedentes son testimoniales (5 MWh/año, un 0,5 % de la
-> producción), así que sigue encajando en una configuración antivertido.
+> sombreando las plazas de paso.
 
-Regla parametrizada, por si se revisa la huella: **≈ 204 kWp, ≈ 334 MWh/año y ≈ 8,7 % del consumo
-por cada 1.000 m² de marquesina**. Los excedentes empiezan a ser apreciables a partir de
-~3.300 m², que es justo donde está el proyecto: **la variante 2 llega sola al límite de lo que el
-CPD puede absorber en las horas centrales del día**, y todo lo que se añada por encima ya exige
-batería para no verterse.
+> **Lo que sí cambia de signo con la medición 3D: V2 ya no es «excedente testimonial».** Con
+> 3.332 m² el excedente eran 5 MWh/año y se podía despachar como irrelevante. Con 3.536 m² el pico
+> sube a **529 kW**, claramente por encima de los 437 kW de carga media, y el excedente pasa a
+> **16,5 MWh/año en 559 horas** — **49,5 MWh en 957 horas, un 4,2 % de la producción**, si la
+> geotermia baja la carga. Como V2 está planteada como autoconsumo **sin excedentes con
+> antivertido**, esos MWh **no se exportan: se pierden**, recortados por el limitador.
+>
+> La conclusión de fondo aguanta —un pack de 0,16–0,38 MWh para recuperar entre 16 y 50 MWh
+> anuales no lo paga nadie, así que **la batería sigue sin justificarse en V2**—, pero el matiz hay
+> que escribirlo: ya no se puede afirmar que V2 nunca vierte. Es un dato del capítulo de
+> resultados, y sostiene el argumento correcto: **V2 está justo en el límite de lo que el CPD puede
+> absorber**, y cualquier ampliación por encima de esa huella exige almacenamiento o cambiar de
+> modalidad.
 
-> **Corrección respecto a la versión anterior de este documento.** Se había partido de una
-> superficie de aparcamiento de 2.461 m² y de un factor de cubrición del 0,70, lo que daba
-> 1.723 m² de marquesina y 351 kWp. La medición real de las ocho filas sobre el KMZ da 3.332 m²
-> de huella, de modo que **V2 pasa de 351 a 680 kWp y de 15,0 % a 28,9 % de cobertura**. Todas
-> las cifras combinadas de los apartados 5.6 y 6 están recalculadas con el valor nuevo.
+Regla parametrizada, por si se revisa la huella: **≈ 204 kWp, ≈ 332 MWh/año y ≈ 8,7 % del consumo
+por cada 1.000 m² de marquesina**.
+
+> **Historial de la cifra de V2.** Se partió de 2.461 m² de aparcamiento con factor de cubrición
+> 0,70 → 351 kWp. La medición de las ocho filas sobre el KMZ la llevó a 3.332 m² → 680 kWp. La
+> medición sobre el modelo 3D la deja en **3.536 m² → 716,28 kWp**. Todas las cifras combinadas de
+> los apartados 5.6 y 6 se mantienen sobre la versión del KMZ y quedan del lado conservador.
 
 ### 5.4 Variante 3 — Planta en suelo
 
@@ -478,8 +564,9 @@ procedimiento de acceso y conexión no es el simplificado (RD 1183/2020).
 
 | Variante | kWp | E_PV | A_PV | **C_D sin batería** | Excedentes | Horas con vertido |
 | --- | --- | --- | --- | --- | --- | --- |
-| **V1** Cubierta (BIPV + liberada) | 338 | 544 MWh | 100 % | **14,2 %** | **0 MWh** | **0 h** |
-| **V2** Marquesinas (3.332 m²) | 680 | 1.114 MWh | 99,5 % | **28,9 %** | 5 MWh | 355 h |
+| **V1** Cubierta (BIPV + liberada) | **396,3** | **634,8 MWh** | 100 % | **16,56 %** | **0 MWh** | **0 h** |
+| **V2** Marquesinas (3.536 m²) | **716,3** | **1.173,7 MWh** | **98,6 %** | **30,20 %** | **16,5 MWh** | **559 h** |
+| **V1 + V2** (todo el emplazamiento) | **1.112,6** | **1.808,5 MWh** | **80,4 %** | **37,94 %** | **354,6 MWh** | **2.147 h** |
 | **V3** Planta suelo 1,00 MWp | 1.000 | 1.798 MWh | 80,5 % | 37,8 % | 350 MWh | 2.273 h |
 | **V3** Planta suelo 2,00 MWp | 2.000 | 3.597 MWh | 45,9 % | 43,1 % | 1.946 MWh | 3.282 h |
 | **V3** Planta suelo 2,25 MWp | 2.250 | 4.046 MWh | 41,3 % | 43,6 % | 2.374 MWh | 3.399 h |
@@ -496,8 +583,8 @@ Techo de autosuficiencia alcanzable con batería de capacidad infinita:
 
 | Variante | C_D sin batería | **Techo con batería** | Ganancia | ¿Batería justificada? |
 | --- | --- | --- | --- | --- |
-| **V1** | 14,2 % | **14,2 %** | **0,0 pp** | **No.** Nunca hay excedente que almacenar |
-| **V2** | 28,9 % | **29,1 %** | **0,2 pp** | **No.** 5 MWh/año de excedente, irrelevante |
+| **V1** | 16,56 % | **16,56 %** | **0,0 pp** | **No.** Nunca hay excedente que almacenar |
+| **V2** | 30,20 % | **30,56 %** | **0,36 pp** | **No.** 16,5 MWh/año de excedente (49,5 con geotermia): el pack mínimo para vertido cero es de 0,16–0,38 MWh y no lo paga nadie |
 | **V3** 1,00 MWp | 37,8 % | 45,5 % | 7,7 pp | Marginal |
 | **V3** 2,00 MWp | 43,1 % | 86,0 % | **42,9 pp** | **Sí, decisiva** |
 | **V3** 2,25 MWp | 43,6 % | 96,0 % | **52,4 pp** | **Sí, decisiva** |
@@ -506,6 +593,15 @@ Techo de autosuficiencia alcanzable con batería de capacidad infinita:
 La razón es geométrica y no económica: V1 y V2 nunca superan de forma apreciable los ~437 kW de
 carga plana, así que **no producen excedente que guardar**. La batería no es una mejora general
 del autoconsumo: **es el complemento específico de una planta sobredimensionada**.
+
+> **Matiz que introduce la medición 3D, y que conviene no pasar por alto.** V2 ya no está «muy por
+> debajo» del umbral: con 529 kW de pico contra 437 kW de carga, **lo cruza 559 horas al año**
+> (957 con geotermia). El veredicto sobre la batería no cambia —0,36 pp no justifican nada—, pero
+> V2 deja de ser el caso limpio que era y pasa a ser el caso **justo en el límite**. Y el paso
+> siguiente lo confirma: **V1 + V2 juntas vierten 354,6 MWh en 2.147 horas** y el A_PV se desploma
+> al **80,4 %**. Ahí la batería sí empieza a tener algo que hacer, sin necesidad de llegar a la
+> planta en suelo. Es el punto de inflexión del capítulo 7 y merece calcularse con el modelo
+> horario, no darse por sabido.
 
 ### 5bis.3 Cuánta batería, y la comprobación de la hipótesis de 2,25–2,50 MWp
 
@@ -1142,17 +1238,21 @@ media tensión el que aplicaría es el **6.1TDA** (tensiones entre 1 y 30 kV).
 1. **El consumo total del CPD es 3.832 MWh/año**, no 1.260. Los 1.260 MWh del trabajo previo
    eran solo refrigeración y auxiliares. El C_D de partida del TFM es **4,3 %**, no 13,2 %.
 2. **La carga es plana al 3,3 %**: base pura 24/7 de ~437 kW. Esto gobierna todo el diseño.
-3. **V1** (BIPV 2,0 % + cubierta liberada 12,2 %) = **14,2 %**. El BIPV es marginal en energía;
-   justifíquese por arquitectura, no por producción.
+3. **V1** (BIPV 2,33 % + cubierta liberada 14,24 %) = **16,56 %**, con **396,3 kWp**. El BIPV es
+   marginal en energía; justifíquese por arquitectura, no por producción — y además, al ser el
+   lucernario **horizontal**, es la superficie que peor rinde del proyecto (1.540 kWh/kWp frente a
+   1.612 de la cubierta y 1.639 de las marquesinas).
 4. **La geotermia ahorra ~365 MWh/año (9,5 %)** por sí sola, equivalente a 205 kWp de FV sin
    ocupar superficie. Es la mejor relación resultado/esfuerzo del estudio, y además baja el PUE
    de 1,482 a ~1,341.
-5. **V2** (marquesinas sobre los **3.332 m²** de huella medida) = **28,9 %**, con **680 kWp**.
-   **Duplica lo que aporta toda la cubierta del edificio** y es mucho menos invasiva: es la mejor
-   variante de las tres, con diferencia.
-6. **Todo el emplazamiento (V1 + V2) llega al 36,8 %** — 38,1 % con geotermia — pero el A_PV cae
-   al **85,0 %**: con 1.017 kWp ya sobran 249 MWh/año. **La batería se hace necesaria antes
-   incluso de plantear la planta en suelo.**
+5. **V2** (marquesinas sobre los **3.536 m²** de huella medida en 3D) = **30,20 %**, con
+   **716,28 kWp**. **Duplica lo que aporta toda la cubierta del edificio** y es mucho menos
+   invasiva: es la mejor variante de las tres, con diferencia. Novedad frente a versiones
+   anteriores: **ya no es una variante sin vertido**. El pico (529 kW) supera la carga media
+   (437 kW) y el antivertido recorta **16,5 MWh en 559 h** (49,5 MWh en 957 h con geotermia).
+6. **Todo el emplazamiento (V1 + V2) llega al 37,94 %** — 39,13 % con geotermia — pero el A_PV cae
+   al **80,4 %**: con 1.112,6 kWp ya sobran **354,6 MWh/año en 2.147 horas**. **La batería se hace
+   necesaria antes incluso de plantear la planta en suelo.**
 7. **V3**: **1,32 ha/MWp**. Combinada con V1 + V2 y geotermia, cerrar el balance anual exige solo
    **1,33 ha** (frente a 2,81 ha si fuese la única medida: **−53 %**). La combinación es lo que
    hay que defender, no la comparación entre variantes excluyentes.
@@ -1179,7 +1279,10 @@ media tensión el que aplicaría es el **6.1TDA** (tensiones entre 1 y 30 kV).
 
 | # | Asunto | Cómo |
 | --- | --- | --- |
-| 1 | ~~Superficie del aparcamiento~~ | **Cerrado: 3.332 m² de huella de marquesinas** (filas F1–F8 del `TFM.kmz`; confirmado por Mario el 28/08/2026 — `Parking - General`, 6.252 m², incluye las calles y no es la cifra buena). |
+| 1 | ~~Superficie del aparcamiento~~ | **Cerrado: 3.536 m² de huella de marquesinas**, medidos sobre el modelo 3D de PVsyst (19/09/2026). Sustituye a los 3.332 m² de las filas F1–F8 del `TFM.kmz`. (`Parking - General`, 6.252 m², incluye las calles y nunca fue la cifra buena.) |
+| 1a | ~~Geometría de V1a y V1b~~ | **Cerrado el 19/09/2026.** V1a 578,9109 m² **horizontal (0°)**, plano único; V1b 2.756,8828 m² **ya netos de lucernario y patios**; ninguna de las dos lleva márgenes aplicados. Fuente: catastro 1:1 trazado a mano en el editor 3D de PVsyst. Detalle en `recalculo-superficies-3d-pvsyst.md`. |
+| 1b | **N.º de entradas DC del Huawei SUN2000-100KTL-M2** | **Nuevo, y decide 17 kWp de la V1b.** Si son 20 (10 MPPT × 2), V1b = 338,40 kWp con ratio 1,128; si admite más, 355,32 kWp con ratio 1,184 y C_D 14,95 %. Datasheet de Huawei vía `bibliotecario-pdf`. |
+| 1c | **Reparto de strings de la V2: 126 o 127** | **Diferido expresamente por Mario** (19/09/2026) al momento de montarlo en PVsyst. Ambas opciones documentadas en §5.3; la diferencia es de 0,19 pp de C_D. |
 | 2 | ~~Localizar la parcela~~ | **Cerrado: 58,84 ha medidas sobre `TFM.kmz` (28/08/2026).** Sobra suelo por un factor 20. |
 | 2a | ~~Encaje regulatorio de la distancia (2,93 km)~~ | **Cerrado: encaja.** RD 244/2019 art. 3.g).iii), redacción de la DF 14.ª del RDL 7/2026: hasta 5 MW y menos de 5.000 m. Falta solo medir la distancia definitiva **entre equipos de medida** cuando se fije el centro de seccionamiento. |
 | 2c | **Titularidad y clasificación urbanística de la parcela** | **Dato crítico ahora.** Sede electrónica del Catastro + planeamiento de Tres Cantos / Colmenar Viejo. Con 1,33 ha necesarias sobre 58,84 disponibles hay mucho margen para elegir la subparcela más favorable. |

@@ -3,12 +3,14 @@ title: "Guía de modelado en PVsyst — Variante 1 (cubierta del CPD) y protocol
 tipo: guia-operativa
 autor: "Generada para Mario Carrión Sirvent"
 version_pvsyst: "V8.1.5"
-fecha: 2026-08-31
+fecha: 2026-09-19
+revision: 2
 estado: operativa
 fuentes:
   - "conocimiento fotovoltaico/Manuales PVsyst/pvsyst-tutorial-v8-1-grid-connected-en.pdf (manual de usuario completo)"
   - "conocimiento fotovoltaico/Referencia/trabajo-previo-modulo6-cpd.md (cifras canónicas del baseline)"
-  - "Memoria/analisis/estimacion-preliminar-variantes.md (geometría y potencias de las tres variantes)"
+  - "Memoria/analisis/recalculo-superficies-3d-pvsyst.md (geometría y potencias definitivas de V1a, V1b y V2)"
+  - "Memoria/analisis/estimacion-preliminar-variantes.md (encuadre estratégico y V3)"
   - "Datos/PVsyst/Entradas/carga_horaria_CPD_general_8760.csv (carga horaria generada el 31/08/2026)"
 tags: [PVsyst, guia, variante-1, cubierta, BIPV, autoconsumo, CPD, protocolo]
 related: [trabajo-previo-modulo6-cpd, analisis-energetico-sistemas-fv-m6t5, m6-t8-estructuras-soporte-fv]
@@ -32,18 +34,67 @@ related: [trabajo-previo-modulo6-cpd, analisis-energetico-sistemas-fv-m6t5, m6-t
 
 ## 0. Estado de partida: qué está listo y qué bloquea
 
+**Revisión 2 (19/09/2026).** La geometría de las tres variantes ya no sale de catastro ni del
+KMZ: sale del **modelado 3D que Mario ha levantado dentro de PVsyst**, y Mario ha cerrado las
+cuatro dudas que quedaban sobre esa medición. Toda la guía está reescrita sobre esas cifras. La
+cadena de cálculo completa y reproducible está en `Memoria/analisis/recalculo-superficies-3d-pvsyst.md`
+y en `Memoria/analisis/scripts/recalc_superficies_3d.py`.
+
+### 0.1 Las superficies definitivas y de dónde salen
+
+| Variante | Superficie 3D | Qué es exactamente | Potencia de trabajo |
+| --- | --- | --- | --- |
+| **V1a** lucernario | **578,9109 m²** | Polígono del tragaluz central, **plano horizontal** | **57,89 kWp** |
+| **V1b** cubierta | **2.756,8828 m²** | Suma de los polígonos de tejado de las alas de la H, **ya neta de lucernario y de los dos patios** | **338,40 kWp** |
+| **V2** marquesinas | **3.536 m²** | Huella de las filas de marquesina del aparcamiento | **716,28 kWp** (127×12) o **710,64 kWp** (126×12) |
+
+**Fuente de la geometría, para declararla en la fase 1.4 de ERMA:** planos de **Catastro a escala
+1:1**, trasladados **a mano** al editor de escena 3D de PVsyst. No hay importación de CAD, porque
+PVsyst no admite DWG/DXF para el cálculo de sombreados (coherente con lo ya anotado en la memoria
+del proyecto sobre importación de terreno). La medición es del **19/09/2026**.
+
+**Cuatro precisiones de Mario que fijan cómo se usan esas cifras** — las cuatro estaban abiertas
+en la revisión 1 y las cuatro están cerradas:
+
+1. **El lucernario es horizontal, 0° de inclinación.** No 5° (hipótesis vieja de catastro) ni ~35°
+   (hipótesis que la revisión 1 dedujo del cociente 578,9109/472; era casualidad numérica). Al ser
+   horizontal, superficie desarrollada y proyección en planta coinciden: **no hay corrección
+   angular que aplicar**.
+2. **Ninguna de las tres cifras lleva márgenes descontados.** Son la *superficie máxima ideal* que
+   se podría llegar a ocupar. Los factores de reducción (0,80 de vidrio activo, 0,70 de
+   retranqueos y equipos, 0,82 de empaquetado en sheds, 0,90 de ocupación de marquesina) se
+   aplican **desde cero** sobre ellas.
+3. **Los dos patios interiores ya están fuera.** Mario midió **polígonos de tejado independientes
+   por sección** sobre la planta en H, no un rectángulo envolvente con agujeros, así que el hueco
+   entre las patas de la H queda excluido por construcción. En el modelo 3D los dos patios están
+   además dibujados como **huecos pasantes**.
+4. **El reparto de inversores de la V2 queda abierto a propósito.** Mario prefiere decidir entre
+   126 y 127 strings cuando se llegue a esa fase dentro de PVsyst. Aquí se documentan las dos.
+
+> **Una desviación que hay que declarar, no esconder.** V1a + V1b del 3D suman **3.335,8 m²**,
+> un **+7,2 %** sobre los 3.111 m² de catastro; y el forjado de cubierta del 3D (2.756,9 m²)
+> supera en **+23,6 %** el forjado que se deducía de catastro (2.231 m²). Se adopta la medición 3D
+> —es la que va a alimentar la simulación de sombras, y está trazada sobre planos a escala—, pero
+> la fase 1.4 de ERMA exige declarar la fuente de cada superficie, así que esa diferencia se
+> menciona expresamente en la memoria. Si el tutor pregunta de dónde sale, la respuesta es que
+> catastro da superficie construida y el 3D mide polígonos de cubierta trazados sobre el plano.
+
+### 0.2 Insumos
+
 | Insumo | Estado | Dónde está |
 | --- | --- | --- |
 | Carga horaria del CPD, 8.760 h, formato PVsyst | **Listo** | `Datos/PVsyst/Entradas/carga_horaria_CPD_general_8760.csv` |
 | Carga horaria solo no-IT (por si el tutor acota el alcance a HVAC) | **Listo** | `Datos/PVsyst/Entradas/carga_horaria_CPD_noIT_8760.csv` |
 | Emplazamiento, meteorología, albedo | **Listo** | Apartado 2 de esta guía |
+| Escena 3D del CPD y del aparcamiento (sombras cercanas) | **Listo** | Modelada por Mario el 19/09/2026 |
 | Módulo e inversor de la cubierta (V1b) | **Listo** | REC Alpha Pure-RX 470 Wp + familia Huawei SUN2000 KTL-M2 |
-| Geometría de la cubierta (superficies y descuentos) | **Listo** | 1.562 m² útiles → 290 kWp |
+| Geometría de las tres variantes | **Listo** | Apartado 0.1 |
 | Cadena de pérdidas del trabajo previo | **Listo** | Apartado 8 de esta guía |
-| **Datasheet del vidrio BIPV del tragaluz (V1a)** | **BLOQUEANTE** | Pendiente n.º 5 del análisis preliminar |
+| **N.º de entradas DC del SUN2000-100KTL-M2** | **A verificar** | Condiciona el reparto de strings de V1b (apartado 7.1) |
+| **Datasheet del vidrio BIPV del tragaluz (V1a)** | **BLOQUEANTE** | Punto abierto n.º 1 del apartado 13 |
 
-> **Consecuencia práctica, y hay que asumirla antes de empezar:** la **V1b (cubierta, 290 kWp)
-> se puede simular hoy entera**. La **V1a (BIPV en tragaluz, 47 kWp) no**, porque el vidrio
+> **Consecuencia práctica, y hay que asumirla antes de empezar:** la **V1b (cubierta, 338 kWp)
+> se puede simular hoy entera**. La **V1a (BIPV en tragaluz, 58 kWp) no**, porque el vidrio
 > fotovoltaico semitransparente **no está en la base de datos de PVsyst** y hay que darlo de alta
 > a mano con un datasheet real (Onyx Solar u otro fabricante). Sin ese PDF, cualquier módulo que
 > se invente contamina el resultado con una cifra no trazable, que es justo lo que la regla 5 del
@@ -54,8 +105,19 @@ related: [trabajo-previo-modulo6-cpd, analisis-energetico-sistemas-fv-m6t5, m6-t
 > y se vuelve a simular la misma variante: no se pierde nada del trabajo hecho. El apartado 6
 > explica cómo dejarlo preparado.
 >
-> Recuerda además que el BIPV solo aporta un **2,0 %** del consumo: si al final se cae, la V1 pasa
-> de 14,2 % a 12,2 % de cobertura. No es lo que decide la variante.
+> Recuerda además que el BIPV solo aporta un **2,33 %** del consumo: si al final se cae, la V1 pasa
+> de 16,56 % a 14,24 % de cobertura. No es lo que decide la variante.
+
+### 0.3 Errata detectada en la captura del proyecto (19/09/2026)
+
+En la pantalla de proyecto que Mario compartió, el proyecto `TFM_DataCenter.PRJ` tiene cargado
+`Carrasqueira_MN82.SIT` / `Carrasqueira_MN82_SYN.MET` — **Meteonorm 8.2, Portugal**. Es un
+emplazamiento heredado de una plantilla, no el del CPD. **Hay que sustituirlo por el emplazamiento
+del apartado 2 antes de simular nada**, o todas las variantes saldrán con la meteorología
+equivocada y el checkpoint 1 no pasará. Lo mismo aplica al aviso rojo de esa pantalla («*the
+orientation "Fijo, Incl. 10.0°, Azim. -30.0°" is referenced by the sub-array #1, but no 3D field
+is attached to this orientation*»): la escena 3D está dibujada, pero todavía **no hay campos FV
+asignados** a las orientaciones (`PV Fields (0)`, `Active area 0.00 m²`).
 
 ---
 
@@ -243,9 +305,11 @@ carga, pérdidas y horizonte sin volver a teclearlos). Renómbrala
 
 **Premisa de proyecto que hay que dejar escrita en la memoria:** la V1b supone que la cubierta
 **queda liberada** porque las condensadoras se sustituyen por un sistema geotérmico. Sin esa
-sustitución no hay 1.562 m² disponibles, sino los 450 m² del trabajo previo. La geotermia no es
-un adorno de la variante: **es su condición de existencia**, y además reduce el propio consumo en
-~365 MWh/año (9,5 %) y baja el PUE de 1,482 a ~1,341.
+sustitución no hay 1.582 m² útiles de cubierta, sino los 450 m² del trabajo previo. La geotermia
+no es un adorno de la variante: **es su condición de existencia**, y además reduce el propio
+consumo en ~365 MWh/año (9,5 %) y baja el PUE de 1,482 a ~1,341. El cambio de superficie del
+recálculo 3D **no toca esta premisa**: mídase como se mida, sin geotermia la cubierta sigue
+ocupada.
 
 ---
 
@@ -257,8 +321,8 @@ planos, y después **cada sub-array se asocia a una orientación** (manual v8-1,
 
 | # | Orientación | Field type | Inclinación | Azimut | Sub-array asociado |
 | --- | --- | --- | --- | --- | --- |
-| **1** | Cubierta liberada (V1b) | `Unlimited sheds` | **10°** | **−30°** | REC Alpha Pure-RX, 290 kWp |
-| **2** | Tragaluz BIPV (V1a) | `Fixed tilted plane` | **5°** | **−30°** | Vidrio FV — **pendiente de datasheet** |
+| **1** | Cubierta liberada (V1b) | `Unlimited sheds` | **10°** | **−30°** | REC Alpha Pure-RX, 338,40 kWp |
+| **2** | Tragaluz BIPV (V1a) | `Fixed tilted plane` | **0°** | irrelevante (teclea −30° o 0°) | Vidrio FV — **pendiente de datasheet** |
 
 **Parámetros de los sheds de la orientación 1** — se mantienen los del trabajo previo, que ya
 están validados por el tutor y por la comprobación de cargas de viento y nieve del CTE:
@@ -270,7 +334,7 @@ están validados por el tutor y por la comprobación de cargas de viento y nieve
 | Anchura sensible (*collector width*) | 1,21 m |
 | **GCR** | **86,3 %** |
 | Bandas inactivas | 0,02 m superior / 0,02 m inferior |
-| N.º de sheds | **76–77 sheds** — el baseline monta 216 módulos en 27 sheds, es decir **8 módulos por shed**; 612 ÷ 8 = 76,5. PVsyst ajusta el reparto al confirmar el sistema. |
+| N.º de sheds | **90 sheds** — el baseline monta 216 módulos en 27 sheds, es decir **8 módulos por shed**; 720 ÷ 8 = 90 exactos. PVsyst ajusta el reparto al confirmar el sistema. |
 
 > **Por qué 10° y no los 35–37° óptimos.** Es la decisión contraintuitiva que ya defendió el
 > trabajo previo y que aquí se hereda: con un GCR del 86,3 %, subir la inclinación obliga a
@@ -280,14 +344,39 @@ están validados por el tutor y por la comprobación de cargas de viento y nieve
 > cual en la memoria, y **no** aplicarlo a la V3, donde el suelo sobra por un factor 20 y sí se
 > va a los 35°.
 
-> **Los 5° del tragaluz son una hipótesis, no un dato medido.** Es la pendiente que se supuso en
-> el análisis preliminar. Cuando tengas el detalle constructivo del lucernario (o una foto de
-> perfil acotada), corrígela. A 47 kWp, el impacto en el resultado global de la V1 es de décimas.
+> **El tragaluz es horizontal: 0°. Cerrado el 19/09/2026 por Mario.** Se acabaron las tres
+> hipótesis que circulaban:
+>
+> - **Los 5° heredados de catastro** eran una suposición del análisis preliminar. No valen.
+> - **Los ~35° que dedujo la revisión 1 del recálculo** salían de que 578,9109/472 = 1/cos(35,4°).
+>   Era coincidencia aritmética, no geometría.
+> - **La sospecha de que fuese a dos aguas o en diente de sierra** queda descartada: es un plano
+>   único, horizontal. Una sola orientación `Fixed tilted plane`, no varias.
+>
+> Consecuencias prácticas, todas favorables a la claridad del capítulo:
+>
+> 1. **El azimut deja de importar.** A 0° de inclinación el acimut no entra en el cálculo de
+>    irradiación. Teclea el que quieras (−30° por coherencia visual con el resto del proyecto);
+>    PVsyst lo ignorará.
+> 2. **Superficie desarrollada = superficie en planta.** Los 578,9109 m² se usan tal cual, sin
+>    corrección por coseno. La pregunta «¿es desarrollada o proyección?» pierde el sentido.
+> 3. **La producción específica baja, no sube.** Pasar de la hipótesis de 5°/−30° a horizontal
+>    reduce la GlobInc anual de 1.857,7 a **1.785,6 kWh/m²** (−3,9 %) y la productividad de 1.600
+>    a **1.540 kWh/kWp**. Un plano horizontal en Madrid pierde frente a cualquier inclinación
+>    moderada al sur. Es una pérdida pequeña en términos absolutos (3,4 MWh/año) porque V1a es
+>    marginal, pero hay que reportarla con su signo, no maquillarla.
+> 4. **La suciedad y las sombras pesan más que en cualquier otro plano del proyecto.** Un
+>    acristalamiento horizontal no se autolimpia con la lluvia como uno inclinado, y recibe la
+>    sombra de todos los petos, casetones y equipos que lo rodean en la cubierta. La hipótesis de
+>    trabajo mantiene **2 % de suciedad y 0,5 % de sombras** por coherencia con el resto de la
+>    cadena, pero **el valor bueno sale de la simulación de sombras cercanas sobre la escena 3D,
+>    que ya está montada**. El apartado 7.2 trae la sensibilidad completa: entre el caso optimista
+>    y un 15 % de sombras con 3 % de suciedad hay 13 MWh, es decir 0,34 pp de C_D.
 
 **Cómo dejar la orientación 2 preparada sin bloquearte:** créala con `Add Orientation`, ponle
-5° / −30°, ponle nombre `Tragaluz BIPV` y **no le asocies ningún sub-array todavía**. PVsyst
-avisará de que hay una orientación sin módulos; es un aviso, no un error, y puedes simular igual.
-Cuando llegue el datasheet, solo hay que dar de alta el módulo y añadir el sub-array.
+**0°** de inclinación, ponle nombre `Tragaluz BIPV` y **no le asocies ningún sub-array todavía**.
+PVsyst avisará de que hay una orientación sin módulos; es un aviso, no un error, y puedes simular
+igual. Cuando llegue el datasheet, solo hay que dar de alta el módulo y añadir el sub-array.
 
 ---
 
@@ -295,56 +384,109 @@ Cuando llegue el datasheet, solo hay que dar de alta el módulo y añadir el sub
 
 ### 7.1 Dimensionado de la orientación 1 (cubierta, V1b)
 
-Cadena de cálculo, desde catastro hasta módulos, para que sea auditable de punta a punta:
+Cadena de cálculo, desde la medición 3D hasta los módulos, para que sea auditable de punta a
+punta. **El punto de partida ya no es catastro**: es el polígono de tejado de las alas de la H
+medido sobre la escena 3D de PVsyst, que ya excluye el lucernario y los dos patios interiores.
 
 ```
-Cubierta total (catastro)                                   3.111 m²
-  − tragaluz                                                −  472 m²
-  − patios interiores (medidos en píxeles sobre PlantaCPD)  −  408 m²
-  = forjado de cubierta                                      2.231 m²
-  × 0,70   retranqueos, equipos que permanecen, pasillos,
-           casetones de escalera                             1.561,7 m²  disponibles
+Cubierta de las alas de la H (modelo 3D, 19/09/2026)         2.756,8828 m²
+  ├─ ya NETA del lucernario (V1a es polígono aparte)
+  └─ ya NETA de los dos patios (medición por secciones)
+  × 0,70   retranqueos, equipos que permanecen, pasillos
+           de mantenimiento, casetones de escalera            1.929,8 m²
   × 0,82   factor de aprovechamiento en sheds a 10°
-           (el mismo que validó el trabajo previo)           1.280,6 m²  de módulo
-  × 226,7 W/m²  (densidad del REC Alpha Pure-RX)        →      290,3 kWp
+           (el mismo que validó el trabajo previo)            1.582,5 m²  de módulo
+  × 226,7 W/m²  (densidad del REC Alpha Pure-RX)        →       358,74 kWp   ← techo por superficie
 ```
+
+> **Por qué el 0,70 y el 0,82 se aplican enteros y no a medias.** Mario ha confirmado que los
+> 2.756,8828 m² son la *superficie máxima ideal*, sin ningún margen descontado. Ni podía ser de
+> otro modo: el 0,70 es un **criterio de ocupación** (retranqueos de seguridad, equipos que se
+> quedan, pasillos) y el 0,82 es la **penalización de empaquetado** en filas a 10°; ninguno de los
+> dos es geometría que un polígono dibujado sobre el modelo pueda contener. El error a evitar aquí
+> —y es el fácil— es leer «2.756,88 m² de cubierta candidata» como si ya fuese superficie neta de
+> módulo: daría 512 kWp y sería insostenible ante el tutor, porque implicaría que en la cubierta
+> de un CPD en explotación no hay ni retranqueos ni equipos que permanezcan.
 
 **Traducción a módulos y strings:**
 
 | Concepto | Cálculo | Resultado |
 | --- | --- | --- |
-| Módulos que caben | 290.300 W ÷ 470 W | 617,7 → **617** |
+| Módulos que caben por superficie | 358.740 W ÷ 470 W | 763,3 → **763** |
 | Módulos por string | Se hereda del baseline (validado en ventana MPP 200–1000 V) | **12** |
-| N.º de strings | 617 ÷ 12 = 51,4 | **51** (se redondea a la baja, criterio conservador) |
-| **Módulos totales** | 51 × 12 | **612** |
-| **Potencia instalada** | 612 × 470 W | **287,6 kWp** |
-| Superficie ocupada | 612 × 2,073 m²/módulo | **1.269 m²** ✔ cabe en los 1.280,6 m² |
+| N.º de strings por superficie | 763 ÷ 12 = 63,6 | **63** (se redondea a la baja) |
+| Potencia que cabe en la cubierta | 63 × 12 × 470 W | **355,32 kWp** |
+| Superficie que ocuparía | 756 × 2,073 m²/módulo | **1.567,2 m²** ✔ cabe en los 1.582,5 m² |
 
-**Inversores.** Con 3 unidades de **Huawei SUN2000-100KTL-M2** (100 kWac) el reparto es limpio:
-**17 strings por inversor** (3 × 17 = 51). Ratio DC/AC = 287,6 / 300 = **0,96**.
+**Y aquí aparece una restricción nueva que no existía con 287 kWp: las entradas DC del inversor.**
 
-> **Ese 0,96 es bajo frente al 1,13 del trabajo previo, y hay que justificarlo o corregirlo.**
-> El argumento a favor de mantenerlo: aquí **no hay excedentes** — cada kWh producido desplaza
-> una compra de red a precio de tarifa 6.1TD, y la carga plana de 437 kW absorbe todo lo que el
-> campo pueda dar (pico DC estimado ~240 kW). Recortar por inversor **sí tendría coste real**, a
-> diferencia de una planta de venta. Un DC/AC próximo a 1,0 es defendible en autoconsumo sin
-> excedentes.
-> El argumento en contra: tres inversores de 100 kW para 288 kWp encarecen el CAPEX sin producir
-> más, y eso pesa en el capítulo 8.
-> **Esto es una decisión de ingeniería, no de manejo del programa.** Antes de cerrarla, pásala
-> por `ingeniero-dominio` con el datasheet real en la mano y comprueba en el informe que la
-> pérdida `Inverter loss over nominal power` sale **< 0,5 %** — si sale ~0,0 % con 3 inversores,
-> es señal de que sobra inversor. Usa el `Pre-sizing help` de la esquina superior derecha de la
-> ventana `System` para contrastar alternativas rápido.
+El **Huawei SUN2000-100KTL-M2** tiene **10 MPPT** y una intensidad máxima DC de 30 A por entrada
+(cifras del trabajo previo). Con dos strings en paralelo por MPPT —que la corriente admite de
+sobra: el informe del baseline da 154 A para 18 strings a 50 °C, es decir **8,6 A por string**—
+salen **20 strings como máximo por inversor**. Con 63 strings y 3 inversores tocarían a 21, y no
+caben.
+
+| Configuración | Strings | Módulos | kWp | Inversores | Ratio DC/AC | Veredicto |
+| --- | --- | --- | --- | --- | --- | --- |
+| **3 × 20 strings** | **60** | **720** | **338,40** | **3 × 100 kW** | **1,128** | **la de trabajo** |
+| 63 strings en 3 inversores | 63 | 756 | 355,32 | 3 × 100 kW | 1,184 | **21 strings/inversor: no caben** |
+| 63 strings en 4 inversores | 63 | 756 | 355,32 | 4 × 100 kW | 0,888 | ratio demasiado bajo, CAPEX peor |
+| 63 strings alargando el string | 54 × 14 | 756 | 355,32 | 3 × 100 kW | 1,184 | posible, pero cambia una decisión ya validada por el tutor |
+
+**Se adopta 60 strings × 12 módulos = 720 módulos = 338,40 kWp**, con **3 × SUN2000-100KTL-M2** a
+20 strings exactos cada uno. Tres motivos:
+
+1. **Ratio DC/AC = 1,128**, prácticamente idéntico al **1,13** del trabajo previo. El tutor
+   corrigió ese trabajo: reencontrarse con su propio número es lo mejor que le puede pasar a esta
+   página de la memoria.
+2. **No toca la longitud de string de 12 módulos**, que ya está validada en la ventana MPP
+   200–1000 V y en las curvas I-V a temperaturas extremas.
+3. **Ocupa el 94,3 %** de la superficie neta disponible (1.492,6 m² de los 1.582,5 m²). El 5,7 %
+   restante no es superficie desperdiciada por error: es el margen que deja la arquitectura
+   eléctrica, y en la memoria se declara como tal.
+
+> **Esto reabre y cierra de otra manera el viejo punto abierto del ratio DC/AC.** En la versión de
+> catastro (287,6 kWp, 3 inversores) el ratio salía **0,96** y había que justificar que sobraba
+> inversor. Con la superficie real el problema se invierte: **sobra cubierta, no inversor**, y el
+> limitante pasa de ser la superficie a ser el número de entradas DC. Es un cambio de criterio
+> limitante en el sentido de la fase 2 de ERMA, y merece una frase explícita en la memoria.
+>
+> **Lo que hay que verificar antes de darlo por bueno:** que el SUN2000-100KTL-M2 admite
+> efectivamente **20 entradas DC** (10 MPPT × 2). El trabajo previo montó 18 strings en un solo
+> inversor y nunca llegó al límite, así que ese dato **no está en ninguna fuente canónica del
+> proyecto todavía**. Pide el datasheet de Huawei y procésalo con `bibliotecario-pdf` antes de
+> cerrar el unifilar. Si resultase que admite más de 20 entradas, la configuración buena pasa a
+> ser 63 × 12 = 355,32 kWp con ratio 1,184, y hay que rehacer este apartado y el 10.1.
 
 ### 7.2 Dimensionado de la orientación 2 (tragaluz, V1a) — bloqueado
 
 | Concepto | Valor |
 | --- | --- |
-| Superficie del tragaluz (catastro) | 472 m² |
-| Factor de vidrio activo | 0,80 → **377,6 m²** |
+| Superficie del tragaluz (modelo 3D) | **578,9109 m²**, plano horizontal |
+| Factor de vidrio activo | 0,80 → **463,1 m²** |
 | Densidad supuesta (VLT ≈ 20 %, transparencia media) | **125 Wp/m²** |
-| **Potencia** | **47,2 kWp** |
+| **Potencia** | **57,89 kWp** |
+| Inclinación / azimut | **0°** / irrelevante |
+
+**Sensibilidad a la transparencia del vidrio**, que es la variable que de verdad mueve esta
+orientación y que decidirá el datasheet:
+
+| Transparencia | Densidad | kWp | E_PV | C_D (3.832 MWh) | C_D (3.467 MWh) |
+| --- | --- | --- | --- | --- | --- |
+| Alta (VLT > 30 %) | 90 Wp/m² | 41,7 | 64,2 MWh | 1,68 % | 1,85 % |
+| **Media (VLT ≈ 20 %)** | **125 Wp/m²** | **57,89** | **89,2 MWh** | **2,33 %** | **2,57 %** |
+| Baja (VLT ≈ 10 %) | 160 Wp/m² | 74,1 | 114,1 MWh | 2,98 % | 3,29 % |
+
+**Sensibilidad a sombras y suciedad**, que es lo que hay que afinar con la escena 3D ya montada.
+Un acristalamiento horizontal rodeado de petos, casetones y equipos de cubierta no se parece a un
+plano despejado:
+
+| Sombras | Suciedad | E_PV | C_D (3.832 MWh) |
+| --- | --- | --- | --- |
+| **0,5 %** (hipótesis vigente) | **2 %** | **89,2 MWh** | **2,33 %** |
+| 5 % | 2 % | 85,4 MWh | 2,23 % |
+| 10 % | 3 % | 80,4 MWh | 2,10 % |
+| 15 % | 3 % | 76,2 MWh | 1,99 % |
 
 **Qué falta:** el módulo BIPV **no está en la base de datos de PVsyst** y hay que crearlo en
 `Databases` → `PV modules` → `New` a partir de un datasheet real. El manual dedicado es
@@ -352,12 +494,19 @@ Cubierta total (catastro)                                   3.111 m²
 Vmpp, Impp, Voc, Isc, coeficientes de temperatura, superficie del vidrio y VLT.
 
 **Acción:** pedir el datasheet de Onyx Solar (o equivalente) y procesarlo con `bibliotecario-pdf`
-antes de tocar esta parte. Es el pendiente n.º 5 del análisis preliminar.
+antes de tocar esta parte. Es el punto abierto n.º 1 del apartado 13.
 
-> **Y no olvides el encuadre.** El BIPV aporta el **2,0 %** del consumo. Su justificación en el
+> **Y no olvides el encuadre.** El BIPV aporta el **2,33 %** del consumo. Su justificación en el
 > TFM **no puede ser energética**: es arquitectónica (integración en el lucernario, control solar,
 > reducción de la carga térmica que entra por él — que además realimenta al HVAC) y demostrativa.
-> Forzar el argumento energético es el error fácil aquí.
+> Forzar el argumento energético es el error fácil aquí, y ahora hay un motivo más para no
+> forzarlo: **al ser horizontal, V1a produce menos** por kWp que cualquier otro plano del proyecto
+> (1.540 kWh/kWp frente a 1.612 de la cubierta y 1.639 de las marquesinas).
+>
+> Aviso térmico que sigue vigente: el modelo aplica la cadena de pérdidas común con
+> **Uc = 20 W/m²·K**. Un BIPV integrado **sin ventilación posterior** trabaja más caliente
+> (Uc ≈ 15), así que los 89,2 MWh son **cota superior**; cuenta entre un 1,5 y un 2,5 % menos
+> cuando el sub-array se modele con su propio parámetro térmico.
 
 ---
 
@@ -428,24 +577,28 @@ está bien montada**; si se sale, hay algo mal en el sistema o en las pérdidas:
 
 | Magnitud | Predicción del análisis | Banda de aceptación (± 3 %) |
 | --- | --- | --- |
-| **E_PV** solo cubierta (V1b, **287,6 kWp** reales) | **464 MWh** | 450–478 MWh |
-| **E_PV** total V1 (287,6 + 47,2 = **334,8 kWp**) | **540 MWh** | 524–556 MWh |
-| **Producción específica** | **1.612 kWh/kWp** | 1.560–1.660 kWh/kWp |
+| **E_PV** solo cubierta (V1b, **338,40 kWp** reales) | **545,6 MWh** | 529–562 MWh |
+| **E_PV** total V1 (338,40 + 57,89 = **396,3 kWp**) | **634,8 MWh** | 616–654 MWh |
+| **Producción específica** V1b | **1.612 kWh/kWp** | 1.560–1.660 kWh/kWp |
+| **Producción específica** V1a (plano horizontal) | **1.540 kWh/kWp** | 1.490–1.590 kWh/kWp |
 | **PR** | ~84 % | 82–86 % |
 | **A_PV** (autoconsumo) | **100 %** | exacto |
-| **C_D** solo cubierta | **12,1 %** | 11,7–12,5 % |
-| **C_D** total V1 | **14,1 %** | 13,7–14,5 % |
+| **C_D** solo cubierta | **14,24 %** | 13,8–14,7 % |
+| **C_D** total V1 | **16,56 %** | 16,1–17,1 % |
 | **Excedentes** | **0 MWh** | ≈ 0 |
+| Pico de generación de la V1 | **286 kW** | contra 437 kW de carga media: nunca vierte |
 
-> **Por qué 464 MWh y no los 468 del análisis preliminar.** El análisis calculó sobre los
-> **290,3 kWp** que caben en la superficie; el sistema real monta **287,6 kWp** porque los strings
-> se redondean a la baja (51 × 12 en lugar de 51,4). Es la misma cifra escalada, no una
-> discrepancia. Lo mismo vale para los 540 MWh de la V1 completa frente a los 544 del análisis.
+> **Cuidado con dos cifras que se parecen y no son la misma.** La cubierta admite por superficie
+> **355,32 kWp** (63 × 12), pero el sistema que se monta son **338,40 kWp** (60 × 12) porque los
+> strings se reparten entre tres inversores de 20 entradas. Si tecleas 63 strings, PVsyst simulará
+> **572,9 MWh** y **14,95 %** de C_D, y la banda de arriba no cuadrará: no es un error de la guía,
+> es que has montado otro sistema. La tabla del apartado 7.1 explica por qué se elige el de 60.
 
-> La producción específica de la V1 (1.612 kWh/kWp) sale ligeramente **por debajo** de la del
-> baseline (1.641 kWh/kWp) y eso es correcto, no un fallo: el modelo del análisis preliminar
-> corre sistemáticamente un ~1,3 % bajo respecto a PVsyst. Espera que **PVsyst dé un poco más**
-> que la predicción — si da 1.630–1.650 kWh/kWp, perfecto.
+> La producción específica de la V1b (1.612 kWh/kWp) sale ligeramente **por debajo** de la del
+> baseline (1.641 kWh/kWp) y eso es correcto, no un fallo: el modelo del análisis preliminar corre
+> sistemáticamente un ~1,3 % bajo respecto a PVsyst. Espera que **PVsyst dé un poco más** que la
+> predicción — si da 1.630–1.650 kWh/kWp, perfecto. La de la V1a es más baja (1.540) por la razón
+> física de que el plano es **horizontal**, y ahí sí debe salir más baja también en PVsyst.
 
 ### 10.2 Dónde leer los 9 parámetros de la tabla ERMA
 
@@ -464,9 +617,10 @@ el informe de PVsyst, **verificado** reproduciendo las cifras del baseline:
 | Autosuficiencia con balance neto | C_D,NM | Igual a C_D cuando no hay vertido | 13,22 % |
 | Dependencia de la red | D_G | `EFrGrid` ÷ `E_User` × 100 = 100 − C_D | 86,78 % |
 
-> **Ojo con Pnom(STC).** Es la potencia real instalada (612 × 470 = **287,64 kWp**), no la
-> redondeada de 290. En el baseline eran 101,52 kWp, no 102 — y con 102 las cuentas de arriba no
-> cuadran. Este detalle es la causa más habitual de que un PR salga «raro» por unas décimas.
+> **Ojo con Pnom(STC).** Es la potencia real instalada (720 × 470 = **338,40 kWp**), no el techo
+> por superficie de 358,74 ni el de strings de 355,32. En el baseline eran 101,52 kWp, no 102 — y
+> con 102 las cuentas de arriba no cuadran. Este detalle es la causa más habitual de que un PR
+> salga «raro» por unas décimas.
 
 ### 10.3 Qué exportar y dónde guardarlo
 
@@ -504,14 +658,47 @@ El proceso es el mismo. Solo cambian estos parámetros:
 | --- | --- | --- | --- |
 | Proyecto | `TFM_CPD_TresCantos` | **El mismo** | **Otro**: `TFM_Parcela_TresCantos` |
 | Emplazamiento | CPD | El mismo (216 m) | Parcela a 2,93 km — coordenadas propias y **TMY propio** |
-| Orientaciones | 2 (10°/−30° y 5°/−30°) | 1 · **8° / −30°** | 1 · **30–35° / 0° (sur)** |
-| Field type | `Unlimited sheds` | `Unlimited sheds` | `Unlimited sheds` (o seguidor, si se estudia) |
-| Superficie / potencia | 1.562 m² → **288 kWp** | 3.332 m² → **680 kWp** | 1,32 ha/MWp → **2,00–2,50 MWp** |
+| Orientaciones | 2 (**10°/−30°** y **0° horizontal**) | 1 · **8° / −30°** | 1 · **30–35° / 0° (sur)** |
+| Field type | `Unlimited sheds` + `Fixed tilted plane` | `Unlimited sheds` | `Unlimited sheds` (o seguidor, si se estudia) |
+| Superficie / potencia | 2.756,88 + 578,91 m² → **396,3 kWp** | **3.536 m² → 716,28 kWp** (127×12) | 1,32 ha/MWp → **2,00–2,50 MWp** |
+| Módulos / strings | 720 (60×12) + BIPV | **1.524 (127×12)** o **1.512 (126×12)** — ver abajo | por decidir |
+| Inversores | 3 × 100 kW · DC/AC **1,128** | **7 × 100 kW** · DC/AC **1,023** o **1,015** | por decidir |
 | Carga | La misma | La misma | La misma |
 | Autoconsumo | Sin excedentes, red interior | Sin excedentes + antivertido | **Con excedentes, obligatoriamente** (art. 4.5.c) |
 | Antivertido en PVsyst | Límite 0 kW | Límite 0 kW | **Sin límite** — el vertido es legal y hay que cuantificarlo |
-| Batería | **No** (0 pp de ganancia) | **No** (0,2 pp) | **Sí, decisiva**: 4–6 MWh, estrategia `Increased Self-consumption` |
-| C_D esperado | 14,2 % | 28,9 % | 43–44 % sin batería · 80–90 % con ella |
+| Batería | **No** (0 pp de ganancia) | **No** (0,36 pp) | **Sí, decisiva**: 4–6 MWh, estrategia `Increased Self-consumption` |
+| C_D esperado | **16,56 %** | **30,20 %** (127) / **30,01 %** (126) | 43–44 % sin batería · 80–90 % con ella |
+
+> **El reparto de strings de la V2 está deliberadamente sin cerrar.** Mario lo dejó abierto el
+> 19/09/2026: «*eso ahora no tiene mucho sentido responderlo, conforme avancemos en PVsyst
+> veremos*». Las dos opciones son viables y las dos están calculadas; **no se fija ninguna como
+> definitiva hasta esa fase**:
+>
+> | | **127 strings** | **126 strings** |
+> | --- | --- | --- |
+> | Módulos | 1.524 | 1.512 |
+> | Potencia | **716,28 kWp** | **710,64 kWp** |
+> | Superficie de módulo | 3.159,3 m² ✔ (de 3.182,4 disponibles) | 3.134,4 m² ✔ |
+> | Inversores | 7, reparto **no uniforme** (127 es primo: 18+18+18+18+18+18+19) | 7 × 18 exactos |
+> | Ratio DC/AC | 1,023 | 1,015 |
+> | E_PV | 1.173,7 MWh | 1.164,5 MWh |
+> | C_D | 30,20 % | 30,01 % |
+> | Excedentes recortados | 16,5 MWh en 559 h | 14,4 MWh en 520 h |
+>
+> A favor de 127: aprovecha 5,6 kWp más de una superficie que ya está pagada. A favor de 126: el
+> unifilar y la tabla de la fase 6 de ERMA quedan simétricos, y el ratio coincide con el criterio
+> del resto del proyecto. La diferencia energética es de **0,19 puntos de C_D**, así que la
+> decisión es de claridad documental, no de ingeniería.
+
+> **V2 ya no es «excedente testimonial», y eso hay que escribirlo.** Con 3.536 m² el pico de
+> generación sube a **529 kW**, por encima de los 437 kW de carga media del CPD, y el antivertido
+> recorta **16,5 MWh en 559 horas** al año (**49,5 MWh en 957 horas** si entra la geotermia, un
+> 4,2 % de la producción). No se exportan: se pierden. La conclusión de fondo no cambia —un pack
+> de 0,16–0,38 MWh para recuperar eso no lo paga nadie, así que **la batería sigue sin
+> justificarse en V2**—, pero ya no se puede afirmar que la variante nunca vierte. Es un dato del
+> capítulo de resultados y sostiene el argumento correcto: **V2 está justo en el límite de lo que
+> el CPD puede absorber**, y cualquier ampliación por encima de esa huella exige almacenamiento o
+> cambiar de modalidad.
 
 > **Los dos avisos que más tiempo te van a ahorrar en la V3:**
 >
@@ -532,11 +719,23 @@ El proceso es el mismo. Solo cambian estos parámetros:
 
 | # | Asunto | Qué bloquea | Quién lo cierra |
 | --- | --- | --- | --- |
-| 1 | **Datasheet del vidrio BIPV** | La orientación 2 de la V1 (47 kWp, 2 % del consumo) | Mario → `bibliotecario-pdf` |
+| 1 | **Datasheet del vidrio BIPV** | La orientación 2 de la V1 (57,89 kWp, 2,33 % del consumo) | Mario → `bibliotecario-pdf` |
 | 2 | **Alcance: consumo total o solo HVAC** | El denominador de todos los C_D. Los dos ficheros de carga ya están generados | Julio Amador |
-| 3 | Modelo de inversor definitivo de la V1b | El ratio DC/AC (0,96 con 3×100 kW) y el CAPEX del capítulo 8 | `ingeniero-dominio` + datasheet |
-| 4 | Pendiente real del tragaluz (se supone 5°) | Décimas en la V1 | Detalle constructivo o foto acotada |
+| 3 | **N.º de entradas DC del SUN2000-100KTL-M2** | Si son 20, V1b = 338,40 kWp (DC/AC 1,128); si admite más, 355,32 kWp (1,184). Afecta al apartado 7.1, al 10.1 y al CAPEX del capítulo 8 | Datasheet de Huawei → `bibliotecario-pdf` |
+| 4 | **Reparto de strings de la V2: 126 o 127** | El unifilar de la V2 y la tabla de la fase 6 de ERMA. **Diferido expresamente por Mario** al momento de montarlo en PVsyst | Mario, en la fase de sistema de la VC2 |
 | 5 | Capacidad de acceso de generación en los nudos próximos a la parcela | La **viabilidad entera de la V3**, no su simulación | Mapa de capacidad de i-DE |
+| 6 | Sombreado real sobre el lucernario horizontal | Entre 0,5 % y 15 % de sombras hay 13 MWh y 0,34 pp de C_D en la V1a | Simulación de sombras cercanas sobre la escena 3D ya montada |
+
+**Puntos que la revisión 2 cierra y que ya no hay que arrastrar:**
+
+| Cerrado | Cómo quedó |
+| --- | --- |
+| Pendiente del tragaluz | **0°, horizontal.** Plano único, no faldones. Confirmado por Mario el 19/09/2026 |
+| ¿Superficie desarrollada o proyección? | Deja de aplicar: al ser horizontal, coinciden |
+| ¿Los 2.756,88 m² descuentan los patios? | **Sí.** Medición por polígonos de sección sobre la planta en H |
+| ¿Las superficies traen márgenes aplicados? | **No.** Son la superficie máxima ideal; los factores se aplican desde cero |
+| Fuente de la geometría | Catastro 1:1 trazado a mano en el editor 3D de PVsyst |
+| Ratio DC/AC de 0,96 de la V1b | Desaparece: con la superficie real el limitante deja de ser la cubierta y pasa a ser la entrada DC del inversor |
 
 > El punto 5 no afecta a lo que hay que teclear en PVsyst, pero conviene tenerlo presente: la V3
 > se puede simular perfectamente y dar un resultado excelente, y aun así ser inviable si no hay
@@ -546,16 +745,21 @@ El proceso es el mismo. Solo cambian estos parámetros:
 
 ## 14. Resumen: el orden de trabajo de hoy
 
+0. **Corregir el emplazamiento del proyecto**: quitar `Carrasqueira_MN82` (Portugal) — ver 0.3.
 1. Crear el proyecto `TFM_CPD_TresCantos` con el emplazamiento del apartado 2. → **Checkpoint 1**
 2. Importar PVGIS 5.3 TMY y el horizonte. → **Checkpoint 1**
 3. Importar la carga horaria `carga_horaria_CPD_general_8760.csv`. → **Checkpoint 2**
 4. Montar la **VC0** (102 kWp del trabajo previo) y simular. → **Checkpoint 3** ← *el que decide*
-5. Duplicar a **VC1**, añadir las dos orientaciones (la del BIPV vacía de momento).
-6. Dimensionar la cubierta: 612 módulos, 51 strings × 12, 3 inversores.
-7. Verificar que las pérdidas y el IAM se han heredado intactos de la VC0.
-8. Antivertido a 0 kW en el punto de inyección. → **Checkpoint 4**
-9. Simular, contrastar contra la banda del apartado 10.1, exportar PDF + CSV horario.
-10. Anotar en la memoria el resultado y las hipótesis marcadas en esta guía.
+5. Duplicar a **VC1**, añadir las dos orientaciones: cubierta **10°/−30°** y tragaluz **0°**
+   (esta última vacía de momento, a la espera del datasheet BIPV).
+6. Dimensionar la cubierta: **720 módulos, 60 strings × 12, 3 inversores**, 90 sheds.
+7. Asignar los campos FV de la escena 3D a las orientaciones (ahora mismo hay `PV Fields (0)`).
+8. Verificar que las pérdidas y el IAM se han heredado intactos de la VC0.
+9. Antivertido a 0 kW en el punto de inyección. → **Checkpoint 4**
+10. Simular, contrastar contra la banda del apartado 10.1 (**545,6 MWh**, **C_D 14,24 %** sin el
+    BIPV), exportar PDF + CSV horario.
+11. Anotar en la memoria el resultado y las hipótesis marcadas en esta guía.
 
-Con esto la V1 queda cerrada salvo el BIPV. La V2 son los pasos 5 a 9 otra vez con los parámetros
-de la columna correspondiente del apartado 12, y no debería llevar más de una tarde.
+Con esto la V1 queda cerrada salvo el BIPV. La V2 son los pasos 5 a 10 otra vez con los parámetros
+de la columna correspondiente del apartado 12 —decidiendo allí si van 126 o 127 strings— y no
+debería llevar más de una tarde.
