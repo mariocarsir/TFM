@@ -264,6 +264,14 @@ tres condiciones.
 Reconstruye el sistema del trabajo previo dentro del proyecto nuevo. Es media hora de trabajo y
 es lo que da validez a todo lo demás.
 
+> **Atajo si encuentras el `.PRJ` original del Módulo 6 (2026-09-03):** Mario localizó el
+> proyecto PVsyst real del trabajo previo. En ese caso no hace falta reconstruir el sistema a
+> mano: se duplica ese proyecto, se renombra a `VC0 — Baseline trabajo previo (102 kWp)` y se
+> sustituye **solo la carga** (1.260 MWh → `carga_horaria_CPD_general_8760.csv`, 3.832 MWh),
+> dejando meteorología, sistema, sombras y pérdidas intactos — son justo lo que el Checkpoint 3
+> verifica. Ya se contrastó que su orientación real es `Unlimited sheds` 10°/−30°, coincidente
+> con la tabla de abajo.
+
 | Parámetro | Valor |
 | --- | --- |
 | Orientación | `Unlimited sheds`, inclinación **10°**, azimut **−30°** |
