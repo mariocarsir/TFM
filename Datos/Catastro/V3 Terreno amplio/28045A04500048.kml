@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="ISO-8859-1"  ?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Document>
+<name>28045A045000480000LF</name>
+      <Style id="sn_ICONO_OVC">
+		<IconStyle>
+			<color>ffb2c0ff</color>
+			<scale>1.2</scale>
+			<Icon>
+				<href>http://ovc.catastro.meh.es/Cartografia/WMS/ICONO_OVC.png</href>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<scale>0.7</scale>
+		</LabelStyle>
+	  </Style>
+      <Style id="sh_ICONO_OVC">
+		<IconStyle>
+			<color>ffb2c0ff</color>
+			<scale>1.4</scale>
+			<Icon>
+				<href>http://ovc.catastro.meh.es/Cartografia/WMS/ICONO_OVC.png</href>
+			</Icon>
+		</IconStyle>
+		<LabelStyle>
+			<scale>0.8</scale>
+		</LabelStyle>
+	  </Style>
+<StyleMap id="msn_ICONO_OVC">
+	<Pair>
+		<key>normal</key>
+		<styleUrl>#sn_ICONO_OVC</styleUrl>
+	</Pair>
+	<Pair>
+		<key>highlight</key>
+		<styleUrl>#sh_ICONO_OVC</styleUrl>
+	</Pair>
+</StyleMap>
+<Style id="linea_parcela">
+		<LineStyle>
+			<color>ff000000</color>
+			<width>3</width>
+		</LineStyle>
+		<PolyStyle>
+			<color>ffa1c7ff</color>
+			<fill>0</fill>
+		</PolyStyle>
+</Style>
+  <Style id="Ladrillo">
+    <LineStyle>
+      <color>FF000000</color>
+    </LineStyle>
+    <PolyStyle>
+      <color>FFAAAAFF</color>
+    </PolyStyle>
+  </Style>
+  <Style id="Gris">
+    <LineStyle>
+      <color>FF000000</color>
+    </LineStyle>
+    <PolyStyle>
+      <color>FFC8C8C8</color>
+    </PolyStyle>
+  </Style>
+  <Style id="Verde">
+    <LineStyle>
+      <color>FF000000</color>
+    </LineStyle>
+    <PolyStyle>
+      <color>FF97F0A9</color>
+    </PolyStyle>
+  </Style>
+  <Style id="Azul">
+    <LineStyle>
+      <color>FF000000</color>
+    </LineStyle>
+    <PolyStyle>
+      <color>FFFFFFAA</color>
+    </PolyStyle>
+  </Style>
+  <Style id="Solar">
+    <LineStyle>
+      <color>FF000000</color>
+    </LineStyle>
+    <PolyStyle>
+      <color>FFB9C9A0</color>
+    </PolyStyle>
+  </Style>
+  <Style id="Subparcela">
+    <LineStyle>
+      <color>FF000000</color>
+    </LineStyle>
+    <PolyStyle>
+      <color>FFE1FFE1</color>
+    </PolyStyle>
+  </Style>
+<Visible>1</Visible>
+<LookAt>
+<longitude>-3.74966555698916</longitude>
+<latitude>40.6222662172709</latitude>
+<range>654.114999999991</range>
+<tilt>45</tilt>
+<heading>0</heading>
+</LookAt>
+<Placemark>
+<name>28045A045000480000LF</name>
+			<styleUrl>#linea_parcela</styleUrl>
+			<Polygon>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+-3.75155447414774,40.6227278592749,0 -3.75126068226407,40.6225384212861,0 -3.75115449002163,40.6224520878841,0 -3.75105159968173,40.6223966327885,0 -3.75099102739365,40.6223615323714,0 -3.75094840180505,40.6223137030307,0 -3.75092681645942,40.6222760067981,0 -3.75090059351129,40.6222142874555,0 -3.75087152190837,40.6221732120725,0 -3.75079117735903,40.6221039169097,0 -3.7506957894483,40.6220426471424,0 -3.75057463283879,40.6219712748417,0 -3.75043847556514,40.6219011710201,0 -3.75029634889626,40.6218253357381,0 -3.75015427886007,40.6217656300111,0 -3.74970512468813,40.6215222439196,0 -3.74948853974854,40.6213850956979,0 -3.74936865260975,40.6212895660233,0 -3.74921262035028,40.62118634755,0 -3.74904480829293,40.6210969885981,0 -3.7488969053454,40.621044071173,0 -3.74876255711395,40.620998006891,0 -3.74859221661167,40.6209579413354,0 -3.74859016924304,40.6210393032943,0 -3.74854320542791,40.6211427574766,0 -3.74847939970149,40.6212096553271,0 -3.74837467087379,40.6212539316975,0 -3.74826214831852,40.6212672729989,0 -3.74813281704243,40.6212682009667,0 -3.74805047596247,40.6212951298744,0 -3.74796242514376,40.6213507434125,0 -3.74793336119278,40.6213843539702,0 -3.74791048248718,40.6214107174936,0 -3.74782465845252,40.6215282063673,0 -3.74779388895965,40.6215891198305,0 -3.74772585249463,40.6217008179616,0 -3.7479380771826,40.6218182731496,0 -3.75110720017716,40.6235720880436,0 -3.75124711588086,40.6234496549849,0 -3.75134024994829,40.6233195939502,0 -3.75140959867459,40.6231987863957,0 -3.75143720613646,40.6231091502773,0 -3.75146157103574,40.6230150308951,0 -3.75149834398797,40.6229414607116,0 -3.75155288068057,40.6228493971475,0 -3.75160485851046,40.6227927544417,0 -3.75155447414774,40.6227278592749,0 -3.75155447414774,40.6227278592749,0 						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+<Folder>
+<name>SUBPARCELAS</name>
+<Placemark>
+<name>   0</name>
+  <styleUrl>#Subparcela</styleUrl>
+			<Polygon>
+<extrude>1</extrude>
+<altitudeMode>clampToGround</altitudeMode>
+				<tessellate>1</tessellate>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+-3.75160485851046,40.6227927544417,.1 -3.75155447414774,40.6227278592749,.1 -3.75126068226407,40.6225384212861,.1 -3.75115449002163,40.6224520878841,.1 -3.75105159968173,40.6223966327885,.1 -3.75099102739365,40.6223615323714,.1 -3.75094840180505,40.6223137030307,.1 -3.75092681645942,40.6222760067981,.1 -3.75090059351129,40.6222142874555,.1 -3.75087152190837,40.6221732120725,.1 -3.75079117735903,40.6221039169097,.1 -3.7506957894483,40.6220426471424,.1 -3.75057463283879,40.6219712748417,.1 -3.75043847556514,40.6219011710201,.1 -3.75029634889626,40.6218253357381,.1 -3.75015427886007,40.6217656300111,.1 -3.74970512468813,40.6215222439196,.1 -3.74948853974854,40.6213850956979,.1 -3.74936865260975,40.6212895660233,.1 -3.74921262035028,40.62118634755,.1 -3.74904480829293,40.6210969885981,.1 -3.7488969053454,40.621044071173,.1 -3.74876255711395,40.620998006891,.1 -3.74859221661167,40.6209579413354,.1 -3.74859016924304,40.6210393032943,.1 -3.74854320542791,40.6211427574766,.1 -3.74847939970149,40.6212096553271,.1 -3.74837467087379,40.6212539316975,.1 -3.74826214831852,40.6212672729989,.1 -3.74813281704243,40.6212682009667,.1 -3.74805047596247,40.6212951298744,.1 -3.74796242514376,40.6213507434125,.1 -3.74793336119278,40.6213843539702,.1 -3.74791048248718,40.6214107174936,.1 -3.74782465845252,40.6215282063673,.1 -3.74779388895965,40.6215891198305,.1 -3.74772585249463,40.6217008179616,.1 -3.7479380771826,40.6218182731496,.1 -3.75110720017716,40.6235720880436,.1 -3.75124711588086,40.6234496549849,.1 -3.75134024994829,40.6233195939502,.1 -3.75140959867459,40.6231987863957,.1 -3.75143720613646,40.6231091502773,.1 -3.75146157103574,40.6230150308951,.1 -3.75149834398797,40.6229414607116,.1 -3.75155288068057,40.6228493971475,.1 -3.75160485851046,40.6227927544417,.1 -3.75160485851046,40.6227927544417,.1 						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+</Folder>
+<Placemark>
+<name>Polígono 45 Parcela 48, COLMENAR VIEJO (MADRID)</name>
+<Snippet>28045A045000480000LF</Snippet>
+<description><![CDATA[<font size=+1>Consultar en la Sede Electrónica<br>del Catastro la parcela:</font><br><font size=+2><A href="https://www1.sedecatastro.gob.es/CYCBienInmueble/OVCListaBienes.aspx?del=28&muni=45&rc1=28045A0&rc2=4500048">28045A045000480000LF</a></font>]]></description>
+<styleUrl>#msn_ICONO_OVC</styleUrl>
+<Point>
+<extrude>1</extrude>
+<altitudeMode>relativeToGround</altitudeMode>
+<coordinates>-3.74966555698916,40.6222662172709,4</coordinates>
+</Point>
+</Placemark>
+</Document>
+</kml>
