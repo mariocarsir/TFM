@@ -1,4 +1,4 @@
-# Fusión Guía
+# FusiónGuía
 
 - **Fecha de la petición:** 27/09/2026 ~13:15 (hora aproximada: la petición se hizo justo antes de que se estableciera esta norma de guardado, registrada a las 13:22)
 - **Contexto (cuándo):** al retomar la sesión «PVsyst» el 27/09, después de que Claude recordara que seguía sin fusionar la rama `worktree-guia-pvsyst-sin-vc0`, donde `ingeniero-dominio` había reescrito la guía de PVsyst el 26/09 para quitar la calibración VC0.
