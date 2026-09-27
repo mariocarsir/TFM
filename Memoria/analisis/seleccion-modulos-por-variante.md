@@ -504,6 +504,7 @@ natural en la misma plataforma.
 | 15 | Garantía de producto de AIKO en España (15 o 25 años) y disponibilidad de las dos versiones | Consulta a AIKO Europa | Cap. 9 |
 | 16 | Onyx: ficha con Voc/Vmp de tres cifras, factor g y oferta (arrastrado del 22/09) | Mario | PAN V1a |
 | 17 | Dar de alta las fichas citables con `bibliotecario-pdf` (AIKO Mw y Dw, LONGi Hi-MO 9, Onyx, reservas) | `bibliotecario-pdf` | Redacción |
+| 18 | **Elegir la estructura soporte de las cuatro variantes** (producto y fabricante reales, con ficha): V1a, perfilería existente del lucernario; V1b, sistema lastrado no perforante compatible con la membrana líquida (K2, Van der Valk u otro); V2, **marquesina concreta** (vía A o B, fabricante, inclinación, cimentación) —los módulos de la tabla §4.4 son enmarcados de catálogo y la marquesina se compra aparte—; V3, fija o seguidor a un eje. Sin urgencia para la marquesina (el mercado admite el formato de 1134 mm de ancho), pero es **obligatorio**: alimenta el apartado de estructura soporte de la memoria, que debe cubrir las cuatro variantes y no solo V2. Decidir también si ese apartado sigue dentro del 6.1 o pasa a sección propia del cap. 6 | Mario + `ingeniero-dominio` | Apartado de estructura soporte; pendientes 2, 6 y 8 |
 
 ---
 
