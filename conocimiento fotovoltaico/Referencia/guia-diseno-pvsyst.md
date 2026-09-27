@@ -3,8 +3,8 @@ title: "Guía de modelado en PVsyst — Variante 1 (cubierta del CPD) y protocol
 tipo: guia-operativa
 autor: "Generada para Mario Carrión Sirvent"
 version_pvsyst: "V8.1.5"
-fecha: 2026-09-19
-revision: 2
+fecha: 2026-09-26
+revision: 3
 estado: operativa
 fuentes:
   - "conocimiento fotovoltaico/Manuales PVsyst/pvsyst-tutorial-v8-1-grid-connected-en.pdf (manual de usuario completo)"
@@ -33,6 +33,12 @@ related: [trabajo-previo-modulo6-cpd, analisis-energetico-sistemas-fv-m6t5, m6-t
 ---
 
 ## 0. Estado de partida: qué está listo y qué bloquea
+
+**Revisión 3 (26/09/2026).** Se elimina la variante de calibración VC0 (reproducción del trabajo
+previo dentro del proyecto). El flujo pasa directamente de la carga a la primera variante real,
+la VC1, empezando por el lucernario V1a. Qué controles sustituyen a esa calibración: apartado 4.
+Los checkpoints se renumeran (el antiguo 4, antivertido, pasa a ser el 3) y se añade un
+checkpoint 4 de rango de productividad en el apartado 10.1.
 
 **Revisión 2 (19/09/2026).** La geometría de las tres variantes ya no sale de catastro ni del
 KMZ: sale del **modelado 3D que Mario ha levantado dentro de PVsyst**, y Mario ha cerrado las
@@ -129,22 +135,31 @@ obliga a rehacer.
 
 | Proyecto PVsyst | Emplazamiento | Variantes que cuelgan | Por qué van juntas |
 | --- | --- | --- | --- |
-| **`TFM_CPD_TresCantos`** | CPD (RD Europa 3, Tres Cantos) | `VC0` baseline · `VC1` variante 1 · `VC2` variante 2 | Mismo emplazamiento y mismo consumo. El aparcamiento de la V2 está a 216 m: misma meteorología, mismo TMY. |
+| **`TFM_CPD_TresCantos`** | CPD (RD Europa 3, Tres Cantos) | `VC1` variante 1 · `VC2` variante 2 | Mismo emplazamiento y mismo consumo. El aparcamiento de la V2 está a 216 m: misma meteorología, mismo TMY. |
 | **`TFM_Parcela_TresCantos`** | Parcela de 58,84 ha, a 2,93 km | `VC3` variante 3 (+ BESS) | Es **otro emplazamiento**: otras coordenadas, otro TMY. No puede ser una variante del proyecto anterior. |
 
 **Nomenclatura de variantes** (se teclea en el campo del nombre de la variante, arriba a la derecha):
 
-- `VC0 — Baseline trabajo previo (102 kWp)`
 - `VC1 — V1 Cubierta CPD (BIPV + liberada)`
 - `VC2 — V2 Marquesinas aparcamiento`
 - `VC3 — V3 Planta en suelo + BESS`
 
-> **Por qué existe la VC0.** No es relleno. Es el **patrón de calibración**: se reconstruye el
-> sistema del trabajo previo (102 kWp) dentro del proyecto nuevo, y si PVsyst devuelve los
-> **166,55 MWh** que ya dio en enero, queda demostrado que el emplazamiento, la meteorología y la
-> cadena de pérdidas están bien introducidos. A partir de ahí, todo lo que salga de la VC1, VC2 y
-> VC3 es creíble. Sin esa comprobación, un error de importación de meteorología se propagaría a
-> las tres variantes sin que nada lo delatase. Es la fase 3 de esta guía y **es obligatoria**.
+> **Ojo con el sufijo del fichero.** PVsyst numera por su cuenta los ficheros de variante (`.VC0`,
+> `.VC1`, …) según el orden de creación. En un proyecto nuevo, la primera variante que se cree —la
+> V1— se guardará como `.VC0` aunque se llame `VC1 — V1 Cubierta CPD…`. No tiene importancia: lo
+> que identifica la variante en la memoria y en los ficheros exportados es el **nombre**, no el
+> sufijo. Tampoco hay que confundir ese `.VC0` con el informe
+> `Trabajo_DataCenter_Project.VC0-Report1.pdf` del trabajo previo, que es otra cosa.
+
+> **No hay variante de calibración (decisión de Mario, 26/09/2026).** La revisión 2 de esta guía
+> montaba primero una `VC0` que reproducía el trabajo previo (102 kWp, 166,55 MWh) como
+> comprobación de respuesta conocida. **Se elimina**: es trabajo redundante —cada variante real se
+> calcula y se verifica por sí sola— y, además, el emplazamiento del proyecto PVsyst estaba mal
+> configurado (plantilla de Carrasqueira, Portugal, con Meteonorm; ver 0.3), lo que habría
+> invalidado esa reproducción de todos modos. El apartado 4 explica qué controles cubren ahora esa
+> función. Las cifras del trabajo previo **no desaparecen**: siguen siendo la referencia externa
+> con la que la memoria compara las variantes (`trabajo-previo-modulo6-cpd.md`); lo único que se
+> suprime es su reproducción interna en PVsyst.
 
 ---
 
@@ -174,8 +189,10 @@ En `Project` → botón del sitio → `New` (o `Databases` → `Geographical sit
 ### 2.2 Meteorología
 
 **Fuente: PVGIS 5.3, TMY, importada por API.** No es una preferencia estética: es lo que usó el
-trabajo previo, y **si se cambia de base de datos, la VC0 no reproducirá los 166,55 MWh** y se
-pierde el patrón de calibración y la comparabilidad con el baseline que el tutor ya corrigió.
+trabajo previo, y **si se cambia de base de datos se pierde la comparabilidad con el baseline**
+que el tutor ya corrigió (166,55 MWh, 1.641 kWh/kWp). Además, sin variante de calibración, el
+checkpoint 1 de abajo pasa a ser la única comprobación de respuesta conocida del proyecto: hay
+que tomárselo en serio.
 
 Ruta: en la ventana del sitio, pestaña de importación → seleccionar `PVGIS` → versión `5.3` →
 `TMY` → importar. La clave de API, si la pide, se configura en `Options` → `Preferences`.
@@ -259,57 +276,63 @@ tres condiciones.
 
 ---
 
-## 4. Fase 3 — VC0: la calibración obligatoria
+## 4. Control de calidad sin variante de calibración
 
-Reconstruye el sistema del trabajo previo dentro del proyecto nuevo. Es media hora de trabajo y
-es lo que da validez a todo lo demás.
+Hasta la revisión 2, entre la carga y la primera variante real había una fase de calibración: se
+reproducía el sistema del trabajo previo (102 kWp) y se exigía que PVsyst devolviese sus
+166,55 MWh. **Esa fase ya no existe** (decisión de Mario, 26/09/2026; motivos en el apartado 1).
+Su función —detectar un error de montaje antes de que contamine las tres variantes— la cubren
+ahora tres controles, cada uno en su sitio del flujo:
 
-> **Atajo si encuentras el `.PRJ` original del Módulo 6 (2026-09-03):** Mario localizó el
-> proyecto PVsyst real del trabajo previo. En ese caso no hace falta reconstruir el sistema a
-> mano: se duplica ese proyecto, se renombra a `VC0 — Baseline trabajo previo (102 kWp)` y se
-> sustituye **solo la carga** (1.260 MWh → `carga_horaria_CPD_general_8760.csv`, 3.832 MWh),
-> dejando meteorología, sistema, sombras y pérdidas intactos — son justo lo que el Checkpoint 3
-> verifica. Ya se contrastó que su orientación real es `Unlimited sheds` 10°/−30°, coincidente
-> con la tabla de abajo.
+| # | Control | Qué error detecta | Dónde está |
+| --- | --- | --- | --- |
+| **a** | **Checkpoint 1 — meteorología** (GlobHor 1.785,8 · DiffHor 558,44 · T_Amb 14,23) | La **mayor fuente de incertidumbre** de toda la simulación: base de datos, versión o punto de malla equivocados. Es justo el error que había en el proyecto (Carrasqueira + Meteonorm) | Apartado 2.2 |
+| **b** | **Bloqueos estructurales de PVsyst** en el diseño del sistema | Errores eléctricos groseros: tensión de string fuera de la ventana MPP o por encima de la tensión máxima del inversor, corriente por MPPT excesiva, sobredimensionado del inversor. PVsyst **no deja simular** con un error de este tipo (mensaje en rojo) y avisa en naranja de los dudosos | Fase 5 (apartado 7) |
+| **c** | **Checkpoint 4 — rango de productividad** (*sanity check* informal) | Lo que se escapa de a y b: pérdidas mal tecleadas, orientación equivocada, un sub-array sin asociar, Pnom mal leído | Apartado 10.1 |
 
-| Parámetro | Valor |
-| --- | --- |
-| Orientación | `Unlimited sheds`, inclinación **10°**, azimut **−30°** |
-| N.º de sheds | 27 · separación 1,42 m · anchura sensible 1,21 m |
-| GCR | **86,3 %** · bandas inactivas 0,02 m arriba y abajo |
-| Módulo | **REC Alpha Pure-RX 470 Wp** (`REC470AA Pure-RX` en la base de datos) |
-| Configuración | **18 strings × 12 módulos en serie** = 216 módulos = **101,52 kWp** |
-| Inversor | Huawei **SUN2000-100KTL-M2** · 1 unidad · 90,0 kWac utilizados |
-| Sombras cercanas | `Linear shadings` (modelo lineal) |
-| Pérdidas | Las del apartado 8 de esta guía |
-| Carga | La de la fase 2 (aquí **sí** cambia respecto al trabajo previo: 3.832 MWh en lugar de 1.260) |
-
-> **Checkpoint 3 — el que decide si sigues o depuras.** Simula la VC0 y mira el informe:
->
-> | Magnitud | Valor que tiene que salir | Tolerancia |
-> | --- | --- | --- |
-> | **E_PV (`Produced Energy`)** | **166,55 MWh** | ± 0,5 % → 165,7–167,4 MWh |
-> | **GlobInc** | **1.937,6 kWh/m²** | ± 0,5 % |
-> | **PR** | **84,67 %** | ± 0,5 pp |
-> | Producción específica | **1.641 kWh/kWp** | ± 0,5 % |
->
-> **Ojo, y esto es importante:** el `C_D` (*solar fraction*) **NO** dará el 13,22 % del trabajo
-> previo, sino **≈ 4,3 %**. No es un error: es la consecuencia directa de haber cambiado el
-> denominador de 1.260 a 3.832 MWh. Es exactamente el hallazgo del apartado 1.1 del análisis
-> preliminar, y verlo salir de PVsyst con tus propios ojos es la confirmación independiente de
-> que el trabajo previo dimensionaba contra la refrigeración, no contra el consumo total.
->
-> Si **E_PV** cuadra pero **C_D** no da ~4,3 %, el problema está en la carga (fase 2).
-> Si **E_PV** no cuadra, el problema está en la meteorología (fase 1) o en las pérdidas (fase 8).
-> Esa separación de diagnóstico es justo para lo que sirve este checkpoint.
+> **Qué se pierde, dicho con honestidad.** La VC0 separaba el diagnóstico: si su E_PV cuadraba
+> pero su C_D no, el fallo estaba en la carga; si no cuadraba E_PV, en meteorología o pérdidas. Sin
+> ella, esa separación se hace a mano: el checkpoint 2 aísla la carga, el checkpoint 1 aísla la
+> meteorología, y lo que quede fuera del rango del checkpoint 4 con esos dos en verde apunta al
+> sistema o a las pérdidas. La cadena de pérdidas se sigue copiando del trabajo previo
+> (apartado 8), así que la comparabilidad con el baseline se mantiene por construcción, no por
+> reproducción.
 
 ---
 
-## 5. Fase 4 — VC1: crear la variante
+## 5. Fase 3 — VC1: crear la primera variante real, directamente
 
-Con la VC0 validada, duplícala: `Variant` → `New` a partir de la VC0 (así hereda meteorología,
-carga, pérdidas y horizonte sin volver a teclearlos). Renómbrala
-`VC1 — V1 Cubierta CPD (BIPV + liberada)`.
+La primera variante que se construye es ya una variante de diseño: la **V1** (lucernario BIPV +
+cubierta liberada). Se crea **desde cero** en el proyecto (`Variant` → `New`), no duplicando
+ninguna otra, y se nombra `VC1 — V1 Cubierta CPD (BIPV + liberada)`.
+
+> **Lo que antes se heredaba de la VC0 ahora se teclea una vez, aquí.** Al no haber variante de la
+> que duplicar, hay que introducir a mano en la VC1: el horizonte de PVGIS (apartado 2.2), la
+> carga horaria (apartado 3) y la cadena de pérdidas completa con su perfil IAM (apartado 8). La
+> meteorología sí es del proyecto y no hay que repetirla. **La VC1 queda como plantilla**: la VC2 se
+> duplica ya de ella y lo hereda todo.
+
+> **Si se trabaja sobre la copia del proyecto del Módulo 6** (`TFM_DataCenter.PRJ`) en lugar de
+> crear `TFM_CPD_TresCantos` desde cero: su variante heredada `VC0: Real` **no se simula ni se usa
+> para calibrar**. Puede borrarse o quedarse congelada como referencia documental; en ningún caso
+> es la base de la VC1. Y el emplazamiento hay que corregirlo igual (apartado 0.3).
+
+**Orden dentro de la VC1: primero la V1a (lucernario), después la V1b (cubierta).** Por eso la
+orientación n.º 1 de la variante es el tragaluz (apartado 6). Parámetros vigentes de la V1a:
+
+| Parámetro | Valor | Fuente |
+| --- | --- | --- |
+| Superficie | **578,9109 m²**, plano **horizontal (0°)** | Modelado 3D de Mario, 19/09/2026 (apartado 0.1) |
+| Vidrio activo | × 0,80 → **463,1 m²** | Apartado 7.2 |
+| Módulo | **Onyx Solar c-Si, transparencia 35 %, 182 Wp** (1.650 × 850 mm) — **provisional** | `Memoria/analisis/comparacion-modulos-fv.md` §3.3 |
+| Potencia | **≈ 60,1 kWp** con 330 uds de Onyx; **57,89 kWp** es la cifra de trabajo de los apartados 7.2 y 10.1 (hipótesis de 125 Wp/m²) | Ídem, §5.1 |
+| Field type | `Fixed tilted plane`, 0° / azimut irrelevante | Apartado 6 |
+
+> **El fichero PAN del Onyx no está en la base de datos de PVsyst** y hay que crearlo a mano
+> (`Databases` → `PV modules` → `New`), idealmente con la ficha de Onyx con Voc/Vmp de tres cifras
+> que está pedida (pendiente n.º 2 del §5.3 de la comparativa de módulos). **Si el PAN aún no está listo, no
+> te bloquees**: deja la orientación 1 creada y vacía (apartado 6) y sigue con la V1b; cuando llegue
+> el PAN se añade el sub-array y se vuelve a simular la misma variante.
 
 **Premisa de proyecto que hay que dejar escrita en la memoria:** la V1b supone que la cubierta
 **queda liberada** porque las condensadoras se sustituyen por un sistema geotérmico. Sin esa
@@ -321,7 +344,7 @@ ocupada.
 
 ---
 
-## 6. Fase 5 — VC1: las dos orientaciones
+## 6. Fase 4 — VC1: las dos orientaciones
 
 La V1 tiene dos planos distintos, así que la variante necesita **dos orientaciones**. PVsyst V8
 lo soporta de forma nativa: en la ventana `Orientation`, el botón **`Add Orientation`** añade
@@ -329,10 +352,10 @@ planos, y después **cada sub-array se asocia a una orientación** (manual v8-1,
 
 | # | Orientación | Field type | Inclinación | Azimut | Sub-array asociado |
 | --- | --- | --- | --- | --- | --- |
-| **1** | Cubierta liberada (V1b) | `Unlimited sheds` | **10°** | **−30°** | REC Alpha Pure-RX, 338,40 kWp |
-| **2** | Tragaluz BIPV (V1a) | `Fixed tilted plane` | **0°** | irrelevante (teclea −30° o 0°) | Vidrio FV — **pendiente de datasheet** |
+| **1** | Tragaluz BIPV (V1a) | `Fixed tilted plane` | **0°** | irrelevante (teclea −30° o 0°) | Onyx c-Si 35 % 182 Wp — **PAN a crear** (apartado 5) |
+| **2** | Cubierta liberada (V1b) | `Unlimited sheds` | **10°** | **−30°** | REC Alpha Pure-RX, 338,40 kWp |
 
-**Parámetros de los sheds de la orientación 1** — se mantienen los del trabajo previo, que ya
+**Parámetros de los sheds de la orientación 2** — se mantienen los del trabajo previo, que ya
 están validados por el tutor y por la comprobación de cargas de viento y nieve del CTE:
 
 | Parámetro | Valor |
@@ -381,16 +404,16 @@ están validados por el tutor y por la comprobación de cargas de viento y nieve
 >    que ya está montada**. El apartado 7.2 trae la sensibilidad completa: entre el caso optimista
 >    y un 15 % de sombras con 3 % de suciedad hay 13 MWh, es decir 0,34 pp de C_D.
 
-**Cómo dejar la orientación 2 preparada sin bloquearte:** créala con `Add Orientation`, ponle
+**Cómo dejar la orientación 1 preparada sin bloquearte:** créala con `Add Orientation`, ponle
 **0°** de inclinación, ponle nombre `Tragaluz BIPV` y **no le asocies ningún sub-array todavía**.
 PVsyst avisará de que hay una orientación sin módulos; es un aviso, no un error, y puedes simular
 igual. Cuando llegue el datasheet, solo hay que dar de alta el módulo y añadir el sub-array.
 
 ---
 
-## 7. Fase 6 — VC1: el sistema (módulos, inversores, strings)
+## 7. Fase 5 — VC1: el sistema (módulos, inversores, strings)
 
-### 7.1 Dimensionado de la orientación 1 (cubierta, V1b)
+### 7.1 Dimensionado de la orientación 2 (cubierta, V1b)
 
 Cadena de cálculo, desde la medición 3D hasta los módulos, para que sea auditable de punta a
 punta. **El punto de partida ya no es catastro**: es el polígono de tejado de las alas de la H
@@ -466,7 +489,7 @@ caben.
 > cerrar el unifilar. Si resultase que admite más de 20 entradas, la configuración buena pasa a
 > ser 63 × 12 = 355,32 kWp con ratio 1,184, y hay que rehacer este apartado y el 10.1.
 
-### 7.2 Dimensionado de la orientación 2 (tragaluz, V1a) — bloqueado
+### 7.2 Dimensionado de la orientación 1 (tragaluz, V1a) — bloqueado
 
 | Concepto | Valor |
 | --- | --- |
@@ -518,7 +541,7 @@ antes de tocar esta parte. Es el punto abierto n.º 1 del apartado 13.
 
 ---
 
-## 8. Fase 7 — Pérdidas: replicar exactamente el baseline
+## 8. Fase 6 — Pérdidas: replicar exactamente el baseline
 
 **Regla que gobierna todo el capítulo de resultados: las tres variantes comparten la misma
 cadena de pérdidas.** Si la V1 lleva unas hipótesis y la V2 otras, la comparación entre variantes
@@ -553,7 +576,7 @@ permanecen y los retranqueos, así que modelarlos otra vez en 3D los contaría d
 
 ---
 
-## 9. Fase 8 — Autoconsumo y antivertido
+## 9. Fase 7 — Autoconsumo y antivertido
 
 La V1 es **autoconsumo sin excedentes**, en la modalidad de **red interior** del artículo 3.g).i)
 del RD 244/2019 — misma referencia catastral, mismo edificio, **exenta de permisos de acceso y
@@ -569,16 +592,27 @@ En PVsyst hay que reflejarlo. Dos vías, equivalentes en el resultado:
    level`), y marcar `Account as separate loss` para que el recorte aparezca desglosado como
    `EUnused` en el diagrama de pérdidas.
 
-> **Checkpoint 4 — antivertido.** En el informe, **`EUnused` tiene que salir ≈ 0 MWh**. En el
+> **Checkpoint 3 — antivertido.** En el informe, **`EUnused` tiene que salir ≈ 0 MWh**. En el
 > baseline salió −0,01 MWh. Si sale un valor apreciable, significa que el campo está superando la
 > carga en algunas horas y el antivertido está recortando producción real — algo que en la V1 no
 > debería ocurrir nunca. Si ocurre, revisa que la carga se haya importado bien (checkpoint 2).
 
 ---
 
-## 10. Fase 9 — Simular y validar el resultado
+## 10. Fase 8 — Simular y validar el resultado
 
 ### 10.1 Banda de aceptación de la VC1
+
+> **Checkpoint 4 — rango de productividad (*sanity check* informal, vale para cualquier
+> variante).** Antes de mirar la banda fina de abajo, comprueba la **productividad final Y_F**
+> (`E_Solar` ÷ Pnom STC, o `Produced Energy` ÷ kWp) de la variante —y de cada orientación, si el
+> informe la desglosa—. En Madrid tiene que caer en el rango típico de **~1.400–1.700 kWh/kWp**.
+> Si sale fuera, **para y revisa antes de dar la variante por buena**: con los checkpoints 1 y 2 en
+> verde, el fallo está casi seguro en el sistema (sub-array sin asociar, orientación mal tecleada,
+> Pnom leído mal) o en la cadena de pérdidas. Es un rango de orden de magnitud, no un criterio de
+> aceptación: sirve para cazar errores groseros que PVsyst deja pasar porque no son eléctricos. Como
+> referencia, el trabajo previo dio 1.641 kWh/kWp y las predicciones de esta guía son 1.540 (V1a,
+> horizontal), 1.612 (V1b) y 1.639 (V2): todas dentro.
 
 El análisis preliminar predice estos valores. **Si PVsyst cae dentro de la banda, la variante
 está bien montada**; si se sale, hay algo mal en el sistema o en las pérdidas:
@@ -727,7 +761,7 @@ El proceso es el mismo. Solo cambian estos parámetros:
 
 | # | Asunto | Qué bloquea | Quién lo cierra |
 | --- | --- | --- | --- |
-| 1 | **Datasheet del vidrio BIPV** | La orientación 2 de la V1 (57,89 kWp, 2,33 % del consumo) | Mario → `bibliotecario-pdf` |
+| 1 | **Datasheet del vidrio BIPV** | La orientación 1 de la V1 (57,89 kWp, 2,33 % del consumo) | Mario → `bibliotecario-pdf` |
 | 2 | **Alcance: consumo total o solo HVAC** | El denominador de todos los C_D. Los dos ficheros de carga ya están generados | Julio Amador |
 | 3 | **N.º de entradas DC del SUN2000-100KTL-M2** | Si son 20, V1b = 338,40 kWp (DC/AC 1,128); si admite más, 355,32 kWp (1,184). Afecta al apartado 7.1, al 10.1 y al CAPEX del capítulo 8 | Datasheet de Huawei → `bibliotecario-pdf` |
 | 4 | **Reparto de strings de la V2: 126 o 127** | El unifilar de la V2 y la tabla de la fase 6 de ERMA. **Diferido expresamente por Mario** al momento de montarlo en PVsyst | Mario, en la fase de sistema de la VC2 |
@@ -757,17 +791,20 @@ El proceso es el mismo. Solo cambian estos parámetros:
 1. Crear el proyecto `TFM_CPD_TresCantos` con el emplazamiento del apartado 2. → **Checkpoint 1**
 2. Importar PVGIS 5.3 TMY y el horizonte. → **Checkpoint 1**
 3. Importar la carga horaria `carga_horaria_CPD_general_8760.csv`. → **Checkpoint 2**
-4. Montar la **VC0** (102 kWp del trabajo previo) y simular. → **Checkpoint 3** ← *el que decide*
-5. Duplicar a **VC1**, añadir las dos orientaciones: cubierta **10°/−30°** y tragaluz **0°**
-   (esta última vacía de momento, a la espera del datasheet BIPV).
-6. Dimensionar la cubierta: **720 módulos, 60 strings × 12, 3 inversores**, 90 sheds.
+4. Crear la **VC1 desde cero** (sin variante de calibración previa, ver apartado 4) e introducir
+   a mano el horizonte, la carga y las pérdidas con el IAM del apartado 8.
+5. Añadir las dos orientaciones: **1 = tragaluz V1a, 0°** (con el PAN del Onyx c-Si 35 % si ya
+   está creado; si no, vacía de momento) y **2 = cubierta V1b, 10°/−30°**.
+6. Dimensionar la cubierta: **720 módulos, 60 strings × 12, 3 inversores**, 90 sheds. Resolver
+   los bloqueos en rojo de PVsyst (tensión, corriente, inversor) antes de seguir.
 7. Asignar los campos FV de la escena 3D a las orientaciones (ahora mismo hay `PV Fields (0)`).
-8. Verificar que las pérdidas y el IAM se han heredado intactos de la VC0.
-9. Antivertido a 0 kW en el punto de inyección. → **Checkpoint 4**
-10. Simular, contrastar contra la banda del apartado 10.1 (**545,6 MWh**, **C_D 14,24 %** sin el
-    BIPV), exportar PDF + CSV horario.
-11. Anotar en la memoria el resultado y las hipótesis marcadas en esta guía.
+8. Antivertido a 0 kW en el punto de inyección. → **Checkpoint 3**
+9. Simular. → **Checkpoint 4** (productividad entre ~1.400 y 1.700 kWh/kWp). Después, contrastar
+   contra la banda del apartado 10.1 (**545,6 MWh**, **C_D 14,24 %** sin el BIPV) y exportar
+   PDF + CSV horario.
+10. Anotar en la memoria el resultado y las hipótesis marcadas en esta guía.
 
-Con esto la V1 queda cerrada salvo el BIPV. La V2 son los pasos 5 a 10 otra vez con los parámetros
-de la columna correspondiente del apartado 12 —decidiendo allí si van 126 o 127 strings— y no
-debería llevar más de una tarde.
+Con esto la V1 queda cerrada salvo el BIPV (si su PAN no estaba listo). La V2 se crea duplicando la
+VC1 —hereda carga, horizonte y pérdidas— y repite los pasos 5 a 9 con los parámetros de la columna
+correspondiente del apartado 12 —decidiendo allí si van 126 o 127 strings—; no debería llevar más
+de una tarde.
