@@ -1,17 +1,17 @@
 \chapter{Diseño e ingeniería de la solución fotovoltaica}
 \label{ch:diseno-fv}
 
-% BORRADOR 27/09/2026 (redactor-humanizador). Pendiente: revisión de Mario → humanizer → compilación.
+% BORRADOR (redactor-humanizador 27/09/2026; tablas comparativas por variante 30/09/2026).
+% Pendiente: revisión de Mario → humanizer → compilación de cierre.
 % Estado de las decisiones: PROPUESTA pendiente de validación por Mario (18 pendientes abiertos en
-% §8 de Memoria/analisis/seleccion-modulos-por-variante.md). Fuente única de cifras: ese documento.
+% §8 de Memoria/analisis/seleccion-modulos-por-variante.md).
+% Fuentes de cifras: V1a → comparacion-modulos-fv.md §3.1-3.2; V1b, V2 y V3 →
+% seleccion-modulos-por-variante.md §3.3-3.4, §4.4-4.5 y §5.2-5.3.
+% Criterios de formato: punto de millares y máximo dos decimales (guía tipográfica, §11); por eso
+% el precio va en €/kWp y el coef. de Polysolar (−0,362) se redondea a −0,36.
 % Falta en este capítulo:
 %   - 6.1: subapartados de inversores y de estructura soporte (sin decidir; pendiente 18).
-%   - 6.2 Dimensionado del campo generador: strings y ratio DC/AC.
-%   - 6.3 Cálculos eléctricos y esquema unifilar.
-%   - 6.4 Simulación en PVsyst: pérdidas detalladas.
-%   - 6.5 Producción esperada: PR, P50 y P90.
-%   - 6.6 Grado de autoconsumo y autosuficiencia.
-%   - 6.7 Monitorización y verificación del rendimiento.
+%   - 6.2 a 6.7.
 % TODO Mario: las referencias a capítulos y apartados todavía no escritos van en texto llano;
 % convertirlas en \ref{} cuando existan.
 
@@ -32,7 +32,7 @@ Antes de entrar en los productos concretos, se resume de forma breve el panorama
 
 La práctica totalidad de los módulos comerciales para aplicaciones como la de este proyecto emplea células de silicio cristalino. \textbf{[pendiente: cuota de mercado del silicio cristalino, con fuente citable]} El silicio de grado solar se obtiene a partir de silicio de grado metalúrgico y, según el proceso de cristalización, da lugar a obleas policristalinas (método Siemens) o monocristalinas (método Czochralski) \cite{Perpinan2013}. Para formar el módulo, las células se encapsulan en EVA entre un vidrio frontal y una lámina posterior o un segundo vidrio, y el conjunto se cierra con un marco de aluminio anodizado \cite{Perpinan2013}.
 
-La evolución de la célula en los últimos años se aprecia bien en la eficiencia. El manual de referencia situaba en 2013 la eficiencia de las células industriales de silicio entre el 13 y el 17~\% \cite{Perpinan2013}, mientras que todos los módulos candidatos de este trabajo declaran eficiencias de módulo de entre el 22,0 y el 24,8~\% en sus fichas técnicas. \textbf{[pendiente: dar de alta las fichas técnicas con bibliotecario-pdf para poder citarlas]} Dicha mejora procede sobre todo del paso de la oblea de tipo p a la de tipo n y de nuevas arquitecturas de célula. Entre los candidatos analizados aparecen tres:
+La evolución de la célula en los últimos años se aprecia bien en la eficiencia. El manual de referencia situaba en 2013 la eficiencia de las células industriales de silicio entre el 13 y el 17~\% \cite{Perpinan2013}, mientras que todos los módulos opacos candidatos de este trabajo declaran eficiencias de módulo de entre el 22,0 y el 24,8~\% en sus fichas técnicas. \textbf{[pendiente: dar de alta las fichas técnicas con bibliotecario-pdf para poder citarlas]} Dicha mejora procede sobre todo del paso de la oblea de tipo p a la de tipo n y de nuevas arquitecturas de célula. Entre los candidatos analizados aparecen tres:
 
 \begin{itemize}
     \item \textbf{TOPCon}, célula de tipo n con contacto pasivado, que es la arquitectura de la mayoría de los módulos de gran formato comparados.
@@ -40,24 +40,30 @@ La evolución de la célula en los últimos años se aprecia bien en la eficienc
     \item \textbf{Contacto posterior}, con los contactos en la cara trasera y sin rejilla frontal, comercializada con las denominaciones ABC (AIKO) y HPBC (LONGi).
 \end{itemize}
 
-Como se puede observar en la tabla~\ref{tab:diseno-tecnologias-celula}, los coeficientes de temperatura de potencia de los candidatos se sitúan entre $-$0,24 y $-$0,30~\%/\textdegree{}C. Son valores claramente mejores que el $-$0,4~\%/\textdegree{}C que el mismo manual toma por defecto para el silicio cristalino cuando no se dispone de datos del fabricante \cite{Perpinan2013}. Se trata de un parámetro relevante en Madrid, ya que la temperatura de célula en verano reduce la potencia de todas las variantes.
+Como se puede observar en la Tabla~\ref{tab:diseno-tecnologias-celula}, los coeficientes de temperatura de potencia de los módulos opacos candidatos se sitúan entre $-$0,24 y $-$0,30~\%/\textdegree{}C. Son valores claramente mejores que el $-$0,4~\%/\textdegree{}C que el mismo manual toma por defecto para el silicio cristalino cuando no se dispone de datos del fabricante \cite{Perpinan2013}. Se trata de un parámetro relevante en Madrid, ya que la temperatura de célula en verano reduce la potencia de todas las variantes.
 
 \begin{table}[H]
     \centering
-    \small
     \caption{Tecnologías de célula de los módulos candidatos. Elaboración propia a partir de las fichas técnicas de los fabricantes.}
     \label{tab:diseno-tecnologias-celula}
-    \begin{tabular}{@{}p{3.3cm}p{5.2cm}p{1.8cm}p{2.2cm}@{}}
+    \footnotesize
+    \renewcommand{\arraystretch}{1.3}
+    \begin{tabularx}{\textwidth}{|F{4.2cm}|Y|Y|Y|}
         \hline
-        \textbf{Tecnología} & \textbf{Módulos candidatos} & \textbf{Eficiencia (\%)} & \textbf{Coef. temp. $P_{max}$ (\%/\textdegree{}C)} \\
+        \rowcolor{cabeceraTabla}
+        \textbf{Tecnología de célula} & \textbf{Fabricantes candidatos} & \textbf{Eficiencia (\%)} & \textbf{Coef. temp. $P_{max}$ (\%/\textdegree{}C)} \\
         \hline
-        Heterounión (HJT), tipo n & REC Alpha Pure-RX 470 & 22,6 & $-$0,24 \\
-        Contacto posterior ABC, tipo n & AIKO Neostar 2P 475 (monovidrio) y 2P+ 475 (vidrio-vidrio) & 23,8 & $-$0,26 \\
-        Contacto posterior HPBC & LONGi Hi-MO X6 465 y Hi-MO 9 670 & 22,8 y 24,8 & $-$0,28 y $-$0,26 \\
-        TOPCon, tipo n & Trina Vertex S+ 440, Jinko Tiger Neo 525, JA Solar JAM66D45-630 y Trina Vertex N 620 & 22,0 a 23,61 & $-$0,30 a $-$0,29 \\
-        c-Si semitransparente & Onyx Solar c-Si (35~\% de transparencia) y Polysolar PS-MC-ST-60 & -- & $-$0,32 y $-$0,36 \\
+        Heterounión (HJT), tipo n & REC & 22,6 & $-$0,24 \\
         \hline
-    \end{tabular}
+        Contacto posterior ABC, tipo n & AIKO & 23,8 & $-$0,26 \\
+        \hline
+        Contacto posterior HPBC & LONGi & 22,8 y 24,8 & $-$0,28 y $-$0,26 \\
+        \hline
+        TOPCon, tipo n & Trina, Jinko y JA Solar & 22,0 a 23,61 & $-$0,30 a $-$0,29 \\
+        \hline
+        c-Si semitransparente & Onyx Solar y Polysolar & -- & $-$0,32 y $-$0,36 \\
+        \hline
+    \end{tabularx}
 \end{table}
 
 A la tecnología de célula se suman otras dos características que distinguen a los módulos actuales y que pesan de forma distinta según la variante:
@@ -76,29 +82,84 @@ En cada variante se comparan tres candidatos de una misma clase de potencia y fo
 
 Cada criterio se puntúa de 1 (peor) a 3 (mejor) y los empates se reparten a la media, siguiendo el método empleado en un trabajo previo del mismo máster. \textbf{[pendiente: decidir si el TFM de M. Arcas (2024) se cita; hoy figura como fuente no citable]} El precio se ordena por categorías de mercado de febrero de 2026 y no por modelo, de modo que sirve para comparar pero no para presupuestar. \textbf{[pendiente: dar de alta la fuente de precios pvXchange y la de bancabilidad PV-Tech Q4 2025]}
 
-Cabe destacar que se ha optado por no emplear un módulo único para todo el proyecto. Con un módulo común, uno de los argumentos decisivos era la tensión de 1.500~V, que solo necesita la planta en suelo, y se estaría aplicando a instalaciones de cubierta y marquesina que trabajarán con inversores de 1.100~V. Elegir por separado permite que cada decisión se apoye en el criterio que limita su variante, a cambio de gestionar cuatro modelos de módulo en la simulación en lugar de dos. La tabla~\ref{tab:diseno-criterios-variante} resume dichos criterios.
+Cabe destacar que se ha optado por no emplear un módulo único para todo el proyecto. Con un módulo común, uno de los argumentos decisivos era la tensión de 1.500~V, que solo necesita la planta en suelo, y se estaría aplicando a instalaciones de cubierta y marquesina que trabajarán con inversores de 1.100~V. Elegir por separado permite que cada decisión se apoye en el criterio que limita su variante, a cambio de gestionar cuatro modelos de módulo en la simulación en lugar de dos. La Tabla~\ref{tab:diseno-criterios-variante} resume dichos criterios.
 
 \begin{table}[H]
     \centering
-    \small
-    \caption{Criterio limitante y candidatos comparados en cada variante. Elaboración propia.}
+    \caption{Criterio limitante y requisito de paso de cada variante. Elaboración propia.}
     \label{tab:diseno-criterios-variante}
-    \begin{tabular}{@{}p{2.6cm}p{4.6cm}p{5.3cm}@{}}
+    \footnotesize
+    \renewcommand{\arraystretch}{1.3}
+    \begin{tabularx}{\textwidth}{|F{3.2cm}|Y|Y|}
         \hline
-        \textbf{Variante} & \textbf{Qué limita la variante} & \textbf{Candidatos comparados} \\
+        \rowcolor{cabeceraTabla}
+        \textbf{Variante} & \textbf{Qué limita la variante} & \textbf{Requisito de paso} \\
         \hline
-        V1a. Lucernario (\acs{BIPV}) & Función de lucernario: transparencia mínima del 20~\% & Onyx Solar c-Si 35~\%, Polysolar PS-MC-ST-60, AGC SunEwat Vision \\
-        V1b. Cubierta plana & Superficie (1.582,5~m$^2$ netos de módulo) y entradas de continua del inversor & REC Alpha Pure-RX 470, AIKO Neostar 2P 475 monovidrio, LONGi Hi-MO X6 465 \\
-        V2. Marquesinas & Huella (3.182,4~m$^2$ de módulo) y vidrio sobre personas y vehículos & AIKO Neostar 2P+ 475 vidrio-vidrio, Trina Vertex S+ 440, Jinko Tiger Neo 525 \\
-        V3. Planta en suelo & Capacidad de acceso (en torno a 4,6~MW), no el suelo & LONGi Hi-MO 9 670, JA Solar JAM66D45-630, Trina Vertex N 620 \\
+        V1a. Lucernario (\acs{BIPV}) & Función de lucernario: luz natural y control solar & Transparencia publicada $\geq$ 20~\% \\
         \hline
-    \end{tabular}
+        V1b. Cubierta plana & Superficie (1.582,5~m$^2$ netos de módulo) y entradas de continua del inversor & Ninguno \\
+        \hline
+        V2. Marquesinas & Huella (3.182,4~m$^2$ de módulo) y vidrio sobre personas y vehículos & Vidrio-vidrio \\
+        \hline
+        V3. Planta en suelo & Capacidad de acceso (en torno a 4,6~MW), no el suelo & 1.500~V y bancabilidad AAA \\
+        \hline
+    \end{tabularx}
 \end{table}
 
 \subsubsection{Variante V1a: lucernario}
 \label{subsubsec:diseno-modulo-v1a}
 
-La justificación del lucernario no es energética sino arquitectónica: se busca mantener la luz natural sobre el hall y aportar control solar. Por ello se exige como requisito previo una transparencia publicada igual o superior al 20~\%.
+La justificación del lucernario no es energética sino arquitectónica: se busca mantener la luz natural sobre el hall y aportar control solar. Por ello se exige como requisito previo una transparencia publicada igual o superior al 20~\%. Como se puede observar en la Tabla~\ref{tab:diseno-modulos-v1a}, se comparan tres vidrios fotovoltaicos de silicio cristalino.
+
+\begin{table}[H]
+    \centering
+    \caption{Comparativa de módulos fotovoltaicos para la variante V1a (lucernario). Elaboración propia a partir de las fichas técnicas de los fabricantes.}
+    \label{tab:diseno-modulos-v1a}
+    \footnotesize
+    \renewcommand{\arraystretch}{1.3}
+    \begin{tabularx}{\textwidth}{|F{4.2cm}|Y|Y|Y|}
+        \hline
+        \rowcolor{cabeceraTabla}
+        \textbf{Característica técnica} & \textbf{Onyx Solar}\newline c-Si, 35~\% & \textbf{Polysolar}\newline PS-MC-ST-60 & \textbf{AGC}\newline SunEwat Vision \\
+        \hline
+        Potencia pico \acs{STC} (Wp) & 182 & 370 & No publicada \\
+        \hline
+        Tecnología de célula & Mono c-Si & Mono c-Si bifacial & Mono PERC \\
+        \hline
+        Dimensiones (mm) & 1.650 × 850 & 1.770 × 1.049 & No publicadas \\
+        \hline
+        Transparencia (\%) & 35 & 10 & No publicada \\
+        \hline
+        Densidad (Wp/m$^2$) & 129,6 & 199,3 & 180 (máx.) \\
+        \hline
+        Peso (kg/m$^2$) & $\approx$ 20 & 16,2 & No publicado \\
+        \hline
+        Transmitancia $U$ (W/m$^2$·K) & 5,2 & No publicada & No publicada \\
+        \hline
+        Coef. temp. $P_{max}$ (\%/\textdegree{}C) & $-$0,32 & $-$0,36 & No publicado \\
+        \hline
+        \acs{LID} / PID & No declarados & No declarados & No declarados \\
+        \hline
+        Tensión máx. del sistema (V) & 1.000 & 1.000 & No publicada \\
+        \hline
+        Garantía de producto (años) & 5 & 30 & 10 \\
+        \hline
+        Garantía de potencia & 80~\% a 10 años & 87~\% (plazo no legible) & 90~\% a 10 años y 80~\% a 20 años \\
+        \hline
+        Homologación del laminado & Normas según configuración & DIBt Z-70.3-288$^{*}$ & IEC 61215, IEC 61730 y EN 13501 \\
+        \hline
+        Datos para el fichero PAN & Completos & Completos & Insuficientes \\
+        \hline
+        Precio & No publicado & No publicado & No publicado \\
+        \hline
+        \rowcolor{cabeceraTabla}
+        \textbf{Puntuación total} & \textbf{19,5} & \textbf{21,0} & \textbf{13,5} \\
+        \hline
+    \end{tabularx}
+
+    \smallskip
+    {\scriptsize $^{*}$ Alcance de la homologación no verificado.}
+\end{table}
 
 Por puntos gana el Polysolar PS-MC-ST-60 (21,0 frente a 19,5 del Onyx), pero su única transparencia publicada es del 10~\%, por lo que no pasa el requisito. Esto puede deberse a que su alta densidad, de 199,3~Wp/m$^2$, procede precisamente de cubrir casi todo el vidrio con célula. Se propone en consecuencia el \textbf{Onyx Solar c-Si con un 35~\% de transparencia}, de 182~Wp y 1.650 × 850~mm, ya que es el único que publica una gama de transparencias y una transmitancia térmica, y el que mejor coeficiente de temperatura presenta de los tres. Con 330 módulos sobre 463,1~m$^2$ de vidrio activo se obtienen unos 60,1~kWp.
 
@@ -107,7 +168,63 @@ Como debilidades, dicho módulo tiene una garantía corta (5 años de producto y
 \subsubsection{Variante V1b: cubierta plana}
 \label{subsubsec:diseno-modulo-v1b}
 
-La cubierta cuenta con una impermeabilización líquida continua, por lo que la estructura debe ser lastrada y no perforante. Dicha condición afecta a la estructura, no al módulo, al que solo pide que su formato encaje en los sistemas lastrados estándar a 10\textdegree{} y que su peso no desequilibre la sobrecarga. Ninguno de los candidatos lo hace: la diferencia de peso entre ellos, repartida sobre la cubierta, es de solo 0,2~kg/m$^2$.
+La cubierta cuenta con una impermeabilización líquida continua, por lo que la estructura debe ser lastrada y no perforante. Dicha condición afecta a la estructura, no al módulo, al que solo pide que su formato encaje en los sistemas lastrados estándar a 10\textdegree{} y que su peso no desequilibre la sobrecarga. Ninguno de los candidatos lo hace: la diferencia de peso entre ellos, repartida sobre la cubierta, es de solo 0,2~kg/m$^2$. La Tabla~\ref{tab:diseno-modulos-v1b} recoge la comparativa de los tres candidatos, todos de 54 células de media célula y unos 2~m$^2$.
+
+\begin{table}[H]
+    \centering
+    \caption{Comparativa de módulos fotovoltaicos para la variante V1b (cubierta plana). Elaboración propia a partir de las fichas técnicas de los fabricantes.}
+    \label{tab:diseno-modulos-v1b}
+    \footnotesize
+    \renewcommand{\arraystretch}{1.3}
+    \begin{tabularx}{\textwidth}{|F{4.2cm}|Y|Y|Y|}
+        \hline
+        \rowcolor{cabeceraTabla}
+        \textbf{Característica técnica} & \textbf{REC}\newline Alpha Pure-RX 470 & \textbf{AIKO}\newline Neostar 2P 475 monovidrio & \textbf{LONGi}\newline Hi-MO X6 465 \\
+        \hline
+        Potencia pico \acs{STC} (Wp) & 470 & 475 & 465 \\
+        \hline
+        Tecnología de célula & HJT, tipo n & ABC, tipo n & HPBC \\
+        \hline
+        Eficiencia (\%) & 22,6 & 23,8 & 22,8 \\
+        \hline
+        Dimensiones (mm) & 1.728 × 1.205 & 1.757 × 1.134 & 1.800 × 1.134 \\
+        \hline
+        Peso (kg) & 22,7 & 21,5 & 21,6 \\
+        \hline
+        Coef. temp. $P_{max}$ (\%/\textdegree{}C) & $-$0,24 & $-$0,26 & $-$0,28 \\
+        \hline
+        \acs{LID} primer año (\%) & 2 & $\leq$ 1 & $<$ 1 \\
+        \hline
+        Degradación anual (\%/año) & 0,25 & $\leq$ 0,35 & 0,40 \\
+        \hline
+        Garantía de potencia & 92~\% a 25 años & 88,85~\% a 30 años & 89,4~\% a 25 años \\
+        \hline
+        Garantía de producto (años) & 20 (25 con instalador certificado) & 15 (ampliable a 25) & 15 \\
+        \hline
+        Carga trasera de ensayo (Pa) & 4.000 & 2.400 & 2.400 \\
+        \hline
+        Tensión máx. del sistema (V) & 1.000 & 1.500 & 1.500 \\
+        \hline
+        Módulos por string con inversor de 1.100~V & 14 & 24 & 25 \\
+        \hline
+        Corriente de cortocircuito $I_{sc}$ (A) & 8,95 & 14,35 & 14,93 \\
+        \hline
+        Comportamiento al fuego & Clase C (IEC) y BROOF(t2) & Clase C (IEC) & Clase C (IEC) \\
+        \hline
+        Bancabilidad & CC+$^{*}$ & B$^{*}$ & AAA \\
+        \hline
+        Precio de categoría (€/kWp) & 145 & 130 & 115 \\
+        \hline
+        Potencia en la cubierta (kWp) & 356,7 & 377,1 & 360,4 \\
+        \hline
+        \rowcolor{cabeceraTabla}
+        \textbf{Puntuación total} & \textbf{26} & \textbf{27,5} & \textbf{25} \\
+        \hline
+    \end{tabularx}
+
+    \smallskip
+    {\scriptsize $^{*}$ Dato no verificado contra el informe de bancabilidad vigente.}
+\end{table}
 
 Se propone el \textbf{AIKO Neostar 2P 475~W monovidrio}, que obtiene 27,5 puntos frente a 26 del REC y 25 del LONGi. Gana por poco, pero lo hace en los criterios que limitan la variante:
 
@@ -124,7 +241,61 @@ Queda como reserva el \textbf{REC Alpha Pure-RX 470}, módulo del trabajo previo
 \subsubsection{Variante V2: marquesinas}
 \label{subsubsec:diseno-modulo-v2}
 
-En las marquesinas el módulo queda sobre personas y vehículos, por lo que se exige como requisito de paso que sea vidrio-vidrio. Se propone que la marquesina sea estanca mediante perfiles que actúen a la vez de fijación y de canalón, sin chapa bajo el módulo, de manera que la cara trasera quede libre y la bifacialidad tenga sentido.
+En las marquesinas el módulo queda sobre personas y vehículos, por lo que se exige como requisito de paso que sea vidrio-vidrio. Se propone que la marquesina sea estanca mediante perfiles que actúen a la vez de fijación y de canalón, sin chapa bajo el módulo, de manera que la cara trasera quede libre y la bifacialidad tenga sentido. La Tabla~\ref{tab:diseno-modulos-v2} recoge la comparativa de los tres candidatos vidrio-vidrio.
+
+\begin{table}[H]
+    \centering
+    \caption{Comparativa de módulos fotovoltaicos para la variante V2 (marquesinas). Elaboración propia a partir de las fichas técnicas de los fabricantes.}
+    \label{tab:diseno-modulos-v2}
+    \footnotesize
+    \renewcommand{\arraystretch}{1.3}
+    \begin{tabularx}{\textwidth}{|F{4.2cm}|Y|Y|Y|}
+        \hline
+        \rowcolor{cabeceraTabla}
+        \textbf{Característica técnica} & \textbf{AIKO}\newline Neostar 2P+ 475 vidrio-vidrio & \textbf{Trina}\newline Vertex S+ 440 & \textbf{Jinko}\newline Tiger Neo 525 BDV \\
+        \hline
+        Potencia pico \acs{STC} (Wp) & 475 & 440 & 525 \\
+        \hline
+        Tecnología de célula & ABC, tipo n & i-TOPCon, tipo n & TOPCon, tipo n \\
+        \hline
+        Eficiencia (\%) & 23,8 & 22,0 & 23,61 \\
+        \hline
+        Dimensiones (mm) & 1.757 × 1.134 & 1.762 × 1.134 & 1.961 × 1.134 \\
+        \hline
+        Peso (kg) & 24,2 & 21,0 & 27,0 \\
+        \hline
+        Vidrio delantero + trasero (mm) & 2,0 + 2,0 & 1,6 + 1,6 & 2,0 + 2,0 \\
+        \hline
+        Bifacialidad (\%) & No (monofacial) & 80 $\pm$ 5 & 80 $\pm$ 5 \\
+        \hline
+        Coef. temp. $P_{max}$ (\%/\textdegree{}C) & $-$0,26 & $-$0,30 & $-$0,29 \\
+        \hline
+        \acs{LID} primer año / degradación anual (\%) & $\leq$ 1 / $\leq$ 0,35 & 1 / 0,40 & 1 / 0,40 \\
+        \hline
+        Garantía de potencia & 88,85~\% a 30 años & 87,4~\% a 30 años & 87,4~\% a 30 años \\
+        \hline
+        Garantía de producto (años) & 15 (ampliable a 25) & 25 & 15 \\
+        \hline
+        Carga trasera de ensayo (Pa) & 2.400 & 4.000 & 2.400 \\
+        \hline
+        Comportamiento al fuego (IEC) & Clase A & Sin clase declarada & Clase C \\
+        \hline
+        Corriente de cortocircuito $I_{sc}$ (A) & 14,35 & 10,67 & 15,88 \\
+        \hline
+        Bancabilidad & B$^{*}$ & AAA & No verificada \\
+        \hline
+        Precio de categoría (€/kWp) & 130 & 115 & 130 \\
+        \hline
+        Potencia en las marquesinas (kWp) & 758,6 & 700,5 & 751,3 \\
+        \hline
+        \rowcolor{cabeceraTabla}
+        \textbf{Puntuación total} & \textbf{25,5} & \textbf{27} & \textbf{19,5} \\
+        \hline
+    \end{tabularx}
+
+    \smallskip
+    {\scriptsize $^{*}$ Dato no verificado contra el informe de bancabilidad vigente.}
+\end{table}
 
 Por puntos gana el Trina Vertex S+ 440 bifacial, con 27 frente a 25,5 del AIKO. Sin embargo, cuatro de los criterios que gana en solitario (precio, peso, corriente de cortocircuito y bancabilidad) son comerciales o de dimensionado del inversor, y ninguno toca lo que limita la variante. Se propone por ello el \textbf{AIKO Neostar 2P+ 475~W vidrio-vidrio}, por tres razones:
 
@@ -139,7 +310,56 @@ Cabe matizar que, con unos 758~kWp, las marquesinas vierten más excedente que c
 \subsubsection{Variante V3: planta en suelo}
 \label{subsubsec:diseno-modulo-v3}
 
-En la planta de Colmenar Viejo el suelo sobra: la parcela tiene 58,84~ha y la planta ocuparía unas pocas hectáreas. Lo que limita es la capacidad de acceso, por lo que el criterio de densidad pesa poco y lo decisivo es la energía producida por kWp a lo largo de 30 años. Se fijan como requisitos de paso la tensión de 1.500~V y la bancabilidad AAA, que cumplen los tres candidatos \textbf{[pendiente: dar de alta la fuente PV-Tech Q4 2025]}, todos ellos bifaciales y vidrio-vidrio de 2.382 × 1.134~mm.
+En la planta de Colmenar Viejo el suelo sobra: la parcela tiene 58,84~ha y la planta ocuparía unas pocas hectáreas. Lo que limita es la capacidad de acceso, por lo que el criterio de densidad pesa poco y lo decisivo es la energía producida por kWp a lo largo de 30 años. Se fijan como requisitos de paso la tensión de 1.500~V y la bancabilidad AAA, que cumplen los tres candidatos \textbf{[pendiente: dar de alta la fuente PV-Tech Q4 2025]}, todos ellos bifaciales y vidrio-vidrio de 2.382 × 1.134~mm. Como se puede observar en la Tabla~\ref{tab:diseno-modulos-v3}, las diferencias entre ellos son pequeñas.
+
+\begin{table}[H]
+    \centering
+    \caption{Comparativa de módulos fotovoltaicos para la variante V3 (planta en suelo). Elaboración propia a partir de las fichas técnicas de los fabricantes.}
+    \label{tab:diseno-modulos-v3}
+    \footnotesize
+    \renewcommand{\arraystretch}{1.3}
+    \begin{tabularx}{\textwidth}{|F{4.2cm}|Y|Y|Y|}
+        \hline
+        \rowcolor{cabeceraTabla}
+        \textbf{Característica técnica} & \textbf{LONGi}\newline Hi-MO 9 LR8-66HYD-670M & \textbf{JA Solar}\newline JAM66D45-630/LB & \textbf{Trina}\newline Vertex N 620 \\
+        \hline
+        Potencia pico \acs{STC} (Wp) & 670 & 630 & 620 \\
+        \hline
+        Tecnología de célula & HPBC & TOPCon, tipo n & i-TOPCon, tipo n \\
+        \hline
+        Eficiencia (\%) & 24,8 & 23,3 & 23,0 \\
+        \hline
+        Dimensiones (mm) & 2.382 × 1.134 & 2.382 × 1.134 & 2.382 × 1.134 \\
+        \hline
+        Peso (kg) & 32,6 & 33,1 & 33,7 \\
+        \hline
+        Bifacialidad (\%) & 75 $\pm$ 5 & 80 $\pm$ 5 & 80 $\pm$ 5 \\
+        \hline
+        Coef. temp. $P_{max}$ (\%/\textdegree{}C) & $-$0,26 & $-$0,29 & $-$0,29 \\
+        \hline
+        \acs{LID} primer año / degradación anual (\%) & $<$ 1 / 0,35 & 1 / 0,40 & 1 / 0,40 \\
+        \hline
+        Garantía de potencia & 88,85~\% a 30 años & 87,4~\% a 30 años & 87,4~\% a 30 años \\
+        \hline
+        Garantía de producto (años) & 12 & 12 & 12 \\
+        \hline
+        Corriente de cortocircuito $I_{sc}$ (A) & 16,86 & 16,18 & 15,91 \\
+        \hline
+        Comportamiento al fuego & Clase C (IEC) & Clase C (UL tipo 29) & No declarado \\
+        \hline
+        Compatibilidad con seguidor & Sin declarar & Declarada & Sin declarar \\
+        \hline
+        Bancabilidad & AAA & AAA & AAA \\
+        \hline
+        Precio de categoría (€/kWp) & 130 & 130 & 115 \\
+        \hline
+        Densidad en planta fija (kWp/ha) & 827 & 777 & 765 \\
+        \hline
+        \rowcolor{cabeceraTabla}
+        \textbf{Puntuación total} & \textbf{20} & \textbf{17,5} & \textbf{16,5} \\
+        \hline
+    \end{tabularx}
+\end{table}
 
 Se propone el \textbf{LONGi Hi-MO 9 LR8-66HYD-670M}, con 20 puntos frente a 17,5 del JA Solar y 16,5 del Trina. El orden se mantiene aun eliminando el criterio de densidad. Presenta el mejor coeficiente de temperatura ($-$0,26~\%/\textdegree{}C), la menor degradación anual (0,35~\%) y la mejor garantía de potencia (88,85~\% a 30 años). Su bifacialidad algo menor, del 75~\% frente al 80~\% de los otros dos, recorta parte de esa ventaja, y será la simulación la que determine cuánto. En cuanto a la característica antipolvo que declara el fabricante, no está cuantificada por terceros, por lo que no se ha tenido en cuenta.
 
@@ -148,23 +368,28 @@ Queda como reserva el \textbf{JA Solar JAM66D45-630/LB}, con bifacialidad del 80
 \subsubsection{Síntesis de la selección de módulos}
 \label{subsubsec:diseno-modulos-sintesis}
 
-La tabla~\ref{tab:diseno-modulos-variante} recoge la propuesta de módulo para cada variante. El detalle de las tablas de puntuación queda documentado en el trabajo de ingeniería del proyecto. \textbf{[pendiente: decidir si esas tablas completas pasan a un anexo]}
+La Tabla~\ref{tab:diseno-modulos-variante} recoge la propuesta de módulo para cada variante. El detalle de las tablas de puntuación por criterio queda documentado en el trabajo de ingeniería del proyecto. \textbf{[pendiente: decidir si esas tablas de puntuación pasan a un anexo]}
 
 \begin{table}[H]
     \centering
-    \small
     \caption{Propuesta de módulo fotovoltaico por variante. Elaboración propia.}
     \label{tab:diseno-modulos-variante}
-    \begin{tabular}{@{}p{2.1cm}p{3.6cm}p{2.3cm}p{2.4cm}p{2.2cm}@{}}
+    \footnotesize
+    \renewcommand{\arraystretch}{1.3}
+    \begin{tabularx}{\textwidth}{|F{2.8cm}|Y|Y|>{\centering\arraybackslash}p{2.6cm}|}
         \hline
-        \textbf{Variante} & \textbf{Módulo propuesto} & \textbf{Tecnología y potencia} & \textbf{Reserva} & \textbf{Potencia estimada} \\
+        \rowcolor{cabeceraTabla}
+        \textbf{Variante} & \textbf{Módulo propuesto} & \textbf{Reserva} & \textbf{Potencia estimada} \\
         \hline
-        V1a. Lucernario & Onyx Solar c-Si, 35~\% de transparencia & c-Si semitransparente, 182~Wp & Polysolar PS-MC-ST-60 (condicionada) & 60,1~kWp \\
-        V1b. Cubierta plana & AIKO Neostar 2P 475~W monovidrio & ABC tipo n, 475~W & REC Alpha Pure-RX 470 & 377,1~kWp (provisional) \\
-        V2. Marquesinas & AIKO Neostar 2P+ 475~W vidrio-vidrio & ABC tipo n, 475~W & Trina Vertex S+ 440 bifacial & 758,6~kWp \\
-        V3. Planta en suelo & LONGi Hi-MO 9 LR8-66HYD-670M & HPBC bifacial, 670~W & JA Solar JAM66D45-630/LB & Limitada por el acceso \\
+        V1a. Lucernario & Onyx Solar c-Si, 35~\% de transparencia (182~Wp) & Polysolar PS-MC-ST-60 (condicionada) & 60,1~kWp \\
         \hline
-    \end{tabular}
+        V1b. Cubierta plana & AIKO Neostar 2P 475~W monovidrio & REC Alpha Pure-RX 470 & 377,1~kWp (provisional) \\
+        \hline
+        V2. Marquesinas & AIKO Neostar 2P+ 475~W vidrio-vidrio & Trina Vertex S+ 440 bifacial & 758,6~kWp \\
+        \hline
+        V3. Planta en suelo & LONGi Hi-MO 9 LR8-66HYD-670M (670~W) & JA Solar JAM66D45-630/LB & Limitada por el acceso \\
+        \hline
+    \end{tabularx}
 \end{table}
 
 En V1b y V2 se repiten el fabricante y la célula, pero no el producto: monovidrio de 3,2~mm en la cubierta y vidrio-vidrio de 2 + 2~mm en la marquesina, cada uno elegido por criterios distintos. Ambas versiones comparten parámetros eléctricos, lo que permitiría emplear el mismo diseño de string y un único modelo de inversor de 1.100~V en las dos variantes. La planta en suelo trabajará a 1.500~V con otro inversor, y el lucernario, con un inversor propio de pequeña potencia.
