@@ -17,6 +17,57 @@
 % Primera columna sin \columncolor: colortbl pinta el color de cada celda encima de las \hline y
 % en algunos visores desaparecen las líneas. Solo se sombrean filas completas (\rowcolor).
 \newcolumntype{F}[1]{>{\raggedright\arraybackslash}p{#1}}
+
+% Notas para Mario como editor (no para el lector): siempre en negrita y rojo.
+% Buscar «\nota{» antes de cerrar un capítulo para eliminarlas todas.
+\newcommand{\nota}[1]{\textcolor{red}{\textbf{#1}}}
+
+% Diagrama radar de comparación de tres candidatos (modelo: Ilustración 23 del TFM de Arcas).
+% Colores validados para daltonismo; cada serie lleva además trazo y marcador propios para que
+% se distinga en blanco y negro.
+% \radarcomparativa{n.º de ejes}{etiquetas}{nombre A}{valores A}{nombre B}{valores B}{nombre C}{valores C}
+% Escala fija de 0 a 3 (puntuación ordinal: 1 = peor, 3 = mejor; empates a la media).
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric}
+\definecolor{serieA}{HTML}{2A78D6}
+\definecolor{serieB}{HTML}{EB6834}
+\definecolor{serieC}{HTML}{1BAF7A}
+\tikzset{
+    radarA/.style={serieA, line width=1.2pt},
+    radarB/.style={serieB, line width=1.2pt, dashed},
+    radarC/.style={serieC, line width=1.2pt, densely dotted},
+    marcaA/.style={circle, fill=serieA, draw=white, inner sep=1.8pt},
+    marcaB/.style={rectangle, fill=serieB, draw=white, inner sep=1.8pt},
+    marcaC/.style={regular polygon, regular polygon sides=3, fill=serieC, draw=white, inner sep=1.3pt},
+}
+% El contador de los bucles se llama \ind y NO \i: \i es la «ı» sin punto con la que LaTeX
+% compone la «í», y una etiqueta como «Garantías» saldría como «Garant3as».
+\newcommand{\radarserie}[4]{% #1 n.º de ejes, #2 letra de la serie, #3 valores, #4 radio unidad
+    \foreach \v [count=\ind] in {#3}{\coordinate (#2\ind) at ({90-360/#1*(\ind-1)}:{\v*#4});}
+    \draw[radar#2] (#21) \foreach \ind in {2,...,#1}{-- (#2\ind)} -- cycle;
+    \foreach \ind in {1,...,#1}{\node[marca#2] at (#2\ind) {};}
+}
+\newcommand{\radarcomparativa}[8]{%
+    \begin{tikzpicture}[font=\footnotesize]
+        \def\radioU{1.05}
+        \foreach \k in {1,2,3}{
+            \draw[black!18] (90:{\k*\radioU}) \foreach \ind in {2,...,#1}{-- ({90-360/#1*(\ind-1)}:{\k*\radioU})} -- cycle;
+            \node[black!55, font=\scriptsize, anchor=south west, inner sep=1pt] at (0.04,{\k*\radioU}) {\k};
+        }
+        \foreach \etiqueta [count=\ind] in {#2}{
+            \draw[black!30] (0,0) -- ({90-360/#1*(\ind-1)}:{3*\radioU});
+            \node[align=center, text width=2.5cm] at ({90-360/#1*(\ind-1)}:{3*\radioU+1.1}) {\etiqueta};
+        }
+        \radarserie{#1}{A}{#4}{\radioU}
+        \radarserie{#1}{B}{#6}{\radioU}
+        \radarserie{#1}{C}{#8}{\radioU}
+        \begin{scope}[shift={(-2.6,{-3*\radioU-2.1})}]
+            \draw[radarA] (0,0) -- (0.7,0); \node[marcaA] at (0.35,0) {}; \node[anchor=west] at (0.8,0) {#3};
+            \draw[radarB] (0,-0.45) -- (0.7,-0.45); \node[marcaB] at (0.35,-0.45) {}; \node[anchor=west] at (0.8,-0.45) {#5};
+            \draw[radarC] (0,-0.9) -- (0.7,-0.9); \node[marcaC] at (0.35,-0.9) {}; \node[anchor=west] at (0.8,-0.9) {#7};
+        \end{scope}
+    \end{tikzpicture}%
+}
 \usepackage{hyperref}
 \usepackage{xurl}
 \usepackage{mathpazo}
