@@ -10,6 +10,13 @@
 \usepackage{multirow}
 \usepackage[table,xcdraw]{xcolor}
 \usepackage{colortbl}
+\usepackage{tabularx}
+% Estilo común de tablas comparativas (modelo: Ilustración 22 del TFM de Arcas)
+\definecolor{cabeceraTabla}{HTML}{DCE6F1}
+\newcolumntype{Y}{>{\centering\arraybackslash}X}
+% Primera columna sin \columncolor: colortbl pinta el color de cada celda encima de las \hline y
+% en algunos visores desaparecen las líneas. Solo se sombrean filas completas (\rowcolor).
+\newcolumntype{F}[1]{>{\raggedright\arraybackslash}p{#1}}
 \usepackage{hyperref}
 \usepackage{xurl}
 \usepackage{mathpazo}
@@ -51,7 +58,7 @@
 \usepackage{todonotes}
 %\usepackage{hyphenat}
 %\hyphenpenalty=10000
-\usepackage[spanish]{babel}
+\usepackage[spanish,es-tabla]{babel} % es-tabla: «Tabla» e «Índice de tablas», nunca «Cuadro»
 \usepackage{watermark}
 \usepackage[most]{tcolorbox}
 

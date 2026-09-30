@@ -63,6 +63,7 @@ Estas palabras/expresiones **NUNCA** deben usarse como reemplazo al humanizar. S
 | "Resulta fundamental / crucial" | "Es necesario", "conviene", o eliminar el intensificador |
 | "Juega un papel fundamental" | Eliminar — describir directamente qué hace |
 | "Sin lugar a dudas" | Eliminar |
+| "Cuadro" (para referirse a una tabla) | "Tabla", con mayúscula también en el texto: «Como se puede observar en la Tabla~\ref{...}» |
 
 **Nota:** esta tabla se irá ampliando según Mario rechace redacciones concretas — cada rechazo repetido se registra aquí y en la memoria `feedback_estilo_mario` (regla de oro del CLAUDE.md del proyecto).
 
