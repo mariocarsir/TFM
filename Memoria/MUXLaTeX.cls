@@ -100,8 +100,10 @@
 \usepackage{ifthen}
 \usepackage{afterpage}
 \usepackage{float}
-% Sin opciones no cambia el aspecto de los pies; permite formatearlos con \captionsetup.
+% Pies de tabla y de figura (regla general aprobada por Mario el 03/10/2026): 9 pt, con el tipo
+% de elemento y su número en negrita («Tabla 6.1:») y el texto del pie en letra normal.
 \usepackage{caption}
+\captionsetup{font=footnotesize, labelfont=bf}
 \usepackage{pdflscape}
 \usepackage{pdfpages}
 \setlength{\parskip}{0.7em}

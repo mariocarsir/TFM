@@ -163,6 +163,9 @@ fotovoltaicos, útil como referencia de qué NO hacer):
 - Toda figura y tabla debe llevar: **numeración** que permita referenciarla, **nombre o
   denominación** que describa el contenido, y **referencia de fuente** si procede de una
   modificación de una figura/tabla existente (fórmula tipo "elaboración propia a partir de...").
+- **Formato de los pies (decisión de Mario, 03/10/2026):** 9 pt (`\footnotesize`), con el tipo de
+  elemento y su número en negrita («**Tabla 6.1:**», «**Figura 6.1:**») y el texto del pie en
+  letra normal. Se fija con `\captionsetup` en `MUXLaTeX.cls`; no repetirlo por capítulo.
 - **No repetir** una figura o tabla ya usada en otro punto del documento.
 - Lista de figuras y lista de tablas al inicio o final del documento — ya contemplado en el
   orden de preliminares (sección 6, `\listoffigures` y `\listoftables`).
