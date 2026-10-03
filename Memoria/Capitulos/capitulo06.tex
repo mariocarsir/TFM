@@ -5,8 +5,11 @@
 % Pendiente: revisión de Mario → humanizer → compilación de cierre.
 % Estado de las decisiones: PROPUESTA pendiente de validación por Mario (18 pendientes abiertos en
 % §8 de Memoria/analisis/seleccion-modulos-por-variante.md).
-% Fuentes de cifras y puntuaciones: V1a → comparacion-modulos-fv.md §3.1-3.2; V1b, V2 y V3 →
+% Fuentes de cifras y puntuaciones: Onyx Solar → ficha Datos/Fichas Técnicas/Onyx Solar.pdf,
+% modelo GL.03 (03/10/2026); Polysolar y AGC → comparacion-modulos-fv.md §3.1-3.2; V1b, V2 y V3 →
 % seleccion-modulos-por-variante.md §3.3-3.4, §4.4-4.5 y §5.2-5.3.
+% Regla de Mario: los datos de equipos salen SOLO de las fichas de Datos/Fichas Técnicas; todo
+% dato que no salga de ahí, o que no se pueda leer, se marca con \nota{}.
 % Reglas de formato aplicadas:
 %   - Punto de millares y máximo dos decimales (guía tipográfica): precio en €/kWp y
 %     coeficiente de Polysolar −0,362 → −0,36.
@@ -65,7 +68,7 @@ Como se puede observar en la Tabla~\ref{tab:diseno-tecnologias-celula}, los coef
         \hline
         TOPCon, tipo n & Trina, Jinko y JA Solar & 22,81 & $-$0,30 \\
         \hline
-        c-Si semitransparente & Onyx Solar y Polysolar & -- & $-$0,34 \\
+        c-Si semitransparente & Onyx Solar y Polysolar & -- & $-$0,41 \\
         \hline
     \end{tabularx}
 \end{table}
@@ -77,14 +80,14 @@ A la tecnología de célula se suman otras dos características que distinguen a
     \item \textbf{Bifacialidad.} Con la cara trasera transparente, el módulo aprovecha también la radiación reflejada por el suelo. Los candidatos bifaciales declaran factores de bifacialidad del 75 al 80~\%. Sin embargo, la ganancia real depende del albedo y de que la cara trasera quede libre, por lo que solo se considera en las variantes donde se da esa condición.
 \end{itemize}
 
-La capa fina se descartó en el lucernario por densidad de potencia. Con una transparencia del 20~\%, la opción de silicio amorfo evaluada alcanza 34,0~Wp/m$^2$, lo que sobre la superficie disponible supondría en torno a 15,7~kWp. Dicha potencia no constituye una alternativa de dimensionado, sino una variante distinta.
+La capa fina se descartó en el lucernario por densidad de potencia. La ficha de Onyx Solar que se emplea en la variante V1a recoge dos vidrios de silicio amorfo, con un grado de transparencia nominal del 20~\% y una transmisión luminosa del 16,3~\%, que alcanzan solo 34,0~Wp/m$^2$. Sobre la superficie disponible supondrían en torno a 15,7~kWp, potencia que no constituye una alternativa de dimensionado, sino una variante distinta.
 
 \subsubsection{Método de selección}
 \label{subsubsec:diseno-metodo-modulos}
 
 En cada variante se comparan tres candidatos de una misma clase de potencia y formato, de fabricantes bien posicionados. Las características comparadas son las que pide la guía de la asignatura para justificar el módulo: potencia \ac{STC}, tecnología de célula, coeficiente de temperatura, degradación inducida por la luz (\ac{LID}), garantías, características especiales, posición en rankings y precio. A ellas se añaden los criterios propios de cada variante, que salen de lo que limita esa instalación en concreto: superficie, tensión de string, carga de viento, comportamiento frente al fuego o función arquitectónica del elemento.
 
-Cada candidato se valora en cada criterio por orden, de 1 (peor) a 3 (mejor), y los empates se reparten a la media, siguiendo el método empleado en un trabajo previo del mismo máster. \nota{[pendiente: decidir si el TFM de M. Arcas (2024) se cita; hoy figura como fuente no citable]} Se trata de una valoración ordinal: indica qué candidato es mejor en cada criterio, pero no asigna a los criterios un peso ni una importancia relativa, por lo que no se suman puntos. En cada variante se representan en un diagrama radar solo los criterios que limitan la instalación, junto con el motivo técnico por el que se valora como mejor un valor mayor o menor. El resto de características de la tabla comparativa sirve para descartar candidatos o como información complementaria. El precio se ordena por categorías de mercado de febrero de 2026 y no por modelo, de modo que sirve para comparar pero no para presupuestar. \nota{[pendiente: dar de alta la fuente de precios pvXchange y la de bancabilidad PV-Tech Q4 2025]}
+Cada candidato se valora en cada criterio por orden, de 1 (peor) a 3 (mejor), y los empates se reparten a la media, siguiendo el método empleado en un trabajo previo del mismo máster. \nota{[pendiente: decidir si el TFM de M. Arcas (2024) se cita; hoy figura como fuente no citable]} Se trata de una valoración ordinal: indica qué candidato es mejor en cada criterio, pero no asigna a los criterios un peso ni una importancia relativa, por lo que no se suman puntos. En cada variante se representan en un diagrama radar solo los criterios que limitan la instalación, junto con el motivo técnico por el que se valora como mejor un valor mayor o menor. El resto de características de la tabla comparativa sirve para descartar candidatos o como información complementaria. El precio se ordena por categorías de mercado de febrero de 2026 y no por modelo, de modo que sirve para comparar pero no para presupuestar. \nota{[pendiente: dar de alta la fuente de precios pvXchange y la de bancabilidad PV-Tech Q4 2025]} \nota{[ojo: salvo el Onyx Solar GL.03, cuya ficha está en Datos/Fichas Técnicas, los datos de todos los candidatos proceden de fichas consultadas en la web (fuentes en Memoria/analisis/seleccion-modulos-por-variante.md §9 y comparacion-modulos-fv.md §7); falta dejar esas fichas en la carpeta para comprobarlos]}
 
 Cabe destacar que se ha optado por no emplear un módulo único para todo el proyecto. Con un módulo común, uno de los argumentos decisivos era la tensión de 1.500~V, que solo necesita la planta en suelo, y se estaría aplicando a instalaciones de cubierta y marquesina que trabajarán con inversores de 1.100~V. Elegir por separado permite que cada decisión se apoye en el criterio que limita su variante, a cambio de gestionar cuatro modelos de módulo en la simulación en lugar de dos. La Tabla~\ref{tab:diseno-criterios-variante} resume dichos criterios.
 
@@ -114,7 +117,9 @@ Cabe destacar que se ha optado por no emplear un módulo único para todo el pro
 \subsubsection{Variante V1a: lucernario}
 \label{subsubsec:diseno-modulo-v1a}
 
-La justificación del lucernario no es energética sino arquitectónica: se busca mantener la luz natural sobre el hall y aportar control solar. Por ello se exige como requisito previo una transparencia publicada igual o superior al 20~\%. Como se puede observar en la Tabla~\ref{tab:diseno-modulos-v1a}, se comparan tres vidrios fotovoltaicos de silicio cristalino.
+La justificación del lucernario no es energética sino arquitectónica: se busca mantener la luz natural sobre el hall y aportar control solar. Por ello se exige como requisito previo una transparencia publicada igual o superior al 20~\%.
+
+Onyx Solar fabrica el vidrio fotovoltaico a medida, por lo que no dispone de un catálogo cerrado de módulos. Se toma como referencia la ficha técnica de uno de sus proyectos de lucernario \nota{[pendiente: dar de alta la ficha con bibliotecario-pdf para poder citarla]}, que recoge cuatro vidrios. De ellos se elige el GL.03, de silicio monocristalino y 1.700 × 1.000~mm, por ser el de formato más próximo al de un módulo comercial y, por tanto, el que mejor encaja en una estructura estándar. El vidrio de formato estándar de la misma ficha, el GL.04 de 1.641 × 989~mm, se descarta por ser opaco y llevar lámina trasera y marco, y los vidrios GL.01 y GL.02 son de capa fina, descartada por densidad como se ha indicado. Como se puede observar en la Tabla~\ref{tab:diseno-modulos-v1a}, se comparan tres vidrios fotovoltaicos de silicio cristalino.
 
 \begin{table}[H]
     \centering
@@ -125,42 +130,44 @@ La justificación del lucernario no es energética sino arquitectónica: se busc
     \begin{tabularx}{\textwidth}{|F{4.2cm}|Y|Y|Y|}
         \hline
         \rowcolor{cabeceraTabla}
-        \textbf{Característica técnica} & \textbf{Onyx Solar c-Si 35~\%} & \textbf{Polysolar PS-MC-ST-60} & \textbf{AGC SunEwat Vision} \\
+        \textbf{Característica técnica} & \textbf{Onyx Solar GL.03} & \textbf{Polysolar PS-MC-ST-60} & \textbf{AGC SunEwat Vision} \\
         \hline
-        Potencia pico \acs{STC} (Wp) & 182 & 370 & No publicada \\
+        Potencia pico \acs{STC} (Wp) & 265 & 370 & No publicada \\
         \hline
-        Tecnología de célula & Mono c-Si & Mono c-Si bifacial & Mono PERC \\
+        Tecnología de célula & Mono c-Si de 6", 60 células & Mono c-Si bifacial & Mono PERC \\
         \hline
-        Dimensiones (mm) & 1.650 × 850 & 1.770 × 1.049 & No publicadas \\
+        Dimensiones (mm) & 1.700 × 1.000 & 1.770 × 1.049 & No publicadas \\
         \hline
-        Transparencia (\%) & 35 & 10 & No publicada \\
+        Transparencia (\%) & 19 & 10 & No publicada \\
         \hline
-        Densidad (Wp/m$^2$) & 129,6 & 199,3 & 180 (máx.) \\
+        Densidad (Wp/m$^2$) & 155,8 & 199,3$^{\dagger}$ & 180 (máx.) \\
         \hline
-        Peso (kg/m$^2$) & $\approx$ 20 & 16,2 & No publicado \\
+        Peso (kg/m$^2$) & 20,0$^{\dagger}$ & 16,2$^{\dagger}$ & No publicado \\
         \hline
-        Transmitancia $U$ (W/m$^2$·K) & 5,2 & No publicada & No publicada \\
+        Transmitancia $U$ (W/m$^2$·K) & 5,5 & No publicada & No publicada \\
         \hline
-        Coef. temp. $P_{max}$ (\%/\textdegree{}C) & $-$0,32 & $-$0,36 & No publicado \\
+        Coef. temp. $P_{max}$ (\%/\textdegree{}C) & $-$0,45 & $-$0,36 & No publicado \\
+        \hline
+        Tolerancia de potencia (\%) & $\pm$10 & No consultada & No consultada \\
         \hline
         \acs{LID} / PID & No declarados & No declarados & No declarados \\
         \hline
         Tensión máx. del sistema (V) & 1.000 & 1.000 & No publicada \\
         \hline
-        Garantía de producto (años) & 5 & 30 & 10 \\
+        Garantía de producto (años) & No figura en la ficha & 30 & 10 \\
         \hline
-        Garantía de potencia & 80~\% (10 años) & 87~\% \nota{(plazo no legible en la ficha)} & 90~\% (10 años) / 80~\% (20 años) \\
+        Garantía de potencia & No figura en la ficha & 87~\% \nota{(plazo no legible en la ficha)} & 90~\% (10 años) / 80~\% (20 años) \\
         \hline
-        Homologación del laminado & Normas según configuración & DIBt Z-70.3-288\nota{*} & IEC 61215, IEC 61730 y EN 13501 \\
+        Homologación del laminado & UL, IEC y MCS (solo logotipos) & DIBt Z-70.3-288\nota{*} & IEC 61215, IEC 61730 y EN 13501 \\
         \hline
-        Datos para el fichero PAN & Completos & Completos & Insuficientes \\
+        Datos para el fichero PAN & Completos ($V_{oc}$ y $V_{mpp}$ sin decimales) & Completos & Insuficientes \\
         \hline
         Precio & No publicado & No publicado & No publicado \\
         \hline
     \end{tabularx}
 
     \smallskip
-    {\scriptsize \nota{* Alcance de la homologación no verificado.}}
+    {\scriptsize $^{\dagger}$ Cálculo propio a partir del peso, la potencia y el área de la ficha. \nota{* Alcance de la homologación no verificado.}}
 \end{table}
 
 Los criterios que limitan esta variante, y el sentido en que se valoran, son los siguientes:
@@ -176,16 +183,18 @@ Los criterios que limitan esta variante, y el sentido en que se valoran, son los
 \begin{figure}[H]
     \centering
     \radarcomparativa{5}{Transparencia,Transmitancia $U$ y factor $g$ publicados,Coeficiente de temperatura,Peso,Densidad}
-        {Onyx Solar c-Si 35~\%}{3,3,3,2,1}
-        {Polysolar PS-MC-ST-60}{2,1.5,2,3,3}
+        {Onyx Solar GL.03}{3,3,2,2,1}
+        {Polysolar PS-MC-ST-60}{2,1.5,3,3,3}
         {AGC SunEwat Vision}{1,1.5,1,1,2}
     \caption{Valoración de los candidatos de la variante V1a en los criterios que la limitan (1 = peor, 3 = mejor). Elaboración propia.}
     \label{fig:radar-v1a}
 \end{figure}
 
-Como se puede observar en la Figura~\ref{fig:radar-v1a}, el Polysolar PS-MC-ST-60 destaca en densidad y en peso, pero su única transparencia publicada es del 10~\%, por lo que no pasa el requisito. Esto puede deberse a que su alta densidad, de 199,3~Wp/m$^2$, procede precisamente de cubrir casi todo el vidrio con célula. Se propone en consecuencia el \textbf{Onyx Solar c-Si con un 35~\% de transparencia}, de 182~Wp y 1.650 × 850~mm, ya que es el mejor en transparencia, el único que publica una transmitancia térmica y el que mejor coeficiente de temperatura presenta de los tres. Con 330 módulos sobre 463,1~m$^2$ de vidrio activo se obtienen unos 60,1~kWp.
+Como se puede observar en la Figura~\ref{fig:radar-v1a}, el Polysolar PS-MC-ST-60 es el mejor en coeficiente de temperatura, peso y densidad, pero su única transparencia publicada es del 10~\%, por lo que no pasa el requisito. Esto puede deberse a que su alta densidad, de 199,3~Wp/m$^2$, procede precisamente de cubrir casi todo el vidrio con célula. Se propone en consecuencia el \textbf{Onyx Solar GL.03}, de 265~Wp y 1.700 × 1.000~mm, ya que es el mejor en transparencia, que es la función del elemento, y el único de los tres que publica una transmitancia térmica. Con 272 vidrios sobre los 463,1~m$^2$ de vidrio activo se obtendrían unos 72,1~kWp. \nota{[cálculo propio por área: el número real de vidrios depende de la retícula de la perfilería del lucernario]}
 
-Como debilidades, dicho módulo tiene una garantía corta (5 años de producto y 80~\% de potencia a 10 años) y no publica el factor solar $g$ de su gama cristalina. Queda como reserva el Polysolar, condicionado a que confirme una versión con transparencia igual o superior al 20~\%.
+\nota{[decidir: el GL.03 tiene un 19~\% de transparencia, un punto por debajo del requisito del 20~\%. Opciones: mantener el requisito y pedir a Onyx una versión al 20~\% o más, o fijarlo en torno al 20~\%. Los vidrios de capa fina de la misma ficha, con un 20~\% nominal, tienen en realidad una transmisión luminosa menor, del 16,3~\%]}
+
+Como debilidades, dicho vidrio tiene un coeficiente de temperatura de $-$0,45~\%/\textdegree{}C, peor que el del Polysolar, y una tolerancia de potencia de $\pm$10~\%. Además, la ficha no recoge garantías ni el factor solar $g$ de este modelo. \nota{[pendiente: pedir a Onyx las garantías y el factor solar del GL.03]} Queda como reserva el Polysolar, condicionado a que confirme una versión con transparencia igual o superior al 20~\%.
 
 %-----------------------------------------------------------------------------------------------
 \subsubsection{Variante V1b: cubierta plana}
@@ -462,7 +471,7 @@ La Tabla~\ref{tab:diseno-modulos-variante} recoge la propuesta de módulo para c
         \rowcolor{cabeceraTabla}
         \textbf{Variante} & \textbf{Módulo propuesto} & \textbf{Reserva} & \textbf{Potencia estimada} \\
         \hline
-        V1a. Lucernario & Onyx Solar c-Si, 35~\% de transparencia (182~Wp) & Polysolar PS-MC-ST-60 (condicionada) & 60,1~kWp \\
+        V1a. Lucernario & Onyx Solar GL.03, c-Si con 19~\% de transparencia (265~Wp) & Polysolar PS-MC-ST-60 (condicionada) & 72,1~kWp \nota{(provisional)} \\
         \hline
         V1b. Cubierta plana & AIKO Neostar 2P 475~W monovidrio & REC Alpha Pure-RX 470 & 377,1~kWp \nota{(provisional)} \\
         \hline

@@ -111,6 +111,10 @@ queda descartada por aritmética (§3.3).
 
 ### 3.1 Tabla comparativa
 
+> **ACTUALIZADO el 03/10/2026:** la columna de Onyx de esta tabla queda sustituida por el modelo
+> GL.03 de la ficha real aportada por Mario (`Datos/Fichas Técnicas/Onyx Solar.pdf`). Ver la
+> nota de §2 de `seleccion-modulos-por-variante.md`.
+
 | Característica | **Onyx Solar c-Si** (35 %) | **Polysolar PS-MC-ST-60** | **AGC SunEwat Vision** |
 | --- | --- | --- | --- |
 | Fabricante / fabricación | Onyx Solar Energy — Ávila (España) | Polysolar Ltd. — Reino Unido; «Manufactured in Europe» | AGC Glass (Japón / AGC Glass Europe, Bélgica) |
