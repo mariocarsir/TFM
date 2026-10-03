@@ -100,6 +100,8 @@
 \usepackage{ifthen}
 \usepackage{afterpage}
 \usepackage{float}
+% Sin opciones no cambia el aspecto de los pies; permite formatearlos con \captionsetup.
+\usepackage{caption}
 \usepackage{pdflscape}
 \usepackage{pdfpages}
 \setlength{\parskip}{0.7em}
