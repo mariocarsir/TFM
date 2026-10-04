@@ -2,7 +2,7 @@
 \label{ch:diseno-fv}
 
 % BORRADOR (redactor-humanizador 27/09/2026; tablas por variante y radares 30/09/2026;
-% tablas rehechas con las fichas reales y la regla general de filas de Mario 04/10/2026).
+% tablas con las fichas reales 04/10/2026; filas y ejes del radar revisados por Mario 04/10/2026).
 % Pendiente: revisión de Mario → humanizer → compilación de cierre.
 % Estado de las decisiones: PROPUESTA pendiente de validación por Mario.
 % Fuente única de datos de equipos: fichas de Datos/Fichas Técnicas/Módulos/<variante>/.
@@ -10,7 +10,10 @@
 %   pvXchange feb. 2026 y posición en rankings de la guía ERMA (comparacion-modulos-fv.md §2),
 %   y los cálculos propios marcados con «*».
 % Reglas de formato aplicadas:
-%   - Filas de las tablas comparativas: regla general de Mario (04/10/2026), en su orden.
+%   - Filas de las tablas comparativas: regla general de Mario (04/10/2026), en su orden, sin
+%     «Características especiales».
+%   - Radar: ejes generales Peso, Tamaño, Eficiencia, LID/PID (media de las dos valoraciones) y
+%     Coeficiente de temperatura. Los específicos de cada variante, pendientes de Mario.
 %   - Imax = fusible máximo en serie; precio en €/Wp con dos decimales.
 %   - En tablas, nunca rangos «x a y»: media de los límites, salvo que el dato sea un rango.
 %   - Anotaciones de tabla: «*» la primera y «**» la segunda.
@@ -93,9 +96,21 @@ La capa fina se descartó en el lucernario por densidad de potencia. La ficha de
 \subsubsection{Método de selección}
 \label{subsubsec:diseno-metodo-modulos}
 
-En cada variante se comparan tres candidatos de una misma clase de potencia y formato, de fabricantes bien posicionados. Las características comparadas son las que pide la guía de la asignatura para justificar el módulo: parámetros eléctricos en condiciones \ac{STC}, tecnología de célula, coeficiente de temperatura, degradación inducida por la luz (\ac{LID}), degradación inducida por potencial (PID), garantías, características especiales, precio y posición del fabricante en los rankings. A ellas se añaden los criterios propios de cada variante, que salen de lo que limita esa instalación en concreto: superficie, tensión de string, carga de viento, comportamiento frente al fuego o función arquitectónica del elemento. Todos los datos técnicos proceden de las fichas de los fabricantes. \nota{[pendiente: dar de alta con bibliotecario-pdf las doce fichas de Datos/Fichas Técnicas/Módulos para poder citarlas]}
+En cada variante se comparan tres candidatos de una misma clase de potencia y formato, de fabricantes bien posicionados. Las características comparadas son las que pide la guía de la asignatura para justificar el módulo: parámetros eléctricos en condiciones \ac{STC}, tecnología de célula, coeficiente de temperatura, degradación inducida por la luz (\ac{LID}), degradación inducida por potencial (PID), garantías, precio y posición del fabricante en los rankings. A ellas se añaden los criterios propios de cada variante, que salen de lo que limita esa instalación en concreto: superficie, tensión de string, carga de viento, comportamiento frente al fuego o función arquitectónica del elemento. Todos los datos técnicos proceden de las fichas de los fabricantes. \nota{[pendiente: dar de alta con bibliotecario-pdf las doce fichas de Datos/Fichas Técnicas/Módulos para poder citarlas]}
 
-Cada candidato se valora en cada criterio por orden, de 1 (peor) a 3 (mejor), y los empates se reparten a la media, siguiendo el método empleado en un trabajo previo del mismo máster. \nota{[pendiente: decidir si el TFM de M. Arcas (2024) se cita; hoy figura como fuente no citable]} Se trata de una valoración ordinal: indica qué candidato es mejor en cada criterio, pero no asigna a los criterios un peso ni una importancia relativa, por lo que no se suman puntos. En cada variante se representan en un diagrama radar solo los criterios que limitan la instalación, junto con el motivo técnico por el que se valora como mejor un valor mayor o menor. El resto de características de la tabla comparativa sirve para descartar candidatos o como información complementaria. El precio se ordena por categorías de mercado de febrero de 2026 y no por modelo, de modo que sirve para comparar pero no para presupuestar. \nota{[pendiente: dar de alta la fuente de precios pvXchange, los rankings consultados y la bancabilidad PV-Tech Q4 2025; no proceden de las fichas]}
+Cada candidato se valora en cada criterio por orden, de 1 (peor) a 3 (mejor), y los empates se reparten a la media, siguiendo el método empleado en un trabajo previo del mismo máster. \nota{[pendiente: decidir si el TFM de M. Arcas (2024) se cita; hoy figura como fuente no citable]} Se trata de una valoración ordinal: indica qué candidato es mejor en cada criterio, pero no asigna a los criterios un peso ni una importancia relativa, por lo que no se suman puntos. Cuando una ficha no da el dato, el candidato recibe la peor valoración en ese criterio. En todas las variantes se representan en un diagrama radar los mismos cinco criterios generales, con el sentido en que se valoran y su motivo técnico:
+
+\begin{itemize}
+    \item \textbf{Peso (menor es mejor).} Un módulo más ligero facilita el montaje a mano y reduce la carga sobre la estructura soporte o la cubierta.
+    \item \textbf{Tamaño (menor área es mejor).} Las dimensiones condicionan el manejo durante la instalación y el encaje en las estructuras estándar.
+    \item \textbf{Eficiencia (mayor es mejor).} Fija la potencia que se obtiene por unidad de superficie ocupada.
+    \item \textbf{\acs{LID}/PID (menor degradación es mejor).} La \acs{LID} es una pérdida del primer año que se arrastra durante toda la vida útil, y la resistencia a la PID declarada o ensayada reduce el riesgo de degradación por potencial en strings de alta tensión. Cada uno se valora por separado y el diagrama muestra la media de ambas valoraciones.
+    \item \textbf{Coeficiente de temperatura (menor en valor absoluto es mejor).} Mide la pérdida de potencia al calentarse la célula, relevante en el verano de Madrid.
+\end{itemize}
+
+\nota{[pendiente: Mario indicará los atributos específicos de cada variante que se añadirán al diagrama radar; hasta entonces se describen en el texto de cada variante]}
+
+El precio se ordena por categorías de mercado de febrero de 2026 y no por modelo, de modo que sirve para comparar pero no para presupuestar. \nota{[pendiente: dar de alta la fuente de precios pvXchange, los rankings consultados y la bancabilidad PV-Tech Q4 2025; no proceden de las fichas]}
 
 Cabe destacar que se ha optado por no emplear un módulo único para todo el proyecto. Con un módulo común, uno de los argumentos decisivos era la tensión de 1.500~V, que solo necesita la planta en suelo, y se estaría aplicando a instalaciones de cubierta y marquesina que trabajarán con inversores de 1.100~V. Elegir por separado permite que cada decisión se apoye en el criterio que limita su variante, a cambio de gestionar cuatro modelos de módulo en la simulación en lugar de dos. La Tabla~\ref{tab:diseno-criterios-variante} resume dichos criterios.
 
@@ -140,15 +155,15 @@ Onyx Solar fabrica el vidrio fotovoltaico a medida, por lo que no dispone de un 
         \rowcolor{cabeceraTabla}
         \textbf{Característica técnica} & \textbf{Onyx Solar GL.03} & \textbf{Polysolar PS-MC-ST-60} & \textbf{AGC SunEwat Vision Square} \\
         \hline
-        Potencia pico en \acs{STC} (Wp) & 265 & 370 & No figura (a medida) \\
-        \hline
-        $V_{oc}$ (V) & 38 & 40,50 & No figura \\
-        \hline
-        $I_{sc}$ (A) & 8,93 & 11,18 & No figura \\
+        $P_{mpp}$ (Wp) & 265 & 370 & No figura (a medida) \\
         \hline
         $V_{mpp}$ (V) & 32 & 34,86 & No figura \\
         \hline
         $I_{mpp}$ (A) & 8,39 & 10,62 & No figura \\
+        \hline
+        $V_{oc}$ (V) & 38 & 40,50 & No figura \\
+        \hline
+        $I_{sc}$ (A) & 8,93 & 11,18 & No figura \\
         \hline
         $V_{max}$ (V) & 1.000 & 1.000 & No figura \\
         \hline
@@ -174,8 +189,6 @@ Onyx Solar fabrica el vidrio fotovoltaico a medida, por lo que no dispone de un 
         \hline
         Garantía de producto (años) & No figura & 30 & 10 \\
         \hline
-        Características especiales & Vidrio-vidrio 4 + 4~mm; $U_g$ = 5,5~W/m$^2$·K; 155,8~Wp/m$^2$; tolerancia $\pm$10~\% & Vidrio-vidrio 3 + 3~mm sin marco; 199,3~Wp/m$^2$*; fuego clase A; homologación DIBt Z-70.3-288 & Vidrio de seguridad EN 356 P1A y EN 12600 1B1; de 40 a 180~Wp/m$^2$ según la transparencia \\
-        \hline
         Precio (€/Wp) & No publicado & No publicado & No publicado \\
         \hline
         Posición del fabricante en el ranking consultado & No figura & No figura & No figura \\
@@ -188,27 +201,24 @@ Onyx Solar fabrica el vidrio fotovoltaico a medida, por lo que no dispone de un 
     {\scriptsize * Cálculo propio a partir de la potencia y el área de la ficha.}
 \end{table}
 
-Los criterios que limitan esta variante, y el sentido en que se valoran, son los siguientes:
+\begin{figure}[H]
+    \centering
+    \radarcomparativa{5}{Peso,Tamaño,Eficiencia,\acs{LID}/PID,Coeficiente de temperatura}
+        {Onyx Solar GL.03}{2,3,2,2,2}
+        {Polysolar PS-MC-ST-60}{3,2,3,2,3}
+        {AGC SunEwat Vision Square}{1,1,1,2,1}
+    \caption{Valoración de los candidatos de la variante V1a en los criterios generales (1 = peor, 3 = mejor). Elaboración propia.}
+    \label{fig:radar-v1a}
+\end{figure}
+
+Como se puede observar en la Figura~\ref{fig:radar-v1a}, el Polysolar PS-MC-ST-60 es el mejor en peso, eficiencia y coeficiente de temperatura, y el Onyx, en tamaño. En \acs{LID}/PID empatan los tres, ya que ninguna ficha lo declara, y el AGC queda el último en el resto porque su ficha no da los datos. Sin embargo, en esta variante deciden además dos criterios propios:
 
 \begin{itemize}
     \item \textbf{Transparencia (mayor es mejor).} Es la función del elemento: cuanto más transparente es el vidrio, más luz natural llega al hall.
     \item \textbf{Transmitancia $U$ y factor solar $g$ publicados (publicarlos es mejor).} Sin ellos no se puede justificar el comportamiento térmico del lucernario ni su aportación al control solar.
-    \item \textbf{Coeficiente de temperatura (menor en valor absoluto es mejor).} El vidrio está integrado en horizontal y sin ventilación posterior, por lo que trabaja más caliente que un módulo sobre estructura abierta.
-    \item \textbf{Peso por unidad de superficie (menor es mejor).} El vidrio debe apoyarse en la perfilería existente del lucernario. Con los datos de la ficha resultan 20,0~kg/m$^2$ para el Onyx y 16,2~kg/m$^2$ para el Polysolar (cálculo propio); el AGC no publica su peso.
-    \item \textbf{Densidad de potencia (mayor es mejor).} Da la potencia por metro cuadrado de vidrio, aunque queda subordinada a la transparencia, ya que ambas compiten por la misma superficie.
 \end{itemize}
 
-\begin{figure}[H]
-    \centering
-    \radarcomparativa{5}{Transparencia,Transmitancia $U$ y factor $g$ publicados,Coeficiente de temperatura,Peso,Densidad}
-        {Onyx Solar GL.03}{2,3,2,2,1}
-        {Polysolar PS-MC-ST-60}{1,1.5,3,3,3}
-        {AGC SunEwat Vision Square}{3,1.5,1,1,2}
-    \caption{Valoración de los candidatos de la variante V1a en los criterios que la limitan (1 = peor, 3 = mejor). Elaboración propia.}
-    \label{fig:radar-v1a}
-\end{figure}
-
-Como se puede observar en la Figura~\ref{fig:radar-v1a}, el Polysolar PS-MC-ST-60 es el mejor en coeficiente de temperatura, peso y densidad, pero su única transparencia publicada es del 10~\%, por lo que no pasa el requisito. Esto puede deberse a que su alta densidad, de 199,3~Wp/m$^2$, procede precisamente de cubrir casi todo el vidrio con célula. El AGC SunEwat Vision Square es el mejor en transparencia, ya que la fabrica a medida entre el 8 y el 90~\%, pero su ficha no da la potencia, las tensiones ni las corrientes del vidrio, por lo que no permite dimensionar el campo ni crear el fichero de módulo para la simulación. Se propone en consecuencia el \textbf{Onyx Solar GL.03}, de 265~Wp y 1.700 × 1.000~mm, ya que es el único de los tres que publica una transmitancia térmica y el único con una transparencia cercana al requisito que da todos los datos eléctricos necesarios para la simulación. Con 272 vidrios sobre los 463,1~m$^2$ de vidrio activo se obtendrían unos 72,1~kWp. \nota{[cálculo propio por área: el número real de vidrios depende de la retícula de la perfilería del lucernario]}
+El Polysolar solo publica una transparencia del 10~\%, por lo que no pasa el requisito. Esto puede deberse a que su alta densidad, de 199,3~Wp/m$^2$ (cálculo propio), procede precisamente de cubrir casi todo el vidrio con célula. El AGC SunEwat Vision Square es el mejor en transparencia, ya que la fabrica a medida entre el 8 y el 90~\%, pero su ficha no da la potencia, las tensiones ni las corrientes del vidrio, por lo que no permite dimensionar el campo ni crear el fichero de módulo para la simulación. Se propone en consecuencia el \textbf{Onyx Solar GL.03}, de 265~Wp y 1.700 × 1.000~mm, ya que es el único de los tres que publica una transmitancia térmica, de 5,5~W/m$^2$·K, y el único con una transparencia cercana al requisito que da todos los datos eléctricos necesarios para la simulación. Con 272 vidrios sobre los 463,1~m$^2$ de vidrio activo se obtendrían unos 72,1~kWp. \nota{[cálculo propio por área: el número real de vidrios depende de la retícula de la perfilería del lucernario]}
 
 \nota{[decidir: el GL.03 tiene un 19~\% de transparencia, un punto por debajo del requisito del 20~\%. Opciones: mantener el requisito y pedir a Onyx una versión al 20~\% o más; fijarlo en torno al 20~\%; o pedir a AGC los datos eléctricos de un Vision Square con la transparencia que se fije. Los vidrios de capa fina de la ficha de Onyx, con un 20~\% nominal, tienen en realidad una transmisión luminosa menor, del 16,3~\%]}
 
@@ -231,15 +241,15 @@ La cubierta cuenta con una impermeabilización líquida continua, por lo que la 
         \rowcolor{cabeceraTabla}
         \textbf{Característica técnica} & \textbf{REC Alpha Pure-RX 470} & \textbf{AIKO Neostar 2P 475 monovidrio} & \textbf{LONGi Hi-MO X6 LR7-54HTH-465M} \\
         \hline
-        Potencia pico en \acs{STC} (Wp) & 470 & 475 & 465 \\
-        \hline
-        $V_{oc}$ (V) & 65,6 & 41,24 & 39,55 \\
-        \hline
-        $I_{sc}$ (A) & 8,95 & 14,35 & 14,93 \\
+        $P_{mpp}$ (Wp) & 470 & 475 & 465 \\
         \hline
         $V_{mpp}$ (V) & 55,4 & 34,80 & 33,39 \\
         \hline
         $I_{mpp}$ (A) & 8,49 & 13,66 & 13,93 \\
+        \hline
+        $V_{oc}$ (V) & 65,6 & 41,24 & 39,55 \\
+        \hline
+        $I_{sc}$ (A) & 8,95 & 14,35 & 14,93 \\
         \hline
         $V_{max}$ (V) & 1.000 & 1.500 & 1.500 \\
         \hline
@@ -265,50 +275,45 @@ La cubierta cuenta con una impermeabilización líquida continua, por lo que la 
         \hline
         Garantía de producto (años) & 20 (25 con instalador certificado) & 15 (ampliable a 25) & 15 \\
         \hline
-        Características especiales & Carga 7.000/4.000~Pa; combustibilidad clase E (ISO 11925-2); 14 módulos por string* & Monovidrio 3,2~mm; carga 5.400/2.400~Pa; fuego IEC clase C; 24 módulos por string* & Monovidrio 3,2~mm; carga 5.400/2.400~Pa; fuego IEC clase C; 25 módulos por string* \\
+        Precio (€/Wp)* & 0,15 & 0,13 & 0,12 \\
         \hline
-        Precio (€/Wp)** & 0,15 & 0,13 & 0,12 \\
-        \hline
-        Posición del fabricante en el ranking consultado** & 1.º (CleanEnergyReviews 2025) & 3.º (CleanEnergyReviews 2025) & 2.º (Black Ridge, envíos 2025) \\
+        Posición del fabricante en el ranking consultado* & 1.º (CleanEnergyReviews 2025) & 3.º (CleanEnergyReviews 2025) & 2.º (Black Ridge, envíos 2025) \\
         \hline
     \end{tabularx}
 
     \smallskip
-    {\scriptsize * Cálculo propio con un inversor de 1.100~V y una temperatura mínima provisional de $-$10~\textdegree{}C. Carga: ensayo frontal/trasero. ** No procede de la ficha: precio por categoría tecnológica de febrero de 2026 y rankings de la guía de la asignatura.}
+    {\scriptsize * No procede de la ficha: precio por categoría tecnológica de febrero de 2026 y rankings de la guía de la asignatura.}
 \end{table}
-
-Los criterios que limitan esta variante, y el sentido en que se valoran, son los siguientes:
-
-\begin{itemize}
-    \item \textbf{Densidad de potencia (mayor es mejor).} La variante está limitada por superficie, con 1.582,5~m$^2$ netos de módulo, de modo que la eficiencia fija la potencia instalable.
-    \item \textbf{Longitud de string con inversor de 1.100~V (más módulos es mejor).} Con strings más largos se necesitan menos strings y menos entradas de continua en el inversor, que fueron el límite de esta variante en el recálculo de superficies.
-    \item \textbf{Carga trasera de ensayo (mayor es mejor).} Los sheds lastrados sobre una cubierta expuesta reciben succión de viento, más intensa en bordes y esquinas, y dicho ensayo marca la presión que admite el módulo.
-    \item \textbf{Comportamiento al fuego (mejor clasificación es mejor).} El campo fotovoltaico se sitúa sobre las salas de un \ac{CPD} en explotación. Sin embargo, las fichas no son comparables entre sí: el AIKO y el LONGi declaran la clase C según IEC, y el REC, la clase E de combustibilidad según ISO 11925-2, por lo que los tres se valoran por igual.
-    \item \textbf{Coeficiente de temperatura (menor en valor absoluto es mejor).} La cubierta está en Madrid, aunque el efecto es moderado porque los sheds quedan ventilados.
-    \item \textbf{Degradación inicial por \acs{LID} (menor es mejor).} Es una pérdida que se arrastra durante toda la vida útil de la instalación.
-\end{itemize}
 
 \begin{figure}[H]
     \centering
-    \radarcomparativa{6}{Densidad,Longitud de string,Carga trasera,Comportamiento al fuego,Coeficiente de temperatura,\acs{LID}}
-        {REC Alpha Pure-RX 470}{1,1,3,2,3,1}
-        {AIKO Neostar 2P 475 monovidrio}{3,2,1.5,2,2,2.5}
-        {LONGi Hi-MO X6 LR7-54HTH-465M}{2,3,1.5,2,1,2.5}
-    \caption{Valoración de los candidatos de la variante V1b en los criterios que la limitan (1 = peor, 3 = mejor). Elaboración propia.}
+    \radarcomparativa{5}{Peso,Tamaño,Eficiencia,\acs{LID}/PID,Coeficiente de temperatura}
+        {REC Alpha Pure-RX 470}{1,1,1,2,3}
+        {AIKO Neostar 2P 475 monovidrio}{3,3,3,2,2}
+        {LONGi Hi-MO X6 LR7-54HTH-465M}{2,2,2,2,1}
+    \caption{Valoración de los candidatos de la variante V1b en los criterios generales (1 = peor, 3 = mejor). Elaboración propia.}
     \label{fig:radar-v1b}
 \end{figure}
 
-Como se puede observar en la Figura~\ref{fig:radar-v1b}, ningún candidato es el mejor en todos los criterios: el REC destaca en carga trasera y coeficiente de temperatura, mientras que el AIKO y el LONGi lo superan en densidad, longitud de string y degradación inicial. Se propone el \textbf{AIKO Neostar 2P 475~W monovidrio}, ya que es el mejor en el criterio que fija el tamaño de la variante y mejora al REC en los otros dos:
+Como se puede observar en la Figura~\ref{fig:radar-v1b}, el AIKO es el mejor en peso, tamaño y eficiencia, y el REC solo destaca en coeficiente de temperatura. En \acs{LID}/PID empatan los tres: el REC tiene la mayor degradación inicial, del 2~\%, pero es el único que declara un ensayo de PID, según IEC 62804. A dichos criterios se suman los propios de la variante:
+
+\begin{itemize}
+    \item \textbf{Longitud de string con inversor de 1.100~V (más módulos es mejor).} Con strings más largos se necesitan menos strings y menos entradas de continua en el inversor, que fueron el límite de esta variante en el recálculo de superficies. Con una temperatura mínima provisional de $-$10~\textdegree{}C, el AIKO admite 24 módulos por string, el LONGi 25 y el REC 14 (cálculo propio).
+    \item \textbf{Carga trasera de ensayo (mayor es mejor).} Los sheds lastrados sobre una cubierta expuesta reciben succión de viento, más intensa en bordes y esquinas. El REC está ensayado a 4.000~Pa en la cara trasera y el AIKO y el LONGi, a 2.400~Pa.
+    \item \textbf{Comportamiento al fuego (mejor clasificación es mejor).} El campo fotovoltaico se sitúa sobre las salas de un \ac{CPD} en explotación. Sin embargo, las fichas no son comparables entre sí: el AIKO y el LONGi declaran la clase C según IEC, y el REC, la clase E de combustibilidad según ISO 11925-2.
+\end{itemize}
+
+Se propone el \textbf{AIKO Neostar 2P 475~W monovidrio}, ya que es el mejor en tres de los cinco criterios generales y además en el que fija el tamaño de la variante:
 
 \begin{itemize}
     \item \textbf{Densidad.} Con una eficiencia del 23,8~\%, permite instalar 794 módulos y unos 377,1~kWp, frente a los 356,7~kWp del REC y los 360,4~kWp del LONGi en la misma superficie.
-    \item \textbf{Longitud de string.} Con un inversor de 1.100~V admite 24 módulos por string, frente a los 14 del REC. Son 33 strings en lugar de 54, lo que reduce las entradas de continua.
+    \item \textbf{Longitud de string.} Con 24 módulos por string frente a los 14 del REC, son 33 strings en lugar de 54, lo que reduce las entradas de continua.
     \item \textbf{Degradación inicial.} Declara una \ac{LID} igual o inferior al 1~\%, frente al 2~\% del REC.
 \end{itemize}
 
-Frente al LONGi, el AIKO gana en densidad y en coeficiente de temperatura y solo pierde un módulo por string (24 frente a 25).
+Frente al LONGi, el AIKO gana en peso, tamaño, eficiencia y coeficiente de temperatura y solo pierde un módulo por string (24 frente a 25).
 
-Queda como reserva el \textbf{REC Alpha Pure-RX 470}, módulo del trabajo previo sobre esta misma cubierta. Presenta tres ventajas nada menores en la cubierta de un \ac{CPD}: una carga trasera de ensayo de 4.000~Pa frente a 2.400~Pa, un ensayo de PID declarado según IEC 62804, que no aportan los otros dos, y un fichero de módulo ya probado en PVsyst. Si la comprobación de viento exige más de lo que declara AIKO, se pasa al REC y se acepta perder unos 20~kWp. \nota{[corregido: la ficha del REC no declara la clase BROOF(t2) que se citaba antes, que procedía de otra fuente; solo declara la clase E de combustibilidad]}
+Queda como reserva el \textbf{REC Alpha Pure-RX 470}, módulo del trabajo previo sobre esta misma cubierta. Presenta tres ventajas nada menores en la cubierta de un \ac{CPD}: una carga trasera de ensayo de 4.000~Pa frente a 2.400~Pa, un ensayo de PID declarado, que no aportan los otros dos, y un fichero de módulo ya probado en PVsyst. Si la comprobación de viento exige más de lo que declara AIKO, se pasa al REC y se acepta perder unos 20~kWp. \nota{[corregido: la ficha del REC no declara la clase BROOF(t2) que se citaba antes, que procedía de otra fuente; solo declara la clase E de combustibilidad]}
 
 \nota{[pendiente: los 794 módulos se estimaron con un factor de empaquetado validado con la geometría del REC; hay que rehacer la disposición de los sheds en la escena 3D con 1.757 × 1.134~mm]}
 
@@ -329,15 +334,15 @@ En las marquesinas el módulo queda sobre personas y vehículos, por lo que se e
         \rowcolor{cabeceraTabla}
         \textbf{Característica técnica} & \textbf{AIKO Neostar 2P+ 475 vidrio-vidrio} & \textbf{Trina Vertex S+ TSM-440NEG9RC.27} & \textbf{Jinko Tiger Neo 54HL4M-BDV 525} \\
         \hline
-        Potencia pico en \acs{STC} (Wp) & 475 & 440 & 525 \\
-        \hline
-        $V_{oc}$ (V) & 41,24 & 52,2 & 41,23 \\
-        \hline
-        $I_{sc}$ (A) & 14,35 & 10,67 & 15,88 \\
+        $P_{mpp}$ (Wp) & 475 & 440 & 525 \\
         \hline
         $V_{mpp}$ (V) & 34,80 & 44,0 & 35,05 \\
         \hline
         $I_{mpp}$ (A) & 13,66 & 10,01 & 14,98 \\
+        \hline
+        $V_{oc}$ (V) & 41,24 & 52,2 & 41,23 \\
+        \hline
+        $I_{sc}$ (A) & 14,35 & 10,67 & 15,88 \\
         \hline
         $V_{max}$ (V) & 1.500 & 1.500 & 1.500 \\
         \hline
@@ -363,8 +368,6 @@ En las marquesinas el módulo queda sobre personas y vehículos, por lo que se e
         \hline
         Garantía de producto (años) & 15 (ampliable a 25) & 25 & 15 \\
         \hline
-        Características especiales & Vidrio-vidrio 2,0 + 2,0~mm; bifacialidad no declarada; carga 5.400/2.400~Pa; fuego IEC clase C & Bifacial 80~\%; vidrio-vidrio 1,6 + 1,6~mm; carga 5.400/4.000~Pa; fuego sin clase declarada & Bifacial 80~\%; vidrio-vidrio 2,0 + 2,0~mm; carga 5.400/2.400~Pa; fuego IEC clase C \\
-        \hline
         Precio (€/Wp)* & 0,13 & 0,12 & 0,13 \\
         \hline
         Posición del fabricante en el ranking consultado* & 3.º (CleanEnergyReviews 2025) & 4.º (Black Ridge, envíos 2025) & 1.º (Black Ridge, envíos 2025) \\
@@ -372,37 +375,36 @@ En las marquesinas el módulo queda sobre personas y vehículos, por lo que se e
     \end{tabularx}
 
     \smallskip
-    {\scriptsize Carga: ensayo frontal/trasero. * No procede de la ficha: precio por categoría tecnológica de febrero de 2026 y rankings de la guía de la asignatura.}
+    {\scriptsize * No procede de la ficha: precio por categoría tecnológica de febrero de 2026 y rankings de la guía de la asignatura.}
 \end{table}
-
-Los criterios que limitan esta variante, y el sentido en que se valoran, son los siguientes:
-
-\begin{itemize}
-    \item \textbf{Densidad de potencia (mayor es mejor).} La huella de las marquesinas está limitada a 3.182,4~m$^2$ de módulo y es la variante más productiva del proyecto.
-    \item \textbf{Bifacialidad (mayor es mejor).} La cara trasera recibe la radiación reflejada por el pavimento, siempre que la marquesina no lleve chapa bajo el módulo.
-    \item \textbf{Carga trasera de ensayo (mayor es mejor).} La marquesina es abierta, de modo que el viento actúa sobre las dos caras del módulo.
-    \item \textbf{Comportamiento al fuego (mejor clasificación es mejor).} El módulo cubre vehículos aparcados.
-    \item \textbf{Espesor del vidrio (mayor es mejor).} Da rigidez al laminado y mejora su seguridad al estar colocado sobre personas.
-\end{itemize}
 
 \begin{figure}[H]
     \centering
-    \radarcomparativa{5}{Densidad,Bifacialidad,Carga trasera,Comportamiento al fuego,Espesor del vidrio}
-        {AIKO Neostar 2P+ 475 vidrio-vidrio}{3,1,1.5,2.5,2.5}
-        {Trina Vertex S+ TSM-440NEG9RC.27}{1,2.5,3,1,1}
-        {Jinko Tiger Neo 54HL4M-BDV 525}{2,2.5,1.5,2.5,2.5}
-    \caption{Valoración de los candidatos de la variante V2 en los criterios que la limitan (1 = peor, 3 = mejor). AIKO y Jinko coinciden en los dos últimos criterios, por lo que sus líneas se solapan. Elaboración propia.}
+    \radarcomparativa{5}{Peso,Tamaño,Eficiencia,\acs{LID}/PID,Coeficiente de temperatura}
+        {AIKO Neostar 2P+ 475 vidrio-vidrio}{2,3,3,1.75,3}
+        {Trina Vertex S+ TSM-440NEG9RC.27}{3,2,1,1.75,1}
+        {Jinko Tiger Neo 54HL4M-BDV 525}{1,1,2,2.5,2}
+    \caption{Valoración de los candidatos de la variante V2 en los criterios generales (1 = peor, 3 = mejor). Elaboración propia.}
     \label{fig:radar-v2}
 \end{figure}
 
-Como se puede observar en la Figura~\ref{fig:radar-v2}, el AIKO es el mejor en densidad y empata con el Jinko en comportamiento al fuego, ya que los dos declaran la clase C según IEC, y en espesor de vidrio. El Jinko iguala o mejora al AIKO en el resto de criterios y solo queda por detrás en densidad, con alrededor de un 1~\% menos de potencia en la misma huella (751,3 frente a 758,6~kWp). El Trina es el mejor en carga trasera y empata con el Jinko en bifacialidad, y es además el mejor en precio, peso, corriente de cortocircuito y bancabilidad. Sin embargo, dichos criterios son comerciales o de dimensionado del inversor y no tocan lo que limita la variante, por lo que no se representan en el diagrama. Se mantiene de forma provisional el \textbf{AIKO Neostar 2P+ 475~W vidrio-vidrio}, por dos razones:
+Como se puede observar en la Figura~\ref{fig:radar-v2}, el AIKO es el mejor en tamaño, eficiencia y coeficiente de temperatura, el Trina es el más ligero y el Jinko es el mejor en \acs{LID}/PID, por ser el único que declara una garantía frente a la PID. A dichos criterios se suman los propios de la variante:
+
+\begin{itemize}
+    \item \textbf{Bifacialidad (mayor es mejor).} La cara trasera recibe la radiación reflejada por el pavimento, siempre que la marquesina no lleve chapa bajo el módulo. El Trina y el Jinko declaran un 80~\%, y la ficha del AIKO no la declara.
+    \item \textbf{Carga trasera de ensayo (mayor es mejor).} La marquesina es abierta, de modo que el viento actúa sobre las dos caras del módulo. El Trina está ensayado a 4.000~Pa en la cara trasera y el AIKO y el Jinko, a 2.400~Pa.
+    \item \textbf{Comportamiento al fuego (mejor clasificación es mejor).} El módulo cubre vehículos aparcados. El AIKO y el Jinko declaran la clase C según IEC, y el Trina no declara ninguna.
+    \item \textbf{Espesor del vidrio (mayor es mejor).} Da rigidez al laminado y mejora su seguridad al estar colocado sobre personas. El AIKO y el Jinko montan vidrio de 2,0 + 2,0~mm, y el Trina, de 1,6 + 1,6~mm.
+\end{itemize}
+
+Se mantiene de forma provisional el \textbf{AIKO Neostar 2P+ 475~W vidrio-vidrio}, que es el mejor en tres de los cinco criterios generales, por dos razones propias de la variante:
 
 \begin{itemize}
     \item \textbf{Densidad.} Alcanza unos 758,6~kWp frente a 700,5~kWp del Trina en la misma huella, un 8,3~\% más. Para que el Trina igualase la energía anual, su ganancia bifacial simulada debería superar el 8~\% aproximadamente, y sobre asfalto no se dispone de un dato verificado que lo sostenga.
     \item \textbf{Robustez frente a la solución estructural.} Si la marquesina acaba llevando chapa bajo el módulo, la ventaja bifacial del Trina y del Jinko desaparece y la del AIKO se mantiene.
 \end{itemize}
 
-\nota{[decidir: con las fichas reales el AIKO pierde su ventaja en fuego, ya que es clase C como el Jinko y no clase A como se indicaba antes. Con la marquesina sin chapa que se propone, el Jinko aporta bifacialidad con solo un 1~\% menos de potencia; en su contra tiene la mayor corriente (15,88~A), el mayor peso (27,0~kg) y el mayor tamaño (1.961~mm). Conviene revisar la elección entre AIKO y Jinko con ingeniero-dominio]}
+\nota{[decidir: con las fichas reales el AIKO pierde su ventaja en fuego, ya que es clase C como el Jinko y no clase A como se indicaba antes. Con la marquesina sin chapa que se propone, el Jinko aporta bifacialidad con solo un 1~\% menos de potencia (751,3 frente a 758,6~kWp); en su contra tiene la mayor corriente (15,88~A), el mayor peso (27,0~kg) y el mayor tamaño (1.961~mm). Conviene revisar la elección entre AIKO y Jinko con ingeniero-dominio]}
 
 Cabe matizar que, con unos 758~kWp, las marquesinas vierten más excedente que con la potencia del recálculo de superficies, por lo que parte de dicha ventaja de densidad se perderá en el antivertido. \nota{[pendiente: recalcular los excedentes de V2 con unos 758,6~kWp antes de usar la densidad como argumento cuantitativo]} Queda como reserva el \textbf{Trina Vertex S+ TSM-440NEG9RC.27}, que pasaría a elegido si PVsyst da una ganancia bifacial superior al 8~\% sobre el pavimento real o si se prioriza la bancabilidad y el precio. Antes habría que confirmar su clase de fuego, que no figura en la ficha.
 
@@ -423,15 +425,15 @@ En la planta de Colmenar Viejo el suelo sobra: la parcela tiene 58,84~ha y la pl
         \rowcolor{cabeceraTabla}
         \textbf{Característica técnica} & \textbf{LONGi Hi-MO 9 LR8-66HYD-665M} & \textbf{JA Solar JAM66D45-630/LB} & \textbf{Trina Vertex N TSM-620NEG19RC.20} \\
         \hline
-        Potencia pico en \acs{STC} (Wp) & 665 & 630 & 620 \\
-        \hline
-        $V_{oc}$ (V) & 50,02 & 48,90 & 48,50 \\
-        \hline
-        $I_{sc}$ (A) & 16,78 & 16,18 & 16,26 \\
+        $P_{mpp}$ (Wp) & 665 & 630 & 620 \\
         \hline
         $V_{mpp}$ (V) & 41,28 & 40,70 & 40,24 \\
         \hline
         $I_{mpp}$ (A) & 16,11 & 15,48 & 15,41 \\
+        \hline
+        $V_{oc}$ (V) & 50,02 & 48,90 & 48,50 \\
+        \hline
+        $I_{sc}$ (A) & 16,78 & 16,18 & 16,26 \\
         \hline
         $V_{max}$ (V) & 1.500 & 1.500 & 1.500 \\
         \hline
@@ -457,8 +459,6 @@ En la planta de Colmenar Viejo el suelo sobra: la parcela tiene 58,84~ha y la pl
         \hline
         Garantía de producto (años) & 12 & 12 & 12 \\
         \hline
-        Características especiales & Bifacial, coeficiente no declarado; vidrio-vidrio 2,0 + 2,0~mm; degradación 0,35~\%/año; fuego IEC clase C & Bifacial 80~\%; vidrio-vidrio 2,0 + 2,0~mm; degradación 0,40~\%/año; preparado para seguidor Nextracker & Bifacial 80~\%; vidrio-vidrio 2,0 + 2,0~mm; degradación 0,40~\%/año; fuego UL tipo 29 \\
-        \hline
         Precio (€/Wp)* & 0,13 & 0,13 & 0,12 \\
         \hline
         Posición del fabricante en el ranking consultado* & 2.º (Black Ridge, envíos 2025) & 3.º (Black Ridge, envíos 2025) & 4.º (Black Ridge, envíos 2025) \\
@@ -469,29 +469,28 @@ En la planta de Colmenar Viejo el suelo sobra: la parcela tiene 58,84~ha y la pl
     {\scriptsize * No procede de la ficha: precio por categoría tecnológica de febrero de 2026 y rankings de la guía de la asignatura.}
 \end{table}
 
-Los criterios que limitan esta variante, y el sentido en que se valoran, son los siguientes:
-
-\begin{itemize}
-    \item \textbf{Coeficiente de temperatura (menor en valor absoluto es mejor).} Con la potencia limitada por el acceso, lo que cuenta es la energía que produce cada kWp instalado, y dicho coeficiente la reduce en las horas de más calor.
-    \item \textbf{Degradación anual (menor es mejor).} La planta se evalúa con un horizonte de 30 años.
-    \item \textbf{Bifacialidad (mayor es mejor).} La planta se asienta sobre suelo natural con la estructura elevada, por lo que la cara trasera recibe radiación reflejada.
-    \item \textbf{Precio (menor es mejor).} En una planta en suelo el coste del módulo pesa directamente en el coste nivelado de la energía.
-    \item \textbf{Compatibilidad con seguidor (declararla es mejor).} La estructura de la planta, fija o con seguidor a un eje, aún no está decidida.
-\end{itemize}
-
-Las garantías no se incluyen entre dichos criterios, ya que los tres candidatos ofrecen las mismas: 12 años de producto y 30 de potencia.
-
 \begin{figure}[H]
     \centering
-    \radarcomparativa{5}{Coeficiente de temperatura,Degradación anual,Bifacialidad,Precio,Compatibilidad con seguidor}
-        {LONGi Hi-MO 9 LR8-66HYD-665M}{3,3,1,1.5,1.5}
-        {JA Solar JAM66D45-630/LB}{1.5,1.5,2.5,1.5,3}
-        {Trina Vertex N TSM-620NEG19RC.20}{1.5,1.5,2.5,3,1.5}
-    \caption{Valoración de los candidatos de la variante V3 en los criterios que la limitan (1 = peor, 3 = mejor). JA Solar y Trina coinciden en los tres primeros criterios, por lo que sus líneas se solapan. Elaboración propia.}
+    \radarcomparativa{5}{Peso,Tamaño,Eficiencia,\acs{LID}/PID,Coeficiente de temperatura}
+        {LONGi Hi-MO 9 LR8-66HYD-665M}{3,2,3,1.75,3}
+        {JA Solar JAM66D45-630/LB}{1,2,2,1.75,1.5}
+        {Trina Vertex N TSM-620NEG19RC.20}{2,2,1,2.5,1.5}
+    \caption{Valoración de los candidatos de la variante V3 en los criterios generales (1 = peor, 3 = mejor). Los tres módulos tienen el mismo tamaño. Elaboración propia.}
     \label{fig:radar-v3}
 \end{figure}
 
-Como se puede observar en la Figura~\ref{fig:radar-v3}, el LONGi es el mejor en los dos criterios que determinan la energía por kWp a lo largo de 30 años: coeficiente de temperatura y degradación anual. Se propone por ello el \textbf{LONGi Hi-MO 9 LR8-66HYD-665M}, con un coeficiente de temperatura de $-$0,26~\%/\textdegree{}C y una degradación anual del 0,35~\%, frente a $-$0,29~\%/\textdegree{}C y 0,40~\% de los otros dos. Su ficha, en cambio, no declara el coeficiente de bifacialidad, solo una tabla con distintas ganancias de potencia en la cara trasera, por lo que en ese criterio se valora como el peor. Será la simulación la que determine cuánto recorta dicha diferencia su ventaja.
+Como se puede observar en la Figura~\ref{fig:radar-v3}, el LONGi es el mejor en peso, eficiencia y coeficiente de temperatura, los tres empatan en tamaño y el Trina es el mejor en \acs{LID}/PID, por ser el único que declara resistencia a la PID. A dichos criterios se suman los propios de la variante:
+
+\begin{itemize}
+    \item \textbf{Degradación anual (menor es mejor).} La planta se evalúa con un horizonte de 30 años. El LONGi declara un 0,35~\% anual, y el JA y el Trina, un 0,40~\%.
+    \item \textbf{Bifacialidad (mayor es mejor).} La planta se asienta sobre suelo natural con la estructura elevada, por lo que la cara trasera recibe radiación reflejada. El JA y el Trina declaran un 80~\%, y la ficha del LONGi solo da una tabla con distintas ganancias de potencia en la cara trasera, sin coeficiente de bifacialidad.
+    \item \textbf{Precio (menor es mejor).} En una planta en suelo el coste del módulo pesa directamente en el coste nivelado de la energía.
+    \item \textbf{Compatibilidad con seguidor (declararla es mejor).} La estructura de la planta, fija o con seguidor a un eje, aún no está decidida, y solo la ficha del JA declara la fijación para seguidor.
+\end{itemize}
+
+Las garantías no discriminan entre los candidatos, ya que los tres ofrecen las mismas: 12 años de producto y 30 de potencia.
+
+Se propone el \textbf{LONGi Hi-MO 9 LR8-66HYD-665M}, que es el mejor en tres de los cinco criterios generales y en la degradación anual, los que determinan la energía por kWp a lo largo de 30 años: un coeficiente de temperatura de $-$0,26~\%/\textdegree{}C y una degradación anual del 0,35~\%, frente a $-$0,29~\%/\textdegree{}C y 0,40~\% de los otros dos. Será la simulación la que determine cuánto recorta su ventaja la bifacialidad no declarada.
 
 Queda como reserva el \textbf{JA Solar JAM66D45-630/LB}, con bifacialidad del 80~\% y única ficha que declara la fijación para seguidor, de modo que pasaría por delante si la variante se estudia con seguidor a un eje. El Trina Vertex N, con la categoría de precio más baja, se deja como opción para el análisis de coste nivelado de la energía (\ac{LCOE}) del capítulo 9 si la diferencia de precio compensa la menor energía.
 
