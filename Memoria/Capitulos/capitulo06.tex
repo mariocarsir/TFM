@@ -5,7 +5,8 @@
 % tablas con las fichas reales 04/10/2026; filas y ejes del radar revisados por Mario 04/10/2026;
 % V1b y V2 fusionadas en una comparativa común de tres módulos, decisión de Mario 10/10/2026;
 % correcciones de Mario 11/10/2026: sin «Tecnologías», «Criterios de selección», N/D y N/A;
-% fase 2 (12/10/2026): ejes con nota entera 1-3, datos del radar como filas, V1a pendiente de alternativa al AGC).
+% fase 2 (12/10/2026): ejes con nota entera 1-3, datos del radar como filas; el AGC se sustituye por el
+% Solarwatt Vision 36M glass en V1a, 12/10/2026).
 % Pendiente: revisión de Mario → humanizer → compilación de cierre.
 % Estado de las decisiones: PROPUESTA pendiente de validación por Mario.
 % Fuente única de datos de equipos: fichas de Datos/Fichas Técnicas/Módulos/{V1a,V1b-V2,V3}/.
@@ -46,7 +47,7 @@ En este apartado se seleccionan los componentes principales del generador fotovo
 \subsubsection{Criterios de selección}
 \label{subsubsec:diseno-criterios-modulos}
 
-En cada variante se comparan tres candidatos de una misma clase de potencia y formato, de fabricantes bien posicionados. La cubierta plana y las marquesinas comparten los mismos tres candidatos, como se explica más adelante. Para justificar el módulo se comparan sus parámetros eléctricos en condiciones \ac{STC}, la tecnología de célula, el coeficiente de temperatura, la degradación inducida por la luz (\ac{LID}), la degradación inducida por potencial (PID), las garantías, el precio y la posición del fabricante en el mercado. A ellos se suman los datos que miden lo que limita cada instalación: tensión de string, carga de viento, comportamiento frente al fuego, bifacialidad y función arquitectónica del elemento. Los datos técnicos proceden de las fichas técnicas de los fabricantes \cite{OnyxGL03,PolysolarPSMCST60,AGCVisionSquare,AIKONeostar2Pplus,TrinaVertexSplus440,JinkoTigerNeo525,LONGiHiMO9,JAJAM66D45,TrinaVertexN620}, salvo los cálculos propios y el precio, que se indican como tales.
+En cada variante se comparan tres candidatos de una misma clase de potencia y formato, de fabricantes bien posicionados. La cubierta plana y las marquesinas comparten los mismos tres candidatos, como se explica más adelante. Para justificar el módulo se comparan sus parámetros eléctricos en condiciones \ac{STC}, la tecnología de célula, el coeficiente de temperatura, la degradación inducida por la luz (\ac{LID}), la degradación inducida por potencial (PID), las garantías, el precio y la posición del fabricante en el mercado. A ellos se suman los datos que miden lo que limita cada instalación: tensión de string, carga de viento, comportamiento frente al fuego, bifacialidad y función arquitectónica del elemento. Los datos técnicos proceden de las fichas técnicas de los fabricantes \cite{OnyxGL03,PolysolarPSMCST60,SolarwattVision36M,AIKONeostar2Pplus,TrinaVertexSplus440,JinkoTigerNeo525,LONGiHiMO9,JAJAM66D45,TrinaVertexN620}, salvo los cálculos propios y el precio, que se indican como tales.
 
 Cada candidato se valora en cada criterio por orden, de 1 (peor) a 3 (mejor). Cuando dos o más candidatos empatan, todos ellos reciben la misma nota entera: si empatan los dos mejores, el tercero recibe un 2, de modo que el reparto es 3-3-2; si empatan los dos peores, el reparto es 3-2-2, y si empatan los tres, todos reciben un 3. Se trata de una valoración ordinal: indica qué candidato es mejor en cada criterio, pero no asigna pesos entre criterios, por lo que no se suman puntos.
 
@@ -114,9 +115,9 @@ Cabe destacar que no se emplea un módulo único para todo el proyecto, sino que
 \subsubsection{Variante V1a: lucernario}
 \label{subsubsec:diseno-modulo-v1a}
 
-La justificación del lucernario no es energética sino arquitectónica: se busca mantener la luz natural sobre el hall y aportar control solar. Por ello se exige como requisito previo una transparencia publicada igual o superior al 20~\%.
+La justificación del lucernario no es energética sino arquitectónica: se busca mantener la luz natural sobre el hall y aportar control solar. Por ello se exige como requisito previo una transparencia publicada igual o superior al 20~\%. Se comparan tres vidrios fotovoltaicos de silicio cristalino: el Onyx Solar GL.03, el Polysolar PS-MC-ST-60 y el Solarwatt Vision 36M glass.
 
-Onyx Solar fabrica el vidrio fotovoltaico a medida, por lo que no dispone de un catálogo cerrado de módulos. Se toma como referencia la ficha técnica de uno de sus proyectos de lucernario, que recoge cuatro vidrios. De ellos se elige el GL.03, de silicio monocristalino y 1.700 × 1.000~mm, por ser el de formato más próximo al de un módulo comercial y, por tanto, el que mejor encaja en una estructura estándar. El vidrio de formato estándar de la misma ficha, el GL.04, se descarta por ser opaco y llevar lámina trasera y marco. Los vidrios GL.01 y GL.02 son de capa fina de silicio amorfo, con un grado de transparencia nominal del 20~\% y una transmisión luminosa del 16,3~\%, y se descartan por densidad de potencia, ya que alcanzan solo 34,0~Wp/m$^2$. Sobre la superficie disponible supondrían en torno a 15,7~kWp, potencia que no constituye una alternativa de dimensionado, sino una variante distinta. Como se puede observar en la Tabla~\ref{tab:diseno-modulos-v1a}, se comparan tres vidrios fotovoltaicos de silicio cristalino.
+Onyx Solar fabrica el vidrio fotovoltaico a medida, por lo que no dispone de un catálogo cerrado de módulos. Se toma como referencia la ficha técnica de uno de sus proyectos de lucernario, que recoge cuatro vidrios. De ellos se elige el GL.03, de silicio monocristalino, por ser el de formato más próximo al de un módulo comercial y, por tanto, el que mejor encaja en una estructura estándar. El vidrio de formato estándar de la misma ficha, el GL.04, se descarta por ser opaco y llevar lámina trasera y marco. Los vidrios GL.01 y GL.02 son de capa fina de silicio amorfo, con un grado de transparencia nominal del 20~\% y una transmisión luminosa del 16,3~\%, y se descartan por densidad de potencia, ya que alcanzan solo 34,0~Wp/m$^2$. Sobre la superficie disponible supondrían en torno a 15,7~kWp, potencia que no constituye una alternativa de dimensionado, sino una variante distinta. Del Solarwatt, cuya ficha recoge tres clases de potencia, se compara la de 190~Wp, la mayor de ellas. Como se puede observar en la Tabla~\ref{tab:diseno-modulos-v1a}, los tres vidrios difieren sobre todo en tamaño y en los datos que publica cada fabricante.
 
 \begin{table}[H]
     \centering
@@ -127,77 +128,87 @@ Onyx Solar fabrica el vidrio fotovoltaico a medida, por lo que no dispone de un 
     \begin{tabularx}{\textwidth}{|F{4.2cm}|Y|Y|Y|}
         \hline
         \rowcolor{cabeceraTabla}
-        \textbf{Característica técnica} & \textbf{Onyx Solar GL.03} & \textbf{Polysolar PS-MC-ST-60} & \textbf{AGC SunEwat Vision Square} \\
+        \textbf{Característica técnica} & \textbf{Onyx Solar GL.03} & \textbf{Polysolar PS-MC-ST-60} & \textbf{Solarwatt Vision 36M glass} \\
         \hline
-        $P_{mpp}$ (Wp) & 265 & 370 & N/A \\
+        $P_{mpp}$ (Wp) & 265 & 370 & 190 \\
         \hline
-        $V_{mpp}$ (V) & 32 & 34,86 & N/A \\
+        $V_{mpp}$ (V) & 32 & 34,86 & 20,6 \\
         \hline
-        $I_{mpp}$ (A) & 8,39 & 10,62 & N/A \\
+        $I_{mpp}$ (A) & 8,39 & 10,62 & 9,31 \\
         \hline
-        $V_{oc}$ (V) & 38 & 40,50 & N/A \\
+        $V_{oc}$ (V) & 38 & 40,50 & 25,0 \\
         \hline
-        $I_{sc}$ (A) & 8,93 & 11,18 & N/A \\
+        $I_{sc}$ (A) & 8,93 & 11,18 & 9,76 \\
         \hline
-        $V_{max}$ (V) & 1.000 & 1.000 & N/D \\
+        $V_{max}$ (V) & 1.000 & 1.000 & 1.000 \\
         \hline
-        $I_{max}$ (A) & N/D & 20 & N/D \\
+        $I_{max}$ (A) & N/D & 20 & 20 \\
         \hline
-        Tecnología de célula & Mono c-Si (6 pulgadas), 60 células & Mono c-Si bifacial & PERC monofacial \\
+        Tecnología de célula & Mono c-Si (6 pulgadas), 60 células & Mono c-Si bifacial & Mono PERC, 36 células \\
         \hline
-        Peso (kg) & 34 & 30 & N/A \\
+        Peso (kg) & 34 & 30 & 25 \\
         \hline
-        Dimensiones (mm) & 1.700 × 1.000 & 1.770 × 1.049 & A medida (máx. 4.500 × 2.000) \\
+        Dimensiones (mm) & 1.700 × 1.000 & 1.770 × 1.049 & 1.550 × 710 \\
         \hline
-        Año de fabricación & 2020 & 2021 & 2021 \\
+        Año de fabricación & 2020 & 2021 & 2025 \nota{(a confirmar)} \\
         \hline
-        Coeficiente de temperatura (\%/\textdegree{}C) & $-$0,45 & $-$0,36 & N/A \\
+        Coeficiente de temperatura (\%/\textdegree{}C) & $-$0,45 & $-$0,36 & $-$0,38 \\
         \hline
-        Eficiencia (\%) & 15,58* & 20 & N/A \\
+        Eficiencia (\%) & 15,58* & 20 & 17,3 \\
         \hline
         \acs{LID} & N/D & N/D & N/D \\
         \hline
-        PID & N/D & N/D & N/D \\
+        PID & N/D & N/D & Protegido (IEC 62804) \\
         \hline
-        Garantía de potencia (años) & N/D & 30 & 20 \\
+        Garantía de potencia (años) & N/D & 30 & 30 \\
         \hline
-        Garantía de producto (años) & N/D & 30 & 10 \\
+        Garantía de producto (años) & N/D & 30 & 30 \\
         \hline
-        Precio (€/Wp)** & Medio-alto & Medio & Medio-alto \\
+        Precio (€/Wp)** & Medio-alto & Medio & Medio \\
         \hline
         Posición del fabricante en el ranking consultado & N/D & N/D & N/D \\
         \hline
-        Transparencia (\%) & 19 & 10 & [8, 90] (a medida) \\
+        Transparencia (\%) & 19 & 10 & 20 (aprox.) \\
         \hline
         Degradación anual (\%) & N/D & N/D & N/D \\
         \hline
-        Espesor del vidrio (mm) & 4 + 4 & 3 + 3 & A medida (2 × 2 a 2 × 12) \\
+        Espesor del vidrio (mm) & 4 + 4 & 3 + 3 & 4 + 4 \\
         \hline
-        Clase de fuego & N/D & A & N/D \\
+        Clase de fuego & N/D & A & C (IEC) \\
         \hline
-        Carga trasera de ensayo (Pa) & N/D & N/D & N/D \\
+        Carga trasera de ensayo (Pa) & N/D & N/D & 2.400 \\
         \hline
-        Bifacialidad (\%) & N/D & N/D & N/A \\
+        Bifacialidad (\%) & N/D & N/D & N/D \\
         \hline
         Transmitancia térmica $U$ (W/m$^2$·K) & 5,5 & N/D & N/D \\
         \hline
         Factor solar $g$ & N/D & N/D & N/D \\
         \hline
-        Módulos por string (inversor de 1.000~V)* & 23 & 22 & N/A \\
+        Módulos por string (inversor de 1.000~V)* & 23 & 22 & 36 \\
         \hline
     \end{tabularx}
 
     \smallskip
-    {\scriptsize * Cálculo propio: la eficiencia, a partir de la potencia y el área de la ficha, y los módulos por string, con una temperatura mínima de $-$10~\textdegree{}C, el coeficiente de temperatura de la tensión de circuito abierto de la ficha y la tensión máxima de 1.000~V de los vidrios.\\ ** \nota{Valor orientativo propio respecto a los módulos fabricados en serie: el fabricante no publica precio.}\\ \nota{[revisar: el AGC se fabrica a medida y no tiene potencia, tensiones, corrientes, peso, eficiencia ni coeficiente de temperatura propios; se marcan N/A. Si prefieres N/D para alguno, se cambia]}\\ \nota{[revisar: las filas añadidas desde «Degradación anual» hasta «Módulos por string» rompen la regla de filas del 04/10/2026; se añaden porque sostienen los ejes del radar. Mario valida si se quedan. La carga de ensayo del Polysolar figura como N/D porque su ficha da «5400/10500 kPa» sin indicar la cara ni la unidad correcta; su ficha declara células bifaciales sin factor, y la del Onyx no declara bifacialidad]}}
+    {\scriptsize * Cálculo propio: la eficiencia, a partir de la potencia y el área de la ficha, y los módulos por string, con una temperatura mínima de $-$10~\textdegree{}C, el coeficiente de temperatura de la tensión de circuito abierto de la ficha y la tensión máxima de 1.000~V de los vidrios.\\ ** \nota{Valor orientativo propio respecto a los módulos fabricados en serie: ningún fabricante publica precio. Se asigna medio-alto al Onyx, que fabrica a medida, y medio al Polysolar y al Solarwatt, que son productos de catálogo.}\\ \nota{Año del Solarwatt tomado de la fecha de su ficha (revisión 2, 07/02/2025); Mario confirma el año de fabricación.}\\ \nota{[revisar: las filas añadidas desde «Degradación anual» hasta «Módulos por string» rompen la regla de filas del 04/10/2026; se añaden porque sostienen los ejes del radar. Mario valida si se quedan. La carga de ensayo del Polysolar figura como N/D porque su ficha da «5400/10500 kPa» sin indicar la cara ni la unidad correcta; su ficha declara células bifaciales sin factor, y las del Onyx y del Solarwatt no declaran bifacialidad. La carga trasera del Solarwatt es la de succión, de 2.400~Pa, y su $I_{max}$ es la corriente inversa de 20~A de la ficha]}}
 \end{table}
 
-\nota{[pendiente: el radar, las valoraciones y la conclusión de esta variante se rehacen cuando Mario facilite la alternativa al AGC SunEwat Vision Square, que se descarta del radar por no ser dimensionable. Con solo el Onyx y el Polysolar no hay un tercer módulo con el que repartir las notas de 1 a 3]}
+\begin{figure}[H]
+    \centering
+    \radarcomparativa{8}{Eficiencia,Pérdidas en operación,Peso y tamaño,Precio,Integración arquitectónica,Robustez mecánica,Bifacialidad,Módulos por string}
+        {Onyx Solar GL.03}{1,1,1,2,3,1,1,2}
+        {Polysolar PS-MC-ST-60}{3,2,1,3,2,1,1,1}
+        {Solarwatt Vision 36M glass}{2,3,3,3,3,3,1,3}
+    \caption{Valoración de los candidatos de la variante V1a (1 = peor, 3 = mejor). Elaboración propia.}
+    \label{fig:radar-v1a}
+\end{figure}
 
-El Polysolar solo publica una transparencia del 10~\%, por lo que no pasa el requisito. Esto puede deberse a que su alta densidad, de 199,3~Wp/m$^2$ (cálculo propio), procede precisamente de cubrir casi todo el vidrio con célula. El AGC SunEwat Vision Square es el mejor en transparencia, pero su ficha no da la potencia, las tensiones ni las corrientes del vidrio, por lo que no permite dimensionar el campo ni crear el fichero de módulo para la simulación. Se propone en consecuencia el \textbf{Onyx Solar GL.03}, de 265~Wp y 1.700 × 1.000~mm, ya que es el único con una transparencia cercana al requisito que da todos los datos eléctricos necesarios para la simulación. Con 272 vidrios sobre los 463,1~m$^2$ de vidrio activo se obtendrían unos 72,1~kWp. \nota{[cálculo propio por área: el número real de vidrios depende de la retícula de la perfilería del lucernario]}
+Como se puede observar en la Figura~\ref{fig:radar-v1a}, el Solarwatt es el único con la mejor nota en pérdidas en operación, peso y tamaño, robustez mecánica y módulos por string, y empata con el Onyx en integración arquitectónica y con el Polysolar en precio. El Polysolar es el mejor en eficiencia y el Onyx solo destaca en integración arquitectónica. Los tres reciben un 1 en bifacialidad, ya que ninguna ficha declara el factor.
 
-\nota{[decidir: el GL.03 tiene un 19~\% de transparencia, un punto por debajo del requisito del 20~\%. Opciones: mantener el requisito y pedir a Onyx una versión al 20~\% o más; fijarlo en torno al 20~\%; o pedir a AGC los datos eléctricos de un Vision Square con la transparencia que se fije. Los vidrios de capa fina de la ficha de Onyx, con un 20~\% nominal, tienen en realidad una transmisión luminosa menor, del 16,3~\%]}
+En el lucernario son de importancia alta el peso y tamaño y la integración arquitectónica, como recoge la Tabla~\ref{tab:diseno-importancia-criterios}, ya que los vidrios deben apoyarse en la perfilería existente, que limita su peso y su formato. El Solarwatt obtiene un 3 en ambos, frente al 1 y el 3 del Onyx y al 1 y el 2 del Polysolar. Se propone en consecuencia el \textbf{Solarwatt Vision 36M glass}, de 190~Wp y 1.550 × 710~mm, que además es el único que declara a la vez una transparencia en torno al 20~\%, protección frente a la PID, una carga de ensayo y una clase de fuego. Con unos 420 vidrios sobre los 463,1~m$^2$ de vidrio activo se obtendrían unos 79,8~kWp. \nota{[cálculo propio por área: el número real de vidrios depende de la retícula de la perfilería del lucernario y de si un formato de 1.550 × 710~mm encaja en ella]} \nota{[revisar: cambia la elección de V1a respecto al borrador anterior, que proponía el Onyx Solar GL.03 (72,1~kWp), al incorporarse el Solarwatt]}
 
-Como debilidades, dicho vidrio tiene un coeficiente de temperatura de $-$0,45~\%/\textdegree{}C, peor que el del Polysolar, y una tolerancia de potencia de $\pm$10~\%. Además, la ficha no recoge garantías, factor solar $g$, clase de fuego, carga de ensayo, eficiencia ni fusible máximo en serie de este modelo. \nota{[pendiente: pedir a Onyx las garantías, el factor solar, la clase de fuego, la carga de ensayo y el fusible máximo del GL.03]} Queda como reserva el Polysolar, condicionado a que confirme una versión con transparencia igual o superior al 20~\%.
+\nota{[decidir: la ficha del Solarwatt da una transparencia aproximada del 20~\%, por lo que cumple el requisito solo de forma nominal, y el Onyx tiene un 19~\%, un punto por debajo. Opciones: mantener el requisito del 20~\% y pedir a Solarwatt el valor exacto; fijarlo en torno al 20~\%, con lo que ambos lo cumplirían, o pedir a Onyx una versión al 20~\% o más]}
+
+Como debilidades, el Solarwatt tiene una eficiencia del 17,3~\%, inferior al 20~\% del Polysolar, y un módulo pequeño, de 190~Wp, que obliga a instalar más unidades y a cablear más conexiones. Además, su ficha no declara \acs{LID}, degradación anual, transmitancia térmica $U$ ni factor solar $g$. \nota{[pendiente: pedir a Solarwatt el valor exacto de la transparencia, la \acs{LID}, la degradación anual, $U$ y $g$; y a Onyx las garantías, el factor solar, la clase de fuego, la carga de ensayo y el fusible máximo del GL.03]} Queda como reserva el Onyx Solar GL.03, que es el único que publica la transmitancia térmica, de 5,5~W/m$^2$·K, y cuyo vidrio es de 4 + 4~mm, aunque con la transparencia por debajo del requisito.
 
 %-----------------------------------------------------------------------------------------------
 \subsubsection{Variantes V1b y V2: cubierta plana y marquesinas}
@@ -398,7 +409,7 @@ La Tabla~\ref{tab:diseno-modulos-variante} recoge la propuesta de módulo para c
         \rowcolor{cabeceraTabla}
         \textbf{Variante} & \textbf{Módulo propuesto} & \textbf{Reserva} & \textbf{Potencia estimada} \\
         \hline
-        V1a. Lucernario & Onyx Solar GL.03, c-Si con 19~\% de transparencia (265~Wp) & Polysolar PS-MC-ST-60 (condicionada) & 72,1~kWp \nota{(provisional)} \\
+        V1a. Lucernario & Solarwatt Vision 36M glass, c-Si con transparencia en torno al 20~\% (190~Wp) \nota{(cambia)} & Onyx Solar GL.03 \nota{(antes, elegido)} & 79,8~kWp \nota{(provisional)} \\
         \hline
         V1b. Cubierta plana & AIKO Neostar 2P+ 475~W vidrio-vidrio & Jinko Tiger Neo 54HL4M-BDV 525 & 377,1~kWp \nota{(provisional)} \\
         \hline
@@ -411,7 +422,7 @@ La Tabla~\ref{tab:diseno-modulos-variante} recoge la propuesta de módulo para c
 
 Los módulos de V1b y V2 salen de la misma comparativa y tienen una tensión de circuito abierto casi idéntica (41,24 y 41,23~V), por lo que admiten el mismo diseño de string, de 24 módulos, y un único modelo de inversor de 1.100~V en las dos variantes, siempre que este admita la mayor corriente del Jinko. La planta en suelo trabajará a 1.500~V con otro inversor, y el lucernario, con un inversor propio de pequeña potencia.
 
-En conclusión, se propone un módulo distinto para cada variante, elegido según los criterios que pesan más en cada instalación: la integración arquitectónica en el lucernario, la eficiencia, el peso y tamaño y la longitud de string en la cubierta, la integración arquitectónica, la robustez mecánica y la bifacialidad en las marquesinas, y las pérdidas en operación, el precio y la bifacialidad en la planta en suelo. Las cuatro elecciones deben confirmarse con los ficheros de módulo en PVsyst, la comprobación de viento y la temperatura mínima del emplazamiento, que fijará la longitud definitiva de los strings en el apartado de dimensionado del campo generador.
+En conclusión, se propone un módulo distinto para cada variante, elegido según los criterios que pesan más en cada instalación: el peso y tamaño y la integración arquitectónica en el lucernario, la eficiencia, el peso y tamaño y la longitud de string en la cubierta, la integración arquitectónica, la robustez mecánica y la bifacialidad en las marquesinas, y las pérdidas en operación, el precio y la bifacialidad en la planta en suelo. Las cuatro elecciones deben confirmarse con los ficheros de módulo en PVsyst, la comprobación de viento y la temperatura mínima del emplazamiento, que fijará la longitud definitiva de los strings en el apartado de dimensionado del campo generador.
 
 \subsection{Inversores}
 \label{subsec:diseno-inversores}
