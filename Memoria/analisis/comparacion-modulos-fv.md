@@ -11,7 +11,9 @@ tags: [modulo-fv, seleccion, BIPV, lucernario, V1a, V1b, V2, V3, PVsyst, ranking
 
 # Selección del módulo fotovoltaico
 
-> **SUPERADO el 27/09/2026 por `Memoria/analisis/seleccion-modulos-por-variante.md`.** La
+> **SUPERADO el 12/10/2026 por el apartado 6.1.1 de la memoria (`Memoria/Capitulos/capitulo06.tex`);
+> antes, el 27/09/2026, lo había superado `Memoria/analisis/seleccion-modulos-por-variante.md`, que a
+> su vez está superado.** La
 > elección pasa a ser independiente por variante (V1a, V1b, V2, V3), cada una con sus criterios. La
 > categoría A (V1a) se confirma sin cambios; la categoría B deja de tener módulo único. Este
 > documento se conserva porque contiene las fichas, rankings y fuentes que el nuevo reutiliza.

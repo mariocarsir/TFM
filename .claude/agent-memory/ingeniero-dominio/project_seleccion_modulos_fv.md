@@ -1,18 +1,20 @@
 ---
 name: project-seleccion-modulos-fv
-description: "Propuesta 27/09/2026 (pendiente de validar): módulo INDEPENDIENTE por variante — V1a Onyx 35 %; V1b AIKO 475 monovidrio (reserva REC); V2 AIKO 475 vidrio-vidrio (reserva Trina bifacial, que gana por puntos); V3 LONGi Hi-MO 9 670 (reserva JA)"
+description: "Selección vigente de módulo por variante = apartado 6.1.1 de la memoria (12/10/2026): V1a Solarwatt Vision 36M glass; V1b AIKO Neostar 2P+ 475; V2 Jinko Tiger Neo 525; V3 Trina Vertex N 620. El análisis del 27/09 está SUPERADO"
 metadata:
   type: project
 ---
 
-Documento vigente: `Memoria/analisis/seleccion-modulos-por-variante.md` (27/09/2026). El de 22/09
-(`comparacion-modulos-fv.md`, módulo opaco único AIKO para V1b/V2/V3) queda SUPERADO pero se
-conserva por sus fichas. Script: `Memoria/analisis/scripts/modulos_por_variante.py`.
+Documento vigente: **`Memoria/Capitulos/capitulo06.tex`, apartado 6.1.1** (integrado en `master` el 12/10/2026).
+Los análisis `Memoria/analisis/seleccion-modulos-por-variante.md` (27/09) y `comparacion-modulos-fv.md`
+(22/09) están SUPERADOS: no usar sus elecciones, puntuaciones ni potencias como fuente.
 
-- **V1a:** Onyx c-Si 35 %, 330 uds ≈ 60,1 kWp. Sin cambios. Hallazgo lateral: DMEGC Greenhouse (43 % área transparente, 131,6 W/m², DIBt Z-70.3-309 no confirmado para ese modelo) — Mario decide si se abre.
-- **V1b:** AIKO-A475-MAH54Mw, 794 uds ≈ 377,1 kWp, 24/string a 1100 V. Puntos 27,5 vs REC 26 vs LONGi 25. REC reserva (−4000 Pa, BROOF(t2), PAN probado). Poliurea/PU líquido condiciona la ESTRUCTURA (lastrada con almohadilla/geotextil, no adherida), no el módulo; K2 y Valk no declaran membranas líquidas.
-- **V2:** AIKO-A475-MAH54Dw (2+2 mm, fuego IEC clase A), 1.597 uds ≈ 758,6 kWp. Trina NEG9RC.27 gana por puntos (27 vs 25,5) con criterios comerciales; pasa a elegido si la ganancia bifacial simulada > ~8 %. Vía de marquesina propuesta: perfiles-canalón estanca sin chapa.
-- **V3:** LONGi LR8-66HYD-670M, 827 kWp/ha (GCR 0,40 +20 %), 27/string a 1500 V. Los tres (LONGi, JA, Trina) son AAA → bancabilidad no discrimina.
+- **V1a:** Solarwatt Vision 36M glass (190 Wp, ~420 vidrios, 79,8 kWp por área, provisional). Reserva Onyx GL.03.
+- **V1b:** AIKO Neostar 2P+ 475 vidrio-vidrio, 794 uds ≈ 377,1 kWp (por área, provisional). Reserva Jinko.
+- **V2:** Jinko Tiger Neo 54HL4M-BDV 525, ≈ 751,3 kWp. Reserva Trina Vertex S+ 440 (empate técnico, gana el Jinko por potencia).
+- **V3:** Trina Vertex N TSM-620NEG19RC.20. Reserva JA JAM66D45-630/LB.
+- Método: ocho ejes enteros 1-3, tabla de importancias por variante, sin pesos ni suma de puntos.
+- Aprovechable del análisis viejo: la poliurea/PU líquido condiciona la ESTRUCTURA lastrada (almohadilla/geotextil), no el módulo; vía de marquesina propuesta: perfiles-canalón estanca sin chapa; hallazgo lateral DMEGC Greenhouse (V1a), sin abrir.
 
-**Why:** Mario (27/09) separó la elección porque el argumento de 1500 V pensando en V3 no tenía sentido para una cubierta.
-**How to apply:** no volver a proponer un módulo único; V1b y V2 comparten datos eléctricos → un mismo inversor de 1100 V. Tmín −10 °C provisional (AEMET pendiente; V3 con Colmenar Viejo). Relacionado: [[project-superficies-3d-variantes]].
+**Why:** Mario (12/10/2026) fijó las elecciones en el 6.1.1 tras revisar el borrador; el 27/09 era solo una propuesta.
+**How to apply:** los strings por inversor de V1b, V2 y V3 deben recalcularse con estos módulos (Tmín −10 °C, correcta según Mario). Relacionado: [[project-superficies-3d-variantes]].

@@ -3,13 +3,22 @@ title: "Selección del módulo fotovoltaico por variante (V1a, V1b, V2, V3)"
 tipo: analisis-tecnico
 autor: ingeniero-dominio
 fecha: 2026-09-27
-estado: propuesta (pendiente de validación por Mario)
+estado: SUPERADO el 12/10/2026 por el apartado 6.1.1 de la memoria (Memoria/Capitulos/capitulo06.tex)
 fase_erma: "Fase 3 — Selección del módulo"
 sustituye_a: "Memoria/analisis/comparacion-modulos-fv.md (22/09/2026)"
 tags: [modulo-fv, seleccion, BIPV, lucernario, cubierta, lastrado, poliurea, marquesinas, planta-suelo, V1a, V1b, V2, V3, PVsyst, ranking]
 ---
 
 # Selección del módulo fotovoltaico por variante
+
+> **SUPERADO el 12/10/2026.** La selección vigente es el apartado 6.1.1 de la memoria
+> (`Memoria/Capitulos/capitulo06.tex`): comparativa de tres candidatos por variante con ocho
+> criterios de valoración entera 1-3 y tabla de importancias. Elecciones vigentes: **V1a Solarwatt
+> Vision 36M glass**; **V1b AIKO Neostar 2P+ 475 vidrio-vidrio**; **V2 Jinko Tiger Neo 525**;
+> **V3 Trina Vertex N 620**. Las elecciones, puntuaciones y potencias de este documento (Onyx,
+> AIKO monovidrio, LONGi, 759 kWp) **no son vigentes** y no deben usarse como fuente. Se conserva
+> solo por el material de apoyo: fichas, strings por tensión de inversor y el pendiente 18 de la
+> estructura soporte (§8). Los strings de §6 hay que recalcularlos con los módulos vigentes.
 
 > **Regla aplicada.** Toda cifra de ficha técnica lleva su fuente (numeradas en §9). Lo que no se
 > ha podido verificar figura como **no verificado**. Nada procede de la memoria del modelo. Las
