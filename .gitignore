@@ -48,3 +48,13 @@ desktop.ini
 
 # Worktrees de sesiones de Claude Code: son checkouts temporales, nunca versionables
 .claude/worktrees/
+
+# Copias de seguridad automáticas de AutoCAD (el .dwg es lo versionable)
+*.bak
+
+# PDF exportados de los .pptx ya versionados (duplican contenido)
+Documentacion de apoyo/Trabajo Autoconsumo CPD/AUTOCONSUMO FOTOVOLTAICO PARA SISTEMA HVAC DE UN CPD.pdf
+Documentacion de apoyo/Trabajo Autoconsumo CPD/GUIA_PLANTILLA Estudio Autoconsumo FV ERMA20.pdf
+
+# Capturas de conversación con fecha; las capturas de trabajo ya versionadas no se ven afectadas
+Prompts/Capturas/2026-*.png
