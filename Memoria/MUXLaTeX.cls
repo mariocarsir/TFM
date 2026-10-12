@@ -49,7 +49,7 @@
 }
 \newcommand{\radarcomparativa}[8]{%
     \begin{tikzpicture}[font=\footnotesize]
-        \def\radioU{1.05}
+        \def\radioU{0.85}
         \foreach \k in {1,2,3}{
             \draw[black!18] (90:{\k*\radioU}) \foreach \ind in {2,...,#1}{-- ({90-360/#1*(\ind-1)}:{\k*\radioU})} -- cycle;
             \node[black!55, font=\scriptsize, anchor=south west, inner sep=1pt] at (0.04,{\k*\radioU}) {\k};
