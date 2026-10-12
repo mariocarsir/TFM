@@ -110,8 +110,9 @@ en vez de quedar como teoría general previa.)*
 
 6.1. Selección de componentes: módulos, inversores y estructura **[+]**
 
-*(Incorpora aquí, a modo de justificación breve antes de elegir módulo concreto, el panorama de
-tecnologías de generación FV trasladado desde el antiguo cap. 2.1 el 06/09/2026.)*
+*(El panorama de tecnologías de generación FV trasladado desde el antiguo cap. 2.1 el 06/09/2026
+se eliminó el 11/10/2026 por decisión de Mario: el 6.1 pasa directamente a la comparativa de módulos
+por variante.)*
 6.2. Dimensionado del campo generador: cálculo de strings y ratio DC/AC **[+ ampliado]**
 6.3. Cálculos eléctricos y esquema unifilar
 6.4. Simulación en PVsyst: pérdidas detalladas y diagrama de pérdidas **[+]**
