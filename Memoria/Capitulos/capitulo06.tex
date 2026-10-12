@@ -51,7 +51,7 @@ En este apartado se seleccionan los componentes principales del generador fotovo
 
 En cada variante se comparan tres candidatos de una misma clase de potencia y formato, y la cubierta plana y las marquesinas comparten los mismos tres. Los datos técnicos proceden de las fichas de los fabricantes \cite{OnyxGL03,PolysolarPSMCST60,SolarwattVision36M,AIKONeostar2Pplus,TrinaVertexSplus440,JinkoTigerNeo525,LONGiHiMO9,JAJAM66D45,TrinaVertexN620}, salvo los cálculos propios, el precio y la posición en los rankings, que se indican como tales. Los precios proceden de pvXchange \cite{PvXchangePrecios2026}, los rankings de CleanEnergyReviews \cite{CleanEnergyReviews2025} y Black Ridge Research \cite{BlackRidge2025}, y la bancabilidad, de PV Tech \cite{PVTechBancabilidad}.
 
-Cada candidato se valora en cada criterio por orden, de 1 (peor) a 3 (mejor), sin asignar pesos entre criterios ni sumar puntos. \nota{[provisional: la nota 1 por dato N/D se actualiza cuando se disponga del dato]} Todas las variantes se valoran con los mismos ocho criterios:
+Cada candidato se valora en cada criterio por orden, de 1 (peor) a 3 (mejor), sin asignar pesos entre criterios ni sumar puntos. Todas las variantes se valoran con los mismos ocho criterios:
 
 \begin{itemize}
     \item \textbf{Eficiencia.} Relaciona la potencia del módulo con su superficie, por lo que fija la potencia instalable en un área dada. Se prefiere la mayor.
@@ -60,8 +60,8 @@ Cada candidato se valora en cada criterio por orden, de 1 (peor) a 3 (mejor), si
     \item \textbf{Precio.} Pesa en la inversión y en el coste de la energía producida. Se prefiere el menor.
     \item \textbf{Integración arquitectónica.} Valora el módulo como elemento constructivo: en V1a, la transparencia, el espesor del vidrio y la clase de fuego, y un módulo opaco recibe la nota más baja; en V1b-V2 y V3, solo el espesor del vidrio y la clase de fuego. Se prefiere más transparencia, vidrio más grueso y mejor clase de fuego.
     \item \textbf{Robustez mecánica.} Mide la carga de ensayo en la cara trasera, que soporta la succión del viento. Se prefiere la mayor.
-    \item \textbf{Bifacialidad.} Es el aprovechamiento de la radiación reflejada que llega a la cara trasera. Se prefiere el mayor factor.
-    \item \textbf{Módulos por string.} Se calcula con la tensión de circuito abierto a $-$10~\textdegree{}C, el coeficiente de temperatura de dicha tensión que da la ficha y la tensión máxima de cada variante; los strings largos reducen las entradas de continua del inversor. Se prefiere el mayor número. \nota{[revisar: la temperatura mínima de $-$10~\textdegree{}C es provisional, pendiente del dato del emplazamiento]}
+    \item \textbf{Bifacialidad.} Es el aprovechamiento de la radiación reflejada que llega a la cara trasera. Se prefiere el mayor factor, y un módulo cuya ficha no declara bifacialidad se considera no bifacial.
+    \item \textbf{Módulos por string.} Se calcula con la tensión de circuito abierto a $-$10~\textdegree{}C, el coeficiente de temperatura de dicha tensión que da la ficha y la tensión máxima de cada variante; los strings largos reducen las entradas de continua del inversor. Se prefiere el mayor número.
 \end{itemize}
 
 La Tabla~\ref{tab:diseno-importancia-criterios} recoge la importancia de cada criterio en cada variante, de la que depende la elección cuando ningún candidato es el mejor en todo. \nota{[revisar: la importancia alta, media o baja de cada criterio es un juicio propio de diseño, no un dato; de ella depende cada elección]}
@@ -180,7 +180,7 @@ La justificación del lucernario es arquitectónica y no energética: mantener l
     \label{fig:radar-v1a}
 \end{figure}
 
-Como se puede observar en la Figura~\ref{fig:radar-v1a}, el Solarwatt es el mejor en pérdidas en operación, peso y tamaño, integración arquitectónica y módulos por string, y el Polysolar, en eficiencia y robustez mecánica; el precio y la bifacialidad no distinguen candidatos por falta de dato. En el lucernario son de importancia alta el peso y tamaño y la integración arquitectónica, ya que los vidrios se apoyan en una perfilería existente que limita su peso y su formato. El Solarwatt obtiene un 3 en ambos, frente al 1 y el 2 del Onyx y al 1 y el 2 del Polysolar, y es el único que cumple la transparencia del 20~\% y declara protección frente a la PID. Se propone por ello el \textbf{Solarwatt Vision 36M glass}, con unos 420 vidrios y 79,8~kWp sobre los 463,1~m$^2$ de vidrio activo. \nota{[cálculo propio por área]} Como debilidades, su eficiencia del 17,3~\% es inferior al 20~\% del Polysolar y su potencia unitaria, de 190~Wp, obliga a instalar más unidades. Queda como reserva el Onyx GL.03, cuya transparencia del 19~\% es la más próxima al requisito, aunque queda por debajo. \nota{[revisar: la ficha del Polysolar da la carga de ensayo como «5400/10500 kPa»; se toma 5400 como carga de viento y se compara con los 2.400~Pa del Solarwatt suponiendo que ambas están en Pa]}
+Como se puede observar en la Figura~\ref{fig:radar-v1a}, el Solarwatt es el mejor en pérdidas en operación, peso y tamaño, integración arquitectónica y módulos por string, y el Polysolar, en eficiencia y robustez mecánica; el precio y la bifacialidad no distinguen candidatos por falta de dato. En el lucernario son de importancia alta el peso y tamaño y la integración arquitectónica, ya que los vidrios se apoyan en una perfilería existente que limita su peso y su formato. El Solarwatt obtiene un 3 en ambos, frente al 1 y el 2 del Onyx y al 1 y el 2 del Polysolar, y es el único que cumple la transparencia del 20~\% y declara protección frente a la PID. Se propone por ello el \textbf{Solarwatt Vision 36M glass}, con unos 420 vidrios y 79,8~kWp sobre los 463,1~m$^2$ de vidrio activo. Como debilidades, su eficiencia del 17,3~\% es inferior al 20~\% del Polysolar y su potencia unitaria, de 190~Wp, obliga a instalar más unidades. Queda como reserva el Onyx GL.03, cuya transparencia del 19~\% es la más próxima al requisito, aunque queda por debajo. \nota{[revisar: la ficha del Polysolar da la carga de ensayo como «5400/10500 kPa»; se toma 5400 como carga de viento y se compara con los 2.400~Pa del Solarwatt suponiendo que ambas están en Pa]}
 
 %-----------------------------------------------------------------------------------------------
 \subsubsection{Variantes V1b y V2: cubierta plana y marquesinas}
@@ -255,9 +255,9 @@ La cubierta y las marquesinas comparten los tres candidatos porque admiten la mi
     \label{fig:radar-v1b-v2}
 \end{figure}
 
-Como se puede observar en la Figura~\ref{fig:radar-v1b-v2}, ningún candidato es el mejor en todo: el AIKO destaca en eficiencia, el Trina en peso y tamaño, precio y robustez mecánica, y el Jinko iguala la mejor nota en cuatro ejes sin ser el único mejor en ninguno. La elección depende, por tanto, de los criterios de mayor importancia en cada variante (Tabla~\ref{tab:diseno-importancia-criterios}). \nota{[revisar: se supone que el AIKO no es bifacial por no declararlo la ficha y recibe un 1; por ser N/D, el AIKO y el Trina reciben un 1 en el aspecto PID de las pérdidas en operación y el Trina un 1 en fuego; son notas provisionales]}
+Como se puede observar en la Figura~\ref{fig:radar-v1b-v2}, ningún candidato es el mejor en todo: el AIKO destaca en eficiencia, el Trina en peso y tamaño, precio y robustez mecánica, y el Jinko iguala la mejor nota en cuatro ejes sin ser el único mejor en ninguno. La elección depende, por tanto, de los criterios de mayor importancia en cada variante (Tabla~\ref{tab:diseno-importancia-criterios}).
 
-En la cubierta son de importancia alta la eficiencia, el peso y tamaño, la robustez mecánica y los módulos por string. El AIKO es el único sin un 1 en ellos, con un 3, un 2, un 2 y un 3, frente a los 2, 1, 2 y 3 del Jinko y los 1, 3, 3 y 2 del Trina. Se propone el \textbf{AIKO Neostar 2P+ 475~W vidrio-vidrio}, que permite instalar 794 módulos y unos 377,1~kWp, frente a los 373,3~kWp del Jinko y los 348,5~kWp del Trina en la misma superficie. Su peso por superficie, de 12,3~kg/m$^2$, queda entre los 12,1 del Jinko y los 10,5 del Trina. Queda como reserva el Jinko. \nota{[pendiente: los 794 módulos se estimaron por área (cálculo propio); hay que rehacer la disposición de los sheds en la escena 3D con 1.757 × 1.134~mm]}
+En la cubierta son de importancia alta la eficiencia, el peso y tamaño, la robustez mecánica y los módulos por string. El AIKO es el único sin un 1 en ellos, con un 3, un 2, un 2 y un 3, frente a los 2, 1, 2 y 3 del Jinko y los 1, 3, 3 y 2 del Trina. Se propone el \textbf{AIKO Neostar 2P+ 475~W vidrio-vidrio}, que permite instalar unos 794 módulos y 377,1~kWp (estimación propia por área), frente a los 373,3~kWp del Jinko y los 348,5~kWp del Trina en la misma superficie. Su peso por superficie, de 12,3~kg/m$^2$, queda entre los 12,1 del Jinko y los 10,5 del Trina. Queda como reserva el Jinko.
 
 En las marquesinas son de importancia alta la integración arquitectónica, la robustez mecánica y la bifacialidad. El AIKO recibe un 1 en bifacialidad por no declararla, mientras que el Jinko obtiene un 3, un 2 y un 3, y el Trina, un 2, un 3 y un 3. Al empatar ambos, se propone el \textbf{Jinko Tiger Neo 54HL4M-BDV 525}, que alcanza unos 751,3~kWp frente a los 700,5~kWp del Trina en la misma huella (cálculo propio). Como debilidades, es el más pesado y largo de los tres y su corriente de cortocircuito es la mayor, lo que condiciona la entrada del inversor. Queda como reserva el Trina.
 
@@ -336,7 +336,7 @@ En la planta de Colmenar Viejo el suelo sobra y lo que limita es la capacidad de
     \label{fig:radar-v3}
 \end{figure}
 
-Como se puede observar en la Figura~\ref{fig:radar-v3}, el LONGi es el mejor en eficiencia y en peso y tamaño, y el Trina, en precio; los tres empatan en robustez mecánica y módulos por string. En esta variante son de importancia alta las pérdidas en operación, el precio y la bifacialidad (Tabla~\ref{tab:diseno-importancia-criterios}), y en ellas el \textbf{Trina Vertex N TSM-620NEG19RC.20} obtiene un 3 en los tres, frente al 3, 2 y 1 del LONGi y el 2, 2 y 3 del JA. En una planta en suelo el precio pesa directamente en el \ac{LCOE}, y el Trina es el de la categoría más baja, con 0,12~€/Wp frente a 0,13~€/Wp de los otros dos, y el único que declara resistencia a la PID. Como debilidades, es el de menor eficiencia, con un 23,0~\%, y su fusible máximo de 30~A frente a los 35~A de los otros dos se tendrá en cuenta al agrupar strings. Queda como reserva el JA Solar, que es el único sin un 1 en los criterios de importancia alta y el único con la fijación declarada para seguidor. \nota{[revisar: se supone que el LONGi no es bifacial por no declararlo la ficha y recibe un 1; el Trina recibe un 1 en fuego por ser N/D; son notas provisionales]}
+Como se puede observar en la Figura~\ref{fig:radar-v3}, el LONGi es el mejor en eficiencia y en peso y tamaño, y el Trina, en precio; los tres empatan en robustez mecánica y módulos por string. En esta variante son de importancia alta las pérdidas en operación, el precio y la bifacialidad (Tabla~\ref{tab:diseno-importancia-criterios}), y en ellas el \textbf{Trina Vertex N TSM-620NEG19RC.20} obtiene un 3 en los tres, frente al 3, 2 y 1 del LONGi y el 2, 2 y 3 del JA. En una planta en suelo el precio pesa directamente en el \ac{LCOE}, y el Trina es el de la categoría más baja, con 0,12~€/Wp frente a 0,13~€/Wp de los otros dos, y el único que declara resistencia a la PID. Como debilidades, es el de menor eficiencia, con un 23,0~\%, y su fusible máximo de 30~A frente a los 35~A de los otros dos se tendrá en cuenta al agrupar strings. Queda como reserva el JA Solar, que es el único sin un 1 en los criterios de importancia alta y el único con la fijación declarada para seguidor.
 
 %-----------------------------------------------------------------------------------------------
 \subsubsection{Síntesis de la selección de módulos}
@@ -355,18 +355,18 @@ La Tabla~\ref{tab:diseno-modulos-variante} recoge la propuesta de módulo para c
         \rowcolor{cabeceraTabla}
         \textbf{Variante} & \textbf{Módulo propuesto} & \textbf{Potencia estimada} \\
         \hline
-        V1a. Lucernario & Solarwatt Vision 36M glass (190~Wp) & 79,8~kWp \nota{(provisional)} \\
+        V1a. Lucernario & Solarwatt Vision 36M glass (190~Wp) & 79,8~kWp \\
         \hline
-        V1b. Cubierta plana & AIKO Neostar 2P+ 475~W vidrio-vidrio & 377,1~kWp \nota{(provisional)} \\
+        V1b. Cubierta plana & AIKO Neostar 2P+ 475~W vidrio-vidrio & 377,1~kWp \\
         \hline
-        V2. Marquesinas & Jinko Tiger Neo 54HL4M-BDV 525 & 751,3~kWp \nota{(provisional)} \\
+        V2. Marquesinas & Jinko Tiger Neo 54HL4M-BDV 525 & 751,3~kWp \\
         \hline
         V3. Planta en suelo & Trina Vertex N TSM-620NEG19RC.20 & Limitada por el acceso \\
         \hline
     \end{tabularx}
 \end{table}
 
-Las cuatro elecciones deben confirmarse con los ficheros de módulo en PVsyst, la comprobación de viento y la temperatura mínima del emplazamiento, que fijará la longitud definitiva de los strings en el dimensionado del campo generador.
+Las potencias son estimaciones propias por área. Las cuatro elecciones deben confirmarse con los ficheros de módulo en PVsyst, la comprobación de viento y la temperatura mínima del emplazamiento, que fijará la longitud definitiva de los strings en el dimensionado del campo generador.
 
 \subsection{Inversores}
 \label{subsec:diseno-inversores}
